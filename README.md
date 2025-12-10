@@ -1,2 +1,2 @@
-# potap
-potap game
+# potop
+potop game
