@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 public class StageMain : MonoBehaviour {
     public static StageMain main;
     public GameObject obstacle;
+    
     private float t = 0f;
     
     private void Awake() {
@@ -13,7 +14,7 @@ public class StageMain : MonoBehaviour {
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
