@@ -1,16 +1,29 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour {
+public class Obstacle : MonoBehaviour
+{
     public Rigidbody rb;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() {
-        
+    public int damage = 20;
+
+    void Start()
+    {
+
     }
 
-    // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         rb.AddForce(-transform.position);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.TakeDamage(damage);
+            }
+            Destroy(gameObject);
+        }
     }
 }

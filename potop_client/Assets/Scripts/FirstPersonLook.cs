@@ -14,6 +14,10 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
+        // 게임오버 시 카메라 조작 차단
+        if (GameManager.Instance != null && GameManager.Instance.isGameOver)
+            return;
+
         float mouseX = Mouse.current.delta.x.ReadValue() * mouseSensitivity * Time.deltaTime;
         float mouseY = Mouse.current.delta.y.ReadValue() * mouseSensitivity * Time.deltaTime;
 

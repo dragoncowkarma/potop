@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         mouseX = Mouse.current.delta.x.ReadValue() * Time.deltaTime * MOUSE_SENSITIVITY;
-        mouseY = Mouse.current.delta.x.ReadValue() * Time.deltaTime * MOUSE_SENSITIVITY;
+        mouseY = Mouse.current.delta.y.ReadValue() * Time.deltaTime * MOUSE_SENSITIVITY;
         
         xRotation -= mouseY;
         yRotation += mouseX;
