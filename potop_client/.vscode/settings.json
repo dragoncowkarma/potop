@@ -67,5 +67,8 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "potop_client.slnx"
+    "dotnet.defaultSolution": "potop_client.slnx",
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "/Users/macbook/Desktop/potop/potop_client/potop_client.slnx"
+    ]
 }
