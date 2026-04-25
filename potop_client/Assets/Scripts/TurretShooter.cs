@@ -27,7 +27,9 @@ public class TurretShooter : MonoBehaviour
         }
         else
         {
+#if UNITY_EDITOR
             Debug.LogWarning("Projectile Prefab is missing!");
+#endif
         }
     }
 }
