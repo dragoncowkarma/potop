@@ -17,7 +17,8 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        // Check for both "Enemy" and "Obstacle" tags/components to integrate the two systems
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.GetComponent<Obstacle>() != null || collision.gameObject.GetComponent<Enemy>() != null)
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
