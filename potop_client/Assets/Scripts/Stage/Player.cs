@@ -8,10 +8,12 @@ public class Player : MonoBehaviour {
     private float mouseY;
     private float xRotation = 0f;
     private float yRotation = 0f;
+
+    private Camera mainCamera;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -24,6 +26,6 @@ public class Player : MonoBehaviour {
         
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         
-        Camera.main.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        mainCamera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
     }
 }
