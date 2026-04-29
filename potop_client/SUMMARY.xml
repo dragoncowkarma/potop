@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProjectContext>
+  <Meta>
+    <Purpose>POTOP is a 3D turret defense and survival game featuring two modes: defensive turret combat and obstacle-based survival.</Purpose>
+    <UnityVersion>6000.0.73f1</UnityVersion>
+    <RenderPipeline>Universal Render Pipeline (URP)</RenderPipeline>
+    <Architecture>Singleton-based Global State Management with Event-Driven UI (MVC/MVP influence).</Architecture>
+  </Meta>
+
+  <Dependencies>
+    <Package name="com.unity.inputsystem">New Input System for player controls and interactions.</Package>
+    <Package name="com.unity.render-pipelines.universal">URP for modern, optimized rendering.</Package>
+    <Package name="com.unity.ugui">Legacy UI system components (TextMeshPro, Sliders) used in HUD.</Package>
+    <Package name="com.coplaydev.unity-mcp">Integration for Model Context Protocol in Unity.</Package>
+  </Dependencies>
+
+  <CoreScenes>
+    <Scene path="Assets/Scenes/Start.unity">Main menu for game mode selection and application exit logic.</Scene>
+    <Scene path="Assets/Scenes/MainScene.unity">Turret defense gameplay featuring enemy spawning and combat.</Scene>
+    <Scene path="Assets/Scenes/Stage.unity">Survival mode where players dodge/destroy obstacles while accumulating survival time.</Scene>
+  </CoreScenes>
+
+  <CoreScripts>
+    <Module name="GameManager" type="Manager">
+      <Path>Assets/Scripts/Core/GameManager.cs</Path>
+      <Responsibility>Singleton managing HP, score, game state transitions, and global gameplay events.</Responsibility>
+    </Module>
+    <Module name="GameHUD" type="Controller">
+      <Path>Assets/Scripts/Core/GameHUD.cs</Path>
+      <Responsibility>UI controller subscribing to GameManager events to update HUD elements and Game Over screen.</Responsibility>
+    </Module>
+    <Module name="StartMain" type="Controller">
+      <Path>Assets/Scripts/_Main/StartMain.cs</Path>
+      <Responsibility>Menu entry point managing scene transitions between Turret and Stage modes.</Responsibility>
+    </Module>
+    <Module name="StageMain" type="Controller">
+      <Path>Assets/Scripts/_Main/StageMain.cs</Path>
+      <Responsibility>Survival mode logic managing survival time scores and obstacle spawning frequency.</Responsibility>
+    </Module>
+    <Module name="TurretShooter" type="Controller">
+      <Path>Assets/Scripts/TurretShooter.cs</Path>
+      <Responsibility>Handles player input for turret rotation and projectile instantiation during combat.</Responsibility>
+    </Module>
+    <Module name="EnemySpawner" type="Utility">
+      <Path>Assets/Scripts/EnemySpawner.cs</Path>
+      <Responsibility>Automates enemy generation and positioning in turret defense mode.</Responsibility>
+    </Module>
+  </CoreScripts>
+
+  <DataFlowAndState>
+    <Description>Global state (HP, Score, GameOver) is centralized in the GameManager singleton. Gameplay entities (Enemies, Players) call TakeDamage/AddScore on the singleton, which updates state and triggers static C# Actions. UI components (GameHUD) subscribe to these events on Enable/Disable for decoupled visual updates.</Description>
+  </DataFlowAndState>
+
+  <StrictConventions>
+    <Rule>Rely on GameManager.Instance for global state; avoid direct cross-script coupling.</Rule>
+    <Rule>Use static events (Actions) in Managers to notify UI and other systems of state changes.</Rule>
+    <Rule>Strictly avoid GameObject.Find(); use Inspector references, Singletons, or Dependency Injection.</Rule>
+    <Rule>Declare all access modifiers explicitly; use [SerializeField] for private fields exposed to Inspector.</Rule>
+    <Rule>Prefer Unity UI Toolkit for new UI development (as per AGENTS.md), though legacy UGUI exists.</Rule>
+  </StrictConventions>
+</ProjectContext>
