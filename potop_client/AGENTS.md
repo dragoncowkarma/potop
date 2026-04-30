@@ -1,78 +1,54 @@
-🤖 System Instructions for AI Agents (AGENTS.md)
+# 🤖 Agent Operations (AGENTS.md)
 
-This document defines the strict rules, context, and coding standards for all AI coding agents and assistants (e.g., Jules, Codex, Cursor, Devin, GitHub Copilot) operating within this repository.
-[CRITICAL] You must read and internalize this document before analyzing, modifying, or generating any code.
+[CRITICAL] You must read `SUMMARY.xml` via `view_file` before analyzing any code.
 
-1. 🎯 Core Principles
+## When Initializing a Task
+1. Execute `view_file` on `SUMMARY.xml` to internalize `Architecture` and `CoreScripts`.
+2. Locate existing patterns in `Assets/Scripts/` to ensure `Strict Consistency`.
+3. If `SUMMARY.xml` is missing, stop and notify the user.
 
-Readability First: Write clean, self-documenting code that is easily understandable by both humans and AIs.
+## When Writing C# Code
+1. Use `PascalCase` for `Classes`, `Interfaces`, `Methods`, and `Properties`.
+2. Use `camelCase` for `localVariables` and `parameters`.
+3. Use `_camelCase` for `private` or `protected` fields.
+4. Use `UPPER_SNAKE_CASE` for `CONSTANTS` and `STATIC_READONLY`.
+5. Always declare `access modifiers` explicitly (e.g., `private void Awake()`).
+6. Use `[SerializeField] private Type _fieldName;` for Inspector exposure.
+7. Write `/// XML documentation` for all `public APIs` and `Classes`.
 
-Keep It Simple (KISS): Avoid over-engineering. Provide the simplest, most maintainable solutions.
+## When Working with Unity 6
+1. **Never** use `GameObject.Find()`, `GameObject.FindWithTag()`, or `FindObjectOfType<T>()`.
+2. Rely on `Singletons` (e.g., `GameManager.Instance`) or `Inspector references`.
+3. **Never** call `GetComponent<T>()`, perform `string` manipulations, or `new` allocations inside `Update()`.
+4. Use `async/await` (`UniTask`/`Awaitable`) for heavy operations; use `Coroutines` for visual frame-delays.
+5. Strictly avoid `uGUI`; use `Unity UI Toolkit` for all new UI development.
 
-Strict Consistency: When modifying existing files, flawlessly mimic the established coding style, patterns, and architecture of the project.
+## When Organizing Files
+1. `Assets/Scripts/Core/`: Place `Singletons`, `Managers`, and `Common Utilities`.
+2. `Assets/Scripts/Gameplay/`: Place `PlayerControl`, `Combat`, and `InGameLogic`.
+3. `Assets/Scripts/UI/`: Place `UIControllers`, `Views`, and `UIDocument` bindings.
+4. `Assets/Scripts/Data/`: Place `ScriptableObjects`, `DataModels`, and `Structs`.
 
-Ask When Unsure: Do not hallucinate or make assumptions regarding ambiguous requirements or major architectural decisions. Prompt the user for clarification.
+## When Modifying Existing Code
+1. Flawlessly mimic the established `coding style` and `architecture`.
+2. Do not perform `large-scale refactoring` unless explicitly instructed.
+3. Extract `Magic Numbers` and `Magic Strings` into `constants` or `[SerializeField]` variables.
+4. Do not introduce new `external packages` or `NuGet` dependencies.
+5. Provide `concise diffs` in chat; provide `complete files` when creating new ones.
 
-2. 🛠️ Tech Stack & Environment
+## When Verifying Changes
+1. Run `mcp_unityMCP_run_tests` to check for logic regressions.
+2. Monitor `mcp_unityMCP_read_console` for `Errors` or `Warnings`.
+3. Verify that `SUMMARY.xml` is updated if the `Project Structure` changed.
 
-Language: C# (Latest version supported by Unity 6)
+## When Blocked or Uncertain
+1. If requirements are ambiguous: **Stop** and call `ask_question`.
+2. If a major architectural change is needed: **Stop** and propose an `implementation_plan.md`.
+3. If blocked by a bug in `Unity` or `MCP`: **Stop** and report the error logs.
 
-Framework: Unity 3D (Target: Unity 6.0 LTS)
-
-UI System: Unity UI Toolkit (STRICTLY AVOID uGUI unless explicitly requested).
-
-Input System: Unity New Input System.
-
-Architecture: MVC / MVP patterns, Event-Driven Architecture.
-
-3. 📝 Coding Standards
-
-Adhere to the following C# and Unity coding conventions strictly:
-
-Naming Conventions:
-
-Classes, Interfaces, Methods, Properties: PascalCase (e.g., PlayerController)
-
-Local Variables, Parameters: camelCase (e.g., moveSpeed)
-
-Private / Protected Fields: _camelCase (e.g., _healthPoints)
-
-Constants / Static Readonly: UPPER_SNAKE_CASE (e.g., MAX_INVENTORY_SIZE)
-
-Access Modifiers: Always declare access modifiers explicitly (e.g., use private void Awake() instead of void Awake()).
-
-Serialization: Never use public fields just to expose them to the Inspector. Always use [SerializeField] private Type _fieldName;.
-
-Comments: Document the "Why", not the "How". Use XML documentation (///) for all public APIs and classes.
-
-4. 📁 Directory Structure Guidelines
-
-Place newly generated files in their appropriate semantic locations:
-
-Assets/Scripts/Core/: Singletons, Game/State Managers, Common Utilities.
-
-Assets/Scripts/Gameplay/: Player control, Combat mechanics, In-game logic.
-
-Assets/Scripts/UI/: UI Controllers, Views, UI Toolkit bindings.
-
-Assets/Scripts/Data/: ScriptableObjects, Data models, Structs.
-
-5. ⚡ Unity Specific Optimizations
-
-No Costly Lookups: NEVER use GameObject.Find(), GameObject.FindWithTag(), or FindObjectOfType<T>(). Rely on Inspector references, singletons, or Dependency Injection.
-
-Update() Loop Discipline: NEVER call GetComponent<T>(), perform string manipulations/concatenations, or allocate memory (new objects) inside Update(), FixedUpdate(), or LateUpdate(). Cache references in Awake() or Start().
-
-Asynchronous Operations: Use Unity Coroutines for simple frame-delays or visual effects. Use async/await (e.g., UniTask or Awaitable in Unity 6) for heavy asynchronous operations like asset loading or web requests.
-
-6. 🚫 Negative Prompts (What NOT to do)
-
-DO NOT perform large-scale refactoring of functional code unless explicitly instructed by the user.
-
-DO NOT hardcode "Magic Numbers" or strings. Extract them into constants or [SerializeField] variables.
-
-DO NOT introduce unauthorized external packages, plugins, or NuGet dependencies.
-
-DO NOT output the entire file if only a small change is made. Provide concise diffs or highlight only the modified sections when interacting in chat, but output clean, complete files when creating new ones.
-
-AGENT ACKNOWLEDGEMENT: By processing this repository, you automatically agree to apply all rules defined in this AGENTS.md file to your outputs implicitly, without needing to be reminded in every prompt.
+## Definition of Done
+1. Code compiles without errors in the `Unity Editor`.
+2. `SUMMARY.xml` accurately reflects the current `Architecture` and `CoreScripts`.
+3. A `walkthrough.md` is created with `screenshots` or `videos` of the results.
+4. All `public APIs` have complete `XML documentation`.
+5. The task satisfies 100% of the `USER_REQUEST`.
