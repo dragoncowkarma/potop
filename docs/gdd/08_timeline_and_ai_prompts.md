@@ -136,7 +136,7 @@
 #### **[Milestone 36] (J) 수익화 - 광고 SDK 연동**
 - **AI Prompt:** [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Monetization]Integrate AdMob/Unity Ads for Rewarded items;
 
-#### **[Milestone 37] (A) 플랫폼 타겟 최적화 (Mobile/VR)**
+#### **[Milestone 37] (A) 플랫폼 타겟 최적화 (Mobile -> PC -> VR -> Console)**
 - **AI Prompt:** [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Optimization]Adjust quality settings and LODs for target platforms;
 
 ---

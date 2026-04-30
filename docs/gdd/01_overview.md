@@ -2,9 +2,11 @@
 
 * **프로젝트명:** **POTOP (Project Over-The-Top Power)**
 * **장르:** 로그라이트(Roguelite) + 360도 웨이브 슈터(Wave Shooter)
-* **출시 플랫폼 (단계별 목표):**
-  * **1차 목표:** PC (스팀 - Steam)
-  * **2차 목표:** 모바일 (구글 플레이, 애플 앱스토어)
+* **출시 플랫폼 (출시 난이도 및 단계별 목표):**
+  * **1차 목표:** 모바일 (Google Play, Apple App Store)
+  * **2차 목표:** PC (Steam, Itch.io)
+  * **3차 목표:** VR (Meta Quest, SteamVR)
+  * **4차 목표:** 콘솔 (Nintendo Switch, PS5, Xbox)
 * **한 줄 소개:** "고정된 자리에서 360도로 몰려오는 적을 격파하며 진화하는 로그라이트 터렛 디펜스"
 * **현재 상태:** **Phase 1 MVP 완료 (2026-04-24)** - 핵심 게임 루프 및 기초 시스템 구현 완료.
 * **기획 배경:**
