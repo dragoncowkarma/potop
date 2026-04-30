@@ -85,4 +85,4 @@
 ---
 
 > [!TIP]
-> Phase 5 이후의 서버 구축, PC/VR/콘솔 출시 등 향후 확장 계획은 **[08. 향후 로드맵](file:///Users/macbook/Desktop/potop/docs/gdd/08_future_roadmap.md)** 문서에서 확인하실 수 있습니다.
+> Phase 5 이후의 서버 구축, PC/VR/콘솔 출시 등 향후 확장 계획은 **[08. 향후 로드맵](08_future_roadmap.md)** 문서에서 확인하실 수 있습니다.
