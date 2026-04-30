@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 50f;
-    public float lifeTime = 3f;
+    [SerializeField] private float speed = 20f;
+    [SerializeField] private float lifeTime = 3f;
 
     void Start()
     {
         Destroy(gameObject, lifeTime);
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.linearVelocity = transform.forward * speed;
-        }
+    }
+
+    void Update()
+    {
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     void OnCollisionEnter(Collision collision)

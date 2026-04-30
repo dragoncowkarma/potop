@@ -3,8 +3,10 @@ using UnityEngine.InputSystem;
 
 public class TurretShooter : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-    public float fireRate = 0.5f;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private float sensitivity = 5.0f;
     private float nextFireTime = 0f;
 
     void Update()
@@ -12,7 +14,12 @@ public class TurretShooter : MonoBehaviour
         if (GameManager.Instance != null && GameManager.Instance.isGameOver)
             return;
 
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime)
+        // 회전 (마우스 X축 입력)
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        transform.Rotate(0, mouseX, 0);
+
+        // 발사
+        if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
@@ -21,14 +28,17 @@ public class TurretShooter : MonoBehaviour
 
     void Shoot()
     {
-        if (projectilePrefab != null)
+        if (projectilePrefab != null && firePoint != null)
         {
-            Instantiate(projectilePrefab, transform.position, transform.rotation);
+            Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         }
         else
         {
 #if UNITY_EDITOR
-            Debug.LogWarning("Projectile Prefab is missing!");
+            if (projectilePrefab == null)
+                Debug.LogWarning("Projectile Prefab is missing!");
+            if (firePoint == null)
+                Debug.LogWarning("FirePoint is missing!");
 #endif
         }
     }
