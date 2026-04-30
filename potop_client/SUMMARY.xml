@@ -1,61 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ProjectContext>
   <Meta>
-    <Purpose>POTOP is a 3D turret defense and survival game featuring two modes: defensive turret combat and obstacle-based survival.</Purpose>
+    <Purpose>POTOP (Project Over-The-Top Power) is a 3D roguelite turret defense game focusing on wave-based combat and strategic progression.</Purpose>
     <UnityVersion>6000.0.73f1</UnityVersion>
     <RenderPipeline>Universal Render Pipeline (URP)</RenderPipeline>
-    <Architecture>Singleton-based Global State Management with Event-Driven UI (MVC/MVP influence).</Architecture>
+    <Architecture>Singleton-based Global State Management transitioning to Event-Driven Architecture (Event Broker).</Architecture>
   </Meta>
 
   <Dependencies>
-    <Package name="com.unity.inputsystem">New Input System for player controls and interactions.</Package>
-    <Package name="com.unity.render-pipelines.universal">URP for modern, optimized rendering.</Package>
-    <Package name="com.unity.ugui">Legacy UI system components (TextMeshPro, Sliders) used in HUD.</Package>
-    <Package name="com.coplaydev.unity-mcp">Integration for Model Context Protocol in Unity.</Package>
+    <Package name="com.unity.inputsystem">New Input System for player controls.</Package>
+    <Package name="com.unity.render-pipelines.universal">URP for modern rendering.</Package>
+    <Package name="com.unity.ugui">Legacy UI components used in current HUD.</Package>
+    <Package name="com.coplaydev.unity-mcp">Model Context Protocol integration.</Package>
   </Dependencies>
 
   <CoreScenes>
-    <Scene path="Assets/Scenes/Start.unity">Main menu for game mode selection and application exit logic.</Scene>
-    <Scene path="Assets/Scenes/MainScene.unity">Turret defense gameplay featuring enemy spawning and combat.</Scene>
-    <Scene path="Assets/Scenes/Stage.unity">Survival mode where players dodge/destroy obstacles while accumulating survival time.</Scene>
+    <Scene path="Assets/Scenes/Start.unity">Main menu and lobby for turret selection.</Scene>
+    <Scene path="Assets/Scenes/MainScene.unity">Primary Wave Mode gameplay scene.</Scene>
   </CoreScenes>
 
   <CoreScripts>
     <Module name="GameManager" type="Manager">
       <Path>Assets/Scripts/Core/GameManager.cs</Path>
-      <Responsibility>Singleton managing HP, score, game state transitions, and global gameplay events.</Responsibility>
+      <Responsibility>Singleton managing global state (HP, Score, GameState).</Responsibility>
     </Module>
     <Module name="GameHUD" type="Controller">
       <Path>Assets/Scripts/Core/GameHUD.cs</Path>
-      <Responsibility>UI controller subscribing to GameManager events to update HUD elements and Game Over screen.</Responsibility>
+      <Responsibility>UI controller for real-time gameplay feedback.</Responsibility>
     </Module>
-    <Module name="StartMain" type="Controller">
-      <Path>Assets/Scripts/_Main/StartMain.cs</Path>
-      <Responsibility>Menu entry point managing scene transitions between Turret and Stage modes.</Responsibility>
-    </Module>
-    <Module name="StageMain" type="Controller">
-      <Path>Assets/Scripts/_Main/StageMain.cs</Path>
-      <Responsibility>Survival mode logic managing survival time scores and obstacle spawning frequency.</Responsibility>
-    </Module>
+    <File Path="docs/gdd/01_overview.md" Description="Project high-level overview & vision"/>
+    <File Path="docs/gdd/02_target_audience.md" Description="Target players & market analysis"/>
+    <File Path="docs/gdd/03_core_value_and_usp.md" Description="USP & core gameplay satisfaction"/>
+    <File Path="docs/gdd/04_key_features.md" Description="Index: Key systems & features"/>
+    <File Path="docs/gdd/04_1_core_gameplay.md" Description="Controls & Win/Loss conditions"/>
+    <File Path="docs/gdd/04_2_turrets_enemies.md" Description="Turret classes & Enemy types"/>
+    <File Path="docs/gdd/04_3_abilities_evolution.md" Description="Level-up stats & Weapon evolution"/>
+    <File Path="docs/gdd/04_4_tactical_skills.md" Description="Active skills & Energy system"/>
+    <File Path="docs/gdd/04_5_items_exp.md" Description="EXP gems & Field drop items"/>
+    <File Path="docs/gdd/04_6_combo_fever.md" Description="Combo multipliers & Fever effects"/>
+    <File Path="docs/gdd/04_7_balance_stats.md" Description="Detailed balance tables & stats"/>
+    <File Path="docs/gdd/04_8_wave_timeline.md" Description="15-min Wave timeline & Boss phase"/>
+    <File Path="docs/gdd/04_9_implementation_details.md" Description="Architecture: Event Broker & Pooling"/>
+    <File Path="docs/gdd/05_art_sound.md" Description="Cyberpunk/Neon aesthetic & soundscape"/>
     <Module name="TurretShooter" type="Controller">
       <Path>Assets/Scripts/TurretShooter.cs</Path>
-      <Responsibility>Handles player input for turret rotation and projectile instantiation during combat.</Responsibility>
+      <Responsibility>Player input handling for 360-degree combat.</Responsibility>
     </Module>
     <Module name="EnemySpawner" type="Utility">
       <Path>Assets/Scripts/EnemySpawner.cs</Path>
-      <Responsibility>Automates enemy generation and positioning in turret defense mode.</Responsibility>
+      <Responsibility>Wave-based enemy generation logic.</Responsibility>
     </Module>
+    <!-- Note: Survival Mode (StageMain, Obstacle) is deprecated and being removed from the roadmap. -->
   </CoreScripts>
 
   <DataFlowAndState>
-    <Description>Global state (HP, Score, GameOver) is centralized in the GameManager singleton. Gameplay entities (Enemies, Players) call TakeDamage/AddScore on the singleton, which updates state and triggers static C# Actions. UI components (GameHUD) subscribe to these events on Enable/Disable for decoupled visual updates.</Description>
+    <Description>Global state is centralized in GameManager. Future expansion includes a dedicated EventBroker for decoupled communication and ScriptableObject-based data management for wave and weapon balancing.</Description>
   </DataFlowAndState>
 
   <StrictConventions>
-    <Rule>Rely on GameManager.Instance for global state; avoid direct cross-script coupling.</Rule>
-    <Rule>Use static events (Actions) in Managers to notify UI and other systems of state changes.</Rule>
-    <Rule>Strictly avoid GameObject.Find(); use Inspector references, Singletons, or Dependency Injection.</Rule>
-    <Rule>Declare all access modifiers explicitly; use [SerializeField] for private fields exposed to Inspector.</Rule>
-    <Rule>Prefer Unity UI Toolkit for new UI development (as per AGENTS.md), though legacy UGUI exists.</Rule>
+    <Rule>Focus exclusively on Wave Mode (Turret Defense) development.</Rule>
+    <Rule>Rely on GameManager.Instance for global state; transition to EventBroker for notifications.</Rule>
+    <Rule>Strictly avoid GameObject.Find(); use inspector refs or singletons.</Rule>
+    <Rule>Prefer Unity UI Toolkit for new UI screens.</Rule>
   </StrictConventions>
 </ProjectContext>

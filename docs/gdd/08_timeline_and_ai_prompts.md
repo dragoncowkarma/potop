@@ -1,4 +1,4 @@
-## **8. 개발 마일스톤 및 AI 작업 프롬프트 (Timeline & AI Prompts)**
+## **8. 개발 마일스톤 및 AI 작업 프롬프트 (Timeline & AI Prompts) - POTOP**
 
 ※ **[Agent Roles]**
 - **Jules (J):** 시스템 아키텍처, 핵심 로직, UI, 데이터 스키마, 백엔드 구현 전문.
@@ -24,7 +24,7 @@
 - **AI Prompt:** [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:UI]Implement GameHUD.cs for HP/Score display;Create StartMain.cs for menu navigation;
 
 #### **[Milestone 6] (A) URP 및 물리 레이어 설정**
-- **AI Prompt:** [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Graphics/Physics]Configure URP Settings (Bloom, Post-processing);Define Physics Layers (Player, Enemy, Projectile, Obstacle) and Matrix;
+- **AI Prompt:** [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Graphics/Physics]Configure URP Settings (Bloom, Post-processing);Define Physics Layers (Player, Enemy, Projectile) and Matrix;
 
 #### **[Milestone 7] (A) 초기 구현 디버깅 및 입력 로직 검증**
 - **AI Prompt:** [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:QA/BugFix]Review Player.cs for input leaks during GameOver;Validate rotation clamping bugs;

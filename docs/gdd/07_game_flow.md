@@ -1,23 +1,32 @@
-## **7\. 게임 플로우 차트 (Game Flow)**
+## **7. 게임 플로우 차트 (Game Flow)**
 
+```mermaid
 flowchart TD  
-    A([게임 시작]) --> B{튜토리얼}  
-    B --> LOBBY[포탑/스킬 선택]  
-    LOBBY --> C[15분 웨이브 시작]
-
-  
-    C \--\> D\[적 파괴 및 파밍 사격\]  
-    D \--\> E1\[점수/콤보 누적\]  
-    D \--\> E2\[경험치 획득 및 레벨업\]  
-    E2 \--\> K\[능력 선택 및 투사체 진화\]  
-    K \--\> D  
-    C \--\> O{15분 도달?}  
-    O \-- Yes \--\> P\[최종 보스\]  
-    P \--\> Q{격파?}  
-    Q \-- Yes \--\> R\[무한 웨이브 모드\]  
-    R \--\> S\[점수 극대화 및 생존\]  
-    S \--\> I\[게임 오버\]  
-    Q \-- No / 체력 0 \--\> I  
-    I \--\> RECORD\[랭킹 등록\]  
-    RECORD \--\> M\[영구 강화\]  
-    M \--\> N(\[종료\])
+    A([게임 실행]) --> B{최초 진입?}  
+    B -- Yes --> TUT[튜토리얼]
+    B -- No --> LOBBY[메인 로비]
+    
+    TUT --> LOBBY
+    LOBBY --> SETUP[터렛 클래스 선택]
+    SETUP --> WAVE[15분 웨이브 시작]
+    
+    WAVE --> COMBAT[전투 및 경험치 보석 획득]
+    COMBAT --> LVUP{레벨업?}
+    LVUP -- Yes --> SELECT[능력 선택 및 진화]
+    SELECT --> COMBAT
+    
+    WAVE --> TIME{15분 도달?}
+    TIME -- Yes --> BOSS[최종 보스전]
+    BOSS --> WIN{보스 격파?}
+    
+    WIN -- Yes --> OVERCLOCK[오버클럭 모드 - 무한 웨이브]
+    OVERCLOCK --> SCORE[최고 점수 갱신 및 생존]
+    SCORE --> GAMEOVER[게임 오버]
+    
+    WIN -- No (HP 0) --> GAMEOVER
+    COMBAT -- HP 0 --> GAMEOVER
+    
+    GAMEOVER --> RANK[글로벌 리더보드 등록]
+    RANK --> UPGRADE[영구 업그레이드 및 해금]
+    UPGRADE --> LOBBY
+```
