@@ -9,7 +9,6 @@
   2. PC (Steam, Itch.io)
   3. VR (Meta Quest, SteamVR)
   4. 콘솔 (Nintendo Switch, PS5, Xbox)
-* **현재 상태:** **Phase 1 MVP 완료 (2026-04-24)** - 핵심 게임 루프 및 기초 시스템 구현 완료.
 * **플레이 타임:** 기본 15분 + α (보스 클리어 시 무한 웨이브 '오버클럭' 모드 진입)
 
 ### **🎯 타겟 고객 (Target Audience)**
