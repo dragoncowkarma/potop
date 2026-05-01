@@ -25,7 +25,7 @@
       <Responsibility>Singleton managing global state (HP, Score, GameState).</Responsibility>
     </Module>
     <Module name="GameHUD" type="Controller">
-      <Path>Assets/Scripts/Core/GameHUD.cs</Path>
+      <Path>Assets/Scripts/UI/GameHUD.cs</Path>
       <Responsibility>UI controller for real-time gameplay feedback.</Responsibility>
     </Module>
     <File Path="docs/gdd/01_overview.md" Description="Project high-level overview & vision"/>
@@ -37,14 +37,13 @@
     <File Path="docs/gdd/07_development_milestones.md" Description="Project roadmap and AI task details"/>
     <File Path="docs/gdd/08_future_roadmap.md" Description="Future expansion plans"/>
     <Module name="TurretShooter" type="Controller">
-      <Path>Assets/Scripts/TurretShooter.cs</Path>
+      <Path>Assets/Scripts/Gameplay/TurretShooter.cs</Path>
       <Responsibility>Player input handling for 360-degree combat.</Responsibility>
     </Module>
     <Module name="EnemySpawner" type="Utility">
-      <Path>Assets/Scripts/EnemySpawner.cs</Path>
+      <Path>Assets/Scripts/Gameplay/EnemySpawner.cs</Path>
       <Responsibility>Wave-based enemy generation logic.</Responsibility>
     </Module>
-    <!-- Note: Survival Mode (StageMain, Obstacle) is deprecated and being removed from the roadmap. -->
   </CoreScripts>
 
   <DataFlowAndState>
