@@ -22,7 +22,8 @@
   <GlobalDocumentation>
     <File Path="docs/gdd/01_overview.md" Description="Project high-level overview & vision"/>
     <File Path="docs/gdd/04_technical_architecture.md" Description="Core technical systems (Event Broker, Pooling)"/>
-    <File Path="docs/gdd/07_development_milestones.md" Description="Development roadmap and phased release plan"/>
-    <File Path="docs/gdd/08_future_roadmap.md" Description="Expansion plans (PC, VR, Console)"/>
+    <File Path="docs/gdd/07_development_milestones.md" Description="Centralized development roadmap and expansion plan"/>
+    <Directory Path="docs/prompts/" Description="AI-specific task prompts organized by phase"/>
   </GlobalDocumentation>
 </ProjectContext>
+
