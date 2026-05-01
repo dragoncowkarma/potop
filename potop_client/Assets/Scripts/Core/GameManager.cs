@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameState { Playing, GameOver }
+
 /// <summary>
 /// 전역 게임 상태(HP, 점수, 게임 오버 등)를 관리하는 싱글톤 클래스입니다.
 /// </summary>
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private int _currentHP;
     [SerializeField] private int _score;
     [SerializeField] private bool _isGameOver;
+
+    public GameState CurrentState { get; private set; }
 
     /// <summary>
     /// 현재 플레이어의 체력을 반환합니다.
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour {
         _currentHP = _maxHP;
         _score = 0;
         _isGameOver = false;
+        CurrentState = GameState.Playing;
         Time.timeScale = NORMAL_TIME_SCALE;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -116,6 +121,7 @@ public class GameManager : MonoBehaviour {
 
     private void GameOver() {
         _isGameOver = true;
+        CurrentState = GameState.GameOver;
         Time.timeScale = GAME_OVER_TIME_SCALE;
 
         Cursor.lockState = CursorLockMode.None;

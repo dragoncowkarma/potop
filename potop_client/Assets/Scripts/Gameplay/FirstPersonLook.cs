@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// 1인칭 시점의 카메라 회전 및 플레이어 몸체 회전을 처리하는 클래스입니다.
 /// </summary>
 public class FirstPersonLook : MonoBehaviour {
-    [SerializeField] private float _mouseSensitivity = 200f;
-    private float _xRotation = 0f;
+    [FormerlySerializedAs("_mouseSensitivity")]
+    [SerializeField] private float _sensitivity = 2.0f;
+    [SerializeField] private float _smoothing = 2.0f;
+
+    private float _verticalRotation;
 
     private const float MIN_X_ROTATION = -90f;
     private const float MAX_X_ROTATION = 90f;
@@ -17,17 +21,16 @@ public class FirstPersonLook : MonoBehaviour {
     }
 
     private void Update() {
-        if (GameManager.Instance != null && GameManager.Instance.IsGameOver) {
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState != GameState.Playing) {
             return;
         }
 
-        float mouseX = Mouse.current.delta.x.ReadValue() * _mouseSensitivity * Time.deltaTime;
-        float mouseY = Mouse.current.delta.y.ReadValue() * _mouseSensitivity * Time.deltaTime;
+        float mouseX = Mouse.current.delta.x.ReadValue() * _sensitivity * Time.deltaTime;
 
-        _xRotation -= mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, MIN_X_ROTATION, MAX_X_ROTATION);
+        _verticalRotation -= Input.GetAxis("Mouse Y") * _sensitivity;
+        _verticalRotation = Mathf.Clamp(_verticalRotation, MIN_X_ROTATION, MAX_X_ROTATION);
 
-        transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
 
         if (transform.parent != null) {
             transform.parent.Rotate(Vector3.up * mouseX);
