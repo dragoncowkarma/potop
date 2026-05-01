@@ -26,8 +26,9 @@ public class FirstPersonLook : MonoBehaviour {
         }
 
         float mouseX = Mouse.current.delta.x.ReadValue() * _sensitivity * Time.deltaTime;
+        float mouseY = Mouse.current.delta.y.ReadValue() * _sensitivity * Time.deltaTime;
 
-        _verticalRotation -= Input.GetAxis("Mouse Y") * _sensitivity;
+        _verticalRotation -= mouseY;
         _verticalRotation = Mathf.Clamp(_verticalRotation, MIN_X_ROTATION, MAX_X_ROTATION);
 
         transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
