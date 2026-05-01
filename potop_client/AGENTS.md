@@ -24,6 +24,7 @@
 3. **Never** call `GetComponent<T>()`, perform `string` manipulations, or `new` allocations inside `Update()`.
 4. Use `async/await` (`UniTask`/`Awaitable`) for heavy operations; use `Coroutines` for visual frame-delays.
 5. Strictly avoid `uGUI`; use `Unity UI Toolkit` for all new UI development.
+6. **Exclusively** use the `Unity New Input System`. The legacy `UnityEngine.Input` (e.g., `Input.GetAxis`) is strictly prohibited.
 
 ## When Organizing Files
 1. `Assets/Scripts/Core/`: Place `Singletons`, `Managers`, and `Common Utilities`.
