@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProjectContext>
+  <Meta>
+    <Purpose>POTOP (Project Over-The-Top Power) is a 3D roguelite turret defense game with a multi-platform strategy (Mobile, PC, VR, Console).</Purpose>
+    <Vision>Transitioning from a mobile-first local prototype to a globally connected ecosystem with a robust backend for ranking and cloud saves.</Vision>
+  </Meta>
+
+  <ProjectStructure>
+    <Directory Path="potop_client/" Type="UnityProject">
+      <Description>Main game client built with Unity 6. Handles gameplay, rendering, and UI.</Description>
+      <Context>See potop_client/SUMMARY.xml for details.</Context>
+    </Directory>
+    <Directory Path="potop_server/" Type="Backend">
+      <Description>Server infrastructure for User Data, Global Leaderboards, and Cloud Save.</Description>
+      <Context>Language: Django (Python) or NestJS (TypeScript). See potop_server/SUMMARY.xml for details.</Context>
+    </Directory>
+    <Directory Path="docs/" Type="Documentation">
+      <Description>Centralized Game Design Documents (GDD) and roadmaps.</Description>
+    </Directory>
+  </ProjectStructure>
+
+  <GlobalDocumentation>
+    <File Path="docs/gdd/01_overview.md" Description="Project high-level overview & vision"/>
+    <File Path="docs/gdd/04_technical_architecture.md" Description="Core technical systems (Event Broker, Pooling)"/>
+    <File Path="docs/gdd/07_development_milestones.md" Description="Development roadmap and phased release plan"/>
+    <File Path="docs/gdd/08_future_roadmap.md" Description="Expansion plans (PC, VR, Console)"/>
+  </GlobalDocumentation>
+</ProjectContext>

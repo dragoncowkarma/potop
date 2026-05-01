@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ProjectContext>
   <Meta>
-    <Purpose>POTOP (Project Over-The-Top Power) is a 3D roguelite turret defense game focusing on wave-based combat and strategic progression.</Purpose>
-    <UnityVersion>6000.0.73f1</UnityVersion>
+    <Platform>Unity 6 (6000.0.73f1)</Platform>
     <RenderPipeline>Universal Render Pipeline (URP)</RenderPipeline>
-    <Architecture>Singleton-based Global State Management transitioning to Event-Driven Architecture (Event Broker).</Architecture>
+    <Architecture>Singleton-based Managers transitioning to Event-Driven (Event Broker).</Architecture>
   </Meta>
 
   <Dependencies>
     <Package name="com.unity.inputsystem">New Input System for player controls.</Package>
     <Package name="com.unity.render-pipelines.universal">URP for modern rendering.</Package>
-    <Package name="com.unity.ugui">Legacy UI components used in current HUD.</Package>
+    <Package name="com.unity.ui">UI Toolkit for high-performance UI.</Package>
     <Package name="com.coplaydev.unity-mcp">Model Context Protocol integration.</Package>
   </Dependencies>
 
@@ -26,48 +25,26 @@
     </Module>
     <Module name="GameHUD" type="Controller">
       <Path>Assets/Scripts/UI/GameHUD.cs</Path>
-      <Responsibility>UI controller for real-time gameplay feedback.</Responsibility>
+      <Responsibility>UI controller for real-time gameplay feedback via UI Toolkit.</Responsibility>
     </Module>
-    <File Path="docs/gdd/01_overview.md" Description="Project high-level overview & vision"/>
-    <File Path="docs/gdd/02_gameplay_mechanics.md" Description="Core gameplay mechanics and loop"/>
-    <File Path="docs/gdd/03_data_and_balance.md" Description="Data structures, stats, and game balance"/>
-    <File Path="docs/gdd/04_technical_architecture.md" Description="System architecture (Event Broker, Pooling)"/>
-    <File Path="docs/gdd/05_meta_and_progression.md" Description="Meta-game, progression, and leveling"/>
-    <File Path="docs/gdd/06_art_and_sound.md" Description="Visual style and audio design"/>
-    <File Path="docs/gdd/07_development_milestones.md" Description="Project roadmap and AI task details"/>
-    <File Path="docs/gdd/08_future_roadmap.md" Description="Future expansion plans"/>
     <Module name="TurretShooter" type="Controller">
       <Path>Assets/Scripts/Gameplay/TurretShooter.cs</Path>
       <Responsibility>Player input handling for 360-degree combat.</Responsibility>
     </Module>
     <Module name="EnemySpawner" type="Utility">
       <Path>Assets/Scripts/Gameplay/EnemySpawner.cs</Path>
-      <Responsibility>Wave-based enemy generation logic.</Responsibility>
-    </Module>
-    <Module name="Enemy" type="Gameplay">
-      <Path>Assets/Scripts/Gameplay/Enemy.cs</Path>
-      <Responsibility>Enemy AI, health, and movement logic.</Responsibility>
+      <Responsibility>Wave-based enemy generation logic using Object Pooling.</Responsibility>
     </Module>
     <Module name="Projectile" type="Gameplay">
       <Path>Assets/Scripts/Gameplay/Projectile.cs</Path>
-      <Responsibility>Projectile physics and damage handling.</Responsibility>
-    </Module>
-    <Module name="FirstPersonLook" type="Gameplay">
-      <Path>Assets/Scripts/Gameplay/FirstPersonLook.cs</Path>
-      <Responsibility>Camera rotation and parent body rotation.</Responsibility>
+      <Responsibility>Projectile physics and collision handling.</Responsibility>
     </Module>
   </CoreScripts>
 
-  <DataFlowAndState>
-    <Description>Global state is centralized in GameManager. Future expansion includes a dedicated EventBroker for decoupled communication and ScriptableObject-based data management for wave and weapon balancing.</Description>
-  </DataFlowAndState>
-
   <StrictConventions>
-    <Rule>Focus exclusively on Wave Mode (Turret Defense) development.</Rule>
-    <Rule>Rely on GameManager.Instance for global state; transition to EventBroker for notifications.</Rule>
+    <Rule>Focus exclusively on Wave Mode development.</Rule>
     <Rule>Strictly avoid GameObject.Find(); use inspector refs or singletons.</Rule>
     <Rule>Prefer Unity UI Toolkit for new UI screens.</Rule>
     <Rule>Use K&R style braces for all C# scripts.</Rule>
-    <Rule>Ensure exactly one empty line at the end of every file.</Rule>
   </StrictConventions>
 </ProjectContext>

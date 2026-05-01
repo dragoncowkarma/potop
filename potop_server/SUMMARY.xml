@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProjectContext>
+  <Meta>
+    <Purpose>Backend infrastructure for POTOP providing data persistence and social features.</Purpose>
+    <TechStack>Undecided (Django or NestJS).</TechStack>
+    <Database>PostgreSQL (planned) or MongoDB.</Database>
+  </Meta>
+
+  <CoreFeatures>
+    <Feature name="Auth">User registration and secure login (likely Firebase Auth or JWT).</Feature>
+    <Feature name="Leaderboards">Global and regional ranking systems with real-time updates.</Feature>
+    <Feature name="CloudSave">JSON-based game state persistence for cross-device play.</Feature>
+    <Feature name="Analytics">Tracking player progression, wave statistics, and balance data.</Feature>
+  </CoreFeatures>
+
+  <PlannedModules>
+    <Module name="UserController">Handles profile management and authentication.</Module>
+    <Module name="LeaderboardService">Calculates rankings and serves high-score data.</Module>
+    <Module name="SaveManager">Validates and stores player progress blobs.</Module>
+  </PlannedModules>
+
+  <StrictConventions>
+    <Rule>Maintain strictly decoupled logic from the client.</Rule>
+    <Rule>Ensure high availability and low latency for ranking updates.</Rule>
+    <Rule>Log all critical failures and security-sensitive events.</Rule>
+  </StrictConventions>
+</ProjectContext>
