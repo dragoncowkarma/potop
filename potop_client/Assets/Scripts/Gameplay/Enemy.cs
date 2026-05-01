@@ -1,12 +1,22 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// 적의 이동 및 플레이어 공격 로직을 처리하는 클래스입니다.
 /// </summary>
 public class Enemy : MonoBehaviour {
-    [SerializeField] private float _speed = 10f;
+    [FormerlySerializedAs("_speed")]
+    [SerializeField] private float moveSpeed = 3f;
+
+    [SerializeField] private int health = 10;
+
+    [FormerlySerializedAs("_damage")]
     [SerializeField] private int _damage = 10;
+
+    [FormerlySerializedAs("_scoreValue")]
     [SerializeField] private int _scoreValue = 100;
+
+    [FormerlySerializedAs("_attackRange")]
     [SerializeField] private float _attackRange = 2f;
 
     private Transform _target;
@@ -17,15 +27,16 @@ public class Enemy : MonoBehaviour {
     public int ScoreValue => _scoreValue;
 
     private void Start() {
-        if (GameManager.Instance != null) {
-            _target = GameManager.Instance.PlayerTransform;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) {
+            _target = player.transform;
         }
     }
 
     private void Update() {
         if (_target != null) {
-            Vector3 direction = (_target.position - transform.position).normalized;
-            transform.position += direction * _speed * Time.deltaTime;
+            transform.LookAt(_target);
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 
             // 플레이어에 도달하면 데미지
             float distanceToPlayer = Vector3.Distance(transform.position, _target.position);
@@ -40,5 +51,16 @@ public class Enemy : MonoBehaviour {
             GameManager.Instance.TakeDamage(_damage);
         }
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// 적이 데미지를 입었을 때 호출되는 메서드입니다.
+    /// </summary>
+    /// <param name="damage">입을 데미지 수치입니다.</param>
+    public void TakeDamage(int damage) {
+        health -= damage;
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
     }
 }
