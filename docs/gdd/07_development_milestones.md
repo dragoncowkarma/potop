@@ -7,14 +7,14 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        1. Implement Assets/Scripts/TurretShooter.cs:
-           - Members: [SerializeField] GameObject projectilePrefab, [SerializeField] Transform firePoint, [SerializeField] float fireRate = 0.5f.
-           - Logic: In Update(), rotate transform around Y-axis using Input.GetAxis("Mouse X") * sensitivity (default 5.0f).
-           - Shooting: In Update(), if Input.GetButton("Fire1") and Time.time >= nextFireTime, instantiate projectilePrefab at firePoint position/rotation and set nextFireTime = Time.time + fireRate.
-        2. Implement Assets/Scripts/Projectile.cs:
-           - Members: [SerializeField] float speed = 20f, [SerializeField] float lifeTime = 3f.
-           - Logic: Move forward using transform.Translate(Vector3.forward * speed * Time.deltaTime) in Update().
-           - Cleanup: Destroy(gameObject, lifeTime) in Start().
+        1. Implement Assets/Scripts/Gameplay/TurretShooter.cs:
+           - Members: [SerializeField] private GameObject _projectilePrefab; [SerializeField] private Transform _firePoint; [SerializeField] private float _fireRate = 0.5f;
+           - Logic: Use Unity New Input System. In Update(), rotate transform around Y-axis using horizontal mouse delta from Look action.
+           - Shooting: In Update(), if Fire action is performed and Time.time >= _nextFireTime, instantiate _projectilePrefab at _firePoint position/rotation and set _nextFireTime = Time.time + _fireRate.
+        2. Implement Assets/Scripts/Gameplay/Projectile.cs:
+           - Members: [SerializeField] private float _speed = 20f; [SerializeField] private float _lifeTime = 3f;
+           - Logic: Move forward using transform.Translate(Vector3.forward * _speed * Time.deltaTime) in Update().
+           - Cleanup: Destroy(gameObject, _lifeTime) in Start().
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
@@ -30,8 +30,8 @@
            - Attach Projectile.cs.
            - Save as 'Assets/Prefabs/Projectile.prefab' and delete instance from scene.
         4. Linkage:
-           - Assign 'Projectile.prefab' to 'TurretShooter.projectilePrefab' slot.
-           - Assign 'FirePoint' to 'TurretShooter.firePoint' slot.
+           - Assign 'Projectile.prefab' to 'TurretShooter._projectilePrefab' slot.
+           - Assign 'FirePoint' to 'TurretShooter._firePoint' slot.
         ```
 
 *   **[Milestone 2] 1인칭 마우스 룩**
@@ -39,13 +39,14 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/FirstPersonLook.cs:
-        - Members: [SerializeField] float sensitivity = 2.0f, [SerializeField] float smoothing = 2.0f.
+        Implement Assets/Scripts/Gameplay/FirstPersonLook.cs:
+        - Members: [SerializeField] private float _sensitivity = 2.0f; [SerializeField] private float _smoothing = 2.0f;
         - Logic: 
-          - Track internal verticalRotation (float).
-          - Increment verticalRotation -= Input.GetAxis("Mouse Y") * sensitivity.
-          - Clamp verticalRotation between -90f and 90f.
-          - Apply localRotation = Quaternion.Euler(verticalRotation, 0, 0) to camera transform.
+          - Use Unity New Input System (Look action).
+          - Track internal _verticalRotation (float).
+          - Increment _verticalRotation -= LookAction.y * _sensitivity.
+          - Clamp _verticalRotation between -90f and 90f.
+          - Apply localRotation = Quaternion.Euler(_verticalRotation, 0, 0) to camera transform.
         - Integration: Access GameManager.Instance.CurrentState to ignore input if state is not 'Playing'.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
@@ -62,15 +63,15 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        1. Implement Assets/Scripts/EnemySpawner.cs:
-           - Members: [SerializeField] GameObject enemyPrefab, [SerializeField] float spawnRadius = 25f, [SerializeField] float spawnInterval = 2f.
-           - Logic: Coroutine 'SpawnRoutine' calculates random point: Vector3 pos = Random.insideUnitCircle.normalized * spawnRadius; 
+        1. Implement Assets/Scripts/Gameplay/EnemySpawner.cs:
+           - Members: [SerializeField] private GameObject _enemyPrefab; [SerializeField] private float _spawnRadius = 25f; [SerializeField] private float _spawnInterval = 2f;
+           - Logic: Coroutine 'SpawnRoutine' calculates random point: Vector3 pos = Random.insideUnitCircle.normalized * _spawnRadius; 
            - Set pos.y = Random.Range(1f, 5f); pos.z = pos.y; (Convert 2D circle to 3D ring).
-           - Instantiate enemyPrefab at pos.
-        2. Implement Assets/Scripts/Enemy.cs:
-           - Members: [SerializeField] float moveSpeed = 3f, [SerializeField] int health = 10.
-           - Logic: Find Player by tag "Player". Use transform.LookAt(player) and transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime).
-           - Methods: TakeDamage(int damage) decrement health, Destroy(gameObject) if <= 0.
+           - Instantiate _enemyPrefab at pos.
+        2. Implement Assets/Scripts/Gameplay/Enemy.cs:
+           - Members: [SerializeField] private float _moveSpeed = 3f; [SerializeField] private int _health = 10;
+           - Logic: Use GameManager.Instance.Player to find target. Use transform.LookAt(target) and transform.Translate(Vector3.forward * _moveSpeed * Time.deltaTime).
+           - Methods: public void TakeDamage(int damage) decrement _health, Destroy(gameObject) if <= 0.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
@@ -86,23 +87,24 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        1. Implement Assets/Scripts/GameManager.cs (Singleton):
-           - Properties: int Score { get; private set; }, int Health { get; private set; }.
+        1. Implement Assets/Scripts/Core/GameManager.cs (Singleton):
+           - Properties: public int Score { get; private set; }; public int Health { get; private set; };
            - State: public enum GameState { Start, Playing, GameOver }.
-           - Methods: AddScore(int), TakeDamage(int), ChangeState(GameState).
-        2. Implement Assets/Scripts/GameHUD.cs:
-           - Members: [SerializeField] TMPro.TextMeshProUGUI scoreText, [SerializeField] TMPro.TextMeshProUGUI healthText.
-           - Logic: Poll GameManager in Update() or use Events to refresh text strings.
+           - Methods: public void AddScore(int value); public void TakeDamage(int value); public void ChangeState(GameState newState).
+        2. Implement Assets/Scripts/UI/GameHUD.cs:
+           - Members: [SerializeField] private UIDocument _uiDocument;
+           - Logic: Use Unity UI Toolkit. Access VisualElements 'score-label' and 'health-label' from _uiDocument.rootVisualElement.
+           - Refresh: Update .text properties based on GameManager.Instance values.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity]
         1. UI Setup: 
-           - Create Canvas. Add 'ScoreText' and 'HealthText' (TextMeshPro - Text).
-           - Set Anchor to Top-Left and Top-Right respectively.
+           - Create a UI Document (UXML). Add Labels with IDs 'score-label' and 'health-label'.
+           - Style using USS for layout.
         2. Management:
            - Create 'Manager' GameObject. Attach GameManager.cs and GameHUD.cs.
-           - Link TMP text components to GameHUD serialized fields.
+           - Link UIDocument asset to GameHUD._uiDocument slot.
         ```
 
 *   **[Milestone 5] URP 및 물리 설정**
@@ -127,10 +129,10 @@
     *   **Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic/Arch]
-        Implement Assets/Scripts/EventBroker.cs:
+        Implement Assets/Scripts/Core/EventBroker.cs:
         - Pattern: Static class with public static Action<int> OnScoreChanged, Action<int> OnHealthChanged, Action<GameState> OnStateChanged.
         - Integration: 
-          - Update Enemy.cs: Call EventBroker.OnScoreChanged?.Invoke(scoreValue) on death.
+          - Update Enemy.cs: Call EventBroker.OnScoreChanged?.Invoke(_scoreValue) on death.
           - Update GameManager.cs: Subscribe to OnHealthChanged to update internal state.
         ```
 
@@ -139,9 +141,9 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/ObjectPoolManager.cs (Singleton):
+        Implement Assets/Scripts/Core/ObjectPoolManager.cs (Singleton):
         - Use UnityEngine.Pool.ObjectPool<GameObject>.
-        - Methods: GetEnemy(), ReleaseEnemy(GameObject), GetProjectile(), ReleaseProjectile(GameObject).
+        - Methods: public GameObject GetEnemy(); public void ReleaseEnemy(GameObject enemy); public GameObject GetProjectile(); public void ReleaseProjectile(GameObject projectile).
         - Refactor: TurretShooter and EnemySpawner must call Get() instead of Instantiate and Release() instead of Destroy.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
@@ -156,9 +158,9 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        1. Create Assets/Scripts/Data/EnemyData.cs (ScriptableObject): [CreateAssetMenu] float hp, speed, scoreValue.
-        2. Create Assets/Scripts/Data/WeaponData.cs (ScriptableObject): fireRate, damage, projectileSpeed.
-        3. Create Assets/Scripts/Data/WaveData.cs (ScriptableObject): List<EnemyData> enemyList, float spawnInterval.
+        1. Create Assets/Scripts/Data/EnemyData.cs (ScriptableObject): [CreateAssetMenu] private fields with _hp, _speed, _scoreValue.
+        2. Create Assets/Scripts/Data/WeaponData.cs (ScriptableObject): _fireRate, _damage, _projectileSpeed.
+        3. Create Assets/Scripts/Data/WaveData.cs (ScriptableObject): _enemyList (List<EnemyData>), _spawnInterval.
         4. Update Enemy.cs to include 'public void Initialize(EnemyData data)'.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
@@ -174,10 +176,10 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/WaveManager.cs:
-        - Members: [SerializeField] List<WaveData> waves.
-        - Logic: Track currentWaveIndex. When all enemies in WaveData are spawned and killed, increment wave.
-        - Methods: StartNextWave(), OnEnemyKilled().
+        Implement Assets/Scripts/Gameplay/WaveManager.cs:
+        - Members: [SerializeField] private List<WaveData> _waves;
+        - Logic: Track _currentWaveIndex. When all enemies in WaveData are spawned and killed, increment wave.
+        - Methods: public void StartNextWave(); public void OnEnemyKilled().
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
@@ -191,9 +193,9 @@
     *   **Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic/Arch]
-        1. Define Assets/Scripts/IWeapon.cs: interface with void Fire(), void Reload().
-        2. Implement Assets/Scripts/WeaponBase.cs (abstract): common logic for ammo and cooldowns.
-        3. Implement Assets/Scripts/TurretWeapon.cs (inherits WeaponBase): Specific fire logic.
+        1. Define Assets/Scripts/Gameplay/IWeapon.cs: interface with public void Fire(); public void Reload();
+        2. Implement Assets/Scripts/Gameplay/WeaponBase.cs (abstract): common logic for ammo and cooldowns using private fields (_ammo, etc).
+        3. Implement Assets/Scripts/Gameplay/TurretWeapon.cs (inherits WeaponBase): Specific fire logic.
         4. Refactor TurretShooter.cs to hold IWeapon reference.
         ```
 
@@ -206,17 +208,17 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/LevelUpManager.cs:
+        Implement Assets/Scripts/Gameplay/LevelUpManager.cs:
         - Logic: Collect EXP from EventBroker.OnEnemyKilled. 
-        - Math: nextLevelExp = baseExp * (level ^ 1.5).
+        - Math: _nextLevelExp = _baseExp * (Mathf.Pow(_level, 1.5f)).
         - Selection: Randomly pick 3 UpgradeTypes (Speed, Damage, Pierce) from an Array/List.
         - Pause: Set Time.timeScale = 0f during UI display.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity/UI]
-        1. UI Layout: Create 'LevelUpOverlay' (Panel). Add 3 'ChoiceButton' objects.
-        2. Script Link: Link ChoiceButton.OnClick to LevelUpManager.SelectUpgrade(index).
+        1. UI Layout: Create 'LevelUpOverlay' (UXML). Add 3 Buttons with class 'choice-button'.
+        2. Script Link: Link buttons in UI Toolkit to LevelUpManager.SelectUpgrade(index).
         ```
 
 *   **[Milestone 12] 투사체 변이 물리 로직**
@@ -224,12 +226,12 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Update Projectile.cs:
-        - Fields: bool canPierce, int bounceCount, bool isExplosive.
+        Update Assets/Scripts/Gameplay/Projectile.cs:
+        - Fields: [SerializeField] private bool _canPierce; [SerializeField] private int _bounceCount; [SerializeField] private bool _isExplosive;
         - OnCollisionEnter:
-          - If isExplosive: Physics.OverlapSphere(pos, radius) -> deal damage.
-          - If bounceCount > 0: Calculate Vector3.Reflect(velocity, normal) and update direction.
-          - Else: Release to pool.
+          - If _isExplosive: Physics.OverlapSphere(pos, radius) -> deal damage.
+          - If _bounceCount > 0: Calculate Vector3.Reflect(velocity, normal) and update direction.
+          - Else: Release to pool via ObjectPoolManager.Instance.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
@@ -247,17 +249,17 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/Boss/TitanCore.cs:
-        - FSM: Idle, Phase1 (LaserSweep), Phase2 (CoreVulnerable).
-        - Logic: Trigger Phase2 when Health < 50%.
-        - Attacks: Use Raycast for laser beams and instantiate smaller missiles.
+        Implement Assets/Scripts/Gameplay/Boss/TitanCore.cs:
+        - FSM: private enum BossState { Idle, Phase1, Phase2 }.
+        - Logic: Trigger Phase2 when _health < 50%.
+        - Attacks: Use Raycast for laser beams and instantiate smaller missiles from pool.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity]
         1. Boss Creation: Build large Sphere core with orbiting Cube satellites.
         2. Animation: Create 'Entrance' animation moving boss from sky to center-top.
-        3. UI: Create 'BossHealthBar' (Slider) at top of screen.
+        3. UI: Create 'BossHealthBar' (UI Toolkit ProgressBar or Slider) at top of screen.
         ```
 
 *   **[Milestone 14] 오버클럭 모드 (무한)**
@@ -265,10 +267,10 @@
     *   **Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/OverclockMode.cs:
+        Implement Assets/Scripts/Gameplay/OverclockMode.cs:
         - Timer: Start after BossDeathEvent.
-        - Progression: Increase global multiplier 'difficultyScale' every 60s.
-        - Integration: EnemySpawner uses difficultyScale to multiply EnemyData stats.
+        - Progression: Increase global multiplier '_difficultyScale' every 60s.
+        - Integration: EnemySpawner uses _difficultyScale to multiply EnemyData stats.
         ```
 
 *   **[Milestone 15] 특수 적 AI 구현**
@@ -276,9 +278,9 @@
     *   **Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic/AI]
-        1. Implement BlitzEnemy.cs: Override Move logic with Sine wave offset (Z-axis).
-        2. Implement SwarmPod.cs: On death, Instantiate 3 'MiniEnemy' prefabs with small force.
-        3. Implement HellfireEnemy.cs: Check distance to player; if < 2m, trigger explosion and self-destruct.
+        1. Implement Assets/Scripts/Gameplay/BlitzEnemy.cs: Override Move logic with Sine wave offset (Z-axis).
+        2. Implement Assets/Scripts/Gameplay/SwarmPod.cs: On death, Get 3 'MiniEnemy' from pool.
+        3. Implement Assets/Scripts/Gameplay/HellfireEnemy.cs: Check distance to player; if < 2m, trigger explosion and release to pool.
         ```
 
 *   **[Milestone 16] 카메라 쉐이크 연출**
@@ -286,7 +288,7 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/Visuals/ScreenShake.cs:
+        Implement Assets/Scripts/Gameplay/ScreenShake.cs:
         - Logic: Coroutine 'Shake' that takes duration and magnitude.
         - Integration: Subscribe to EventBroker.OnEnemyKilled and EventBroker.OnHealthChanged to trigger camera offsets.
         ```
@@ -302,15 +304,15 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/FeverManager.cs:
-        - Logic: Accumulate 'FeverPoints' on enemy death. When full, trigger FeverMode (Duration: 5s).
+        Implement Assets/Scripts/Gameplay/FeverManager.cs:
+        - Logic: Accumulate '_feverPoints' on enemy death. When full, trigger FeverMode (Duration: 5s).
         - Effects: Double fire rate and score multiplier during active state.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity/VFX]
         1. Update Global Volume: Increase Bloom intensity and add Chromatic Aberration during FeverMode.
-        2. UI: Add a 'FeverBar' (Slider) to the HUD and link to FeverManager.
+        2. UI: Add a 'fever-bar' (UI Toolkit ProgressBar) to the HUD and link to FeverManager.
         ```
 
 *   **[Milestone 18] 사운드 시스템 통합**
@@ -319,7 +321,7 @@
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
         Implement Assets/Scripts/Core/SoundManager.cs (Singleton):
-        - Methods: PlayBGM(string), PlaySFX(string, Vector3).
+        - Methods: public void PlayBGM(string clipName); public void PlaySFX(string clipName, Vector3 position).
         - Logic: Use an AudioSource pool for concurrent SFX playback.
         ```
     *   **[Step 2] Antigravity 프롬프트:**
@@ -335,9 +337,9 @@
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        Implement Assets/Scripts/Ads/AdManager.cs:
+        Implement Assets/Scripts/Core/AdManager.cs:
         - Wrapper: Integration with Google AdMob SDK.
-        - Methods: LoadRewardedAd(), ShowRewardedAd(Action onComplete).
+        - Methods: public void LoadRewardedAd(); public void ShowRewardedAd(Action onComplete).
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
@@ -353,7 +355,7 @@
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
         Implement Assets/Scripts/Core/LocalizationManager.cs:
         - Logic: Load localized strings from JSON/CSV files based on SystemLanguage.
-        - Method: string GetText(string key).
+        - Method: public string GetText(string key).
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
