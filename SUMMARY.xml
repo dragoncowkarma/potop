@@ -21,7 +21,11 @@
 
   <GlobalDocumentation>
     <File Path="docs/gdd/01_overview.md" Description="Project high-level overview & vision"/>
-    <File Path="docs/gdd/04_technical_architecture.md" Description="Core technical systems (Event Broker, Pooling)"/>
+    <File Path="docs/gdd/02_gameplay_mechanics.md" Description="Core gameplay loops, controls, and combat systems"/>
+    <File Path="docs/gdd/03_data_and_balance.md" Description="Detailed balance metrics, enemy scaling, and wave progression"/>
+    <File Path="docs/gdd/04_technical_architecture.md" Description="Core technical systems (Event Broker, Pooling) and Server Interfaces"/>
+    <File Path="docs/gdd/05_meta_and_progression.md" Description="Progression systems, meta-upgrades, and achievements"/>
+    <File Path="docs/gdd/06_art_and_sound.md" Description="Art style, sound design, and production pipelines"/>
     <File Path="docs/gdd/07_development_milestones.md" Description="Centralized development roadmap and expansion plan"/>
     <Directory Path="docs/prompts/" Description="AI-specific task prompts organized by phase"/>
   </GlobalDocumentation>

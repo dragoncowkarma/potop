@@ -38,14 +38,57 @@ POTOP은 대규모 물량(적, 투사체)을 효율적으로 처리하기 위해
 
 ---
 
-### **🗺️ 클래스 구조도**
+### **☁️ 서버 통신 인터페이스 (Server Communication)**
 
-```mermaid
-graph TD
-    GM[GameManager] --> EB[EventBroker]
-    EB --> UI[GameHUD]
-    EB --> Spawner[EnemySpawner]
-    Spawner --> Pool[ObjectPoolManager]
-    Pool --> Enemy[Enemy Instance]
-    Player[Player/Turret] --> EB
-```
+POTOP은 글로벌 리더보드 및 유저 데이터 영구 보존을 위해 RESTful API를 활용합니다. 백엔드 구현체(Django/NestJS)와 관계없이 아래 인터페이스 규격을 준수합니다.
+
+#### **1. 인증 및 프로필 (Auth & Profile)**
+*   **POST** `/api/v1/auth/guest`
+    *   **Description:** 게스트 계정 생성 및 토큰 발급.
+    *   **Request:** `{ "deviceId": "UUID-STRING" }`
+    *   **Response:** `{ "token": "JWT_TOKEN", "userId": "ID_STRING" }`
+*   **GET** `/api/v1/user/profile`
+    *   **Description:** 유저의 영구 강화 상태 및 보유 재화 조회.
+    *   **Response:**
+        ```json
+        {
+          "gems": 5400,
+          "upgrades": {
+            "armor": 3,
+            "motor": 5,
+            "energy": 2,
+            "magnet": 4
+          },
+          "achievements": ["AC_001", "AC_002"]
+        }
+        ```
+
+#### **2. 리더보드 (Leaderboard)**
+*   **POST** `/api/v1/leaderboard/submit`
+    *   **Description:** 게임 종료 후 최고 점수 및 로그 제출.
+    *   **Request:**
+        ```json
+        {
+          "score": 1250000,
+          "playTime": 960,
+          "version": "1.0.2",
+          "hash": "VERIFICATION_HASH"
+        }
+        ```
+*   **GET** `/api/v1/leaderboard/global`
+    *   **Description:** 글로벌 랭킹 Top 100 조회.
+    *   **Response:**
+        ```json
+        {
+          "rankings": [
+            { "rank": 1, "name": "PlayerA", "score": 5000000 },
+            { "rank": 2, "name": "PlayerB", "score": 4800000 }
+          ],
+          "myRank": { "rank": 152, "score": 1250000 }
+        }
+        ```
+
+#### **3. 데이터 동기화 (Data Sync)**
+*   **PUT** `/api/v1/user/upgrades`
+    *   **Description:** 로비에서 구매한 영구 강화 상태 저장.
+    *   **Request:** `{ "upgradeId": "motor", "level": 6, "cost": 1200 }`
