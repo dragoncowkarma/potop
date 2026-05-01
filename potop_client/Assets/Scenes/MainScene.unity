@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 5915809031558455249, guid: aad356b8500c94fa096f8b8e8c767354, type: 3}
-  _spawnRate: 2
   _spawnRadius: 25
+  _spawnInterval: 2
 --- !u!4 &46051833
 Transform:
   m_ObjectHideFlags: 0
@@ -2325,7 +2325,7 @@ GameObject:
   - component: {fileID: 1840130328}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

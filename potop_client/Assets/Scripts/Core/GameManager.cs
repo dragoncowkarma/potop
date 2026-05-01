@@ -44,6 +44,14 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public Transform PlayerTransform { get; set; }
 
+    /// <summary>
+    /// 플레이어의 Transform 위치 정보를 제공합니다.
+    /// </summary>
+    public Transform Player {
+        get { return PlayerTransform; }
+        set { PlayerTransform = value; }
+    }
+
     // Events
     /// <summary>
     /// HP가 변경될 때 호출되는 이벤트 (현재 HP, 최대 HP)
