@@ -22,6 +22,7 @@
     2.1. **Input**: Use **only** the `Unity New Input System`. Legacy `UnityEngine.Input` is prohibited.
     2.2. **UI**: Use `Unity UI Toolkit` (UXML/USS) for all new UI. Avoid `uGUI`.
     2.3. **Concurrency**: Use `async/await` (`UniTask`/`Awaitable`) for operations.
+3. **Workflow**: Save the Unity scene immediately upon completion of scene modifications via `mcp_unityMCP_manage_scene(action='save')`.
 
 ## When Organizing Unity Assets
 1. **Asset Priority**: Organize `Assets/Scripts/` via `mcp_unityMCP_manage_asset` in this order:
@@ -33,7 +34,8 @@
 ## When Blocked
 1. **Console Errors**: If `mcp_unityMCP_read_console` shows `Red Errors`, stop and fix them immediately.
 2. **Missing Refs**: If a serialized field is unassigned, use `mcp_unityMCP_manage_components` or ask the `USER`.
-3. **Debt Logging**: If `[FormerlySerializedAs]` is used, `jules` MUST log it in root [`REFACTOR_TRACKING.md`](../REFACTOR_TRACKING.md).
+3. **Linter Failures**: If `mcp_unityMCP_validate_script` fails more than 3 times for the same issue, **Stop** and report the full diagnostic to the `USER`.
+4. **Debt Logging**: If `[FormerlySerializedAs]` is used, `jules` MUST log it in root [`REFACTOR_TRACKING.md`](../REFACTOR_TRACKING.md).
 
 ## Definition of Done
 `Done` status requires passing these checks:
