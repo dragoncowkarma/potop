@@ -281,20 +281,85 @@
         3. Implement HellfireEnemy.cs: Check distance to player; if < 2m, trigger explosion and self-destruct.
         ```
 
-*   **[Milestone 16] 연출 및 최종 폴리싱**
-    *   **내용:** 카메라 쉐이크, 피버 타임, 사운드 및 모바일 광고 연동.
+*   **[Milestone 16] 카메라 쉐이크 연출**
+    *   **내용:** 타격감 향상을 위한 카메라 진동 로직 및 피격/사격 시 흔들림 강도 제어.
     *   **[Step 1] Jules 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
-        1. Implement Assets/Scripts/Visuals/ScreenShake.cs: Coroutine that shakes camera transform.
-        2. Implement Assets/Scripts/Ads/AdManager.cs: Wrapper for AdMob SDK. Methods: ShowRewardedAd(), OnAdRewarded.
+        Implement Assets/Scripts/Visuals/ScreenShake.cs:
+        - Logic: Coroutine 'Shake' that takes duration and magnitude.
+        - Integration: Subscribe to EventBroker.OnEnemyKilled and EventBroker.OnHealthChanged to trigger camera offsets.
+        ```
+    *   **[Step 2] Antigravity 프롬프트:**
+        ```text
+        [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity]
+        1. Attach ScreenShake.cs to 'Main Camera'.
+        2. Set default shake values for different event types in the inspector.
+        ```
+
+*   **[Milestone 17] 피버 타임 시스템**
+    *   **내용:** 특정 킬 카운트 달성 시 일시적인 공격 속도 강화 및 시각적 피드백 제공.
+    *   **[Step 1] Jules 프롬프트:**
+        ```text
+        [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
+        Implement Assets/Scripts/FeverManager.cs:
+        - Logic: Accumulate 'FeverPoints' on enemy death. When full, trigger FeverMode (Duration: 5s).
+        - Effects: Double fire rate and score multiplier during active state.
+        ```
+    *   **[Step 2] Antigravity 프롬프트:**
+        ```text
+        [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity/VFX]
+        1. Update Global Volume: Increase Bloom intensity and add Chromatic Aberration during FeverMode.
+        2. UI: Add a 'FeverBar' (Slider) to the HUD and link to FeverManager.
+        ```
+
+*   **[Milestone 18] 사운드 시스템 통합**
+    *   **내용:** 배경음악(BGM) 및 효과음(SFX) 관리 시스템 구축 및 오디오 리소스 연동.
+    *   **[Step 1] Jules 프롬프트:**
+        ```text
+        [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
+        Implement Assets/Scripts/Core/SoundManager.cs (Singleton):
+        - Methods: PlayBGM(string), PlaySFX(string, Vector3).
+        - Logic: Use an AudioSource pool for concurrent SFX playback.
+        ```
+    *   **[Step 2] Antigravity 프롬프트:**
+        ```text
+        [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity]
+        1. Create 'SoundManager' object.
+        2. Configure AudioMixer with Master, BGM, and SFX groups.
+        3. Link weapon fire and enemy death events to SoundManager calls.
+        ```
+
+*   **[Milestone 19] 모바일 광고 연동**
+    *   **내용:** 리워드 광고 및 전면 광고 SDK 통합을 통한 수익화 구조 구축.
+    *   **[Step 1] Jules 프롬프트:**
+        ```text
+        [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
+        Implement Assets/Scripts/Ads/AdManager.cs:
+        - Wrapper: Integration with Google AdMob SDK.
+        - Methods: LoadRewardedAd(), ShowRewardedAd(Action onComplete).
         ```
     *   **[Step 2] Antigravity 프롬프트:**
         ```text
         [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity/Integration]
-        1. Post-Processing: Enhance Bloom intensity during 'Fever Mode'.
-        2. AdMob: Open Google AdMob settings, input Android/iOS App IDs.
-        3. Build: Configure Player Settings for Portrait mode (Mobile).
+        1. Open Google AdMob Settings: Input App IDs for Android and iOS.
+        2. Build Settings: Configure for mobile platforms (Portrait orientation).
+        ```
+
+*   **[Milestone 20] 다국어 지원 (Multilingual Support)**
+    *   **내용:** 글로벌 서비스를 위한 다국어(한국어, 영어, 일본어) 텍스트 로컬라이제이션 시스템.
+    *   **[Step 1] Jules 프롬프트:**
+        ```text
+        [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic]
+        Implement Assets/Scripts/Core/LocalizationManager.cs:
+        - Logic: Load localized strings from JSON/CSV files based on SystemLanguage.
+        - Method: string GetText(string key).
+        ```
+    *   **[Step 2] Antigravity 프롬프트:**
+        ```text
+        [CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Unity/Data]
+        1. Create 'Assets/Resources/Localization/' folder.
+        2. Add 'ko.json', 'en.json', 'ja.json' with key-value pairs for UI text.
         ```
 
 ---
