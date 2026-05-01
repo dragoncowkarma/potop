@@ -4,7 +4,7 @@
 
 ## 📌 게임 개요
 - **장르**: 로그라이트 360도 웨이브 슈터
-- **플랫폼**: PC (Steam), Mobile
+- **플랫폼**: Mobile, PC (Steam), VR (Meta Quest, SteamVR), Console (Nintendo Switch, PS5)
 - **개발 엔진**: Unity 6000.0.73f1 (URP)
 - **핵심 재미**: 압도적 화력 구축, 무작위 진화의 재미, 글로벌 랭킹 경쟁
 
@@ -20,9 +20,3 @@
 - **Data-Driven Design**: ScriptableObject를 활용한 밸런스 및 웨이브 데이터 관리.
 - **Global Leaderboard**: Firebase 연동을 통한 전 세계 유저 간의 실시간 점수 경쟁.
 
-## 🚀 개발 현황
-현재 **Phase 1 MVP**가 완료되었으며, **Phase 2 (시스템 고도화)** 단계에 진입하였습니다.
-1. ✅ 핵심 게임 루프 및 기초 시스템 구현 (완료)
-2. 🔄 시스템 아키텍처 고도화 및 이벤트 시스템 도입 (진행 중)
-3. 📅 로그라이트 성장 시스템 및 투사체 진화 구현 (예정)
-4. 📅 최종 보스 및 무한 모드 구현 (예정)
