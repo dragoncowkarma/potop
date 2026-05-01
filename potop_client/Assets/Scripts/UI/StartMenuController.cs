@@ -2,40 +2,42 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-/// <summary>
-/// 메인 메뉴 씬의 UI를 관리하는 컨트롤러입니다.
-/// </summary>
-public class StartMenuController : MonoBehaviour {
-    [Header("UI References")]
-    [SerializeField] private Button _startButton;
-    [SerializeField] private Button _quitButton;
+namespace Potop.Client.UI {
+    /// <summary>
+    /// 메인 메뉴 씬의 UI를 관리하는 컨트롤러입니다.
+    /// </summary>
+    public class StartMenuController : MonoBehaviour {
+        [Header("UI References")]
+        [SerializeField] private Button _startButton;
+        [SerializeField] private Button _quitButton;
 
-    private const float NORMAL_TIME_SCALE = 1f;
-    private const string MAIN_SCENE = "MainScene";
+        private const float NORMAL_TIME_SCALE = 1f;
+        private const string MAIN_SCENE = "MainScene";
 
-    private void Start() {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Time.timeScale = NORMAL_TIME_SCALE;
+        private void Start() {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = NORMAL_TIME_SCALE;
 
-        if (_startButton != null) {
-            _startButton.onClick.AddListener(OnStartClicked);
+            if (_startButton != null) {
+                _startButton.onClick.AddListener(OnStartClicked);
+            }
+
+            if (_quitButton != null) {
+                _quitButton.onClick.AddListener(OnQuitClicked);
+            }
         }
 
-        if (_quitButton != null) {
-            _quitButton.onClick.AddListener(OnQuitClicked);
+        private void OnStartClicked() {
+            SceneManager.LoadScene(MAIN_SCENE);
         }
-    }
 
-    private void OnStartClicked() {
-        SceneManager.LoadScene(MAIN_SCENE);
-    }
-
-    private void OnQuitClicked() {
+        private void OnQuitClicked() {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit();
+            Application.Quit();
 #endif
+        }
     }
 }
