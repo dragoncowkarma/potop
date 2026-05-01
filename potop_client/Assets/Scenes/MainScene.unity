@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad8b411584904108b9944cec001013a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _sensitivity: 200
   _smoothing: 2
 --- !u!81 &78390215
@@ -2325,7 +2326,7 @@ GameObject:
   - component: {fileID: 1840130328}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
