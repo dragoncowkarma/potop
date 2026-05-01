@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 메인 메뉴 씬의 UI를 관리하는 컨트롤러입니다.
 /// </summary>
-public class StartMain : MonoBehaviour {
+public class StartMenuController : MonoBehaviour {
     [Header("UI References")]
     [SerializeField] private Button _startButton;
     [SerializeField] private Button _quitButton;

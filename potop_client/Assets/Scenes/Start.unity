@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 63337327}
   - component: {fileID: 63337326}
   m_Layer: 0
-  m_Name: StartMain
+  m_Name: StartMenuController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 106786005}
   - component: {fileID: 106786004}
   m_Layer: 0
-  m_Name: StartCanvas
+  m_Name: StartMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 368108497}
   - component: {fileID: 368108499}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: DirectionalLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -753,7 +753,7 @@ GameObject:
   - component: {fileID: 1200515672}
   - component: {fileID: 1200515671}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

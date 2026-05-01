@@ -37,7 +37,7 @@ public class TurretShooter : MonoBehaviour {
 
     private void Start() {
         if (GameManager.Instance != null) {
-            GameManager.Instance.PlayerTransform = transform;
+            GameManager.Instance.Player = transform;
         }
     }
 

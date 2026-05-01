@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private int _maxHealth = 100;
 
     [Header("Game State")]
-    [field: SerializeField]
-    public int Health { get; private set; }
+    [SerializeField] private int _health;
+    public int Health { get { return _health; } private set { _health = value; } }
 
-    [field: SerializeField]
-    public int Score { get; private set; }
+    [SerializeField] private int _score;
+    public int Score { get { return _score; } private set { _score = value; } }
 
 
     [SerializeField] private bool _isGameOver;
@@ -37,17 +37,8 @@ public class GameManager : MonoBehaviour {
 
     /// <summary>
     /// 플레이어의 Transform 위치 정보를 제공합니다.
-    /// (GameObject.Find("Player") 사용을 피하기 위함)
     /// </summary>
-    public Transform PlayerTransform { get; set; }
-
-    /// <summary>
-    /// 플레이어의 Transform 위치 정보를 제공합니다.
-    /// </summary>
-    public Transform Player {
-        get { return PlayerTransform; }
-        set { PlayerTransform = value; }
-    }
+    public Transform Player { get; set; }
 
     // Events
     /// <summary>

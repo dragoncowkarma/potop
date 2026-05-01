@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag(ENEMY_TAG)) {
             // 점수 추가
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            EnemyBot enemy = collision.gameObject.GetComponent<EnemyBot>();
             if (enemy != null && GameManager.Instance != null) {
                 GameManager.Instance.AddScore(enemy.ScoreValue);
             }

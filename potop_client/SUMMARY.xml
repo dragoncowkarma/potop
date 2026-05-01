@@ -39,6 +39,14 @@
       <Path>Assets/Scripts/Gameplay/Projectile.cs</Path>
       <Responsibility>Projectile physics and collision handling.</Responsibility>
     </Module>
+    <Module name="EnemyBot" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/EnemyBot.cs</Path>
+      <Responsibility>Enemy AI and basic movement logic.</Responsibility>
+    </Module>
+    <Module name="StartMenuController" type="Controller">
+      <Path>Assets/Scripts/UI/StartMenuController.cs</Path>
+      <Responsibility>Main menu interaction and scene management.</Responsibility>
+    </Module>
   </CoreScripts>
 
   <StrictConventions>
