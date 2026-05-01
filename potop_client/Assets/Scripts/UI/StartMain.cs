@@ -7,25 +7,19 @@ using UnityEngine.UI;
 /// </summary>
 public class StartMain : MonoBehaviour {
     [Header("UI References")]
-    [SerializeField] private Button _turretModeButton;
-    [SerializeField] private Button _stageModeButton;
+    [SerializeField] private Button _startButton;
     [SerializeField] private Button _quitButton;
 
     private const float NORMAL_TIME_SCALE = 1f;
-    private const string TURRET_MODE_SCENE = "MainScene";
-    private const string STAGE_MODE_SCENE = "Stage";
+    private const string MAIN_SCENE = "MainScene";
 
     private void Start() {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = NORMAL_TIME_SCALE;
 
-        if (_turretModeButton != null) {
-            _turretModeButton.onClick.AddListener(OnTurretModeClicked);
-        }
-
-        if (_stageModeButton != null) {
-            _stageModeButton.onClick.AddListener(OnStageModeClicked);
+        if (_startButton != null) {
+            _startButton.onClick.AddListener(OnStartClicked);
         }
 
         if (_quitButton != null) {
@@ -33,12 +27,8 @@ public class StartMain : MonoBehaviour {
         }
     }
 
-    private void OnTurretModeClicked() {
-        SceneManager.LoadScene(TURRET_MODE_SCENE);
-    }
-
-    private void OnStageModeClicked() {
-        SceneManager.LoadScene(STAGE_MODE_SCENE);
+    private void OnStartClicked() {
+        SceneManager.LoadScene(MAIN_SCENE);
     }
 
     private void OnQuitClicked() {
