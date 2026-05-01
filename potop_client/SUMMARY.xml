@@ -29,19 +29,13 @@
       <Responsibility>UI controller for real-time gameplay feedback.</Responsibility>
     </Module>
     <File Path="docs/gdd/01_overview.md" Description="Project high-level overview & vision"/>
-    <File Path="docs/gdd/02_target_audience.md" Description="Target players & market analysis"/>
-    <File Path="docs/gdd/03_core_value_and_usp.md" Description="USP & core gameplay satisfaction"/>
-    <File Path="docs/gdd/04_key_features.md" Description="Index: Key systems & features"/>
-    <File Path="docs/gdd/04_1_core_gameplay.md" Description="Controls & Win/Loss conditions"/>
-    <File Path="docs/gdd/04_2_turrets_enemies.md" Description="Turret classes & Enemy types"/>
-    <File Path="docs/gdd/04_3_abilities_evolution.md" Description="Level-up stats & Weapon evolution"/>
-    <File Path="docs/gdd/04_4_tactical_skills.md" Description="Active skills & Energy system"/>
-    <File Path="docs/gdd/04_5_items_exp.md" Description="EXP gems & Field drop items"/>
-    <File Path="docs/gdd/04_6_combo_fever.md" Description="Combo multipliers & Fever effects"/>
-    <File Path="docs/gdd/04_7_balance_stats.md" Description="Detailed balance tables & stats"/>
-    <File Path="docs/gdd/04_8_wave_timeline.md" Description="15-min Wave timeline & Boss phase"/>
-    <File Path="docs/gdd/04_9_implementation_details.md" Description="Architecture: Event Broker & Pooling"/>
-    <File Path="docs/gdd/05_art_sound.md" Description="Cyberpunk/Neon aesthetic & soundscape"/>
+    <File Path="docs/gdd/02_gameplay_mechanics.md" Description="Core gameplay mechanics and loop"/>
+    <File Path="docs/gdd/03_data_and_balance.md" Description="Data structures, stats, and game balance"/>
+    <File Path="docs/gdd/04_technical_architecture.md" Description="System architecture (Event Broker, Pooling)"/>
+    <File Path="docs/gdd/05_meta_and_progression.md" Description="Meta-game, progression, and leveling"/>
+    <File Path="docs/gdd/06_art_and_sound.md" Description="Visual style and audio design"/>
+    <File Path="docs/gdd/07_development_milestones.md" Description="Project roadmap and AI task details"/>
+    <File Path="docs/gdd/08_future_roadmap.md" Description="Future expansion plans"/>
     <Module name="TurretShooter" type="Controller">
       <Path>Assets/Scripts/TurretShooter.cs</Path>
       <Responsibility>Player input handling for 360-degree combat.</Responsibility>
@@ -62,5 +56,7 @@
     <Rule>Rely on GameManager.Instance for global state; transition to EventBroker for notifications.</Rule>
     <Rule>Strictly avoid GameObject.Find(); use inspector refs or singletons.</Rule>
     <Rule>Prefer Unity UI Toolkit for new UI screens.</Rule>
+    <Rule>Use K&R style braces for all C# scripts.</Rule>
+    <Rule>Ensure exactly one empty line at the end of every file.</Rule>
   </StrictConventions>
 </ProjectContext>

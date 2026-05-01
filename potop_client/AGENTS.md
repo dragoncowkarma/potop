@@ -15,6 +15,8 @@
 5. Always declare `access modifiers` explicitly (e.g., `private void Awake()`).
 6. Use `[SerializeField] private Type _fieldName;` for Inspector exposure.
 7. Write `/// XML documentation` for all `public APIs` and `Classes`.
+8. Use `K&R` style braces (opening brace on the same line).
+9. Ensure exactly `1 empty line` at the end of every file (EOF).
 
 ## When Working with Unity 6
 1. **Never** use `GameObject.Find()`, `GameObject.FindWithTag()`, or `FindObjectOfType<T>()`.
