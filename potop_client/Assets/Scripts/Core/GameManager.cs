@@ -19,11 +19,12 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private int _maxHealth = 100;
 
     [Header("Game State")]
-    [field: SerializeField, FormerlySerializedAs("_currentHP")]
+    [field: SerializeField]
     public int Health { get; private set; }
 
-    [field: SerializeField, FormerlySerializedAs("_score")]
+    [field: SerializeField]
     public int Score { get; private set; }
+
 
     [SerializeField] private bool _isGameOver;
 
@@ -171,3 +172,4 @@ public class GameManager : MonoBehaviour {
         }
     }
 }
+

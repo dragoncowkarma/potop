@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 /// 적의 이동 및 플레이어 공격 로직을 처리하는 클래스입니다.
 /// </summary>
 public class Enemy : MonoBehaviour {
-    [FormerlySerializedAs("_speed")]
     [SerializeField] private float _moveSpeed = 3f;
     [SerializeField] private int _health = 10;
     [SerializeField] private int _damage = 10;

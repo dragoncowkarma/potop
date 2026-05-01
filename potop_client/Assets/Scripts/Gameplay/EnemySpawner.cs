@@ -8,7 +8,6 @@ using UnityEngine.Serialization;
 public class EnemySpawner : MonoBehaviour {
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private float _spawnRadius = 25f;
-    [FormerlySerializedAs("_spawnRate")]
     [SerializeField] private float _spawnInterval = 2f;
 
     private const float MIN_HEIGHT = 1f;

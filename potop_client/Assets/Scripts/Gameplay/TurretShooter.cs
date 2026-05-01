@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class TurretShooter : MonoBehaviour {
     [Header("Input Settings")]
     [SerializeField] private InputActionReference _attackAction;
+    [SerializeField] private InputActionReference _lookAction;
 
     [Header("Combat Settings")]
     [SerializeField] private GameObject _projectilePrefab;
@@ -20,11 +21,17 @@ public class TurretShooter : MonoBehaviour {
         if (_attackAction != null) {
             _attackAction.action.Enable();
         }
+        if (_lookAction != null) {
+            _lookAction.action.Enable();
+        }
     }
 
     private void OnDisable() {
         if (_attackAction != null) {
             _attackAction.action.Disable();
+        }
+        if (_lookAction != null) {
+            _lookAction.action.Disable();
         }
     }
 
@@ -39,9 +46,11 @@ public class TurretShooter : MonoBehaviour {
             return;
         }
 
-        // 회전 (마우스 X축 입력)
-        float mouseX = Mouse.current.delta.x.ReadValue() * _sensitivity;
-        transform.Rotate(0, mouseX, 0);
+        // 회전 (Input System 사용)
+        if (_lookAction != null) {
+            float mouseX = _lookAction.action.ReadValue<Vector2>().x * _sensitivity;
+            transform.Rotate(0, mouseX, 0);
+        }
 
         // 발사
         if (_attackAction != null && _attackAction.action.IsPressed() && Time.time >= _nextFireTime) {
@@ -65,3 +74,4 @@ public class TurretShooter : MonoBehaviour {
         }
     }
 }
+
