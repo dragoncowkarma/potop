@@ -2,7 +2,7 @@
 
 ### **Phase 1: 핵심 게임 루프 및 기초 시스템 (MVP)**
 > [!TIP]
-> AI Prompts: [01_core_loop_mvp.md](../prompts/01_core_loop_mvp.md)
+> AI Prompts: [010_core_loop_mvp.md](../prompts/010_core_loop_mvp.md)
 
 *   **[Milestone 1] 기본 포탑 회전 및 투사체 발사**
     *   **내용:** 입력 시스템에 따른 포탑 회전 로직 및 기본 사격 구현.
@@ -19,7 +19,7 @@
 
 ### **Phase 1.5: 기술 부채 해결 및 기본 시스템 안정화 (Stability & Refactoring)**
 > [!TIP]
-> AI Prompts: [01_5_stability_refactoring.md](../prompts/01_5_stability_refactoring.md)
+> AI Prompts: [015_stability_refactoring.md](../prompts/015_stability_refactoring.md)
 
 *   **[Milestone 6] 코드 스타일 및 파일 무결성 정비**
     *   **내용:** AGENTS.md 규격에 따른 파일 정비 및 레거시 속성 제거.
@@ -32,7 +32,7 @@
 
 ### **Phase 2: 시스템 확장 및 구조 고도화**
 > [!TIP]
-> AI Prompts: [02_system_expansion.md](../prompts/02_system_expansion.md)
+> AI Prompts: [020_system_expansion.md](../prompts/020_system_expansion.md)
 
 *   **[Milestone 9] 이벤트 브로커 시스템**
     *   **내용:** `Action<T>` 기반 중앙 이벤트 버스를 통한 디커플링.
@@ -42,36 +42,36 @@
     *   **내용:** 에셋 기반 데이터 관리 (Enemy, Weapon, Wave).
 *   **[Milestone 12] 웨이브 매니저 구현**
     *   **내용:** 시간 경과에 따른 난이도 및 스폰 규칙 관리.
-*   **[Milestone 13] 무기 시스템 아키텍처**
-    *   **내용:** 인터페이스 기반 확장형 무기 시스템 설계.
 
 ---
 
 ### **Phase 3: 로그라이트 성장 및 투사체 진화**
 > [!TIP]
-> AI Prompts: [03_roguelite_progression.md](../prompts/03_roguelite_progression.md)
+> AI Prompts: [030_roguelite_progression.md](../prompts/030_roguelite_progression.md)
 
+*   **[Milestone 13] 무기 시스템 아키텍처**
+    *   **내용:** 인터페이스 기반 확장형 무기 시스템 설계.
 *   **[Milestone 14] 레벨업 시스템 및 UI**
     *   **내용:** 경험치 기반 성장 및 3개 무작위 강화 선택.
 *   **[Milestone 15] 투사체 변이 물리 로직**
     *   **내용:** 다연발, 관통, 도탄, 폭발 등 물리적 속성 확장.
+*   **[Milestone 16] 특수 적 AI 구현**
+    *   **내용:** 블리츠, 아머드, 스웜, 헬파이어 AI 고도화.
+*   **[Milestone 17] 카메라 쉐이크 연출**
+    *   **내용:** 타격감 향상을 위한 카메라 진동 로직 및 피격/사격 시 흔들림 강도 제어.
+*   **[Milestone 18] 피버 타임 시스템**
+    *   **내용:** 특정 킬 카운트 달성 시 일시적인 공격 속도 강화 및 시각적 피드백 제공.
 
 ---
 
 ### **Phase 4: 콘텐츠 폴리싱 및 모바일 출시 준비**
 > [!TIP]
-> AI Prompts: [04_polishing_mobile.md](../prompts/04_polishing_mobile.md)
+> AI Prompts: [040_polishing_mobile.md](../prompts/040_polishing_mobile.md)
 
-*   **[Milestone 16] 보스전: 타이탄 코어**
+*   **[Milestone 19] 보스전: 타이탄 코어**
     *   **내용:** 15분 시점 보스 페이즈 전환 및 패턴 구현.
-*   **[Milestone 17] 오버클럭 모드 (무한)**
+*   **[Milestone 20] 오버클럭 모드 (무한)**
     *   **내용:** 보스 격파 후 기하급수적 난이도 상승 로직.
-*   **[Milestone 18] 특수 적 AI 구현**
-    *   **내용:** 블리츠, 아머드, 스웜, 헬파이어 AI 고도화.
-*   **[Milestone 19] 카메라 쉐이크 연출**
-    *   **내용:** 타격감 향상을 위한 카메라 진동 로직 및 피격/사격 시 흔들림 강도 제어.
-*   **[Milestone 20] 피버 타임 시스템**
-    *   **내용:** 특정 킬 카운트 달성 시 일시적인 공격 속도 강화 및 시각적 피드백 제공.
 *   **[Milestone 21] 사운드 시스템 통합**
     *   **내용:** 배경음악(BGM) 및 효과음(SFX) 관리 시스템 구축 및 오디오 리소스 연동.
 *   **[Milestone 22] 모바일 광고 연동**

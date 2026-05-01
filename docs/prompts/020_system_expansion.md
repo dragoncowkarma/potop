@@ -63,13 +63,5 @@ Implement Assets/Scripts/Gameplay/WaveManager.cs:
 2. Populate 'waves' list with Wave1, Wave2... assets created in Milestone 11.
 ```
 
-## [Milestone 13] 무기 시스템 아키텍처
-### Jules 프롬프트
-```text
-[CONTEXT:AGENTS.md,SUMMARY.xml][TASK:Logic/Arch]
-1. Define Assets/Scripts/Gameplay/IWeapon.cs: interface with public void Fire(); public void Reload();
-2. Implement Assets/Scripts/Gameplay/WeaponBase.cs (abstract): common logic for ammo and cooldowns using private fields (_ammo, etc).
-3. Implement Assets/Scripts/Gameplay/TurretWeapon.cs (inherits WeaponBase): Specific fire logic.
-4. Refactor TurretShooter.cs to hold IWeapon reference.
-```
+
 
