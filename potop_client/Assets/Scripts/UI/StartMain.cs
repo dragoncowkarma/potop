@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// 메인 메뉴 씬의 UI를 관리하는 컨트롤러입니다.
 /// </summary>
 public class StartMain : MonoBehaviour {
     [Header("UI References")]
-    [SerializeField, FormerlySerializedAs("turretModeButton")] private Button _turretModeButton;
-    [SerializeField, FormerlySerializedAs("stageModeButton")] private Button _stageModeButton;
-    [SerializeField, FormerlySerializedAs("quitButton")] private Button _quitButton;
+    [SerializeField] private Button _turretModeButton;
+    [SerializeField] private Button _stageModeButton;
+    [SerializeField] private Button _quitButton;
 
     private const float NORMAL_TIME_SCALE = 1f;
     private const string TURRET_MODE_SCENE = "MainScene";

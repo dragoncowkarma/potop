@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// 발사체의 이동, 수명, 그리고 적과의 충돌 처리를 담당하는 클래스입니다.
 /// </summary>
 public class Projectile : MonoBehaviour {
-    [SerializeField, FormerlySerializedAs("speed")] private float _speed = 20f;
-    [SerializeField, FormerlySerializedAs("lifeTime")] private float _lifeTime = 3f;
+    [SerializeField] private float _speed = 20f;
+    [SerializeField] private float _lifeTime = 3f;
 
     private const string ENEMY_TAG = "Enemy";
 

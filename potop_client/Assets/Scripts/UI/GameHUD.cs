@@ -1,23 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// 실시간 게임플레이 피드백(HP, 점수, 게임오버 등)을 표시하는 UI 컨트롤러입니다.
 /// </summary>
 public class GameHUD : MonoBehaviour {
     [Header("HUD Elements")]
-    [SerializeField, FormerlySerializedAs("hpBar")] private Slider _hpBar;
-    [SerializeField, FormerlySerializedAs("hpText")] private TextMeshProUGUI _hpText;
-    [SerializeField, FormerlySerializedAs("scoreText")] private TextMeshProUGUI _scoreText;
-    [SerializeField, FormerlySerializedAs("crosshair")] private RectTransform _crosshair;
+    [SerializeField] private Slider _hpBar;
+    [SerializeField] private TextMeshProUGUI _hpText;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private RectTransform _crosshair;
 
     [Header("Game Over Panel")]
-    [SerializeField, FormerlySerializedAs("gameOverPanel")] private GameObject _gameOverPanel;
-    [SerializeField, FormerlySerializedAs("finalScoreText")] private TextMeshProUGUI _finalScoreText;
-    [SerializeField, FormerlySerializedAs("restartButton")] private Button _restartButton;
-    [SerializeField, FormerlySerializedAs("mainMenuButton")] private Button _mainMenuButton;
+    [SerializeField] private GameObject _gameOverPanel;
+    [SerializeField] private TextMeshProUGUI _finalScoreText;
+    [SerializeField] private Button _restartButton;
+    [SerializeField] private Button _mainMenuButton;
 
     private const string SCORE_PREFIX = "SCORE: ";
     private const string FINAL_SCORE_PREFIX = "FINAL SCORE\n";

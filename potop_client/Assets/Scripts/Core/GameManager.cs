@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// 전역 게임 상태(HP, 점수, 게임 오버 등)를 관리하는 싱글톤 클래스입니다.
@@ -13,12 +12,12 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
 
     [Header("Player Settings")]
-    [SerializeField, FormerlySerializedAs("maxHP")] private int _maxHP = 100;
+    [SerializeField] private int _maxHP = 100;
 
     [Header("Game State")]
-    [SerializeField, FormerlySerializedAs("currentHP")] private int _currentHP;
-    [SerializeField, FormerlySerializedAs("score")] private int _score;
-    [SerializeField, FormerlySerializedAs("isGameOver")] private bool _isGameOver;
+    [SerializeField] private int _currentHP;
+    [SerializeField] private int _score;
+    [SerializeField] private bool _isGameOver;
 
     /// <summary>
     /// 현재 플레이어의 체력을 반환합니다.

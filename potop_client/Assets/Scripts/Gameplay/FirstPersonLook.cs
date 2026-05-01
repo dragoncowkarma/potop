@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// 1인칭 시점의 카메라 회전 및 플레이어 몸체 회전을 처리하는 클래스입니다.
 /// </summary>
 public class FirstPersonLook : MonoBehaviour {
-    [SerializeField, FormerlySerializedAs("mouseSensitivity")] private float _mouseSensitivity = 200f;
+    [SerializeField] private float _mouseSensitivity = 200f;
     private float _xRotation = 0f;
 
     private const float MIN_X_ROTATION = -90f;

@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// 일정 주기마다 적을 플레이어 주변 반경 내에 생성하는 유틸리티 클래스입니다.
 /// </summary>
 public class EnemySpawner : MonoBehaviour {
-    [SerializeField, FormerlySerializedAs("enemyPrefab")] private GameObject _enemyPrefab;
-    [SerializeField, FormerlySerializedAs("spawnRate")] private float _spawnRate = 2f;
-    [SerializeField, FormerlySerializedAs("spawnRadius")] private float _spawnRadius = 25f;
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private float _spawnRate = 2f;
+    [SerializeField] private float _spawnRadius = 25f;
 
     private float _nextSpawnTime = 0f;
 

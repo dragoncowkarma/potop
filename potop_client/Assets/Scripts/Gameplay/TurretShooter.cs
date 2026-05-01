@@ -1,19 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// 플레이어의 입력(회전 및 발사)을 처리하는 터렛 컨트롤러 클래스입니다.
 /// </summary>
 public class TurretShooter : MonoBehaviour {
     [Header("Input Settings")]
-    [SerializeField, FormerlySerializedAs("attackAction")] private InputActionReference _attackAction;
+    [SerializeField] private InputActionReference _attackAction;
 
     [Header("Combat Settings")]
-    [SerializeField, FormerlySerializedAs("projectilePrefab")] private GameObject _projectilePrefab;
-    [SerializeField, FormerlySerializedAs("firePoint")] private Transform _firePoint;
-    [SerializeField, FormerlySerializedAs("fireRate")] private float _fireRate = 0.5f;
-    [SerializeField, FormerlySerializedAs("sensitivity")] private float _sensitivity = 5.0f;
+    [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private Transform _firePoint;
+    [SerializeField] private float _fireRate = 0.5f;
+    [SerializeField] private float _sensitivity = 5.0f;
 
     private float _nextFireTime = 0f;
 
