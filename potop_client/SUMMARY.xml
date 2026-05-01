@@ -44,6 +44,18 @@
       <Path>Assets/Scripts/Gameplay/EnemySpawner.cs</Path>
       <Responsibility>Wave-based enemy generation logic.</Responsibility>
     </Module>
+    <Module name="Enemy" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/Enemy.cs</Path>
+      <Responsibility>Enemy AI, health, and movement logic.</Responsibility>
+    </Module>
+    <Module name="Projectile" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/Projectile.cs</Path>
+      <Responsibility>Projectile physics and damage handling.</Responsibility>
+    </Module>
+    <Module name="FirstPersonLook" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/FirstPersonLook.cs</Path>
+      <Responsibility>Camera rotation and parent body rotation.</Responsibility>
+    </Module>
   </CoreScripts>
 
   <DataFlowAndState>
