@@ -1,0 +1,22 @@
+.hud-container {
+    flex-grow: 1;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 20px;
+    align-items: flex-start;
+}
+
+.hud-text {
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.score-text {
+    color: rgb(255, 200, 0);
+}
+
+.health-text {
+    color: rgb(255, 50, 50);
+}

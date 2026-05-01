@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:ue="UnityEditor.UIElements"
+>
+    <ui:Style src="GameHUD.uss" />
+    <ui:VisualElement class="hud-container">
+        <ui:Label name="score-label" text="SCORE: 0" class="hud-text score-text" />
+        <ui:Label name="health-label" text="100 / 100" class="hud-text health-text" />
+    </ui:VisualElement>
+</ui:UXML>
