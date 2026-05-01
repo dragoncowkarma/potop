@@ -11,30 +11,50 @@ public class GameHUD : MonoBehaviour {
     private Label _scoreLabel;
     private Label _healthLabel;
 
+    private VisualElement _crosshairContainer;
+    private VisualElement _gameOverScreen;
+    private Label _finalScoreLabel;
+    private Button _restartButton;
+    private Button _menuButton;
+
     private const string SCORE_PREFIX = "SCORE: ";
+    private const string FINAL_SCORE_PREFIX = "FINAL SCORE: ";
     private const string HP_SEPARATOR = " / ";
 
     private void OnEnable() {
         GameManager.OnHealthChanged += UpdateHP;
         GameManager.OnScoreChanged += UpdateScore;
+        GameManager.OnGameOver += ShowGameOver;
+        GameManager.OnStateChanged += HandleStateChanged;
     }
 
     private void OnDisable() {
         GameManager.OnHealthChanged -= UpdateHP;
         GameManager.OnScoreChanged -= UpdateScore;
+        GameManager.OnGameOver -= ShowGameOver;
+        GameManager.OnStateChanged -= HandleStateChanged;
     }
 
     private void Start() {
         if (_uiDocument != null && _uiDocument.rootVisualElement != null) {
-            _scoreLabel = _uiDocument.rootVisualElement.Q<Label>("score-label");
-            _healthLabel = _uiDocument.rootVisualElement.Q<Label>("health-label");
+            VisualElement root = _uiDocument.rootVisualElement;
+            _scoreLabel = root.Q<Label>("score-label");
+            _healthLabel = root.Q<Label>("health-label");
+
+            _crosshairContainer = root.Q<VisualElement>("crosshair-container");
+            _gameOverScreen = root.Q<VisualElement>("game-over-screen");
+            _finalScoreLabel = root.Q<Label>("final-score-label");
+            _restartButton = root.Q<Button>("restart-button");
+            _menuButton = root.Q<Button>("menu-button");
+
+            if (_restartButton != null) _restartButton.clicked += OnRestartClicked;
+            if (_menuButton != null) _menuButton.clicked += OnMenuClicked;
         }
 
         if (GameManager.Instance != null) {
             UpdateScore(GameManager.Instance.Score);
-            // Health initialization is handled by GameManager's event in StartGame() which might fire before this Start(),
-            // but we can query it directly just in case.
-            UpdateHP(GameManager.Instance.Health, 100); // Assuming 100 max health for initial UI set if event missed
+            UpdateHP(GameManager.Instance.Health, 100);
+            HandleStateChanged(GameManager.Instance.CurrentState);
         }
     }
 
@@ -47,6 +67,37 @@ public class GameHUD : MonoBehaviour {
     private void UpdateScore(int score) {
         if (_scoreLabel != null) {
             _scoreLabel.text = $"{SCORE_PREFIX}{score}";
+        }
+    }
+
+    private void ShowGameOver() {
+        if (_gameOverScreen != null) {
+            _gameOverScreen.style.display = DisplayStyle.Flex;
+        }
+        if (_finalScoreLabel != null && GameManager.Instance != null) {
+            _finalScoreLabel.text = $"{FINAL_SCORE_PREFIX}{GameManager.Instance.Score}";
+        }
+        if (_crosshairContainer != null) {
+            _crosshairContainer.style.display = DisplayStyle.None;
+        }
+    }
+
+    private void HandleStateChanged(GameState state) {
+        if (state == GameState.Playing) {
+            if (_gameOverScreen != null) _gameOverScreen.style.display = DisplayStyle.None;
+            if (_crosshairContainer != null) _crosshairContainer.style.display = DisplayStyle.Flex;
+        }
+    }
+
+    private void OnRestartClicked() {
+        if (GameManager.Instance != null) {
+            GameManager.Instance.RestartGame();
+        }
+    }
+
+    private void OnMenuClicked() {
+        if (GameManager.Instance != null) {
+            GameManager.Instance.GoToMainMenu();
         }
     }
 }

@@ -9,4 +9,19 @@
         <ui:Label name="score-label" text="SCORE: 0" class="hud-text score-text" />
         <ui:Label name="health-label" text="100 / 100" class="hud-text health-text" />
     </ui:VisualElement>
+
+    <ui:VisualElement name="crosshair-container" class="crosshair-container">
+        <ui:Label name="crosshair" text="+" class="crosshair-text" />
+    </ui:VisualElement>
+
+    <ui:VisualElement name="game-over-screen" class="game-over-overlay" style="display: none;">
+        <ui:VisualElement class="game-over-panel">
+            <ui:Label text="GAME OVER" class="game-over-title" />
+            <ui:Label name="final-score-label" text="FINAL SCORE: 0" class="final-score-text" />
+            <ui:VisualElement class="button-container">
+                <ui:Button name="restart-button" text="RESTART" class="menu-button" />
+                <ui:Button name="menu-button" text="MAIN MENU" class="menu-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>
