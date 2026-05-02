@@ -11,11 +11,41 @@ namespace Potop.Client.Gameplay {
         [SerializeField] private InputActionReference _attackAction;
         [SerializeField] private InputActionReference _lookAction;
 
+        /// <summary>
+        /// 발사 조작에 사용할 입력 액션 레퍼런스입니다.
+        /// </summary>
+        public InputActionReference AttackAction => _attackAction;
+
+        /// <summary>
+        /// 시점 조작에 사용할 입력 액션 레퍼런스입니다.
+        /// </summary>
+        public InputActionReference LookAction => _lookAction;
+
         [Header("Combat Settings")]
         [SerializeField] private GameObject _projectilePrefab;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private float _fireRate = 0.5f;
         [SerializeField] private float _sensitivity = 5.0f;
+
+        /// <summary>
+        /// 발사할 발사체 프리팹입니다.
+        /// </summary>
+        public GameObject ProjectilePrefab => _projectilePrefab;
+
+        /// <summary>
+        /// 발사체가 생성될 위치(Transform)입니다.
+        /// </summary>
+        public Transform FirePoint => _firePoint;
+
+        /// <summary>
+        /// 발사 주기(초 단위)입니다.
+        /// </summary>
+        public float FireRate => _fireRate;
+
+        /// <summary>
+        /// 시점 회전 민감도입니다.
+        /// </summary>
+        public float Sensitivity => _sensitivity;
 
         private float _nextFireTime = 0f;
 

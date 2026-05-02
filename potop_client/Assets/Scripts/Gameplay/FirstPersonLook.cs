@@ -11,6 +11,21 @@ namespace Potop.Client.Gameplay {
         [SerializeField] private float _sensitivity = 2.0f;
         [SerializeField] private float _smoothing = 2.0f;
 
+        /// <summary>
+        /// 시점 조작에 사용할 입력 액션 레퍼런스입니다.
+        /// </summary>
+        public InputActionReference LookAction => _lookAction;
+
+        /// <summary>
+        /// 시점 회전 민감도입니다.
+        /// </summary>
+        public float Sensitivity => _sensitivity;
+
+        /// <summary>
+        /// 시점 회전 부드러움 정도입니다.
+        /// </summary>
+        public float Smoothing => _smoothing;
+
         private float _verticalRotation;
 
         private const float MIN_X_ROTATION = -90f;
@@ -26,11 +41,6 @@ namespace Potop.Client.Gameplay {
             if (_lookAction != null) {
                 _lookAction.action.Disable();
             }
-        }
-
-        private void Start() {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
 
         private void Update() {
