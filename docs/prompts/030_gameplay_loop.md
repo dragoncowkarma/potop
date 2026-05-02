@@ -1,28 +1,50 @@
 # Phase 3: 게임플레이 루프 및 AI 기초 - AI Prompts
 
-### 1. [Jules] [Parallel Execution] Gameplay Loop & AI
-**[Scope A: Assets/Scripts/Gameplay/Wave/][Task: WaveManager]**
-- Pre-flight: Read `03_data_and_balance.md` wave specs.
-- Implement `WaveManager.cs`: Track waves, timers, and enemy counts.
-- Integration: Trigger `EnemySpawner.Spawn()` via `EventBroker`.
+## [Milestone 12, 13, 14 - Systems Implementation]
+### 1. [Jules] [Parallel Execution] Wave Management, Specialized AI, and Fever System
+> [!IMPORTANT]
+> **[STRICT SCOPE]**: Work within `Assets/Scripts/Gameplay/`. Use `EventBroker` for system-wide triggers (e.g., `OnWaveStarted`, `OnFeverActivated`).
 
-**[Scope B: Assets/Scripts/Gameplay/AI/][Task: SpecializedAI]**
-- Pre-flight: Inherit from `EnemyBase`.
-- Implement `BlitzEnemy.cs` (Fast/LowHP), `ArmoredEnemy.cs` (Slow/Tank), `SwarmEnemy.cs` (Pack).
+**[Scope A: Assets/Scripts/Gameplay/Wave/][Task: WaveManager Implementation]**
+- Implement `WaveManager.cs`:
+  - Members: `List<WaveData> _waves`, `int _currentWaveIndex`, `float _waveTimer`.
+  - Logic: Control spawn intervals and enemy types based on `WaveData`.
+  - Integration: Publish `WaveStartedEvent` and `WaveCompletedEvent`. Listen for `AllEnemiesKilledEvent` to progress waves.
+- Create `WaveData.cs`: ScriptableObject defining enemy types and counts per wave.
 
-**[Scope C: Assets/Scripts/Gameplay/Fever/][Task: FeverSystem]**
-- Pre-flight: Check `EnemyKilledEvent` in `EventBroker`.
-- Implement `FeverManager.cs`: Increment meter on kills. At 100%, buff fire rate and trigger `FeverModeEvent`.
+**[Scope B: Assets/Scripts/Gameplay/AI/][Task: Specialized Enemy Variants]**
+- Refactor `Enemy.cs` into `EnemyBase.cs`.
+- Implement Specialized Classes:
+  - `BlitzEnemy.cs`: High speed, low health, direct beeline to player.
+  - `ArmoredEnemy.cs`: High health, low speed, ignores minor knockback.
+  - `SwarmEnemy.cs`: Low health, spawns in clusters of 3-5.
+- Logic: Ensure each variant uses `PoolManager` and references its own `EnemyData` ScriptableObject.
+
+**[Scope C: Assets/Scripts/Gameplay/Fever/][Task: Fever Mode System]**
+- Implement `FeverManager.cs`:
+  - State: `float _currentFeverGauge`, `bool _isFeverActive`.
+  - Logic: Subscribe to `EnemyKilledEvent`. Increment gauge (0-100).
+  - Activation: When 100%, trigger `FeverModeActiveEvent`. While active, multiply `TurretShooter._fireRate` by 0.5 (double speed).
+  - Timer: Fever lasts for 10 seconds, then gauge resets and `FeverModeEndedEvent` is published.
 
 ---
 
-### 2. [Antigravity: Gemini 3.1 Pro] VFX, UI & Prefab Setup
-- Pre-flight: Check `Milestone 13` classes.
-- Unity: Create prefabs in `Assets/Prefabs/Enemies/` for Blitz/Armored/Swarm.
-- UI: Add `fever-meter` ProgressBar to `GameHUD.uxml` and bind in `GameHUD.cs`.
+## [Milestone 13 - Enemy Visuals]
+### 2. [Antigravity: Gemini 3.1 Pro] VFX, UI Progress Bar, and Prefab Variants
+- **Task**: Visual differentiation and HUD integration.
+- **Action**:
+  - Create 3 materials (`Mat_Blitz`, `Mat_Armored`, `Mat_Swarm`) with distinct colors.
+  - Create 3 prefabs inheriting from `EnemyBot`: Assign respective AI scripts and materials.
+  - UI Toolkit: Add a `ProgressBar` named 'fever-bar' to `GameHUD.uxml`.
+  - `GameHUD.cs`: Subscribe to `FeverGaugeChangedEvent` and update the bar's `.value` property.
 
-### 3. [Gemini CLI] Loop Validation
-- Pre-flight: Save all assets.
-- Unity: `manage_editor action="play"`, monitor `read_console` for "Wave/Fever" logs.
-- Audit: Check `manage_scene action="get_hierarchy"` for runtime spawns.
-- Finalize: `manage_editor action="stop"`, save scene.
+---
+
+## [Phase 3 Validation - Loop & Stress Test]
+### 3. [Gemini CLI] Gameplay Performance Audit
+- **Task**: Verify wave progression and resource cleanup.
+- **Action**:
+  - `manage_editor action="play"`: Monitor console for `WaveCompleted` logs.
+  - `profiler_status`: Check memory usage to ensure `PoolManager` is preventing allocation spikes.
+  - `read_console`: Check for `NullReferenceException` in `FeverManager` during rapid kills.
+  - `manage_scene action="get_hierarchy"`: Verify `EnemyInstance` objects are properly recycled, not duplicated.

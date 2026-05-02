@@ -28,6 +28,15 @@
         <phase id="3" title="Gameplay Loop">
             <prompt path="docs/prompts/030_gameplay_loop.md" status="planned" />
         </phase>
+        <phase id="4" title="Progression">
+            <prompt path="docs/prompts/040_progression.md" status="planned" />
+        </phase>
+        <phase id="5" title="Polish">
+            <prompt path="docs/prompts/050_polish.md" status="planned" />
+        </phase>
+        <phase id="6" title="Mobile/Endgame">
+            <prompt path="docs/prompts/060_mobile_endgame.md" status="planned" />
+        </phase>
     </milestone_tasks>
 
     <context_rules>
