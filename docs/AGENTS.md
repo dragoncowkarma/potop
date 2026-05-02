@@ -15,6 +15,15 @@
 3. **File Integrity**: Ensure exactly `1 empty line` at the end of every file (`EOF`).
 4. **Linting**: Ensure compliance via `ruff check` or project-specific validation tools.
 
+## Documentation Management Rules
+1. **Standard Format**: All documentation MUST be written in `.md` (`Markdown`) format.
+2. **Human-Readable Content**:
+    2.1. **Granularity**: Content MUST be detailed without omissions (e.g., `GDD` specs).
+    2.2. **Cohesion**: Each document MUST strictly contain a single `category/domain`.
+3. **Context Optimization**:
+    3.1. **Document Split**: Split docs by `domain` if they exceed `150 lines` or become complex.
+    3.2. **Discovery**: Register all split documents in [`SUMMARY.xml`](../SUMMARY.xml) immediately.
+
 ## Behavioral Directives
 1. **Jules (Logic)**:
     1.1. Prioritize `type safety` and explicit `access modifiers`.
