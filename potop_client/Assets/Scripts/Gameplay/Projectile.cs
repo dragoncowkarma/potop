@@ -21,8 +21,16 @@ namespace Potop.Client.Gameplay {
 
         private const string ENEMY_TAG = "Enemy";
 
-        private void Start() {
-            Destroy(gameObject, _lifeTime);
+        private void OnEnable() {
+            Invoke(nameof(DespawnSelf), _lifeTime);
+        }
+
+        private void OnDisable() {
+            CancelInvoke(nameof(DespawnSelf));
+        }
+
+        private void DespawnSelf() {
+            Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
         }
 
         private void Update() {
@@ -38,7 +46,7 @@ namespace Potop.Client.Gameplay {
                 }
 
                 Destroy(collision.gameObject);
-                Destroy(gameObject);
+                DespawnSelf();
             }
         }
     }
