@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Potop.Client.Core.Events;
 
 namespace Potop.Client.Core {
     /// <summary>
@@ -66,16 +67,6 @@ namespace Potop.Client.Core {
 
         // Events
         /// <summary>
-        /// HP가 변경될 때 호출되는 이벤트 (현재 HP, 최대 HP)
-        /// </summary>
-        public static event Action<int, int> OnHealthChanged;
-
-        /// <summary>
-        /// 점수가 변경될 때 호출되는 이벤트 (점수)
-        /// </summary>
-        public static event Action<int> OnScoreChanged;
-
-        /// <summary>
         /// 게임 오버 시 호출되는 이벤트
         /// </summary>
         public static event Action OnGameOver;
@@ -130,8 +121,8 @@ namespace Potop.Client.Core {
             ChangeState(GameState.Playing);
             Time.timeScale = NORMAL_TIME_SCALE;
 
-            OnHealthChanged?.Invoke(Health, _maxHealth);
-            OnScoreChanged?.Invoke(Score);
+            EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
+            EventBroker.Publish(new ScoreChangedEvent { CurrentScore = Score });
         }
 
         /// <summary>
@@ -142,7 +133,7 @@ namespace Potop.Client.Core {
             if (_isGameOver) return;
 
             Health = Mathf.Max(0, Health - value);
-            OnHealthChanged?.Invoke(Health, _maxHealth);
+            EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
 
             if (Health <= 0) {
                 GameOver();
@@ -157,7 +148,7 @@ namespace Potop.Client.Core {
             if (_isGameOver) return;
 
             Score += value;
-            OnScoreChanged?.Invoke(Score);
+            EventBroker.Publish(new ScoreChangedEvent { CurrentScore = Score });
         }
 
         private void GameOver() {

@@ -1,4 +1,5 @@
 using Potop.Client.Core;
+using Potop.Client.Core.Events;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -29,15 +30,15 @@ namespace Potop.Client.UI {
         private const string HP_SEPARATOR = " / ";
 
         private void OnEnable() {
-            GameManager.OnHealthChanged += UpdateHP;
-            GameManager.OnScoreChanged += UpdateScore;
+            EventBroker.Subscribe<HealthChangedEvent>(OnHealthChanged);
+            EventBroker.Subscribe<ScoreChangedEvent>(OnScoreChanged);
             GameManager.OnGameOver += ShowGameOver;
             GameManager.OnStateChanged += HandleStateChanged;
         }
 
         private void OnDisable() {
-            GameManager.OnHealthChanged -= UpdateHP;
-            GameManager.OnScoreChanged -= UpdateScore;
+            EventBroker.Unsubscribe<HealthChangedEvent>(OnHealthChanged);
+            EventBroker.Unsubscribe<ScoreChangedEvent>(OnScoreChanged);
             GameManager.OnGameOver -= ShowGameOver;
             GameManager.OnStateChanged -= HandleStateChanged;
         }
@@ -60,9 +61,17 @@ namespace Potop.Client.UI {
 
             if (GameManager.Instance != null) {
                 UpdateScore(GameManager.Instance.Score);
-                UpdateHP(GameManager.Instance.Health, 100);
+                UpdateHP(GameManager.Instance.Health, GameManager.Instance.MaxHealth);
                 HandleStateChanged(GameManager.Instance.CurrentState);
             }
+        }
+
+        private void OnHealthChanged(HealthChangedEvent evt) {
+            UpdateHP(evt.CurrentHealth, evt.MaxHealth);
+        }
+
+        private void OnScoreChanged(ScoreChangedEvent evt) {
+            UpdateScore(evt.CurrentScore);
         }
 
         private void UpdateHP(int current, int max) {
