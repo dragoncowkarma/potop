@@ -11,6 +11,16 @@ namespace Potop.Client.UI {
         [SerializeField] private Button _startButton;
         [SerializeField] private Button _quitButton;
 
+        /// <summary>
+        /// 게임 시작 버튼입니다.
+        /// </summary>
+        public Button StartButton => _startButton;
+
+        /// <summary>
+        /// 게임 종료 버튼입니다.
+        /// </summary>
+        public Button QuitButton => _quitButton;
+
         private const float NORMAL_TIME_SCALE = 1f;
         private const string MAIN_SCENE = "MainScene";
 

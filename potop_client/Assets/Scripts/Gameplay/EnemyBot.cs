@@ -12,12 +12,32 @@ namespace Potop.Client.Gameplay {
         [SerializeField] private int _scoreValue = 100;
         [SerializeField] private float _attackRange = 2f;
 
-        private Transform _target;
+        /// <summary>
+        /// 적의 이동 속도입니다.
+        /// </summary>
+        public float MoveSpeed => _moveSpeed;
+
+        /// <summary>
+        /// 적의 체력입니다.
+        /// </summary>
+        public int Health => _health;
+
+        /// <summary>
+        /// 적이 플레이어에게 입히는 피해량입니다.
+        /// </summary>
+        public int Damage => _damage;
+
+        /// <summary>
+        /// 적의 공격 사거리입니다.
+        /// </summary>
+        public float AttackRange => _attackRange;
 
         /// <summary>
         /// 적이 처치되었을 때 획득할 수 있는 점수입니다.
         /// </summary>
         public int ScoreValue => _scoreValue;
+
+        private Transform _target;
 
         private void Start() {
             if (GameManager.Instance != null) {

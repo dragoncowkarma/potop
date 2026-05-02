@@ -9,6 +9,16 @@ namespace Potop.Client.Gameplay {
         [SerializeField] private float _speed = 20f;
         [SerializeField] private float _lifeTime = 3f;
 
+        /// <summary>
+        /// 발사체의 이동 속도입니다.
+        /// </summary>
+        public float Speed => _speed;
+
+        /// <summary>
+        /// 발사체의 수명(초)입니다.
+        /// </summary>
+        public float LifeTime => _lifeTime;
+
         private const string ENEMY_TAG = "Enemy";
 
         private void Start() {

@@ -10,6 +10,21 @@ namespace Potop.Client.Gameplay {
         [SerializeField] private float _spawnRadius = 25f;
         [SerializeField] private float _spawnInterval = 2f;
 
+        /// <summary>
+        /// 생성할 적의 프리팹입니다.
+        /// </summary>
+        public GameObject EnemyPrefab => _enemyPrefab;
+
+        /// <summary>
+        /// 적이 생성되는 반경입니다.
+        /// </summary>
+        public float SpawnRadius => _spawnRadius;
+
+        /// <summary>
+        /// 적이 생성되는 주기(초)입니다.
+        /// </summary>
+        public float SpawnInterval => _spawnInterval;
+
         private const float MIN_HEIGHT = 1f;
         private const float MAX_HEIGHT = 5f;
 

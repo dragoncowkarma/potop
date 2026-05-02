@@ -3,7 +3,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Potop.Client.Core {
-    public enum GameState { Start, Playing, GameOver }
+    /// <summary>
+    /// 게임의 전반적인 상태를 나타내는 열거형입니다.
+    /// </summary>
+    public enum GameState {
+        /// <summary>시작 화면 상태입니다.</summary>
+        Start,
+        /// <summary>게임 플레이 중 상태입니다.</summary>
+        Playing,
+        /// <summary>게임 오버 상태입니다.</summary>
+        GameOver
+    }
 
     /// <summary>
     /// 전역 게임 상태(HP, 점수, 게임 오버 등)를 관리하는 싱글톤 클래스입니다.
@@ -17,15 +27,31 @@ namespace Potop.Client.Core {
         [Header("Player Settings")]
         [SerializeField] private int _maxHealth = 100;
 
+        /// <summary>
+        /// 플레이어의 최대 HP입니다.
+        /// </summary>
+        public int MaxHealth => _maxHealth;
+
         [Header("Game State")]
         [SerializeField] private int _health;
+
+        /// <summary>
+        /// 플레이어의 현재 HP입니다.
+        /// </summary>
         public int Health { get { return _health; } private set { _health = value; } }
 
         [SerializeField] private int _score;
+
+        /// <summary>
+        /// 현재 게임 점수입니다.
+        /// </summary>
         public int Score { get { return _score; } private set { _score = value; } }
 
         [SerializeField] private bool _isGameOver;
 
+        /// <summary>
+        /// 현재 게임 상태입니다.
+        /// </summary>
         public GameState CurrentState { get; private set; }
 
         /// <summary>
@@ -82,6 +108,15 @@ namespace Potop.Client.Core {
         /// <param name="newState">새로운 게임 상태</param>
         public void ChangeState(GameState newState) {
             CurrentState = newState;
+
+            if (CurrentState == GameState.Playing) {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            } else {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
             OnStateChanged?.Invoke(CurrentState);
         }
 
@@ -94,9 +129,6 @@ namespace Potop.Client.Core {
             _isGameOver = false;
             ChangeState(GameState.Playing);
             Time.timeScale = NORMAL_TIME_SCALE;
-
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
 
             OnHealthChanged?.Invoke(Health, _maxHealth);
             OnScoreChanged?.Invoke(Score);
@@ -132,9 +164,6 @@ namespace Potop.Client.Core {
             _isGameOver = true;
             ChangeState(GameState.GameOver);
             Time.timeScale = GAME_OVER_TIME_SCALE;
-
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
 
             OnGameOver?.Invoke();
         }

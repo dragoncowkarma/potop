@@ -10,6 +10,11 @@ namespace Potop.Client.UI {
         [Header("UI Document")]
         [SerializeField] private UIDocument _uiDocument;
 
+        /// <summary>
+        /// UI를 렌더링하는 데 사용되는 UIDocument입니다.
+        /// </summary>
+        public UIDocument UiDocument => _uiDocument;
+
         private Label _scoreLabel;
         private Label _healthLabel;
 
