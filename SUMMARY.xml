@@ -16,10 +16,13 @@
     </Directory>
     <Directory Path="docs/" Type="Documentation">
       <Description>Centralized Game Design Documents (GDD) and roadmaps.</Description>
+      <Context>See docs/SUMMARY.xml for documentation-specific agent context.</Context>
     </Directory>
   </ProjectStructure>
 
   <GlobalDocumentation>
+    <File Path="docs/AGENTS.md" Description="Main entry point for documentation agents"/>
+    <File Path="docs/SUMMARY.xml" Description="Index and milestone mapping for docs/"/>
     <File Path="docs/gdd/01_overview.md" Description="Project high-level overview & vision"/>
     <File Path="docs/gdd/02_gameplay_mechanics.md" Description="Core gameplay loops, controls, and combat systems"/>
     <File Path="docs/gdd/03_data_and_balance.md" Description="Detailed balance metrics, enemy scaling, and wave progression"/>

@@ -1,0 +1,38 @@
+<summary>
+    <project name="POTOP" version="1.0">
+        <description>AI-driven context management for documentation and planning layer.</description>
+    </project>
+
+    <agents>
+        <document path="docs/AGENTS.md" role="entry_point">
+            <description>Main index and high-level directives for documentation agents.</description>
+        </document>
+        <document path="docs/AGENTS_ROLES.md" role="role_definition">
+            <description>Detailed personas for Jules (Logic) and Antigravity (Unity/UI).</description>
+        </document>
+        <document path="docs/AGENTS_CONVENTIONS.md" role="conventions">
+            <description>Coding standards, project structure, and technical constraints.</description>
+        </document>
+    </agents>
+
+    <milestone_tasks>
+        <phase id="1" title="MVP">
+            <prompt path="docs/prompts/010_core_loop_mvp.md" status="completed" />
+        </phase>
+        <phase id="1.5" title="Stability">
+            <prompt path="docs/prompts/015_stability_refactoring.md" status="in_progress" />
+        </phase>
+        <phase id="2" title="Architecture">
+            <prompt path="docs/prompts/020_architecture.md" status="planned" />
+        </phase>
+        <phase id="3" title="Gameplay Loop">
+            <prompt path="docs/prompts/030_gameplay_loop.md" status="planned" />
+        </phase>
+    </milestone_tasks>
+
+    <context_rules>
+        <rule>Always sync tasks with docs/gdd/07_development_milestones.md</rule>
+        <rule>Refer to docs/AGENTS_CONVENTIONS.md for every code modification</rule>
+        <rule>Split documents if they exceed 4000 tokens while maintaining these categories</rule>
+    </context_rules>
+</summary>

@@ -3,36 +3,41 @@
 [CRITICAL] Read the root `AGENTS.md` for general protocols. The server implementation is currently undecided between **Django (Python)** and **NestJS (TypeScript)**.
 
 ## Naming Standards
-- **If Django (Python)**:
-  - `snake_case`: Variables, functions, and file names.
-  - `PascalCase`: Classes.
-- **If NestJS (TypeScript)**:
-  - `camelCase`: Variables, functions, and properties.
-  - `PascalCase`: Classes, Interfaces, and Types.
-  - `kebab-case`: File names (e.g., `user-controller.ts`).
+1. **If Django (Python)**:
+    1.1. `snake_case`: Variables, functions, and file names.
+    1.2. `PascalCase`: Classes.
+2. **If NestJS (TypeScript)**:
+    2.1. `camelCase`: Variables, functions, and properties.
+    2.2. `PascalCase`: Classes, Interfaces, and Types.
+    2.3. `kebab-case`: File names (e.g., `user-controller.ts`).
 
 ## Backend Principles
 1. **API Design**:
-   - Use **RESTful** principles or gRPC where applicable.
-   - Return clear, structured JSON responses.
-   - Use standard HTTP status codes (200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 500 Server Error).
+    1.1. Use `RESTful` principles or `gRPC` where applicable.
+    1.2. Return clear, structured `JSON` responses.
+    1.3. Use standard `HTTP` status codes (e.g., `200`, `201`, `400`, `401`, `500`).
 2. **Security**:
-   - **Never Trust the Client**: Validate all incoming data.
-   - Secure all endpoints with appropriate authentication (JWT, OAuth2).
-   - Use Environment Variables (`.env`) for all secrets and sensitive configs.
+    2.1. **Validation**: Validate all incoming data. Never trust the `client`.
+    2.2. **Auth**: Secure all endpoints with `JWT` or `OAuth2`.
+    2.3. **Secrets**: Use Environment Variables (`.env`) for all secrets.
 3. **Database**:
-   - Use migrations for all schema changes.
-   - Ensure indexing on frequently queried fields (e.g., `score`, `user_id`).
+    3.1. Use `migrations` for all schema changes.
+    3.2. Ensure indexing on frequently queried fields (e.g., `score`, `user_id`).
 4. **Performance**:
-   - Implement asynchronous operations throughout to handle high concurrency.
-   - Use caching (Redis) for frequently accessed data like Leaderboards.
+    4.1. Implement `asynchronous` operations to handle concurrency.
+    4.2. Use `Redis` caching for frequently accessed data like Leaderboards.
 
 ## Organization
-- `src/controllers/` or `apps/`: API endpoint definitions.
-- `src/services/` or `models/`: Business logic and database interactions.
-- `src/dto/` or `serializers/`: Data validation and transformation layers.
+1. API endpoints: `src/controllers/` (NestJS) or `apps/` (Django).
+2. Business logic: `src/services/` (NestJS) or `models/` (Django).
+3. Data validation: `src/dto/` (NestJS) or `serializers/` (Django).
 
-## Verification
-1. Run server-side unit and integration tests.
-2. Verify API endpoints using `curl` or testing tools.
-3. Ensure error logs are clean and provide actionable information.
+## When Blocked
+1. **Ambiguity**: If framework is unselected, stop and ask the **USER** before `implementation`.
+2. **Errors**: If logs show `500` errors, check database connection first.
+
+## Definition of Done
+1. API endpoints are verified using `curl` or automated testing tools.
+2. Server-side `unit/integration` tests return zero failures.
+3. Error logs are clean of critical issues.
+4. `SUMMARY.xml` is updated with new modules/endpoints.
