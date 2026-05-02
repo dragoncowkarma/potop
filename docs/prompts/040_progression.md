@@ -1,47 +1,31 @@
 # Phase 4: 전투 시스템 및 성장 아키텍처 - AI Prompts
 
----
+### 1. [Claude Opus 4.6] Weapon Architecture Design
+- Pre-flight: Review `docs/gdd/02_gameplay_mechanics.md`.
+- Design: Define `IWeapon`, `WeaponBase`. Support fire modes (Single/Auto/Burst).
+- Specs: Define property-based modifiers for speed/damage/fire-rate.
 
-## [Milestone 15] 무기 시스템 아키텍처
-### [Step 1] Claude Opus 4.6 프롬프트
-```text
-[TASK:Architecture/Design]
-1. Design a modular Weapon System: IWeapon (Interface) and WeaponBase (Abstract).
-2. Requirement: Support different fire modes (Single, Auto, Burst) and projectile types.
-```
+### 2. [Jules] [Parallel Execution] Combat & Progression
+**[Scope A: Assets/Scripts/Gameplay/Weapons/][Task: WeaponLogic]**
+- Pre-flight: Implement `Claude Opus` design.
+- Create `WeaponBase.cs`, `TurretWeapon.cs`. Refactor `TurretShooter.cs`.
 
-### [Step 2] Jules 프롬프트
-```text
-[SCOPE: Potop.Client.Gameplay.Weapons (Assets/Scripts/Gameplay/Weapons/)][TASK:Logic/Implementation]
-1. Implement the modular weapon system designed by Claude Opus.
-2. Refactor TurretShooter.cs to delegate firing logic to the active IWeapon.
-```
+**[Scope B: Assets/Scripts/Gameplay/Progression/][Task: Leveling]**
+- Pre-flight: Read `05_meta_and_progression.md`.
+- Implement `LevelManager.cs`: XP tracking, LevelUp thresholds, choice triggers.
 
----
-
-## [Milestone 16] 레벨업 시스템 및 UI
-### [Step 1] Jules 프롬프트
-```text
-[SCOPE: Potop.Client.Progression (Assets/Scripts/Progression/)][TASK:Logic/System]
-1. Implement LevelManager.cs: XP tracking, LevelUp thresholds.
-2. Upgrade Data: Create ScriptableObject for different player upgrades (e.g., +10% Damage).
-```
-
-### [Step 2] Gemini 3.1 Pro 프롬프트
-```text
-[TASK:Unity/UI Toolkit]
-1. Create 'UpgradeUI' UXML with 3 random upgrade options.
-2. Handle UI pause/resume and selection logic.
-```
+**[Scope C: Assets/Scripts/Gameplay/Projectiles/][Task: PhysicsMutation]**
+- Pre-flight: Modify `Projectile.cs`.
+- Implement: Pierce, Bounce, and Explosive logic.
 
 ---
 
-## [Milestone 17] 투사체 변이 물리 로직
-### [Step 1] Jules 프롬프트
-```text
-[SCOPE: Potop.Client.Gameplay.Projectiles (Assets/Scripts/Gameplay/Projectiles/)][TASK:Logic/Physics]
-1. Add physics modifiers to Projectile.cs:
-   - Pierce (Ignore first collision).
-   - Bounce (Reflect on walls).
-   - Explosive (AOE damage on hit).
-```
+### 3. [Antigravity: Gemini 3.1 Pro] Upgrade UI Toolkit
+- Pre-flight: Verify scripts compiled.
+- UI: Create `UpgradeMenu.uxml` (3 slots). Implement `UpgradeUIController.cs`.
+- Action: Handle pause/resume and selection binding.
+
+### 4. [Gemini CLI] Build & Linkage Audit
+- Pre-flight: Ensure scene is saved.
+- Audit: `read_console count="50"` (Check for refactoring errors).
+- Validation: `manage_scene action="validate"` (Serialized link check).

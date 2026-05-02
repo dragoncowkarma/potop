@@ -1,35 +1,25 @@
 # Phase 6: 엔드게임 및 모바일 출시 준비 - AI Prompts
 
----
+### 1. [Claude Opus 4.6] Boss Encounter Design
+- Pre-flight: Review `Titan Core` GDD specs.
+- Design: 3-phase state machine (Perimeter -> Core -> Rage). Define attack patterns.
 
-## [Milestone 21] 보스전: 타이탄 코어
-### [Step 1] Claude Opus 4.6 프롬프트
-```text
-[TASK:Architecture/Boss]
-1. Design Phase-based Boss AI for 'Titan Core'.
-2. Define transitions and attack patterns (Shielded -> Exposed -> Berserk).
-```
+### 2. [Jules] [Parallel Execution] Endgame Mechanics
+**[Scope A: Assets/Scripts/Gameplay/Boss/][Task: TitanCoreAI]**
+- Pre-flight: Follow `Claude Opus` design.
+- Implement `TitanCore.cs`: Phase transitions and coordinate attack sub-components.
 
-### [Step 2] Jules 프롬프트
-```text
-[SCOPE: Potop.Client.Gameplay.Boss (Assets/Scripts/Gameplay/Boss/)][TASK:Logic/Implementation]
-1. Implement the Boss AI state machine from Claude's design.
-```
+**[Scope B: Assets/Scripts/Gameplay/Wave/][Task: OverclockMode]**
+- Pre-flight: Modify `WaveManager.cs`.
+- Implement: Exponential enemy stat scaling for Endless mode (Wave 50+).
 
 ---
 
-## [Milestone 22] 오버클럭 모드 (무한)
-### [Step 1] Jules 프롬프트
-```text
-[SCOPE: Potop.Client.Gameplay (Assets/Scripts/Gameplay/WaveManager.cs)][TASK:Logic/Endless]
-1. Add Infinite loop logic to WaveManager.cs with exponential stat scaling.
-```
+### 3. [Antigravity: Gemini 3.1 Pro] Mobile Monetization
+- Pre-flight: `manage_packages action="list_packages"` (Check Unity Ads).
+- Implementation: Create `AdManager.cs`. Integrate Rewarded Ads for Revive/Double Rewards.
 
----
-
-## [Milestone 23] 모바일 광고 연동
-### [Step 1] Gemini 3.1 Pro 프롬프트
-```text
-[SCOPE: Potop.Client.Mobile (Assets/Scripts/Core/Mobile/AdManager.cs)][TASK:SDK/Mobile]
-1. Integrate Ads SDK and trigger Reward Ads for extra lives/score.
-```
+### 4. [Gemini CLI] Pre-Release Audit
+- Pre-flight: Ensure target platform is correct (manage_build action="status").
+- Audit: `manage_profiler action="get_frame_timing"` or `stats_get` (Perf check).
+- Health: `read_console` (Ensure ZERO errors before build).
