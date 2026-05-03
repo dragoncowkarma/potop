@@ -1,4 +1,5 @@
 using Potop.Client.Core;
+using Potop.Client.Gameplay.Combat;
 using UnityEngine;
 
 namespace Potop.Client.Gameplay {
@@ -8,6 +9,7 @@ namespace Potop.Client.Gameplay {
     public class Projectile : MonoBehaviour {
         [SerializeField] private float _speed = 20f;
         [SerializeField] private float _lifeTime = 3f;
+        [SerializeField] private int _damage = 10;
 
         /// <summary>
         /// 발사체의 이동 속도입니다.
@@ -39,14 +41,11 @@ namespace Potop.Client.Gameplay {
 
         private void OnCollisionEnter(Collision collision) {
             if (collision.gameObject.CompareTag(ENEMY_TAG)) {
-                // 점수 추가
-                EnemyBot enemy = collision.gameObject.GetComponent<EnemyBot>();
-                if (enemy != null && GameManager.Instance != null) {
-                    GameManager.Instance.AddScore(enemy.ScoreValue);
+                IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+                if (damageable != null) {
+                    damageable.TakeDamage(new DamageInfo { Amount = _damage });
+                    DespawnSelf();
                 }
-
-                Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(collision.gameObject);
-                DespawnSelf();
             }
         }
     }

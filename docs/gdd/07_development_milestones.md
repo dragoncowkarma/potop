@@ -37,12 +37,14 @@
 > AI Prompts: 
 > - 02501: [Jules] [02501_weapon_parts.md](../prompts/025/02501_weapon_parts.md)
 > - 02502: [Jules] [02502_health_damage.md](../prompts/025/02502_health_damage.md)
+> - 02502: [Jules] [02502_merge_health_integration_test.md](../prompts/025/02502_merge_health_integration_test.md)
 > - 02503: [Antigravity] [02503_combat_feedback.md](../prompts/025/02503_combat_feedback.md)
 > - 02504: [Antigravity] [02504_camera_polish.md](../prompts/025/02504_camera_polish.md)
 > - QA: [Gemini CLI] [02599_validation.md](../prompts/025/02599_validation.md)
 
 *   **[02501] 파츠 기반 무기 아키텍처 (Weapon Parts)**
 *   **[02502] 통합 체력 및 피해 시스템 (Health & Damage System)**
+*   **[02502] 포스트-머지 체력 및 데미지 통합 테스트 (Post-Merge Health Integration Test)**
 *   **[02503] 컴뱃 피드백 아키텍처 (Combat Feedback Architecture)**
 *   **[02504] 시네머신 및 카메라 로직 정비 (Cinemachine & Camera Control)**
 
