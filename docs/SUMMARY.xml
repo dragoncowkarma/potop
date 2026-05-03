@@ -26,44 +26,46 @@
             <prompt path="docs/prompts/020_architecture.md" status="planned" />
         </phase>
         <phase id="2.5" title="Foundation &amp; Modularization">
-            <prompt path="docs/prompts/025/02501_weapon_parts.md" status="planned" />
-            <prompt path="docs/prompts/025/02502_health_damage.md" status="planned" />
-            <prompt path="docs/prompts/025/02503_combat_feedback.md" status="planned" />
-            <prompt path="docs/prompts/025/02504_camera_polish.md" status="planned" />
-            <prompt path="docs/prompts/025/02599_validation.md" status="planned" />
+            <prompt path="docs/prompts/025/0250101_weapon_architecture.md" status="completed" />
+            <prompt path="docs/prompts/025/0250201_damage_api.md" status="completed" />
+            <prompt path="docs/prompts/025/0250202_health_system.md" status="completed" />
+            <prompt path="docs/prompts/025/0250301_combat_feedback.md" status="completed" />
+            <prompt path="docs/prompts/025/0250401_camera_polish.md" status="completed" />
+            <prompt path="docs/prompts/025/0259901_validation.md" status="completed" />
         </phase>
         <phase id="3" title="Gameplay Loop">
-            <prompt path="docs/prompts/030/03001_wave_management.md" status="planned" />
-            <prompt path="docs/prompts/030/03002_enemy_variants.md" status="planned" />
-            <prompt path="docs/prompts/030/03002_enemy_visuals.md" status="planned" />
-            <prompt path="docs/prompts/030/03003_tactical_hazards.md" status="planned" />
-            <prompt path="docs/prompts/030/03004_fever_system.md" status="planned" />
-            <prompt path="docs/prompts/030/03099_validation.md" status="planned" />
+            <prompt path="docs/prompts/030/0300101_wave_management.md" status="completed" />
+            <prompt path="docs/prompts/030/0300201_enemy_base_refactor.md" status="completed" />
+            <prompt path="docs/prompts/030/0300202_enemy_variant_logic.md" status="completed" />
+            <prompt path="docs/prompts/030/0300203_enemy_visuals_ui.md" status="completed" />
+            <prompt path="docs/prompts/030/0300301_tactical_hazards.md" status="completed" />
+            <prompt path="docs/prompts/030/0300401_fever_system.md" status="completed" />
+            <prompt path="docs/prompts/030/0309901_validation.md" status="completed" />
         </phase>
         <phase id="4" title="Progression">
-            <prompt path="docs/prompts/040/04001_weapon_architecture.md" status="planned" />
-            <prompt path="docs/prompts/040/04001_weapon_logic.md" status="planned" />
-            <prompt path="docs/prompts/040/04002_mutation_synergy.md" status="planned" />
-            <prompt path="docs/prompts/040/04003_xp_leveling.md" status="planned" />
-            <prompt path="docs/prompts/040/04003_upgrade_ui.md" status="planned" />
-            <prompt path="docs/prompts/040/04004_projectile_mutation.md" status="planned" />
-            <prompt path="docs/prompts/040/04099_validation.md" status="planned" />
+            <prompt path="docs/prompts/040/0400101_weapon_architecture.md" status="completed" />
+            <prompt path="docs/prompts/040/0400102_weapon_logic.md" status="completed" />
+            <prompt path="docs/prompts/040/0400201_mutation_synergy.md" status="completed" />
+            <prompt path="docs/prompts/040/0400301_xp_leveling.md" status="completed" />
+            <prompt path="docs/prompts/040/0400302_upgrade_ui.md" status="completed" />
+            <prompt path="docs/prompts/040/0400401_projectile_mutation.md" status="completed" />
+            <prompt path="docs/prompts/040/0409901_validation.md" status="completed" />
         </phase>
         <phase id="5" title="Polish">
-            <prompt path="docs/prompts/050/05001_combat_juice.md" status="planned" />
-            <prompt path="docs/prompts/050/05001_asset_setup.md" status="planned" />
-            <prompt path="docs/prompts/050/05002_sound_manager.md" status="planned" />
-            <prompt path="docs/prompts/050/05003_localization.md" status="planned" />
-            <prompt path="docs/prompts/050/05099_validation.md" status="planned" />
+            <prompt path="docs/prompts/050/0500101_combat_juice.md" status="completed" />
+            <prompt path="docs/prompts/050/0500102_asset_setup.md" status="completed" />
+            <prompt path="docs/prompts/050/0500201_sound_manager.md" status="completed" />
+            <prompt path="docs/prompts/050/0500301_localization.md" status="completed" />
+            <prompt path="docs/prompts/050/0509901_validation.md" status="completed" />
         </phase>
         <phase id="6" title="Mobile/Endgame">
-            <prompt path="docs/prompts/060/06001_boss_design.md" status="planned" />
-            <prompt path="docs/prompts/060/06001_boss_ai.md" status="planned" />
-            <prompt path="docs/prompts/060/06001_mobile_input.md" status="planned" />
-            <prompt path="docs/prompts/060/06002_achievement_save.md" status="planned" />
-            <prompt path="docs/prompts/060/06003_overclock_mode.md" status="planned" />
-            <prompt path="docs/prompts/060/06004_ads_revive_ui.md" status="planned" />
-            <prompt path="docs/prompts/060/06099_validation.md" status="planned" />
+            <prompt path="docs/prompts/060/0600101_boss_design.md" status="completed" />
+            <prompt path="docs/prompts/060/0600102_boss_ai.md" status="completed" />
+            <prompt path="docs/prompts/060/0600103_mobile_input.md" status="completed" />
+            <prompt path="docs/prompts/060/0600201_achievement_save.md" status="completed" />
+            <prompt path="docs/prompts/060/0600301_overclock_mode.md" status="completed" />
+            <prompt path="docs/prompts/060/0600401_ads_revive_ui.md" status="completed" />
+            <prompt path="docs/prompts/060/0609901_validation.md" status="completed" />
         </phase>
     </milestone_tasks>
 
