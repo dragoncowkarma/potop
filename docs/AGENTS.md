@@ -7,11 +7,11 @@
 2. **Context Verification**: Read [`SUMMARY.xml`](../SUMMARY.xml) to understand project structure.
 ## AI Agent Role Distribution (작업 할당 기준)
 
-| 에이전트 | 페르소나 | 주요 책임 범위 (Task Scope) | 권장 실행 모델 및 토큰 정책 (Human Reference) |
+| 에이전트 | 페르소나 | 주요 책임 범위 (`Task Scope`) | 권장 모델 및 토큰 정책 (`Reference`) |
 | :--- | :--- | :--- | :--- |
-| **Jules** | 수석 소프트웨어 엔지니어 및 아키텍트 | 고성능 게임 로직 설계, 아키텍처 구축, 기술적 의사결정, 데이터 관리 시스템, PR 생성 및 관리. | **Gemini 3.1 Pro** |
-| **Antigravity** | 수석 Unity 엔진 엔지니어 및 UI/UX 디자이너 | UI Toolkit(UXML/USS) 개발, VFX 및 타격감 구현, 유니티 에디터/프리팹 설정, 게임 디자인(보스 패턴 등). | - **Gemini 3.1 Pro** (독립 토큰)<br>- **Gemini 3 Flash** (독립 토큰)<br>- **[Claude Sonnet 4.6, Claude Opus 4.6, GPT-OSS-120b]** (토큰량 공유) |
-| **Gemini CLI** | 수석 QA 및 안정성 엔지니어 | 각 Phase 종료 시점의 안정성 검증, 런타임 성능 감사, 코드 무결성 및 린터 결과 분석. | Gemini 3.1 Pro/Flash/Lite, Gemini 2.5 Pro/Flash/Lite |
+| **Jules** | 수석 아키텍트 | `Logic` 설계, `Architecture` 구축, 데이터 관리 시스템, `PR` 생성. | `Gemini 3.1 Pro` |
+| **Antigravity** | `Unity` 엔지니어 | `UI Toolkit` 개발, `VFX` 구현, 에디터/프리팹 설정, `Game Design`. | `Gemini 3.1 Pro` / `Flash` |
+| **Gemini CLI** | `QA` 엔지니어 | 안정성 검증, 성능 감사, 코드 무결성 및 `Linter` 분석. | `Gemini 3.1 Pro` / `Flash` |
 
 ## When Modifying Documentation
 1. **`SUMMARY.xml` Maintenance**: Update root [`SUMMARY.xml`](../SUMMARY.xml) whenever project structure changes.
@@ -27,6 +27,9 @@
 3. **Context Optimization**:
     3.1. **Document Split**: Split docs by `domain` if they exceed `150 lines` or become complex.
     3.2. **Discovery**: Register all split documents in [`SUMMARY.xml`](../SUMMARY.xml) immediately.
+4. **Synchronization**: Bidirectional updates between Specs (`GDD`) and `Prompts` are MANDATORY.
+    4.1. **GDD Update**: If `docs/gdd/` is modified, update corresponding `docs/prompts/` file.
+    4.2. **Prompt Update**: If `docs/prompts/` is modified, update corresponding `docs/gdd/` file.
 
 ## Behavioral Directives
 1. **Jules (Logic)**:
