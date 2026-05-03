@@ -1,4 +1,5 @@
 using Potop.Client.Core;
+using Potop.Client.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,15 +23,14 @@ namespace Potop.Client.Gameplay {
         public InputActionReference LookAction => _lookAction;
 
         [Header("Combat Settings")]
-        [SerializeField] private GameObject _projectilePrefab;
+        [SerializeField] private WeaponData _weaponData;
         [SerializeField] private Transform _firePoint;
-        [SerializeField] private float _fireRate = 0.5f;
         [SerializeField] private float _sensitivity = 5.0f;
 
         /// <summary>
         /// 발사할 발사체 프리팹입니다.
         /// </summary>
-        public GameObject ProjectilePrefab => _projectilePrefab;
+        public GameObject ProjectilePrefab => _weaponData != null ? _weaponData.ProjectilePrefab : null;
 
         /// <summary>
         /// 발사체가 생성될 위치(Transform)입니다.
@@ -40,7 +40,7 @@ namespace Potop.Client.Gameplay {
         /// <summary>
         /// 발사 주기(초 단위)입니다.
         /// </summary>
-        public float FireRate => _fireRate;
+        public float FireRate => _weaponData != null ? _weaponData.FireRate : 0f;
 
         /// <summary>
         /// 시점 회전 민감도입니다.
@@ -87,7 +87,7 @@ namespace Potop.Client.Gameplay {
             // 발사
             if (_attackAction != null && _attackAction.action.IsPressed() && Time.time >= _nextFireTime) {
                 Shoot();
-                _nextFireTime = Time.time + _fireRate;
+                _nextFireTime = Time.time + FireRate;
             }
         }
 
@@ -96,7 +96,7 @@ namespace Potop.Client.Gameplay {
                 Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(_projectilePrefab, _firePoint.position, _firePoint.rotation);
             } else {
 #if UNITY_EDITOR
-                if (_projectilePrefab == null) {
+                if (prefab == null) {
                     Debug.LogWarning("Projectile Prefab is missing!");
                 }
                 if (_firePoint == null) {
