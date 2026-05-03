@@ -26,16 +26,35 @@
             <prompt path="docs/prompts/020_architecture.md" status="planned" />
         </phase>
         <phase id="3" title="Gameplay Loop">
-            <prompt path="docs/prompts/030_gameplay_loop.md" status="planned" />
+            <prompt path="docs/prompts/030/03012_wave_management.md" status="planned" />
+            <prompt path="docs/prompts/030/03013_enemy_variants.md" status="planned" />
+            <prompt path="docs/prompts/030/03013_enemy_visuals.md" status="planned" />
+            <prompt path="docs/prompts/030/03014_fever_system.md" status="planned" />
+            <prompt path="docs/prompts/030/03099_validation.md" status="planned" />
         </phase>
         <phase id="4" title="Progression">
-            <prompt path="docs/prompts/040_progression.md" status="planned" />
+            <prompt path="docs/prompts/040/04015_weapon_architecture.md" status="planned" />
+            <prompt path="docs/prompts/040/04015_weapon_logic.md" status="planned" />
+            <prompt path="docs/prompts/040/04016_xp_leveling.md" status="planned" />
+            <prompt path="docs/prompts/040/04016_upgrade_ui.md" status="planned" />
+            <prompt path="docs/prompts/040/04017_projectile_mutation.md" status="planned" />
+            <prompt path="docs/prompts/040/04099_validation.md" status="planned" />
         </phase>
         <phase id="5" title="Polish">
-            <prompt path="docs/prompts/050_polish.md" status="planned" />
+            <prompt path="docs/prompts/050/05018_combat_juice.md" status="planned" />
+            <prompt path="docs/prompts/050/05018_asset_setup.md" status="planned" />
+            <prompt path="docs/prompts/050/05019_sound_manager.md" status="planned" />
+            <prompt path="docs/prompts/050/05020_localization.md" status="planned" />
+            <prompt path="docs/prompts/050/05099_validation.md" status="planned" />
         </phase>
         <phase id="6" title="Mobile/Endgame">
-            <prompt path="docs/prompts/060_mobile_endgame.md" status="planned" />
+            <prompt path="docs/prompts/060/06021_boss_design.md" status="planned" />
+            <prompt path="docs/prompts/060/06021_boss_ai.md" status="planned" />
+            <prompt path="docs/prompts/060/06021_mobile_input.md" status="planned" />
+            <prompt path="docs/prompts/060/06022_achievement_save.md" status="planned" />
+            <prompt path="docs/prompts/060/06023_overclock_mode.md" status="planned" />
+            <prompt path="docs/prompts/060/06024_ads_revive_ui.md" status="planned" />
+            <prompt path="docs/prompts/060/06099_validation.md" status="planned" />
         </phase>
     </milestone_tasks>
 

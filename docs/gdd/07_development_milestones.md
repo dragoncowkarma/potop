@@ -34,7 +34,11 @@
 
 ### **Phase 3: 게임플레이 루프 및 AI 기초**
 > [!TIP]
-> AI Prompts: [030_gameplay_loop.md](../prompts/030_gameplay_loop.md)
+> AI Prompts: 
+> - M12: [Jules: Gemini 3.1 Pro] [03012_wave_management.md](../prompts/030/03012_wave_management.md)
+> - M13: [Jules: Gemini 3.1 Pro] [03013_enemy_variants.md](../prompts/030/03013_enemy_variants.md), [Antigravity: Gemini 3.1 Pro] [03013_enemy_visuals.md](../prompts/030/03013_enemy_visuals.md)
+> - M14: [Jules: Gemini 3.1 Pro] [03014_fever_system.md](../prompts/030/03014_fever_system.md)
+> - QA: [Gemini CLI: Gemini 3.1 Pro] [03099_validation.md](../prompts/030/03099_validation.md)
 
 *   **[Milestone 12] 웨이브 매니저 구현**
 *   **[Milestone 13] 특수 적 AI 구현**
@@ -44,7 +48,11 @@
 
 ### **Phase 4: 전투 시스템 및 성장 아키텍처**
 > [!TIP]
-> AI Prompts: [040_progression.md](../prompts/040_progression.md)
+> AI Prompts: 
+> - M15: [Jules: Gemini 3.1 Pro] [04015_weapon_architecture.md](../prompts/040/04015_weapon_architecture.md), [Jules: Gemini 3.1 Pro] [04015_weapon_logic.md](../prompts/040/04015_weapon_logic.md)
+> - M16: [Jules: Gemini 3.1 Pro] [04016_xp_leveling.md](../prompts/040/04016_xp_leveling.md), [Antigravity: Gemini 3.1 Pro] [04016_upgrade_ui.md](../prompts/040/04016_upgrade_ui.md)
+> - M17: [Jules: Gemini 3.1 Pro] [04017_projectile_mutation.md](../prompts/040/04017_projectile_mutation.md)
+> - QA: [Gemini CLI: Gemini 3.1 Pro] [04099_validation.md](../prompts/040/04099_validation.md)
 
 *   **[Milestone 15] 무기 시스템 아키텍처**
 *   **[Milestone 16] 레벨업 시스템 및 UI**
@@ -54,7 +62,11 @@
 
 ### **Phase 5: 폴리싱 및 사용자 경험 (UX)**
 > [!TIP]
-> AI Prompts: [050_polish.md](../prompts/050_polish.md)
+> AI Prompts: 
+> - M18: [Jules: Gemini 3.1 Pro] [05018_combat_juice.md](../prompts/050/05018_combat_juice.md), [Antigravity: Gemini 3.1 Pro] [05018_asset_setup.md](../prompts/050/05018_asset_setup.md)
+> - M19: [Jules: Gemini 3.1 Pro] [05019_sound_manager.md](../prompts/050/05019_sound_manager.md)
+> - M20: [Jules: Gemini 3.1 Pro] [05020_localization.md](../prompts/050/05020_localization.md)
+> - QA: [Gemini CLI: Gemini 3.1 Pro] [05099_validation.md](../prompts/050/05099_validation.md)
 
 *   **[Milestone 18] 카메라 쉐이크 연출**
 *   **[Milestone 19] 사운드 시스템 통합**
@@ -63,38 +75,43 @@
 ---
 
 ### **Phase 6: 엔드게임 및 모바일 출시 준비**
-> [!TIP]
-> AI Prompts: [060_mobile_endgame.md](../prompts/060_mobile_endgame.md)
+> AI Prompts: 
+> - M21: [Antigravity: Claude Opus 4.6] [06021_boss_design.md](../prompts/060/06021_boss_design.md), [Jules: Gemini 3.1 Pro] [06021_boss_ai.md](../prompts/060/06021_boss_ai.md), [Jules: Gemini 3.1 Pro] [06021_mobile_input.md](../prompts/060/06021_mobile_input.md)
+> - M22: [Jules: Gemini 3.1 Pro] [06022_achievement_save.md](../prompts/060/06022_achievement_save.md)
+> - M23: [Jules: Gemini 3.1 Pro] [06023_overclock_mode.md](../prompts/060/06023_overclock_mode.md)
+> - M24: [Antigravity: Gemini 3.1 Pro] [06024_ads_revive_ui.md](../prompts/060/06024_ads_revive_ui.md)
+> - QA: [Gemini CLI: Gemini 3.1 Pro] [06099_validation.md](../prompts/060/06099_validation.md)
 
 *   **[Milestone 21] 보스전: 타이탄 코어**
-*   **[Milestone 22] 오버클럭 모드 (무한)**
-*   **[Milestone 23] 모바일 광고 연동**
+*   **[Milestone 22] 업적 및 로컬 세이브 시스템**
+*   **[Milestone 23] 오버클럭 모드 (무한 웨이브)**
+*   **[Milestone 24] 모바일 광고 연동 및 보상형 부활**
 
 ---
 
 ### **Phase 7: 글로벌 리더보드 및 서버 구축**
-*   **[Milestone 24] 서버 인프라 설정**
-*   **[Milestone 25] 실시간 랭킹 시스템**
-*   **[Milestone 26] 클라우드 세이브**
+*   **[Milestone 25] 서버 인프라 설정**
+*   **[Milestone 26] 실시간 랭킹 시스템**
+*   **[Milestone 27] 클라우드 세이브**
 
 ---
 
 ### **Phase 8: PC 버전 출시 및 플랫폼 확장**
-*   **[Milestone 27] SteamWorks SDK 연동**
-*   **[Milestone 28] PC 최적화 및 조작 개선**
-*   **[Milestone 29] PC 전용 콘텐츠 추가**
+*   **[Milestone 28] SteamWorks SDK 연동**
+*   **[Milestone 29] PC 최적화 및 조작 개선**
+*   **[Milestone 30] PC 전용 콘텐츠 추가**
 
 ---
 
 ### **Phase 9: VR 버전 이식 및 몰입형 경험**
-*   **[Milestone 30] SteamVR / OpenXR 도입**
-*   **[Milestone 31] VR 전용 UI/UX 리디자인**
-*   **[Milestone 32] 공간 음향(Spatial Audio) 최적화**
+*   **[Milestone 31] SteamVR / OpenXR 도입**
+*   **[Milestone 32] VR 전용 UI/UX 리디자인**
+*   **[Milestone 33] 공간 음향(Spatial Audio) 최적화**
 
 ---
 
 ### **Phase 10: 콘솔 플랫폼 이식 (Console)**
-*   **[Milestone 33] 콘솔 개발 키트 대응**
-*   **[Milestone 34] 컨트롤러 진동(Haptic) 피드백**
-*   **[Milestone 35] 최종 스토어 심사 및 글로벌 런칭**
+*   **[Milestone 34] 콘솔 개발 키트 대응**
+*   **[Milestone 35] 컨트롤러 진동(Haptic) 피드백**
+*   **[Milestone 36] 최종 스토어 심사 및 글로벌 런칭**
 
