@@ -2,16 +2,19 @@ using Potop.Client.Core;
 using Potop.Client.Data;
 using UnityEngine;
 
+using Potop.Client.Gameplay.Combat;
+
 namespace Potop.Client.Gameplay {
     /// <summary>
     /// 적의 이동 및 플레이어 공격 로직을 처리하는 클래스입니다.
     /// </summary>
+    [RequireComponent(typeof(Health))]
     public class EnemyBot : MonoBehaviour {
         [SerializeField] private EnemyData _enemyData;
         [SerializeField] private int _damage = 10;
         [SerializeField] private float _attackRange = 2f;
 
-        private int _currentHealth;
+        private Health _healthComponent;
 
         /// <summary>
         /// 적의 이동 속도입니다.
@@ -21,7 +24,7 @@ namespace Potop.Client.Gameplay {
         /// <summary>
         /// 적의 체력입니다.
         /// </summary>
-        public int Health => _currentHealth;
+        public int Health => _healthComponent != null ? _healthComponent.CurrentHealth : 0;
 
         /// <summary>
         /// 적이 플레이어에게 입히는 피해량입니다.
@@ -40,12 +43,25 @@ namespace Potop.Client.Gameplay {
 
         private Transform _target;
 
+        private void Awake() {
+            _healthComponent = GetComponent<Health>();
+        }
+
         private void OnEnable() {
             if (GameManager.Instance != null) {
                 _target = GameManager.Instance.PlayerTransform;
             }
-            if (_enemyData != null) {
-                _currentHealth = _enemyData.MaxHealth;
+            if (_healthComponent != null) {
+                if (_enemyData != null) {
+                    _healthComponent.InitializeHealth(_enemyData.MaxHealth);
+                }
+                _healthComponent.OnDeath += HandleDeath;
+            }
+        }
+
+        private void OnDisable() {
+            if (_healthComponent != null) {
+                _healthComponent.OnDeath -= HandleDeath;
             }
         }
 
@@ -68,11 +84,17 @@ namespace Potop.Client.Gameplay {
 
         /// <summary>
         /// 적이 데미지를 받을 때 호출되는 메서드입니다.
+        /// 하위 호환성을 위해 유지되며, Health 컴포넌트로 처리를 위임합니다.
         /// </summary>
         /// <param name="damage">입은 피해량</param>
         public void TakeDamage(int damage) {
-            _currentHealth -= damage;
-            if (_currentHealth <= 0) {
+            if (_healthComponent != null) {
+                _healthComponent.TakeDamage(new DamageInfo { Amount = damage });
+            }
+        }
+
+        private void HandleDeath() {
+            if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
                 Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
             }
         }
