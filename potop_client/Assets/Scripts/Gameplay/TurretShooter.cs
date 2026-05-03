@@ -94,7 +94,7 @@ namespace Potop.Client.Gameplay {
         private void Shoot() {
             GameObject prefab = ProjectilePrefab;
             if (prefab != null && _firePoint != null) {
-                Instantiate(prefab, _firePoint.position, _firePoint.rotation);
+                Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(prefab, _firePoint.position, _firePoint.rotation);
             } else {
 #if UNITY_EDITOR
                 if (prefab == null) {
