@@ -43,7 +43,7 @@ namespace Potop.Client.Gameplay {
                     pos.z = pos.y;
                     pos.y = Random.Range(MIN_HEIGHT, MAX_HEIGHT);
 
-                    Instantiate(_enemyPrefab, pos, Quaternion.identity);
+                    Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(_enemyPrefab, pos, Quaternion.identity);
                 }
                 yield return new WaitForSeconds(_spawnInterval);
             }

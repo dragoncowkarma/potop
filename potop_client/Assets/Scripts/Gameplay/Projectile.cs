@@ -45,7 +45,7 @@ namespace Potop.Client.Gameplay {
                     GameManager.Instance.AddScore(enemy.ScoreValue);
                 }
 
-                Destroy(collision.gameObject);
+                Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(collision.gameObject);
                 DespawnSelf();
             }
         }

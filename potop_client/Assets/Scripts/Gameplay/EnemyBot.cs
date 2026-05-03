@@ -40,13 +40,17 @@ namespace Potop.Client.Gameplay {
 
         private Transform _target;
 
-        private void Start() {
+        private void OnEnable() {
             if (GameManager.Instance != null) {
                 _target = GameManager.Instance.PlayerTransform;
             }
             if (_enemyData != null) {
                 _currentHealth = _enemyData.MaxHealth;
             }
+        }
+
+        private void Start() {
+            // Initialization moved to OnEnable for pooling support
         }
 
         private void Update() {
@@ -69,7 +73,7 @@ namespace Potop.Client.Gameplay {
         public void TakeDamage(int damage) {
             _currentHealth -= damage;
             if (_currentHealth <= 0) {
-                Destroy(gameObject);
+                Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
             }
         }
 
@@ -77,7 +81,7 @@ namespace Potop.Client.Gameplay {
             if (GameManager.Instance != null) {
                 GameManager.Instance.TakeDamage(_damage);
             }
-            Destroy(gameObject);
+            Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
         }
     }
 }

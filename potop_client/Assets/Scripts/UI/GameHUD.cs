@@ -34,6 +34,10 @@ namespace Potop.Client.UI {
             EventBroker.Subscribe<ScoreChangedEvent>(OnScoreChanged);
             GameManager.OnGameOver += ShowGameOver;
             GameManager.OnStateChanged += HandleStateChanged;
+
+            if (_uiDocument != null && _uiDocument.rootVisualElement != null) {
+                SubscribeToButtons();
+            }
         }
 
         private void OnDisable() {
@@ -41,6 +45,8 @@ namespace Potop.Client.UI {
             EventBroker.Unsubscribe<ScoreChangedEvent>(OnScoreChanged);
             GameManager.OnGameOver -= ShowGameOver;
             GameManager.OnStateChanged -= HandleStateChanged;
+
+            UnsubscribeFromButtons();
         }
 
         private void Start() {
@@ -55,8 +61,7 @@ namespace Potop.Client.UI {
                 _restartButton = root.Q<Button>("restart-button");
                 _menuButton = root.Q<Button>("menu-button");
 
-                if (_restartButton != null) _restartButton.clicked += OnRestartClicked;
-                if (_menuButton != null) _menuButton.clicked += OnMenuClicked;
+                SubscribeToButtons();
             }
 
             if (GameManager.Instance != null) {
@@ -64,6 +69,16 @@ namespace Potop.Client.UI {
                 UpdateHP(GameManager.Instance.Health, GameManager.Instance.MaxHealth);
                 HandleStateChanged(GameManager.Instance.CurrentState);
             }
+        }
+
+        private void SubscribeToButtons() {
+            if (_restartButton != null) _restartButton.clicked += OnRestartClicked;
+            if (_menuButton != null) _menuButton.clicked += OnMenuClicked;
+        }
+
+        private void UnsubscribeFromButtons() {
+            if (_restartButton != null) _restartButton.clicked -= OnRestartClicked;
+            if (_menuButton != null) _menuButton.clicked -= OnMenuClicked;
         }
 
         private void OnHealthChanged(HealthChangedEvent evt) {

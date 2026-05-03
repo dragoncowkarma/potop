@@ -38,6 +38,16 @@ namespace Potop.Client.UI {
             }
         }
 
+        private void OnDisable() {
+            if (_startButton != null) {
+                _startButton.onClick.RemoveListener(OnStartClicked);
+            }
+
+            if (_quitButton != null) {
+                _quitButton.onClick.RemoveListener(OnQuitClicked);
+            }
+        }
+
         private void OnStartClicked() {
             SceneManager.LoadScene(MAIN_SCENE);
         }
