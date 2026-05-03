@@ -92,11 +92,11 @@ namespace Potop.Client.Gameplay {
         }
 
         private void Shoot() {
-            if (_projectilePrefab != null && _firePoint != null) {
-                Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(_projectilePrefab, _firePoint.position, _firePoint.rotation);
+            if (ProjectilePrefab != null && _firePoint != null) {
+                Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(ProjectilePrefab, _firePoint.position, _firePoint.rotation);
             } else {
 #if UNITY_EDITOR
-                if (prefab == null) {
+                if (ProjectilePrefab == null) {
                     Debug.LogWarning("Projectile Prefab is missing!");
                 }
                 if (_firePoint == null) {
