@@ -1,12 +1,3 @@
-# [Milestone 040] [jules] [p05] projectile_mutation_logic
-- parallel: 
-    - [docs/prompts/040/0400101_weapon_architecture.md](file:///Users/macbook/Desktop/potop/docs/prompts/040/0400101_weapon_architecture.md)
-    - [docs/prompts/040/0400102_weapon_logic.md](file:///Users/macbook/Desktop/potop/docs/prompts/040/0400102_weapon_logic.md)
-    - [docs/prompts/040/0400201_mutation_synergy.md](file:///Users/macbook/Desktop/potop/docs/prompts/040/0400201_mutation_synergy.md)
-    - [docs/prompts/040/0400301_xp_leveling.md](file:///Users/macbook/Desktop/potop/docs/prompts/040/0400301_xp_leveling.md)
-
----
-
 # 🎯 System Role
 You are a **Senior Software Engineer with 10 years of experience**, specializing in perfect architectural design and optimization for the 'POTOP' project. Your code is scalable, handles edge cases, and strictly adheres to the project conventions defined in `AGENTS.md`. (Jules)
 

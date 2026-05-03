@@ -1,10 +1,3 @@
-# [Milestone 030] [jules] [p03] enemy_variant_logic
-- parallel: 
-    - [docs/prompts/030/0300101_wave_management.md](file:///Users/macbook/Desktop/potop/docs/prompts/030/0300101_wave_management.md)
-    - [docs/prompts/030/0300201_enemy_base_refactor.md](file:///Users/macbook/Desktop/potop/docs/prompts/030/0300201_enemy_base_refactor.md)
-
----
-
 # 🎯 System Role
 You are a **Senior Software Engineer with 10 years of experience**, specializing in perfect architectural design and optimization for the 'POTOP' project. Your code is scalable, handles edge cases, and strictly adheres to the project conventions defined in `AGENTS.md`. (Jules)
 
@@ -12,9 +5,9 @@ You are a **Senior Software Engineer with 10 years of experience**, specializing
 Before starting, read `../SUMMARY.xml` and `../../REFACTOR_TRACKING.md` to understand the current context.
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game (Mobile/PC/VR/Console)
-- Current Module: Specialized Enemy Variants (03002)
-- Background: Phase 3 Gameplay Loop
-- Related Systems: Enemy AI, Variant Logic
+- Current Module: Modular Weapon Architecture (04001)
+- Background: Implementation of specific weapon types based on the new architecture.
+- Related Systems: Hitscan Weapon, Projectile Weapon, Weapon Controller
 </context>
 
 # 🛠️ Task
@@ -26,11 +19,10 @@ Perform the following instructions according to the `AGENTS.md` process.
 
 <task>
 1. Read `../SUMMARY.xml` to check the current scope and identify potential overlaps; identify relevant entries in `../../REFACTOR_TRACKING.md`.
-2. Implement `BlitzEnemy.cs`: High movement speed, low health. Inherit from `EnemyBase`.
-3. Implement `ArmoredEnemy.cs`: High health, low movement speed, knockback resistance. Inherit from `EnemyBase`.
-4. Implement `SwarmEnemy.cs`: Low health, designed for group spawning. Inherit from `EnemyBase`.
-5. Ensure each variant correctly overrides relevant `EnemyBase` methods for unique behavior.
-6. After completion, remove resolved items from `../../REFACTOR_TRACKING.md`.
+2. Implement `HitscanWeapon.cs`: Inherit from `WeaponBase` and implement raycast-based shooting logic.
+3. Implement `ProjectileWeapon.cs`: Inherit from `WeaponBase` and implement physical projectile spawning logic.
+4. Implement `WeaponController.cs`: Manage weapon switching, aiming behavior, and input mapping for the player turret.
+5. After completion, remove resolved items from `../../REFACTOR_TRACKING.md`.
 </task>
 
 # ⚠️ Constraints (POTOP Global Standards)
@@ -45,24 +37,25 @@ Code violating these rules will NOT be considered `Done`.
 
 # 💻 Input
 <input_data>
-- Scope: `Assets/Scripts/Gameplay/AI/Variants/BlitzEnemy.cs`, `Assets/Scripts/Gameplay/AI/Variants/ArmoredEnemy.cs`, `Assets/Scripts/Gameplay/AI/Variants/SwarmEnemy.cs`
+- Scope: `Assets/Scripts/Gameplay/Weapons/HitscanWeapon.cs`, `Assets/Scripts/Gameplay/Weapons/ProjectileWeapon.cs`, `Assets/Scripts/Gameplay/Weapons/WeaponController.cs`
 </input_data>
 
 # 📝 Output Format
 Generate your response strictly following the structure below (including XML tags).
 <output_format>
 <thinking>
-- Analyze the base class dependencies for variants.
-- Plan the override of `TakeDamage` or movement logic for specialized traits (e.g., armor reduction).
-- **Verify Scope Restriction and potential conflicts with parallel tasks p01/p02.**
+- Analyze the performance implications of Raycast vs Projectile for high-frequency fire.
+- Plan the weapon switching sequence to ensure a smooth transition and animation synchronization.
+- **Verify Scope Restriction and potential conflicts with parallel tasks p01, p03-p05.**
 </thinking>
 <implementation>
-- Create concrete classes for each enemy variant inheriting from `EnemyBase`.
+- Implement the specialized weapon classes and the controller logic.
 </implementation>
 <verification>
-- [ ] Confirm `BlitzEnemy` moves faster than the base enemy.
-- [ ] Verify `ArmoredEnemy` health reduction is consistent with armor logic.
+- [ ] Confirm `HitscanWeapon` correctly detects hits on enemies.
+- [ ] Verify `ProjectileWeapon` instantiates the correct projectile prefab.
+- [ ] Ensure `WeaponController` switches weapons without state corruption.
 - [ ] EOF empty line and comment cleanup completed.
-- [ ] **Scope Restriction (Enemy variant files only) strictly verified.**
+- [ ] **Scope Restriction (Weapon logic files only) strictly verified.**
 </verification>
 </output_format>

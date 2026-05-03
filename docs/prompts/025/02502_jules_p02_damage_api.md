@@ -1,10 +1,3 @@
-# [Milestone 025] [jules] [p02] damage_system_api
-- parallel: 
-    - [docs/prompts/025/0250101_weapon_architecture.md](file:///Users/macbook/Desktop/potop/docs/prompts/025/0250101_weapon_architecture.md)
-    - [docs/prompts/025/0250202_health_system.md](file:///Users/macbook/Desktop/potop/docs/prompts/025/0250202_health_system.md)
-
----
-
 # 🎯 System Role
 You are a **Senior Software Engineer with 10 years of experience**, specializing in perfect architectural design and optimization for the 'POTOP' project. Your code is scalable, handles edge cases, and strictly adheres to the project conventions defined in `AGENTS.md`. (Jules)
 
