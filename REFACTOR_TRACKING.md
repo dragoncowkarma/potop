@@ -5,7 +5,6 @@ This file tracks technical debt, deprecated fields, and pending refactors that c
 ## Pending Refactors
 
 ### Unity Client (potop_client)
-- [ ] Example: `Assets/Scripts/Player/PlayerStats.cs`: `_health` (Formerly `_hp`) - *Tracking for Antigravity cleanup.*
 
 ---
 *Note: Delete items from this list once they are fully resolved and verified.*
