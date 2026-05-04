@@ -47,6 +47,18 @@
       <Path>Assets/Scripts/UI/StartMenuController.cs</Path>
       <Responsibility>Main menu interaction and scene management.</Responsibility>
     </Module>
+    <Module name="VFXTrigger" type="Feedback">
+      <Path>Assets/Scripts/Gameplay/VFX/VFXTrigger.cs</Path>
+      <Responsibility>Spawns particle VFX at hit location on damage/death events.</Responsibility>
+    </Module>
+    <Module name="SFXTrigger" type="Feedback">
+      <Path>Assets/Scripts/Gameplay/SFX/SFXTrigger.cs</Path>
+      <Responsibility>Plays sound effects on damage/death events.</Responsibility>
+    </Module>
+    <Module name="HitFlash" type="Feedback">
+      <Path>Assets/Scripts/Gameplay/Combat/HitFlash.cs</Path>
+      <Responsibility>MaterialPropertyBlock emission flash on damage for visual hit feedback.</Responsibility>
+    </Module>
   </CoreScripts>
 
   <StrictConventions>

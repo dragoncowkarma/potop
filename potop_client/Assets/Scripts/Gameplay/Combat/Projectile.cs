@@ -43,7 +43,13 @@ namespace Potop.Client.Gameplay {
             if (collision.gameObject.CompareTag(ENEMY_TAG)) {
                 IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
                 if (damageable != null) {
-                    damageable.TakeDamage(new DamageInfo { Amount = _damage });
+                    ContactPoint contact = collision.GetContact(0);
+                    damageable.TakeDamage(new DamageInfo {
+                        Amount = _damage,
+                        HitPoint = contact.point,
+                        HitNormal = contact.normal,
+                        Instigator = gameObject
+                    });
                     DespawnSelf();
                 }
             }
