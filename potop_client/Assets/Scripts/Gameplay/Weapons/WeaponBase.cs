@@ -12,6 +12,9 @@ namespace Potop.Client.Gameplay.Weapons {
         [SerializeField, Tooltip("무기의 기본 스탯 데이터")]
         protected WeaponData _weaponData;
 
+        [SerializeField, Tooltip("투사체가 발사될 위치")]
+        protected Transform _firePoint;
+
         // 전략 패턴: 런타임에 발사 방식을 교체하기 위함
         protected IFireStrategy _fireStrategy;
 
@@ -104,5 +107,15 @@ namespace Potop.Client.Gameplay.Weapons {
             if (_weaponData == null) return 0f;
             return _weaponBarrel != null ? _weaponBarrel.ModifyProjectileSpeed(_weaponData.BaseProjectileSpeed) : _weaponData.BaseProjectileSpeed;
         }
+
+        /// <summary>
+        /// 투사체가 발사될 위치입니다.
+        /// </summary>
+        public Transform FirePoint => _firePoint;
+
+        /// <summary>
+        /// 발사할 투사체 프리팹입니다.
+        /// </summary>
+        public GameObject ProjectilePrefab => _weaponData != null ? _weaponData.ProjectilePrefab : null;
     }
 }

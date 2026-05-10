@@ -15,5 +15,13 @@ namespace Potop.Client.Gameplay.Weapons {
 
         [Tooltip("투사체 이동 속도")]
         public float BaseProjectileSpeed = 20f;
+
+        [SerializeField, Tooltip("발사할 투사체 프리팹")]
+        private GameObject _projectilePrefab;
+
+        /// <summary>
+        /// 발사할 투사체 프리팹입니다.
+        /// </summary>
+        public GameObject ProjectilePrefab => _projectilePrefab;
     }
 }
