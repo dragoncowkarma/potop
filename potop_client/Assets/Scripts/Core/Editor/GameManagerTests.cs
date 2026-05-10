@@ -27,8 +27,8 @@ namespace Potop.Client.Core.Tests {
             }
 
             // 싱글톤 인스턴스 정적 필드를 명시적으로 초기화하여 테스트 간 간섭을 방지합니다.
-            var instanceField = typeof(GameManager).GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
-            instanceField?.SetValue(null, null);
+            var instanceProperty = typeof(GameManager).GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+            instanceProperty?.GetSetMethod(true)?.Invoke(null, new object[] { null });
         }
 
         [Test]
