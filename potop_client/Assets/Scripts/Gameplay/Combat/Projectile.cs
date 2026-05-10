@@ -21,7 +21,22 @@ namespace Potop.Client.Gameplay {
         /// </summary>
         public float LifeTime => _lifeTime;
 
+        /// <summary>
+        /// 발사체의 피해량입니다.
+        /// </summary>
+        public int Damage => _damage;
+
         private const string ENEMY_TAG = "Enemy";
+
+        /// <summary>
+        /// 발사체를 초기화합니다.
+        /// </summary>
+        /// <param name="speed">투사체 속도</param>
+        /// <param name="damage">가할 피해량</param>
+        public void Initialize(float speed, int damage) {
+            _speed = speed;
+            _damage = damage;
+        }
 
         private void OnEnable() {
             Invoke(nameof(DespawnSelf), _lifeTime);
