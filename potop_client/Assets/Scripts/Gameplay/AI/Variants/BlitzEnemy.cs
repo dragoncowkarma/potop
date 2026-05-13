@@ -10,7 +10,7 @@ namespace Potop.Client.Gameplay.AI.Variants {
 
         private Rigidbody _rb;
 
-        protected virtual void Awake() {
+        protected override void Awake() {
             _rb = GetComponent<Rigidbody>();
         }
 

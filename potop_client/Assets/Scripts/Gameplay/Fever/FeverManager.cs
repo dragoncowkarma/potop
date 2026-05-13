@@ -27,6 +27,8 @@ namespace Potop.Client.Gameplay.Fever {
         private void Update() {
             if (_isFeverActive) {
                 _feverTimer -= Time.deltaTime;
+                
+                EventBroker.Publish(new FeverProgressChangedEvent { Progress = Mathf.Clamp01(_feverTimer / _feverDuration) });
 
                 if (_feverTimer <= 0) {
                     DeactivateFever();
@@ -38,6 +40,8 @@ namespace Potop.Client.Gameplay.Fever {
             if (_isFeverActive) return;
 
             _currentGauge += e.ScoreValue;
+            
+            EventBroker.Publish(new FeverProgressChangedEvent { Progress = Mathf.Clamp01((float)_currentGauge / _maxGauge) });
 
             if (_currentGauge >= _maxGauge) {
                 ActivateFever();
@@ -50,12 +54,14 @@ namespace Potop.Client.Gameplay.Fever {
             _feverTimer = _feverDuration;
 
             EventBroker.Publish(new FeverStateChangedEvent { IsFeverActive = true });
+            EventBroker.Publish(new FeverProgressChangedEvent { Progress = 1f });
         }
 
         private void DeactivateFever() {
             _isFeverActive = false;
 
             EventBroker.Publish(new FeverStateChangedEvent { IsFeverActive = false });
+            EventBroker.Publish(new FeverProgressChangedEvent { Progress = 0f });
         }
     }
 }

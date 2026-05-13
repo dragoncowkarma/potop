@@ -18,6 +18,7 @@ namespace Potop.Client.UI {
 
         private Label _scoreLabel;
         private Label _healthLabel;
+        private VisualElement _feverBarFill;
 
         private VisualElement _crosshairContainer;
         private VisualElement _gameOverScreen;
@@ -32,6 +33,8 @@ namespace Potop.Client.UI {
         private void OnEnable() {
             EventBroker.Subscribe<HealthChangedEvent>(OnHealthChanged);
             EventBroker.Subscribe<ScoreChangedEvent>(OnScoreChanged);
+            EventBroker.Subscribe<FeverProgressChangedEvent>(OnFeverProgressChanged);
+            EventBroker.Subscribe<FeverStateChangedEvent>(OnFeverStateChanged);
             GameManager.OnGameOver += ShowGameOver;
             GameManager.OnStateChanged += HandleStateChanged;
 
@@ -43,6 +46,8 @@ namespace Potop.Client.UI {
         private void OnDisable() {
             EventBroker.Unsubscribe<HealthChangedEvent>(OnHealthChanged);
             EventBroker.Unsubscribe<ScoreChangedEvent>(OnScoreChanged);
+            EventBroker.Unsubscribe<FeverProgressChangedEvent>(OnFeverProgressChanged);
+            EventBroker.Unsubscribe<FeverStateChangedEvent>(OnFeverStateChanged);
             GameManager.OnGameOver -= ShowGameOver;
             GameManager.OnStateChanged -= HandleStateChanged;
 
@@ -54,6 +59,7 @@ namespace Potop.Client.UI {
                 VisualElement root = _uiDocument.rootVisualElement;
                 _scoreLabel = root.Q<Label>("score-label");
                 _healthLabel = root.Q<Label>("health-label");
+                _feverBarFill = root.Q<VisualElement>("fever-bar-fill");
 
                 _crosshairContainer = root.Q<VisualElement>("crosshair-container");
                 _gameOverScreen = root.Q<VisualElement>("game-over-screen");
@@ -87,6 +93,22 @@ namespace Potop.Client.UI {
 
         private void OnScoreChanged(ScoreChangedEvent evt) {
             UpdateScore(evt.CurrentScore);
+        }
+
+        private void OnFeverProgressChanged(FeverProgressChangedEvent evt) {
+            if (_feverBarFill != null) {
+                _feverBarFill.style.width = new Length(evt.Progress * 100f, LengthUnit.Percent);
+            }
+        }
+
+        private void OnFeverStateChanged(FeverStateChangedEvent evt) {
+            if (_feverBarFill != null) {
+                if (evt.IsFeverActive) {
+                    _feverBarFill.AddToClassList("fever-active");
+                } else {
+                    _feverBarFill.RemoveFromClassList("fever-active");
+                }
+            }
         }
 
         private void UpdateHP(int current, int max) {

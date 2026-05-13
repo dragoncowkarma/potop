@@ -45,4 +45,14 @@ namespace Potop.Client.Core.Events {
         /// </summary>
         public bool IsFeverActive;
     }
+
+    /// <summary>
+    /// 피버 게이지의 진행 상태가 변경되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct FeverProgressChangedEvent {
+        /// <summary>
+        /// 피버 게이지의 진행도 (0.0 ~ 1.0)
+        /// </summary>
+        public float Progress;
+    }
 }

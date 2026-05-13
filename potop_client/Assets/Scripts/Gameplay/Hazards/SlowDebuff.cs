@@ -5,10 +5,10 @@ using Potop.Client.Gameplay;
 namespace Potop.Client.Gameplay.Hazards {
     /// <summary>
     /// 적에게 부착되어 이동 속도를 느리게 만드는 디버프 컴포넌트입니다.
-    /// EnemyBot의 MoveSpeed가 읽기 전용이므로, 물리적인 반대 방향 이동을 가해 속도를 상쇄합니다.
+    /// EnemyBase의 MoveSpeed가 읽기 전용이므로, 물리적인 반대 방향 이동을 가해 속도를 상쇄합니다.
     /// </summary>
     public class SlowDebuff : MonoBehaviour {
-        private EnemyBot _targetBot;
+        private EnemyBase _targetBot;
         private float _slowFactor;
         private Coroutine _slowRoutine;
 
@@ -21,7 +21,7 @@ namespace Potop.Client.Gameplay.Hazards {
             this.enabled = true;
 
             if (_targetBot == null) {
-                _targetBot = GetComponent<EnemyBot>();
+                _targetBot = GetComponent<EnemyBase>();
             }
 
             if (_targetBot == null) {
@@ -38,7 +38,7 @@ namespace Potop.Client.Gameplay.Hazards {
         }
 
         private void Update() {
-            // EnemyBot이 매 프레임 forward로 이동하므로, 그 반대 방향으로 이동시켜 속도를 상쇄합니다.
+            // EnemyBase이 매 프레임 forward로 이동하므로, 그 반대 방향으로 이동시켜 속도를 상쇄합니다.
             if (_targetBot != null && _slowFactor > 0) {
                 float counterSpeed = _targetBot.MoveSpeed * _slowFactor;
                 transform.Translate(-Vector3.forward * counterSpeed * Time.deltaTime, Space.Self);

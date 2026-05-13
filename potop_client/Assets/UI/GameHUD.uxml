@@ -6,8 +6,17 @@
 >
     <ui:Style src="GameHUD.uss" />
     <ui:VisualElement class="hud-container">
-        <ui:Label name="score-label" text="SCORE: 0" class="hud-text score-text" />
-        <ui:Label name="health-label" text="100 / 100" class="hud-text health-text" />
+        <ui:VisualElement class="hud-stats-container">
+            <ui:Label name="score-label" text="SCORE: 0" class="hud-text score-text" />
+            <ui:Label name="health-label" text="100 / 100" class="hud-text health-text" />
+        </ui:VisualElement>
+        
+        <ui:VisualElement name="fever-container" class="fever-container">
+            <ui:Label name="fever-label" text="FEVER" class="hud-text fever-text" />
+            <ui:VisualElement class="fever-bar-background">
+                <ui:VisualElement name="fever-bar-fill" class="fever-bar-fill" />
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 
     <ui:VisualElement name="crosshair-container" class="crosshair-container">

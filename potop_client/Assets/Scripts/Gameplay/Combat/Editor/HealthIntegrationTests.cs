@@ -42,10 +42,10 @@ namespace Potop.Client.Gameplay.Combat.Tests {
         }
 
         [Test]
-        public void EnemyBot_IntegratesWithHealth() {
+        public void EnemyBase_IntegratesWithHealth() {
             var go = new GameObject();
             var health = go.AddComponent<Health>();
-            var bot = go.AddComponent<EnemyBot>();
+            var bot = go.AddComponent<Potop.Client.Gameplay.AI.Variants.BlitzEnemy>(); // Use a concrete variant instead of abstract Base
 
             // Setup
             go.SetActive(false);

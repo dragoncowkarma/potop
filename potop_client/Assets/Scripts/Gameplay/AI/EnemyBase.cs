@@ -10,7 +10,7 @@ namespace Potop.Client.Gameplay {
     /// 구체적인 적의 행동은 이 클래스를 상속받아 구현해야 합니다.
     /// </summary>
     [RequireComponent(typeof(Health))]
-    public abstract class EnemyBase : MonoBehaviour {
+    public class EnemyBase : MonoBehaviour {
         [SerializeField] protected EnemyData _enemyData;
         [SerializeField] protected int _damage = 10;
         [SerializeField] protected float _attackRange = 2f;
@@ -44,6 +44,7 @@ namespace Potop.Client.Gameplay {
         public int ScoreValue => _enemyData != null ? _enemyData.ScoreValue : 0;
 
         protected Transform _target;
+        public Transform Target => _target;
 
         protected virtual void Awake() {
             _healthComponent = GetComponent<Health>();
@@ -74,13 +75,19 @@ namespace Potop.Client.Gameplay {
 
         protected virtual void Update() {
             if (_target != null) {
-                transform.LookAt(_target);
-                transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
+                Move();
 
                 // 플레이어에 도달하면 데미지 (sqrMagnitude를 이용한 최적화)
                 if ((transform.position - _target.position).sqrMagnitude <= _sqrAttackRange) {
                     AttackPlayer();
                 }
+            }
+        }
+
+        protected virtual void Move() {
+            if (_target != null) {
+                transform.LookAt(_target);
+                transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
             }
         }
 
@@ -90,8 +97,19 @@ namespace Potop.Client.Gameplay {
         /// </summary>
         /// <param name="damage">입은 피해량</param>
         public void TakeDamage(int damage) {
+            TakeDamage(new DamageInfo { Amount = damage });
+        }
+
+        public virtual void TakeDamage(DamageInfo damageInfo) {
             if (_healthComponent != null) {
-                _healthComponent.TakeDamage(new DamageInfo { Amount = damage });
+                _healthComponent.TakeDamage(damageInfo);
+            }
+        }
+
+        public virtual void ApplyKnockback(Vector3 force) {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null) {
+                rb.AddForce(force, ForceMode.Impulse);
             }
         }
 

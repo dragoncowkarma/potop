@@ -12,7 +12,7 @@ namespace Potop.Client.Gameplay.AI.Variants {
         private Collider[] _swarmColliders = new Collider[20];
         private Rigidbody _rb;
 
-        protected virtual void Awake() {
+        protected override void Awake() {
             _rb = GetComponent<Rigidbody>();
         }
 
