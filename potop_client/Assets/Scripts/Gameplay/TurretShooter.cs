@@ -1,4 +1,5 @@
 using Potop.Client.Core;
+using Potop.Client.Core.Events;
 using Potop.Client.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -48,8 +49,12 @@ namespace Potop.Client.Gameplay {
         public float Sensitivity => _sensitivity;
 
         private float _nextFireTime = 0f;
+        private bool _isFeverActive;
+        private const float FEVER_FIRE_RATE_MULTIPLIER = 2.0f;
 
         private void OnEnable() {
+            EventBroker.Subscribe<FeverStateChangedEvent>(OnFeverStateChanged);
+
             if (_attackAction != null) {
                 _attackAction.action.Enable();
             }
@@ -59,6 +64,8 @@ namespace Potop.Client.Gameplay {
         }
 
         private void OnDisable() {
+            EventBroker.Unsubscribe<FeverStateChangedEvent>(OnFeverStateChanged);
+
             if (_attackAction != null) {
                 _attackAction.action.Disable();
             }
@@ -85,10 +92,15 @@ namespace Potop.Client.Gameplay {
             }
 
             // 발사
-            if (_attackAction != null && _attackAction.action.IsPressed() && Time.time >= _nextFireTime) {
+            if (_attackAction != null && _attackAction.action.IsPressed() && Time.time >= _nextFireTime && FireRate > 0) {
                 Shoot();
-                _nextFireTime = Time.time + FireRate;
+                float interval = _isFeverActive ? FireRate / FEVER_FIRE_RATE_MULTIPLIER : FireRate;
+                _nextFireTime = Time.time + interval;
             }
+        }
+
+        private void OnFeverStateChanged(FeverStateChangedEvent e) {
+            _isFeverActive = e.IsFeverActive;
         }
 
         private void Shoot() {
