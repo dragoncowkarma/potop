@@ -6,15 +6,17 @@ using Potop.Client.Gameplay.Combat;
 
 namespace Potop.Client.Gameplay {
     /// <summary>
-    /// 적의 이동 및 플레이어 공격 로직을 처리하는 클래스입니다.
+    /// 적의 공통 이동 로직과 IDamageable 통합을 처리하는 추상 기본 클래스입니다.
+    /// 구체적인 적의 행동은 이 클래스를 상속받아 구현해야 합니다.
     /// </summary>
     [RequireComponent(typeof(Health))]
-    public class EnemyBot : MonoBehaviour {
-        [SerializeField] private EnemyData _enemyData;
-        [SerializeField] private int _damage = 10;
-        [SerializeField] private float _attackRange = 2f;
+    public abstract class EnemyBase : MonoBehaviour {
+        [SerializeField] protected EnemyData _enemyData;
+        [SerializeField] protected int _damage = 10;
+        [SerializeField] protected float _attackRange = 2f;
 
-        private Health _healthComponent;
+        protected Health _healthComponent;
+        protected float _sqrAttackRange;
 
         /// <summary>
         /// 적의 이동 속도입니다.
@@ -41,13 +43,14 @@ namespace Potop.Client.Gameplay {
         /// </summary>
         public int ScoreValue => _enemyData != null ? _enemyData.ScoreValue : 0;
 
-        private Transform _target;
+        protected Transform _target;
 
-        private void Awake() {
+        protected virtual void Awake() {
             _healthComponent = GetComponent<Health>();
+            _sqrAttackRange = _attackRange * _attackRange;
         }
 
-        private void OnEnable() {
+        protected virtual void OnEnable() {
             if (GameManager.Instance != null) {
                 _target = GameManager.Instance.PlayerTransform;
             }
@@ -59,24 +62,23 @@ namespace Potop.Client.Gameplay {
             }
         }
 
-        private void OnDisable() {
+        protected virtual void OnDisable() {
             if (_healthComponent != null) {
                 _healthComponent.OnDeath -= HandleDeath;
             }
         }
 
-        private void Start() {
+        protected virtual void Start() {
             // Initialization moved to OnEnable for pooling support
         }
 
-        private void Update() {
+        protected virtual void Update() {
             if (_target != null) {
                 transform.LookAt(_target);
                 transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
 
-                // 플레이어에 도달하면 데미지
-                float distanceToPlayer = Vector3.Distance(transform.position, _target.position);
-                if (distanceToPlayer <= _attackRange) {
+                // 플레이어에 도달하면 데미지 (sqrMagnitude를 이용한 최적화)
+                if ((transform.position - _target.position).sqrMagnitude <= _sqrAttackRange) {
                     AttackPlayer();
                 }
             }
@@ -101,7 +103,7 @@ namespace Potop.Client.Gameplay {
             }
         }
 
-        private void AttackPlayer() {
+        protected virtual void AttackPlayer() {
             if (GameManager.Instance != null) {
                 GameManager.Instance.TakeDamage(_damage);
             }
