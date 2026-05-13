@@ -1,0 +1,39 @@
+using UnityEngine;
+
+namespace Potop.Client.Gameplay.AI.Variants {
+    /// <summary>
+    /// 단일 개체의 위협은 낮지만 물량 공세로 플레이어의 탄약을 소진시키고 시야를 방해하는 무리형 적 변종입니다.
+    /// 체력은 낮지만 대량으로 스폰되어 압박감을 조성합니다.
+    /// </summary>
+    public class SwarmEnemy : EnemyBase {
+        [SerializeField] private float _groupingRadius = 3f;
+        [SerializeField] private float _swarmSpeedMultiplier = 1.2f;
+        private Collider[] _swarmColliders = new Collider[10];
+
+        /// <summary>
+        /// 무리 지어 이동하는 특성을 구현하기 위해 이동 로직을 재정의합니다.
+        /// 개별적인 이동보다는 주변 개체들과 일정 거리를 유지하며 함께 움직이는 군집 행동을 모사합니다.
+        /// </summary>
+        protected override void Move() {
+            if (Target != null) {
+                // GC를 방지하기 위해 NonAlloc 사용
+                int hitCount = Physics.OverlapSphereNonAlloc(transform.position, _groupingRadius, _swarmColliders);
+                int swarmCount = 0;
+                for (int i = 0; i < hitCount; i++) {
+                    if (_swarmColliders[i].GetComponent<SwarmEnemy>() != null) {
+                        swarmCount++;
+                    }
+                }
+
+                float currentSpeed = MoveSpeed;
+                if (swarmCount > 1) {
+                    currentSpeed *= _swarmSpeedMultiplier;
+                }
+
+                Vector3 targetPosition = new Vector3(Target.position.x, transform.position.y, Target.position.z);
+                transform.LookAt(targetPosition);
+                transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+            }
+        }
+    }
+}
