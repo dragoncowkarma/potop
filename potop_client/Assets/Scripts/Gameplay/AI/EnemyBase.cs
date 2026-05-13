@@ -16,6 +16,7 @@ namespace Potop.Client.Gameplay {
         [SerializeField] protected float _attackRange = 2f;
 
         protected Health _healthComponent;
+        protected float _sqrAttackRange;
 
         /// <summary>
         /// 적의 이동 속도입니다.
@@ -46,6 +47,7 @@ namespace Potop.Client.Gameplay {
 
         protected virtual void Awake() {
             _healthComponent = GetComponent<Health>();
+            _sqrAttackRange = _attackRange * _attackRange;
         }
 
         protected virtual void OnEnable() {
@@ -76,7 +78,7 @@ namespace Potop.Client.Gameplay {
                 transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
 
                 // 플레이어에 도달하면 데미지 (sqrMagnitude를 이용한 최적화)
-                if ((transform.position - _target.position).sqrMagnitude <= _attackRange * _attackRange) {
+                if ((transform.position - _target.position).sqrMagnitude <= _sqrAttackRange) {
                     AttackPlayer();
                 }
             }
