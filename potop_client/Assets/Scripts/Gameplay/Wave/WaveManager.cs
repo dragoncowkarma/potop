@@ -45,6 +45,14 @@ namespace Potop.Client.Gameplay.Wave {
         private bool _isGameComplete = false;
 
         private void Start() {
+            if (_waves == null || _waves.Count == 0) {
+#if UNITY_EDITOR
+                Debug.LogWarning("WaveManager: No waves defined in the inspector!");
+#endif
+                _isGameComplete = true;
+                return;
+            }
+
             // 초기 대기 시간을 설정하여 첫 웨이브 시작을 준비합니다.
             _delayTimer = _defaultWaveDelay;
         }
@@ -92,8 +100,17 @@ namespace Potop.Client.Gameplay.Wave {
                 return;
             }
 
+            var currentWave = _waves[_currentWaveIndex];
+            if (currentWave == null) {
+#if UNITY_EDITOR
+                Debug.LogError($"WaveData at index {_currentWaveIndex} is missing!");
+#endif
+                _isGameComplete = true;
+                return;
+            }
+
             _isWaveActive = true;
-            _waveTimer = _waves[_currentWaveIndex].Duration;
+            _waveTimer = currentWave.Duration;
 
             EventBroker.Publish(new WaveStartedEvent { WaveIndex = _currentWaveIndex });
         }
@@ -103,11 +120,16 @@ namespace Potop.Client.Gameplay.Wave {
         /// </summary>
         private void CompleteCurrentWave() {
             _isWaveActive = false;
-            _delayTimer = _defaultWaveDelay;
 
             EventBroker.Publish(new WaveCompletedEvent { WaveIndex = _currentWaveIndex });
 
             _currentWaveIndex++;
+
+            if (_currentWaveIndex >= _waves.Count) {
+                _isGameComplete = true;
+            } else {
+                _delayTimer = _defaultWaveDelay;
+            }
         }
     }
 }
