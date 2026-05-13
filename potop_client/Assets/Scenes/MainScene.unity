@@ -960,6 +960,8 @@ GameObject:
   - component: {fileID: 1671246563}
   - component: {fileID: 1671246562}
   - component: {fileID: 1671246566}
+  - component: {fileID: 1671246568}
+  - component: {fileID: 1671246567}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1042,6 +1044,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3477d9ab3e614882acdbcce9ca8a51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1671246567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671246561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e549efd868544c38b5239dd004816f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waves: []
+  _defaultWaveDelay: 5
+--- !u!114 &1671246568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671246561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b6167a692db4ac6a6f164abdbfe40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxGauge: 100
+  _feverDuration: 5
 --- !u!1 &1936333736
 GameObject:
   m_ObjectHideFlags: 0

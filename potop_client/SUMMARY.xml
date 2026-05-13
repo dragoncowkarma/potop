@@ -43,6 +43,14 @@
       <Path>Assets/Scripts/Gameplay/EnemyBot.cs</Path>
       <Responsibility>Enemy AI and basic movement logic.</Responsibility>
     </Module>
+    <Module name="WaveManager" type="Manager">
+      <Path>Assets/Scripts/Gameplay/Wave/WaveManager.cs</Path>
+      <Responsibility>Manages wave progression and publishes WaveStarted/Completed events.</Responsibility>
+    </Module>
+    <Module name="FeverManager" type="Manager">
+      <Path>Assets/Scripts/Gameplay/Fever/FeverManager.cs</Path>
+      <Responsibility>Tracks enemy kills and manages the Fever Mode gauge.</Responsibility>
+    </Module>
     <Module name="StartMenuController" type="Controller">
       <Path>Assets/Scripts/UI/StartMenuController.cs</Path>
       <Responsibility>Main menu interaction and scene management.</Responsibility>
