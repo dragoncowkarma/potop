@@ -25,4 +25,24 @@ namespace Potop.Client.Core.Events {
         /// </summary>
         public int MaxHealth;
     }
+
+    /// <summary>
+    /// 적이 처치되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct EnemyDiedEvent {
+        /// <summary>
+        /// 적이 제공하는 점수(피버 게이지 증가량)입니다.
+        /// </summary>
+        public int ScoreValue;
+    }
+
+    /// <summary>
+    /// 피버 모드의 활성화 상태가 변경되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct FeverStateChangedEvent {
+        /// <summary>
+        /// 피버 모드 활성화 여부입니다.
+        /// </summary>
+        public bool IsFeverActive;
+    }
 }
