@@ -92,9 +92,10 @@ namespace Potop.Client.Gameplay {
             }
 
             // 발사
-            if (_attackAction != null && _attackAction.action.IsPressed() && Time.time >= _nextFireTime) {
+            if (_attackAction != null && _attackAction.action.IsPressed() && Time.time >= _nextFireTime && FireRate > 0) {
                 Shoot();
-                _nextFireTime = Time.time + (_isFeverActive ? FireRate / FEVER_FIRE_RATE_MULTIPLIER : FireRate);
+                float interval = _isFeverActive ? FireRate / FEVER_FIRE_RATE_MULTIPLIER : FireRate;
+                _nextFireTime = Time.time + interval;
             }
         }
 

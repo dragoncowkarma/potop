@@ -6,8 +6,8 @@ namespace Potop.Client.Gameplay.Fever {
     /// 피버 게이지를 관리하고 피버 모드 상태를 제어하는 매니저 클래스입니다.
     /// </summary>
     public class FeverManager : MonoBehaviour {
-        [SerializeField] private int _maxGauge = 100;
-        [SerializeField] private float _feverDuration = 5f;
+        [SerializeField, Min(1)] private int _maxGauge = 100;
+        [SerializeField, Min(0.1f)] private float _feverDuration = 5f;
 
         private int _currentGauge;
         private float _feverTimer;
@@ -19,6 +19,9 @@ namespace Potop.Client.Gameplay.Fever {
 
         private void OnDisable() {
             EventBroker.Unsubscribe<EnemyDiedEvent>(OnEnemyDied);
+            if (_isFeverActive) {
+                DeactivateFever();
+            }
         }
 
         private void Update() {
