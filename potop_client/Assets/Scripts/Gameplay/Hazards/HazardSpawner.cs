@@ -25,6 +25,8 @@ namespace Potop.Client.Gameplay.Hazards {
 
         private void Start() {
             InitializeSpawners();
+            // 성능 최적화를 위해 Update 대신 0.5초 간격으로 스폰 상태를 확인합니다.
+            InvokeRepeating(nameof(CheckAndRespawnHazards), 0.5f, 0.5f);
         }
 
         /// <summary>
@@ -57,12 +59,8 @@ namespace Potop.Client.Gameplay.Hazards {
             }
         }
 
-        private void Update() {
-            CheckAndRespawnHazards();
-        }
-
         /// <summary>
-        /// 매 프레임 활성화된 환경 요소들의 상태를 확인하고, 비활성화(파괴/풀 반환)된 요소에 대해 리스폰 타이머를 시작합니다.
+        /// 주기적으로 활성화된 환경 요소들의 상태를 확인하고, 비활성화(파괴/풀 반환)된 요소에 대해 리스폰 타이머를 시작합니다.
         /// </summary>
         private void CheckAndRespawnHazards() {
             if (_spawnConfigs == null) return;

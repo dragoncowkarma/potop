@@ -20,6 +20,9 @@ namespace Potop.Client.Gameplay.Hazards {
         [Header("VFX")]
         [SerializeField] private GameObject _explosionVfxPrefab;
 
+        // 성능 최적화를 위한 물리 쿼리 결과 캐싱 (최대 30개)
+        private Collider[] _colliders = new Collider[30];
+
         /// <summary>
         /// 피해를 입었을 때 폭발 로직을 실행합니다.
         /// </summary>
@@ -34,11 +37,12 @@ namespace Potop.Client.Gameplay.Hazards {
                 PoolManager.Instance.Spawn(_explosionVfxPrefab, transform.position, Quaternion.identity);
             }
 
-            // 반경 내 적 탐색 및 피해, 디버프 적용
-            Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadius, _enemyLayer);
-            foreach (Collider col in colliders) {
-                IDamageable damageable = col.GetComponent<IDamageable>();
-                if (damageable != null) {
+            // 반경 내 적 탐색 및 피해, 디버프 적용 (가비지 할당 방지)
+            int count = Physics.OverlapSphereNonAlloc(transform.position, _explosionRadius, _colliders, _enemyLayer);
+            for (int i = 0; i < count; i++) {
+                Collider col = _colliders[i];
+
+                if (col.TryGetComponent<IDamageable>(out var damageable)) {
                     DamageInfo explosionInfo = new DamageInfo {
                         Amount = _explosionDamage,
                         HitPoint = col.ClosestPoint(transform.position),
@@ -49,10 +53,9 @@ namespace Potop.Client.Gameplay.Hazards {
                     damageable.TakeDamage(explosionInfo);
                 }
 
-                // 슬로우 디버프 적용
+                // 슬로우 디버프 적용 (성능을 위해 GetComponent 최적화)
                 if (col.CompareTag("Enemy")) {
-                    SlowDebuff slowDebuff = col.GetComponent<SlowDebuff>();
-                    if (slowDebuff == null) {
+                    if (!col.TryGetComponent<SlowDebuff>(out var slowDebuff)) {
                         slowDebuff = col.gameObject.AddComponent<SlowDebuff>();
                     }
                     slowDebuff.ApplySlow(_slowDuration, _slowFactor);

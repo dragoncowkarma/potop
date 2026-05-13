@@ -20,6 +20,9 @@ namespace Potop.Client.Gameplay.Hazards {
 
         private Coroutine _pullRoutine;
 
+        // 성능 최적화를 위한 물리 쿼리 결과 캐싱 (최대 30개)
+        private Collider[] _colliders = new Collider[30];
+
         /// <summary>
         /// 피해를 입었을 때 자기장 활성화 로직을 실행합니다.
         /// </summary>
@@ -64,11 +67,12 @@ namespace Potop.Client.Gameplay.Hazards {
         }
 
         private void PullGems() {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, _pullRadius, _itemLayer);
-            foreach (Collider col in colliders) {
+            int count = Physics.OverlapSphereNonAlloc(transform.position, _pullRadius, _colliders, _itemLayer);
+            for (int i = 0; i < count; i++) {
+                Collider col = _colliders[i];
                 Gem gem = col.GetComponent<Gem>();
                 if (gem != null) {
-                    Rigidbody rb = gem.GetComponent<Rigidbody>();
+                    Rigidbody rb = col.attachedRigidbody;
                     if (rb != null) {
                         Vector3 pullDirection = (transform.position - gem.transform.position).normalized;
                         // 거리에 반비례하는 힘을 가해 가까울수록 더 강하게 당깁니다. (0으로 나누는 것 방지)

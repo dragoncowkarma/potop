@@ -18,9 +18,14 @@ namespace Potop.Client.Gameplay.Hazards {
         /// <param name="duration">슬로우 유지 시간</param>
         /// <param name="slowFactor">감소시킬 속도 비율 (예: 0.5면 50% 느려짐)</param>
         public void ApplySlow(float duration, float slowFactor) {
-            _targetBot = GetComponent<EnemyBot>();
+            this.enabled = true;
+
             if (_targetBot == null) {
-                Destroy(this);
+                _targetBot = GetComponent<EnemyBot>();
+            }
+
+            if (_targetBot == null) {
+                this.enabled = false;
                 return;
             }
 
@@ -47,7 +52,16 @@ namespace Potop.Client.Gameplay.Hazards {
 
         private void RemoveDebuff() {
             _slowFactor = 0f;
-            Destroy(this);
+            _slowRoutine = null;
+            this.enabled = false;
+        }
+
+        private void OnDisable() {
+            if (_slowRoutine != null) {
+                StopCoroutine(_slowRoutine);
+                _slowRoutine = null;
+            }
+            _slowFactor = 0f;
         }
     }
 }
