@@ -6,5 +6,10 @@ This file tracks technical debt, deprecated fields, and pending refactors that c
 
 ### Unity Client (potop_client)
 
+- [ ] **Combat Integration**: `TurretShooter.cs` should be refactored to inherit from or use `WeaponBase` and `IFireStrategy` to align with the new modular weapon architecture.
+- [ ] **Feedback Integration**: `CameraShakeController` should be integrated into the combat loop (e.g., triggered via `WeaponBase` or `Projectile` on impact).
+- [ ] **VFX Optimization**: `VFXTrigger` uses a coroutine for despawning; consider moving this logic into a dedicated `PooledObject` component or `PoolManager` to reduce coroutine overhead.
+- [ ] **Validation**: Perform full runtime audit (Scene, Profiler, Console) once Unity MCP connectivity is stable.
+
 ---
 *Note: Delete items from this list once they are fully resolved and verified.*
