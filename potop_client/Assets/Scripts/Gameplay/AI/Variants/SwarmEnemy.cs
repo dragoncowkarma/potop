@@ -8,7 +8,13 @@ namespace Potop.Client.Gameplay.AI.Variants {
     public class SwarmEnemy : EnemyBase {
         [SerializeField] private float _groupingRadius = 3f;
         [SerializeField] private float _swarmSpeedMultiplier = 1.2f;
-        private Collider[] _swarmColliders = new Collider[10];
+        [SerializeField] private LayerMask _swarmLayer;
+        private Collider[] _swarmColliders = new Collider[20];
+        private Rigidbody _rb;
+
+        protected virtual void Awake() {
+            _rb = GetComponent<Rigidbody>();
+        }
 
         /// <summary>
         /// 무리 지어 이동하는 특성을 구현하기 위해 이동 로직을 재정의합니다.
@@ -16,11 +22,12 @@ namespace Potop.Client.Gameplay.AI.Variants {
         /// </summary>
         protected override void Move() {
             if (Target != null) {
-                // GC를 방지하기 위해 NonAlloc 사용
-                int hitCount = Physics.OverlapSphereNonAlloc(transform.position, _groupingRadius, _swarmColliders);
+                // GC를 방지하기 위해 NonAlloc 및 LayerMask 사용
+                int hitCount = Physics.OverlapSphereNonAlloc(transform.position, _groupingRadius, _swarmColliders, _swarmLayer);
                 int swarmCount = 0;
                 for (int i = 0; i < hitCount; i++) {
-                    if (_swarmColliders[i].GetComponent<SwarmEnemy>() != null) {
+                    // GetComponent 대신 태그를 사용하여 식별 비용을 최소화합니다.
+                    if (_swarmColliders[i].CompareTag(gameObject.tag)) {
                         swarmCount++;
                     }
                 }
@@ -32,7 +39,13 @@ namespace Potop.Client.Gameplay.AI.Variants {
 
                 Vector3 targetPosition = new Vector3(Target.position.x, transform.position.y, Target.position.z);
                 transform.LookAt(targetPosition);
-                transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+
+                if (_rb != null) {
+                    Vector3 moveVelocity = transform.forward * currentSpeed;
+                    _rb.linearVelocity = new Vector3(moveVelocity.x, _rb.linearVelocity.y, moveVelocity.z);
+                } else {
+                    transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+                }
             }
         }
     }

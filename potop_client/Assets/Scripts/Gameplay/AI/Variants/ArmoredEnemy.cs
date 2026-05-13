@@ -17,8 +17,15 @@ namespace Potop.Client.Gameplay.AI.Variants {
         /// <param name="damageInfo">적용할 피해 정보</param>
         public override void TakeDamage(DamageInfo damageInfo) {
             int reducedDamage = Mathf.Max(1, Mathf.RoundToInt(damageInfo.Amount * _damageReductionMultiplier));
-            damageInfo.Amount = reducedDamage;
-            base.TakeDamage(damageInfo);
+            // 원본 DamageInfo를 보존하기 위해 새로운 구조체를 생성하여 전달합니다.
+            DamageInfo modifiedDamageInfo = new DamageInfo {
+                Amount = reducedDamage,
+                HitPoint = damageInfo.HitPoint,
+                HitNormal = damageInfo.HitNormal,
+                Instigator = damageInfo.Instigator,
+                Type = damageInfo.Type
+            };
+            base.TakeDamage(modifiedDamageInfo);
         }
 
         /// <summary>

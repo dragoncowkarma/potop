@@ -8,6 +8,12 @@ namespace Potop.Client.Gameplay.AI.Variants {
     public class BlitzEnemy : EnemyBase {
         [SerializeField] private float _speedMultiplier = 1.5f;
 
+        private Rigidbody _rb;
+
+        protected virtual void Awake() {
+            _rb = GetComponent<Rigidbody>();
+        }
+
         /// <summary>
         /// 특유의 빠른 이동 속도를 적용하기 위해 기본 이동 로직을 재정의합니다.
         /// 빠른 접근이라는 돌격형 적의 기획적 의도를 달성하기 위해 이동 배율을 곱합니다.
@@ -16,7 +22,13 @@ namespace Potop.Client.Gameplay.AI.Variants {
             if (Target != null) {
                 Vector3 targetPosition = new Vector3(Target.position.x, transform.position.y, Target.position.z);
                 transform.LookAt(targetPosition);
-                transform.Translate(Vector3.forward * (MoveSpeed * _speedMultiplier) * Time.deltaTime);
+
+                if (_rb != null) {
+                    Vector3 moveVelocity = transform.forward * (MoveSpeed * _speedMultiplier);
+                    _rb.linearVelocity = new Vector3(moveVelocity.x, _rb.linearVelocity.y, moveVelocity.z);
+                } else {
+                    transform.Translate(Vector3.forward * (MoveSpeed * _speedMultiplier) * Time.deltaTime);
+                }
             }
         }
     }
