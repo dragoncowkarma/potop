@@ -94,6 +94,8 @@ namespace Potop.Client.Gameplay {
         }
 
         private void HandleDeath() {
+            Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.EnemyDiedEvent { ScoreValue = ScoreValue });
+
             if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
                 Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
             }
