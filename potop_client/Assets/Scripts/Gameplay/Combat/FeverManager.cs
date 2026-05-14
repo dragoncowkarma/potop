@@ -7,7 +7,7 @@ namespace Potop.Client.Gameplay {
     /// </summary>
     public struct FeverLevelChangedEvent {
         /// <summary>
-        /// 현재 피버 레벨입니다. (1~5)
+        /// 현재 피버 레벨입니다. (0~3)
         /// </summary>
         public int Level;
     }
@@ -16,6 +16,10 @@ namespace Potop.Client.Gameplay {
     /// 피버 게이지를 관리하고 피버 모드 상태를 제어하는 매니저 클래스입니다.
     /// </summary>
     public class FeverManager : MonoBehaviour {
+        private const int FEVER_LV1_THRESHOLD = 50;
+        private const int FEVER_LV2_THRESHOLD = 100;
+        private const int FEVER_LV3_THRESHOLD = 200;
+
         [SerializeField, Min(1)] private int _maxGauge = 100;
         [SerializeField, Min(0.1f)] private float _feverDuration = 5f;
 
@@ -62,11 +66,16 @@ namespace Potop.Client.Gameplay {
         }
 
         private void CheckFeverLevel(int comboCount) {
-            if (comboCount == 50) {
+            if (comboCount == 0) {
+                EventBroker.Publish(new FeverLevelChangedEvent { Level = 0 });
+                return;
+            }
+
+            if (comboCount == FEVER_LV1_THRESHOLD) {
                 EventBroker.Publish(new FeverLevelChangedEvent { Level = 1 });
-            } else if (comboCount == 100) {
+            } else if (comboCount == FEVER_LV2_THRESHOLD) {
                 EventBroker.Publish(new FeverLevelChangedEvent { Level = 2 });
-            } else if (comboCount == 200) {
+            } else if (comboCount == FEVER_LV3_THRESHOLD) {
                 EventBroker.Publish(new FeverLevelChangedEvent { Level = 3 });
             }
         }
