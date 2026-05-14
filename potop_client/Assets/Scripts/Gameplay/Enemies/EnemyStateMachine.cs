@@ -50,7 +50,7 @@ namespace Potop.Client.Gameplay {
             if (enemy.Target != null) {
                 float sqrDistance = (enemy.transform.position - enemy.Target.position).sqrMagnitude;
                 if (sqrDistance <= enemy.SqrAttackRange) {
-                    enemy.StateMachine.ChangeState(enemy.AttackState, enemy);
+                    enemy.StateMachine.ChangeState(EnemyBase.AttackState, enemy);
                 }
             }
         }
@@ -73,6 +73,7 @@ namespace Potop.Client.Gameplay {
 
     public class EnemyDeathState : IEnemyState {
         public void Enter(EnemyBase enemy) {
+            enemy.Despawn();
         }
 
         public void Update(EnemyBase enemy) {

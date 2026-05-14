@@ -21,10 +21,12 @@ namespace Potop.Client.Gameplay {
         public float SqrAttackRange => _sqrAttackRange;
 
         public EnemyStateMachine StateMachine { get; private set; }
-        public IEnemyState IdleState { get; private set; }
-        public IEnemyState ChaseState { get; private set; }
-        public IEnemyState AttackState { get; private set; }
-        public IEnemyState DeathState { get; private set; }
+
+        // Static shared state instances to optimize memory and reduce GC pressure across pooled enemies
+        public static readonly IEnemyState IdleState = new EnemyIdleState();
+        public static readonly IEnemyState ChaseState = new EnemyChaseState();
+        public static readonly IEnemyState AttackState = new EnemyAttackState();
+        public static readonly IEnemyState DeathState = new EnemyDeathState();
 
         private int _rotationFrameOffset;
         private const int ROTATION_FRAME_COUNT = 3;
@@ -67,10 +69,7 @@ namespace Potop.Client.Gameplay {
             _sqrAttackRange = _attackRange * _attackRange;
 
             StateMachine = new EnemyStateMachine();
-            IdleState = new EnemyIdleState();
-            ChaseState = new EnemyChaseState();
-            AttackState = new EnemyAttackState();
-            DeathState = new EnemyDeathState();
+            _rotationFrameOffset = Mathf.Abs(GetInstanceID()) % ROTATION_FRAME_COUNT;
         }
 
         protected virtual void OnEnable() {
@@ -83,8 +82,6 @@ namespace Potop.Client.Gameplay {
                 }
                 _healthComponent.OnDeath += HandleDeath;
             }
-
-            _rotationFrameOffset = Mathf.Abs(GetInstanceID()) % ROTATION_FRAME_COUNT;
 
             StateMachine.ChangeState(ChaseState, this);
         }
@@ -165,17 +162,15 @@ namespace Potop.Client.Gameplay {
 
         private void HandleDeath() {
             Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.EnemyDiedEvent { ScoreValue = ScoreValue });
-
-            if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
-                Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
-            }
+            StateMachine.ChangeState(DeathState, this);
         }
 
         public virtual void TriggerAttack() {
             Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.PlayerTakeDamageEvent { Damage = _damage });
-            
             StateMachine.ChangeState(DeathState, this);
+        }
 
+        public void Despawn() {
             if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
                 Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
             }
