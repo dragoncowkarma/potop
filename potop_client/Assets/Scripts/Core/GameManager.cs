@@ -89,6 +89,7 @@ namespace Potop.Client.Core {
         }
 
         private void Start() {
+            EventBroker.Subscribe<PlayerTakeDamageEvent>(OnPlayerTakeDamage);
             ChangeState(GameState.Start);
             StartGame();
         }
@@ -140,6 +141,10 @@ namespace Potop.Client.Core {
             }
         }
 
+        private void OnPlayerTakeDamage(PlayerTakeDamageEvent e) {
+            TakeDamage(e.Damage);
+        }
+
         /// <summary>
         /// 점수를 추가합니다.
         /// </summary>
@@ -176,6 +181,7 @@ namespace Potop.Client.Core {
         }
 
         private void OnDestroy() {
+            EventBroker.Unsubscribe<PlayerTakeDamageEvent>(OnPlayerTakeDamage);
             if (Instance == this) {
                 Instance = null;
             }

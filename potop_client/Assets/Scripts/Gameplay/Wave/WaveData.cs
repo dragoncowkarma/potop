@@ -39,7 +39,19 @@ namespace Potop.Client.Gameplay.Wave {
         /// </summary>
         [SerializeField] private float _duration = 60f;
 
+        /// <summary>
+        /// 웨이브 진행도(0~1)에 따른 스폰 강도 변화를 정의합니다.
+        /// </summary>
+        [SerializeField] private AnimationCurve _spawnIntensityCurve = AnimationCurve.Linear(0, 1, 1, 1);
+
+        /// <summary>
+        /// 기본 스폰 간격입니다. (초)
+        /// </summary>
+        [SerializeField] private float _baseSpawnInterval = 2f;
+
         public IReadOnlyList<EnemySpawnData> EnemySpawns => _enemySpawns;
         public float Duration => _duration;
+        public AnimationCurve SpawnIntensityCurve => _spawnIntensityCurve;
+        public float BaseSpawnInterval => _baseSpawnInterval;
     }
 }

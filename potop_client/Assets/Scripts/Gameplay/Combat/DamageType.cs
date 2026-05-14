@@ -23,4 +23,16 @@ namespace Potop.Client.Gameplay.Combat {
         /// </summary>
         Explosive
     }
+
+    /// <summary>
+    /// 피해에 추가적인 속성이나 특성을 부여하기 위한 비트 플래그입니다.
+    /// </summary>
+    [System.Flags]
+    public enum DamageTags {
+        None = 0,
+        Critical = 1 << 0,
+        Penetrating = 1 << 1,
+        Indirect = 1 << 2,
+        FeverBonus = 1 << 3
+    }
 }

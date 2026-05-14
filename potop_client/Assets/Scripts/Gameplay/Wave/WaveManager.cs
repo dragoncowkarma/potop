@@ -44,6 +44,13 @@ namespace Potop.Client.Gameplay.Wave {
         private bool _isWaveActive = false;
         private bool _isGameComplete = false;
 
+        public float CurrentWaveProgress => _isWaveActive && _currentWaveIndex < _waves.Count 
+            ? 1f - (_waveTimer / _waves[_currentWaveIndex].Duration) 
+            : 0f;
+        
+        public WaveData CurrentWaveData => _currentWaveIndex < _waves.Count ? _waves[_currentWaveIndex] : null;
+        public bool IsWaveActive => _isWaveActive;
+
         private void Start() {
             if (_waves == null || _waves.Count == 0) {
 #if UNITY_EDITOR

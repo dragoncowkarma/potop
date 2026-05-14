@@ -55,4 +55,13 @@ namespace Potop.Client.Core.Events {
         /// </summary>
         public float Progress;
     }
+    /// <summary>
+    /// 플레이어가 피해를 입었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct PlayerTakeDamageEvent {
+        /// <summary>
+        /// 입은 피해량입니다.
+        /// </summary>
+        public int Damage;
+    }
 }

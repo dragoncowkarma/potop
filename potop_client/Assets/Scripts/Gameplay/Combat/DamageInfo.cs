@@ -34,5 +34,10 @@ namespace Potop.Client.Gameplay.Combat {
         /// 대상의 방어력 계산이나 추가적인 상태 이상 유발 여부를 결정하기 위해 사용합니다.
         /// </summary>
         public DamageType Type;
+
+        /// <summary>
+        /// 피해에 대한 추가 정보(치명타, 관통 등)를 담고 있는 플래그입니다.
+        /// </summary>
+        public DamageTags Tags;
     }
 }

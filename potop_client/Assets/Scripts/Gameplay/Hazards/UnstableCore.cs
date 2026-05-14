@@ -11,7 +11,7 @@ namespace Potop.Client.Gameplay.Hazards {
         [Header("Explosion Settings")]
         [SerializeField] private float _explosionRadius = 5f;
         [SerializeField] private int _explosionDamage = 50;
-        [SerializeField] private LayerMask _enemyLayer;
+        [SerializeField] private LayerMask _targetLayers; // Enemy + Hazard layers
 
         [Header("Slow Effect Settings")]
         [SerializeField] private float _slowDuration = 3f;
@@ -37,10 +37,11 @@ namespace Potop.Client.Gameplay.Hazards {
                 PoolManager.Instance.Spawn(_explosionVfxPrefab, transform.position, Quaternion.identity);
             }
 
-            // 반경 내 적 탐색 및 피해, 디버프 적용 (가비지 할당 방지)
-            int count = Physics.OverlapSphereNonAlloc(transform.position, _explosionRadius, _colliders, _enemyLayer);
+            // 반경 내 대상 탐색 및 피해, 디버프 적용 (가비지 할당 방지)
+            int count = Physics.OverlapSphereNonAlloc(transform.position, _explosionRadius, _colliders, _targetLayers);
             for (int i = 0; i < count; i++) {
                 Collider col = _colliders[i];
+                if (col.gameObject == gameObject) continue; // 자기 자신 제외
 
                 if (col.TryGetComponent<IDamageable>(out var damageable)) {
                     DamageInfo explosionInfo = new DamageInfo {
@@ -48,12 +49,13 @@ namespace Potop.Client.Gameplay.Hazards {
                         HitPoint = col.ClosestPoint(transform.position),
                         HitNormal = (col.transform.position - transform.position).normalized,
                         Instigator = gameObject,
-                        Type = DamageType.Explosive
+                        Type = DamageType.Explosive,
+                        Tags = DamageTags.Indirect
                     };
                     damageable.TakeDamage(explosionInfo);
                 }
 
-                // 슬로우 디버프 적용 (성능을 위해 GetComponent 최적화)
+                // 적에게만 슬로우 디버프 적용
                 if (col.CompareTag("Enemy")) {
                     if (!col.TryGetComponent<SlowDebuff>(out var slowDebuff)) {
                         slowDebuff = col.gameObject.AddComponent<SlowDebuff>();

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Potop.Client.Gameplay.Combat;
 
@@ -7,17 +8,22 @@ namespace Potop.Client.Gameplay.Hazards {
     /// 플레이어의 공격에 의해 활성화되어 적에게 피해를 주거나 특수한 효과를 발생시킵니다.
     /// </summary>
     public abstract class EnvironmentalHazard : MonoBehaviour, IDamageable {
+        [SerializeField] protected float _activationDelay = 0.1f;
         protected bool _isActivated = false;
 
-        /// <summary>
-        /// 환경 요소가 피해를 받았을 때 호출됩니다.
-        /// 여러 번 중복하여 활성화되는 것을 방지하기 위해 상태를 체크한 뒤 활성화 로직을 위임합니다.
-        /// </summary>
-        /// <param name="info">가해진 피해 정보</param>
         public virtual void TakeDamage(DamageInfo info) {
             if (_isActivated) return;
 
             _isActivated = true;
+            if (_activationDelay > 0) {
+                StartCoroutine(DelayedActivation(info));
+            } else {
+                ActivateHazard(info);
+            }
+        }
+
+        private IEnumerator DelayedActivation(DamageInfo info) {
+            yield return new WaitForSeconds(_activationDelay);
             ActivateHazard(info);
         }
 
