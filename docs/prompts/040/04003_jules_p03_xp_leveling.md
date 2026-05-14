@@ -1,5 +1,5 @@
-# [Phase 05] [jules] [p03] XP/레벨업 시스템
-- parallel: [p02](05002_jules_p02_exp_gem.md)
+# [Phase 04] [jules] [p03] XP/레벨업 시스템
+- parallel: [p02](04002_jules_p02_exp_gem.md)
 
 ---
 
@@ -9,9 +9,9 @@ You are a **Senior Software Engineer with 10 years of experience**, specializing
 # 📋 Context
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game (Mobile/PC/VR/Console)
-- Current Module: XP & Leveling System (05003)
-- Background: Phase 5 — XP 누적, 레벨업 판정, 업그레이드 풀에서 3~4개 선택지 추출
-- Related Systems: EventBroker (`OnEXPCollected`, `OnLevelUp`), EXPGem (05002)
+- Current Module: XP & Leveling System (04003)
+- Background: Phase 4 — XP 누적, 레벨업 판정, 업그레이드 풀에서 3~4개 선택지 추출
+- Related Systems: EventBroker (`OnEXPCollected`, `OnLevelUp`), EXPGem (04002)
 - GDD Reference: `03_data_and_balance.md` §경험치 요구량 테이블
 </context>
 

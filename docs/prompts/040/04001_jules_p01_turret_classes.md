@@ -1,5 +1,5 @@
-# [Phase 05] [jules] [p01] 터렛 클래스 구현
-- parallel: [p02](05002_jules_p02_exp_gem.md)
+# [Phase 04] [jules] [p01] 터렛 클래스 구현
+- parallel: [p02](04002_jules_p02_exp_gem.md)
 
 ---
 
@@ -10,8 +10,8 @@ You are a **Senior Software Engineer with 10 years of experience**, specializing
 Before starting, read `../SUMMARY.xml` and `../../REFACTOR_TRACKING.md` to understand the current context.
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game (Mobile/PC/VR/Console)
-- Current Module: Turret Class Implementation (05001)
-- Background: Phase 5 — 4종 포탑 클래스(Guardian/Valkyrie/Juggernaut/Nova)를 `WeaponBase` 상속 구조로 구현
+- Current Module: Turret Class Implementation (04001)
+- Background: Phase 4 — 4종 포탑 클래스(Guardian/Valkyrie/Juggernaut/Nova)를 `WeaponBase` 상속 구조로 구현
 - Related Systems: WeaponBase (Phase 2.5), IFireStrategy, TurretData SO, PoolManager
 - GDD Reference: `02_gameplay_mechanics.md` §플레이어 포탑 클래스, `03_data_and_balance.md` §포탑 상세 데이터
 </context>

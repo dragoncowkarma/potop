@@ -1,4 +1,4 @@
-# [Phase 05] [gemini] QA 통합 검증
+# [Phase 04] [gemini] QA 통합 검증
 
 ---
 
@@ -8,8 +8,8 @@ You are a **Senior QA and Stability Engineer**, verifying project integrity. You
 # 📋 Context
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game (Mobile/PC/VR/Console)
-- Current Module: Phase 5 Roguelite Foundation Validation (05099)
-- Background: 4종 터렛, 경험치 보석, XP/레벨업, 업그레이드 UI 통합 검증
+- Current Module: Phase 4 Roguelite Foundation Validation (04099)
+- Background: Phase 4 — 4종 터렛, 경험치 보석, XP/레벨업, 업그레이드 UI 통합 검증
 - Related Systems: WeaponBase, EXPGem, LevelingManager, UpgradeSelectController
 </context>
 

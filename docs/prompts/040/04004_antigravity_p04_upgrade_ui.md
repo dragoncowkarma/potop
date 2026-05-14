@@ -1,4 +1,4 @@
-# [Phase 05] [antigravity] [p04] 업그레이드 선택 UI
+# [Phase 04] [antigravity] [p04] 업그레이드 선택 UI
 
 ---
 
@@ -8,9 +8,9 @@ You are a **Senior Unity Engine Engineer and UI/UX Designer**. You leverage the 
 # 📋 Context
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game (Mobile/PC/VR/Console)
-- Current Module: Upgrade Selection UI (05003b)
-- Background: Phase 5 — 레벨업 시 3~4개 업그레이드 선택지를 표시하는 UI 패널 구현
-- Related Systems: LevelingManager (05003), EventBroker (`OnLevelUp`), UI Toolkit
+- Current Module: Upgrade Selection UI (04003b)
+- Background: Phase 4 — 레벨업 시 3~4개 업그레이드 선택지를 표시하는 UI 패널 구현
+- Related Systems: LevelingManager (04003), EventBroker (`OnLevelUp`), UI Toolkit
 - GDD Reference: `02_gameplay_mechanics.md` §성장 및 진화 시스템
 </context>
 

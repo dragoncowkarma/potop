@@ -1,5 +1,5 @@
-# [Phase 05] [jules] [p02] 경험치 보석 드랍/수집 시스템
-- parallel: [p01](05001_jules_p01_turret_classes.md), [p03](05003_jules_p03_xp_leveling.md)
+# [Phase 04] [jules] [p02] 경험치 보석 드랍/수집 시스템
+- parallel: [p01](04001_jules_p01_turret_classes.md), [p03](04003_jules_p03_xp_leveling.md)
 
 ---
 
@@ -10,8 +10,8 @@ You are a **Senior Software Engineer with 10 years of experience**, specializing
 Before starting, read `../SUMMARY.xml` and `../../REFACTOR_TRACKING.md` to understand the current context.
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game (Mobile/PC/VR/Console)
-- Current Module: EXP Gem Drop & Collection System (05002)
-- Background: Phase 5 — 적 처치 시 경험치 보석 드랍, 자력 흡수 메카닉 구현
+- Current Module: EXP Gem Drop & Collection System (04002)
+- Background: Phase 4 — 적 처치 시 경험치 보석 드랍, 자력 흡수 메카닉 구현
 - Related Systems: PoolManager (Phase 2), EventBroker (`OnEnemyKilled`), EnemyData SO
 - GDD Reference: `02_gameplay_mechanics.md` §아이템 및 파밍 (Blue:10XP, Green:50XP, Red:200XP)
 </context>
