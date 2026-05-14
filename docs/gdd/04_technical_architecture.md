@@ -19,13 +19,22 @@ POTOP은 대규모 물량(적, 투사체)을 효율적으로 처리하기 위해
 
 ### **🧩 주요 시스템 설계 (Core Systems Design)**
 
-#### **1. 이벤트 브로커 (Event Broker)**
-* **방식:** C# `Action<T>` 기반의 중앙 집중형 이벤트 버스 (`EventBroker.cs`).
-* **주요 이벤트:**
-  * `OnPlayerHealthChanged(int current, int max)`: 체력 UI 동기화.
-  * `OnEnemyKilled(EnemyData data)`: 점수 및 경험치 처리.
-  * `OnGameStateChanged(GameState state)`: 씬 관리 및 흐름 제어.
+#### **1. 이벤트 브로커 (Event Broker - Category Based)**
+* **방식:** 관심사 분리를 위해 카테고리별 정적 클래스 또는 서브 시스템으로 분리.
+* **분류:**
+  * **CombatEvents:** 데미지, 적 처치, 투사체 상호작용.
+  * **ProgressionEvents:** 경험치 획득, 레벨업, 업그레이드 선택.
+  * **UIEvents:** HUD 티어 전환, 토스트 알림, 메뉴 팝업.
+  * **MetaEvents:** 점수 정산, 데이터 저장/로드, 서버 통신.
 * **지침:** `Jules`는 모든 이벤트에 대해 명확한 접근 제한자(`public`, `private`)를 사용합니다.
+
+#### **2. 입력 추상화 레이어 (Input Abstraction)**
+* **방식:** `IInputProvider` 인터페이스를 통한 플랫폼별 로직 격리.
+* **구현:**
+  * `MobileInputProvider`: 자이로 + 가상 조이스틱.
+  * `StandaloneInputProvider`: 마우스(Look) + 키보드(Skill).
+  * `VRInputProvider`: HMD 시선 + 모션 컨트롤러.
+* **이점:** 플랫폼 추가 시 핵심 조작 로직 수정 없이 `Provider`만 교체 가능.
 
 #### **2. 오브젝트 풀링 (Object Pooling)**
 * **대상:** `Projectile`, `Enemy`, `EXPGem`, `VFX`.
@@ -60,6 +69,11 @@ POTOP은 대규모 물량(적, 투사체)을 효율적으로 처리하기 위해
 * **최적화:**
   * **Physics:** 레이어 기반 충돌 행렬(`Physics Layers`) 최적화.
   * **Memory:** `Jules`의 지침에 따라 가비지 발생이 적은 구조 설계.
+  * **Rendering (Over-The-Top Optimization):**
+    * **GPU Instancing:** 동일한 적/투사체 모델에 대해 1 Draw Call 처리.
+    * **Batching:** 정적 환경 프롭의 Static Batching 적용.
+    * **Particle System:** `GPU Simulation` 옵션을 활용하여 CPU 부하 경감.
+    * **Shader:** 커스텀 셰이더 그래프를 통한 가벼운 네온/글로우 효과 구현.
 
 ---
 
@@ -97,7 +111,8 @@ POTOP은 글로벌 리더보드 및 유저 데이터 영구 보존을 위해 RES
           "score": 1250000,
           "playTime": 960,
           "version": "1.0.2",
-          "hash": "VERIFICATION_HASH"
+          "hash": "VERIFICATION_HASH",
+          "eventLog": "ENCRYPTED_LOG_DATA"
         }
         ```
 *   **GET** `/api/v1/leaderboard/global`

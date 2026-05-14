@@ -10,6 +10,15 @@
   * **VFX:** **VFX Graph**와 **Particle System** 혼용. 적 파괴 시 발생하는 파편은 GPU 기반 Particle로 수천 개를 효율적으로 연출.
   * **UI:** Adobe XD/Figma 디자인 후 **UI Toolkit (USS/UXML)**으로 구현.
 
+#### **에셋 네이밍 규칙 (Naming Convention)**
+에셋 관리 효율성을 위해 아래의 접두사(Prefix) 규칙을 엄격히 준수합니다.
+* **Prefabs:** `PFB_[Category]_[Name]` (예: `PFB_Turret_Guardian`)
+* **Materials:** `MAT_[Name]` (예: `MAT_NeonBlue`)
+* **Textures:** `TEX_[Name]` (예: `TEX_Noise_Perlin`)
+* **Shaders:** `SHD_[Name]` (예: `SHD_Dissolve`)
+* **Audio:** `SND_[BGM/SFX]_[Name]` (예: `SND_SFX_Explosion`)
+* **VFX:** `VFX_[Name]` (예: `VFX_MuzzleFlash`)
+
 ### **🎵 사운드 디자인 및 오디오 파이프라인 (Audio Production)**
 * **음악 컨셉:** 
   * **Adaptive Music:** 웨이브 Phase에 따라 BGM의 레이어가 추가되거나 템포가 변경됨 (Phase 1: Lo-fi -> Phase 4: High-tempo EDM).
