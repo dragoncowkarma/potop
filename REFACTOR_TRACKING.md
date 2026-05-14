@@ -6,6 +6,7 @@ This file tracks technical debt, deprecated fields, and pending refactors that c
 
 ### Unity Client (potop_client)
 
+- [x] **EnemyBase FSM**: Refactored EnemyBase to use a pure FSM pattern and time-sliced rotation.
 - [ ] **Combat Integration**: `TurretShooter.cs` should be refactored to inherit from or use `WeaponBase` and `IFireStrategy` to align with the new modular weapon architecture.
 - [ ] **Feedback Integration**: `CameraShakeController` should be integrated into the combat loop (e.g., triggered via `WeaponBase` or `Projectile` on impact).
 - [ ] **VFX Optimization**: `VFXTrigger` uses a coroutine for despawning; consider moving this logic into a dedicated `PooledObject` component or `PoolManager` to reduce coroutine overhead.

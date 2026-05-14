@@ -6,16 +6,6 @@ using Potop.Client.Gameplay.Combat;
 
 namespace Potop.Client.Gameplay {
     /// <summary>
-    /// 적의 현재 행동 상태를 정의합니다.
-    /// </summary>
-    public enum EnemyState {
-        Idle,
-        Move,
-        Attack,
-        Die
-    }
-
-    /// <summary>
     /// 적의 공통 이동 로직과 IDamageable 통합을 처리하는 추상 기본 클래스입니다.
     /// 구체적인 적의 행동은 이 클래스를 상속받아 구현해야 합니다.
     /// </summary>
@@ -28,9 +18,19 @@ namespace Potop.Client.Gameplay {
         protected Health _healthComponent;
         protected float _sqrAttackRange;
 
-        protected EnemyState _currentState = EnemyState.Idle;
-        protected float _nextRotationUpdateTime;
-        protected const float ROTATION_UPDATE_INTERVAL = 0.1f;
+        public float SqrAttackRange => _sqrAttackRange;
+
+        public EnemyStateMachine StateMachine { get; private set; }
+
+        // Static shared state instances to optimize memory and reduce GC pressure across pooled enemies
+        public static readonly IEnemyState IdleState = new EnemyIdleState();
+        public static readonly IEnemyState ChaseState = new EnemyChaseState();
+        public static readonly IEnemyState AttackState = new EnemyAttackState();
+        public static readonly IEnemyState DeathState = new EnemyDeathState();
+
+        private int _rotationFrameOffset;
+        private const int ROTATION_FRAME_COUNT = 3;
+
         protected Quaternion _targetRotation;
 
         /// <summary>
@@ -67,6 +67,9 @@ namespace Potop.Client.Gameplay {
             _healthComponent = GetComponent<Health>();
             _rb = GetComponent<Rigidbody>();
             _sqrAttackRange = _attackRange * _attackRange;
+
+            StateMachine = new EnemyStateMachine();
+            _rotationFrameOffset = Mathf.Abs(GetInstanceID()) % ROTATION_FRAME_COUNT;
         }
 
         protected virtual void OnEnable() {
@@ -79,11 +82,13 @@ namespace Potop.Client.Gameplay {
                 }
                 _healthComponent.OnDeath += HandleDeath;
             }
-            _currentState = EnemyState.Move;
-            _nextRotationUpdateTime = Time.time + Random.Range(0f, ROTATION_UPDATE_INTERVAL);
+
+            StateMachine.ChangeState(ChaseState, this);
         }
 
         protected virtual void OnDisable() {
+            StateMachine?.ChangeState(null, this);
+
             if (_healthComponent != null) {
                 _healthComponent.OnDeath -= HandleDeath;
             }
@@ -96,23 +101,15 @@ namespace Potop.Client.Gameplay {
         protected virtual void Update() {
             if (_target == null) return;
 
-            switch (_currentState) {
-                case EnemyState.Move:
-                    HandleMoveState();
-                    break;
-                case EnemyState.Attack:
-                    // 공격 연출 및 쿨타임 로직 (향후 확장 가능)
-                    break;
-            }
+            StateMachine?.Update(this);
         }
 
-        protected virtual void HandleMoveState() {
+        public virtual void UpdateMovement() {
             if (_target == null) return;
 
-            // 회전 업데이트 (Time Slicing)
-            if (Time.time >= _nextRotationUpdateTime) {
+            // 회전 업데이트 (Time Slicing - N프레임 분산)
+            if (Time.frameCount % ROTATION_FRAME_COUNT == _rotationFrameOffset) {
                 UpdateRotation();
-                _nextRotationUpdateTime = Time.time + ROTATION_UPDATE_INTERVAL;
             }
 
             // 이동 방향 보간
@@ -126,12 +123,6 @@ namespace Potop.Client.Gameplay {
                 transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
             }
 
-            // 거리 체크 (sqrMagnitude 최적화)
-            float sqrDistance = (transform.position - _target.position).sqrMagnitude;
-            if (sqrDistance <= _sqrAttackRange) {
-                _currentState = EnemyState.Attack;
-                AttackPlayer();
-            }
         }
 
         protected virtual void UpdateRotation() {
@@ -144,7 +135,7 @@ namespace Potop.Client.Gameplay {
         }
 
         protected virtual void Move() {
-            // Deprecated: HandleMoveState()가 대신 처리합니다.
+            // Deprecated: UpdateMovement()가 대신 처리합니다.
         }
 
         /// <summary>
@@ -171,16 +162,15 @@ namespace Potop.Client.Gameplay {
 
         private void HandleDeath() {
             Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.EnemyDiedEvent { ScoreValue = ScoreValue });
-
-            if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
-                Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
-            }
+            StateMachine.ChangeState(DeathState, this);
         }
 
-        protected virtual void AttackPlayer() {
+        public virtual void TriggerAttack() {
             Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.PlayerTakeDamageEvent { Damage = _damage });
-            
-            _currentState = EnemyState.Die;
+            StateMachine.ChangeState(DeathState, this);
+        }
+
+        public void Despawn() {
             if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
                 Potop.Client.Core.Pooling.PoolManager.Instance.Despawn(gameObject);
             }
