@@ -73,6 +73,10 @@ namespace Potop.Client.Gameplay {
         }
 
         protected virtual void OnEnable() {
+            if (StateMachine == null) {
+                StateMachine = new EnemyStateMachine();
+            }
+
             if (GameManager.Instance != null) {
                 _target = GameManager.Instance.PlayerTransform;
             }
@@ -83,7 +87,11 @@ namespace Potop.Client.Gameplay {
                 _healthComponent.OnDeath += HandleDeath;
             }
 
-            StateMachine.ChangeState(ChaseState, this);
+            if (ChaseState != null) {
+                StateMachine.ChangeState(ChaseState, this);
+            } else {
+                Debug.LogError("EnemyBase: ChaseState is null! Static initialization might have failed.");
+            }
         }
 
         protected virtual void OnDisable() {
