@@ -1,34 +1,32 @@
+# [Phase 05] [gemini] QA 통합 검증
+
+---
+
 # 🎯 System Role
-You are a **Senior Unity Engine Engineer and UI/UX Designer**. You leverage the latest features of Unity 6 to implement optimal performance and visual quality, preferring concise and clear instructions to optimize token usage. (Antigravity)
+You are a **Senior QA and Stability Engineer**, verifying project integrity. You identify anti-patterns by analyzing runtime data and logs and strictly audit compliance with project standards. (Gemini CLI)
 
 # 📋 Context
-Before starting, read `../SUMMARY.xml` and `../../REFACTOR_TRACKING.md` to understand the current context.
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game (Mobile/PC/VR/Console)
-- Current Module: Phase 4 Progression & Physics Audit (04099)
-- Background: Combat and progression system stability audit.
-- Related Systems: Weapon Architecture, Upgrade UI, Mutated Projectiles
+- Current Module: Phase 5 Roguelite Foundation Validation (05099)
+- Background: 4종 터렛, 경험치 보석, XP/레벨업, 업그레이드 UI 통합 검증
+- Related Systems: WeaponBase, EXPGem, LevelingManager, UpgradeSelectController
 </context>
 
 # 🛠️ Task
-Perform the following instructions according to the `AGENTS.md` process.
 <task>
-1. Read `../SUMMARY.xml` to check the current scope and identify potential overlaps; identify relevant entries in `../../REFACTOR_TRACKING.md`.
-2. **Structure Audit**: Verify the existence and correct namespace of all new weapon and mutation scripts.
-3. **Hierarchy Audit**: Use `manage_scene action="get_hierarchy"` to verify the `UpgradeMenu` is correctly instantiated and disabled by default.
-4. **Stability Audit**: Monitor for `StackOverflow` or infinite loops during intensive combat with multiple mutated projectiles.
-5. **Physics Audit**: Verify projectile layers and gravity settings to ensure consistent behavior across different weapon types.
-6. After completion, remove resolved items from `../../REFACTOR_TRACKING.md`.
+1. Read `../SUMMARY.xml` and `../../REFACTOR_TRACKING.md`.
+2. **Structure Audit**: 4종 터렛 클래스가 `WeaponBase`를 올바르게 상속하는지, 네임스페이스 `Potop.Client.Gameplay` 확인.
+3. **Flow Audit**: 적 처치 → 보석 드랍 → XP 누적 → 레벨업 → 선택 UI 표시 → 선택 확정 → 게임 속행 전체 루프 검증.
+4. **Performance Audit**: 보석 100개 이상 동시 존재 시 프레임 드랍 측정. PoolManager 재활용률 확인.
+5. **Physics Audit**: 4종 터렛 투사체의 레이어/충돌 설정 일관성 검증.
+6. After completion, update `../../REFACTOR_TRACKING.md` with findings.
 </task>
 
-# ⚠️ Constraints (POTOP Global Standards)
-Code violating these rules will NOT be considered `Done`.
+# ⚠️ Constraints
 <constraints>
 - [Required] All validation must be based on real-time runtime data.
-- [Required] EXACTLY one empty line at the end of every file (EOF).
-- [Required] Comments must explain "Why" (intent) rather than "What" (action).
-- [Prohibited] Do not change existing function signatures or perform large-scale refactoring.
-- **[CRITICAL]** All detected errors must be logged in `REFACTOR_TRACKING.md` or fixed immediately.
+- **[CRITICAL]** 발견된 에러는 `REFACTOR_TRACKING.md`에 기록하거나 즉시 수정.
 </constraints>
 
 # 💻 Input
@@ -37,19 +35,18 @@ Code violating these rules will NOT be considered `Done`.
 </input_data>
 
 # 📝 Output Format
-Generate your response strictly following the structure below (including XML tags).
 <output_format>
 <thinking>
-- Analyze runtime data and identify potential physics bottlenecks during high-frequency fire.
-- Plan the sequence of performance monitoring (Upgrade Trigger -> Selection -> Combat Persistence).
+- 4종 터렛 발사 패턴별 예상 부하 분석
+- 보석 스폰 폭주 시나리오 (다수 적 동시 처치) 시뮬레이션 계획
 </thinking>
 <implementation>
-- Report validation results and provide recommended corrective actions.
+- Report validation results and provide corrective actions.
 </implementation>
 <verification>
-- [ ] Weapon architecture scripts verified.
-- [ ] Upgrade UI hierarchy and pause logic confirmed.
-- [ ] Mutated projectile physics stability verified.
-- [ ] Console is clear of runtime errors.
+- [ ] 4종 터렛 클래스 컴파일 + 런타임 정상 동작
+- [ ] 보석→XP→레벨업→UI 전체 파이프라인 정상 동작
+- [ ] 콘솔 에러 0건
+- [ ] 메모리 프로파일링 안정 (GC Alloc 최소)
 </verification>
 </output_format>

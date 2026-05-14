@@ -1,0 +1,60 @@
+{
+  "id": "PLAN-002",
+  "title": "Phase 정수형 재편 + WBS 수립 + 프롬프트 고도화",
+  "type": "planning",
+  "status": "Verified",
+  "agent": "Antigravity (Claude Opus 4.6)",
+  "created_at": "2026-05-14T12:34:00+09:00",
+  "completed_at": "2026-05-14T12:55:00+09:00",
+  "description": "Phase 3.5/4A/4B 등 비정수 명명을 폐기하고 Phase 4~14 정수 체계로 재편. Phase 4~8 상세 WBS 작성 (Task/Sub-task/의존성/담당/산출물). Phase 5~8 에이전트 프롬프트 18개 파일 신규 작성.",
+  "artifacts": {
+    "milestones": "docs/gdd/07_development_milestones.md",
+    "wbs": "docs/gdd/08_wbs.md",
+    "prompts_phase5": [
+      "docs/prompts/050/05001_jules_p01_turret_classes.md",
+      "docs/prompts/050/05002_jules_p02_exp_gem.md",
+      "docs/prompts/050/05003_jules_p03_xp_leveling.md",
+      "docs/prompts/050/05004_antigravity_p04_upgrade_ui.md",
+      "docs/prompts/050/05099_gemini_validation.md"
+    ],
+    "prompts_phase6": [
+      "docs/prompts/060/06001_jules_p01_upgrade_table.md",
+      "docs/prompts/060/06002_jules_p02_mutation_synergy.md",
+      "docs/prompts/060/06003_jules_p03_projectile_mutation.md",
+      "docs/prompts/060/06004_jules_overdrive_evolution.md",
+      "docs/prompts/060/06099_gemini_validation.md"
+    ],
+    "prompts_phase7": [
+      "docs/prompts/070/07001_jules_p01_overcharge.md",
+      "docs/prompts/070/07002_jules_p02_tactical_skills.md",
+      "docs/prompts/070/07003_jules_p03_item_drop.md",
+      "docs/prompts/070/07004_meta_upgrade_lobby.md",
+      "docs/prompts/070/07099_gemini_validation.md"
+    ],
+    "prompts_phase8": [
+      "docs/prompts/080/08001_antigravity_boss_visual.md",
+      "docs/prompts/080/08002_jules_boss_ai.md",
+      "docs/prompts/080/08003_jules_overclock_gameflow.md",
+      "docs/prompts/080/08099_gemini_vs_validation.md"
+    ]
+  },
+  "phase_mapping": {
+    "old_3.5": "Phase 4 (시스템 안정화)",
+    "old_4A": "Phase 5 (로그라이트 기반)",
+    "old_4B": "Phase 6 (빌드 다양성)",
+    "old_5": "Phase 7 (전술 & 메타 경제)",
+    "old_6": "Phase 8 (엔드게임 & 보스전 — VS)",
+    "old_7": "Phase 9 (폴리싱)",
+    "old_8": "Phase 10 (모바일 출시)",
+    "old_9": "Phase 11 (서버)",
+    "old_10": "Phase 12 (PC/Steam)",
+    "old_11": "Phase 13 (VR)",
+    "old_12": "Phase 14 (콘솔)"
+  },
+  "critical_path": "Phase 4 → 5 → 6 → 7 → 8(VS) → 9 → 10(출시)",
+  "constraints": [
+    "Phase 1~3 원본 미수정",
+    "코드 작성/수정 금지",
+    "모든 산출물 한국어 작성"
+  ]
+}
