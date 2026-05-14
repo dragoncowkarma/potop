@@ -14,6 +14,7 @@ This file tracks technical debt, deprecated fields, and pending refactors that c
     - Critical Issue: `WaveManager` and `FeverManager` were missing from the `MainScene`. Added them to the `Managers` GameObject.
     - Critical Issue: No `WaveData` assets found; created `TestWave01.asset` for validation.
 - [ ] **Scene Persistence**: Ensure `MainScene.unity` is saved with the newly added `WaveManager` and `FeverManager` components.
+- [x] **FeverManager Decoupling**: Refactored `FeverManager` to use EventBroker and separated combo logic into `ComboCalculator`.
 - [ ] **Stability**: Investigate Unity MCP connection drops during Play Mode transitions.
 
 ---
