@@ -11,13 +11,15 @@ namespace Potop.Client.UI
     /// </summary>
     public class UpgradeSelectController : MonoBehaviour
     {
+        [Header("Manager References")]
+        [SerializeField] private LevelingManager _levelingManager;
+
         [Header("UI References")]
         [SerializeField] private UIDocument _uiDocument;
         
         private VisualElement _root;
         private VisualElement _panel;
         private VisualElement _cardContainer;
-        private LevelingManager _levelingManager;
 
         private void Awake()
         {
@@ -31,9 +33,6 @@ namespace Potop.Client.UI
             // 시작 시 숨김
             _panel.RemoveFromClassList("visible");
             _panel.style.display = DisplayStyle.None;
-
-            // LevelingManager 참조 (ResolveLevelUp 호출용)
-            _levelingManager = Object.FindFirstObjectByType<LevelingManager>();
         }
 
         private void OnEnable()
