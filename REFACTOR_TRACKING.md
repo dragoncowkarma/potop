@@ -11,8 +11,8 @@ This file tracks technical debt, deprecated fields, and pending refactors that c
 - [x] **[FIXED] Architecture (UI)**: `UpgradeSelectController.cs` uses `Object.FindFirstObjectByType<LevelingManager>()` in `Awake`. This should be replaced with an event-driven or inspector-based reference.
 - [x] **[FIXED] Combat Integration**: `TurretShooter.cs` should be refactored to inherit from or use `WeaponBase` and `IFireStrategy` to align with the new modular weapon architecture.
 - [ ] **Feature Gap (Weapons)**: `NovaWeapon` and `JuggernautWeapon` lack AoE, Pierce, and Knockback logic in the `Projectile` class (currently marked as TODO).
-- [ ] **Feedback Integration**: `CameraShakeController` should be integrated into the combat loop (e.g., triggered via `WeaponBase` or `Projectile` on impact).
-- [ ] **VFX Optimization**: `VFXTrigger` uses a coroutine for despawning; consider moving this logic into a dedicated `PooledObject` component or `PoolManager` to reduce coroutine overhead.
+- [x] **[FIXED] Feedback Integration**: `CameraShakeController` now integrated via `CombatImpactEvent` published by `Projectile`.
+- [x] **[FIXED] VFX Optimization**: `VFXTrigger` refactored to use Unity 6 `Awaitable` and explicit `ParticleSystem` reset before pooling.
 - [ ] **Stability**: Investigate Unity MCP connection drops during Play Mode transitions.
 
 ---

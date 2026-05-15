@@ -40,7 +40,13 @@ namespace Potop.Client.Gameplay.VFX {
             SpawnVFX(_deathVFXPrefab, transform.position, Vector3.up);
         }
 
-        private void SpawnVFX(GameObject prefab, Vector3 position, Vector3 normal) {
+        /// <summary>
+        /// VFX를 스폰하고 지정된 시간 후에 풀로 반환합니다.
+        /// </summary>
+        /// <param name="prefab">스폰할 프리팹</param>
+        /// <param name="position">스폰 위치</param>
+        /// <param name="normal">표면 법선</param>
+        private async void SpawnVFX(GameObject prefab, Vector3 position, Vector3 normal) {
             if (prefab == null) return;
 
             Quaternion rotation = Quaternion.LookRotation(normal);
@@ -48,17 +54,37 @@ namespace Potop.Client.Gameplay.VFX {
                 ? PoolManager.Instance.Spawn(prefab, position, rotation)
                 : Instantiate(prefab, position, rotation);
 
-            // Pool will handle despawn via prefab's own auto-return, or schedule manual despawn
             if (instance != null && PoolManager.Instance != null) {
-                StartCoroutine(DespawnAfterDelay(instance, _vfxLifeTime));
+                await DespawnAfterDelay(instance, _vfxLifeTime);
             }
         }
 
-        private System.Collections.IEnumerator DespawnAfterDelay(GameObject instance, float delay) {
-            yield return new WaitForSeconds(delay);
+        /// <summary>
+        /// 지정된 지연 시간 후에 VFX 인스턴스를 풀로 반환합니다.
+        /// </summary>
+        /// <param name="instance">반환할 인스턴스</param>
+        /// <param name="delay">지연 시간(초)</param>
+        private async Awaitable DespawnAfterDelay(GameObject instance, float delay) {
+            // Unity 6 Awaitable을 사용하여 코루틴 없이 비동기 대기
+            await Awaitable.WaitForSecondsAsync(delay);
+
             if (instance != null && instance.activeInHierarchy) {
+                // 풀에 반환하기 전에 파티클 상태를 초기화하여 잔상 문제를 방지
+                ResetVFX(instance);
                 PoolManager.Instance?.Despawn(instance);
+            }
+        }
+
+        /// <summary>
+        /// VFX 인스턴스의 파티클 시스템을 정지하고 초기화합니다.
+        /// </summary>
+        /// <param name="instance">초기화할 VFX 오브젝트</param>
+        private void ResetVFX(GameObject instance) {
+            ParticleSystem[] particleSystems = instance.GetComponentsInChildren<ParticleSystem>();
+            foreach (var ps in particleSystems) {
+                ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }
         }
     }
 }
+

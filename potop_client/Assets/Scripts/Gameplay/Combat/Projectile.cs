@@ -1,5 +1,6 @@
 using Potop.Client.Core;
 using Potop.Client.Gameplay.Combat;
+using Potop.Client.Core.Events;
 using UnityEngine;
 
 namespace Potop.Client.Gameplay {
@@ -17,6 +18,9 @@ namespace Potop.Client.Gameplay {
         private int _enemyLayerMask;
 
         private readonly Collider[] _hitColliders = new Collider[MAX_AOE_TARGETS];
+
+        private const float HEAVY_IMPACT_THRESHOLD = 50f;
+        private const float IMPACT_INTENSITY_MULTIPLIER = 0.1f;
 
         /// <summary>
         /// 발사체의 이동 속도입니다.
@@ -122,6 +126,13 @@ namespace Potop.Client.Gameplay {
                     Instigator = gameObject
                 });
 
+                // Publish impact event for camera shake/feedback
+                EventBroker.Publish(new CombatImpactEvent {
+                    Position = hitPoint,
+                    Intensity = _damage * IMPACT_INTENSITY_MULTIPLIER,
+                    IsHeavy = _aoeRadius > 0 || _damage >= HEAVY_IMPACT_THRESHOLD
+                });
+
                 if (_knockbackForce > 0 && target.TryGetComponent<Rigidbody>(out var rb)) {
                     rb.AddForce(knockbackDirection * _knockbackForce, ForceMode.Impulse);
                 }
@@ -129,3 +140,4 @@ namespace Potop.Client.Gameplay {
         }
     }
 }
+
