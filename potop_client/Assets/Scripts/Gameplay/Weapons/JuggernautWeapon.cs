@@ -41,10 +41,7 @@ namespace Potop.Client.Gameplay {
                 GameObject projectileObj = Core.Pooling.PoolManager.Instance.Spawn(projectilePrefab, firePoint.position, firePoint.rotation);
 
                 if (projectileObj.TryGetComponent<Projectile>(out var projectile)) {
-                    projectile.Initialize(speed, Mathf.RoundToInt(damage));
-
-                    // TODO: Projectile 시스템 확장 시 관통력 및 넉백 전달
-                    // 현재 Projectile에는 Pierce/Knockback 설정이 없으므로, 추후 반영을 위해 구조만 둡니다.
+                    projectile.Initialize(speed, Mathf.RoundToInt(damage), 0f, _pierceCount, _knockbackForce);
                 }
             }
         }
