@@ -59,11 +59,16 @@ namespace Potop.Client.Gameplay.Items
         [SerializeField] private EXPGemData _gemData;
         [SerializeField, Min(0.1f)] private float _magnetRadius = 3f;
         [SerializeField, Min(1f)] private float _moveSpeed = 15f;
-        [SerializeField] private LayerMask _playerLayerMask; // Prefab에서 설정되지 않아도 Tag로 대체 판별
+        [SerializeField] private LayerMask _playerLayerMask;
+        [SerializeField] private float _sqrCollectionThreshold = 1.0f; // 매직넘버 제거: 흡수 거리 임계값의 제곱
 
         private Transform _playerTarget;
         private bool _isAttracted;
-        private static Collider[] _overlapResults = new Collider[50]; // 안정성을 위해 배열 크기 확장
+        private static Collider[] _overlapResults = new Collider[50];
+        private static readonly int ColorPropertyId = Shader.PropertyToID("_Color"); // Shader ID 캐싱
+        private static MaterialPropertyBlock _sharedPropertyBlock; // PropertyBlock 재사용
+
+        private Renderer _cachedRenderer;
 
         // 이벤트 구독 및 스폰 관리를 위한 정적 관리자 역할 변수
         private static bool _isSubscribed = false;
@@ -111,6 +116,12 @@ namespace Potop.Client.Gameplay.Items
             return _blueGemData;
         }
 
+        private void Awake()
+        {
+            // Renderer 캐싱 (성능 최적화)
+            _cachedRenderer = GetComponentInChildren<Renderer>();
+        }
+
         /// <summary>
         /// 보석 데이터를 초기화하고 시각적 요소를 적용합니다.
         /// </summary>
@@ -118,14 +129,17 @@ namespace Potop.Client.Gameplay.Items
         {
             _gemData = data;
 
-            // 색상 적용 (MaterialPropertyBlock 사용)
-            Renderer rend = GetComponentInChildren<Renderer>();
-            if (rend != null)
+            // 색상 적용 (최적화된 MaterialPropertyBlock 사용)
+            if (_cachedRenderer != null)
             {
-                MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
-                rend.GetPropertyBlock(propBlock);
-                propBlock.SetColor("_Color", data.VisualColor);
-                rend.SetPropertyBlock(propBlock);
+                if (_sharedPropertyBlock == null)
+                {
+                    _sharedPropertyBlock = new MaterialPropertyBlock();
+                }
+
+                _cachedRenderer.GetPropertyBlock(_sharedPropertyBlock);
+                _sharedPropertyBlock.SetColor(ColorPropertyId, data.VisualColor);
+                _cachedRenderer.SetPropertyBlock(_sharedPropertyBlock);
             }
         }
 
@@ -146,7 +160,6 @@ namespace Potop.Client.Gameplay.Items
         {
             if (_isAttracted) return;
 
-            // _playerLayerMask를 에디터에서 설정하지 않아 EveryThing이 될 경우를 대비하여 배열 크게 할당
             int count = Physics.OverlapSphereNonAlloc(transform.position, _magnetRadius, _overlapResults, _playerLayerMask);
             for (int i = 0; i < count; i++)
             {
@@ -167,8 +180,8 @@ namespace Potop.Client.Gameplay.Items
                 // 플레이어 방향으로 이동
                 transform.position = Vector3.MoveTowards(transform.position, _playerTarget.position, _moveSpeed * Time.fixedDeltaTime);
 
-                // 흡수 거리 도달 체크
-                if ((transform.position - _playerTarget.position).sqrMagnitude <= 1.0f)
+                // 흡수 거리 도달 체크 (매직넘버 제거)
+                if ((transform.position - _playerTarget.position).sqrMagnitude <= _sqrCollectionThreshold)
                 {
                     Collect();
                 }
