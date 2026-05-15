@@ -43,23 +43,18 @@ namespace Potop.Client.Gameplay.Progression
 
             int extractCount = Mathf.Min(count, _availableUpgrades.Count);
 
-            // 임시로 단순히 섞어서 앞에서부터 추출 (Phase 6 가중치 시스템 도입 전)
-            var shuffled = _availableUpgrades.OrderBy(x => _random.Next()).ToList();
-
-            return shuffled.Take(extractCount).ToList();
-        }
-
-        // 임시 테스트용 초기화 (실제로는 에디터나 외부 데이터에서 세팅됨)
-        private void Awake()
-        {
-            if (_availableUpgrades.Count == 0)
+            // Phase 6 가중치 시스템 도입 전 임시 Fisher-Yates shuffle
+            var result = new List<UpgradeOption>(_availableUpgrades);
+            for (int i = 0; i < extractCount; i++)
             {
-                _availableUpgrades.Add(new UpgradeOption { UpgradeId = "wp_dmg_up", DisplayName = "Damage Up", Description = "Increases weapon damage", RarityWeight = 10 });
-                _availableUpgrades.Add(new UpgradeOption { UpgradeId = "wp_spd_up", DisplayName = "Fire Rate Up", Description = "Increases weapon fire rate", RarityWeight = 10 });
-                _availableUpgrades.Add(new UpgradeOption { UpgradeId = "pl_hp_up", DisplayName = "Max HP Up", Description = "Increases player max HP", RarityWeight = 5 });
-                _availableUpgrades.Add(new UpgradeOption { UpgradeId = "pl_spd_up", DisplayName = "Move Speed Up", Description = "Increases player movement speed", RarityWeight = 10 });
-                _availableUpgrades.Add(new UpgradeOption { UpgradeId = "wp_crit_up", DisplayName = "Crit Chance Up", Description = "Increases weapon critical chance", RarityWeight = 2 });
+                int randomIndex = _random.Next(i, result.Count);
+                var temp = result[i];
+                result[i] = result[randomIndex];
+                result[randomIndex] = temp;
             }
+
+            return result.GetRange(0, extractCount);
         }
+
     }
 }

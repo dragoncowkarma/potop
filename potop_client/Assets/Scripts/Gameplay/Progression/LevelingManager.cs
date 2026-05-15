@@ -42,7 +42,7 @@ namespace Potop.Client.Gameplay.Progression
 
         // Time.timeScale 원본 복원을 위한 저장 변수
         private float _originalTimeScale = 1f;
-        private bool _isLevelUpPending = false;
+        private int _pendingLevelUpsCount = 0;
 
         public int CurrentLevel => _currentLevel;
         public int CurrentXp => _currentXp;
@@ -68,9 +68,10 @@ namespace Potop.Client.Gameplay.Progression
             EventBroker.Unsubscribe<EXPCollectedEvent>(OnEXPCollected);
 
             // 매니저가 비활성화될 때 타임스케일 복원 보장
-            if (_isLevelUpPending)
+            if (_pendingLevelUpsCount > 0)
             {
-                ResolveLevelUp();
+                _pendingLevelUpsCount = 0;
+                Time.timeScale = _originalTimeScale;
             }
         }
 
@@ -111,12 +112,13 @@ namespace Potop.Client.Gameplay.Progression
         /// </summary>
         private void TriggerLevelUp()
         {
-            if (!_isLevelUpPending)
+            if (_pendingLevelUpsCount == 0)
             {
                 _originalTimeScale = Time.timeScale;
                 Time.timeScale = 0f;
-                _isLevelUpPending = true;
             }
+
+            _pendingLevelUpsCount++;
 
             List<UpgradeOption> options = _upgradePool.GetRandomUpgrades(_optionsCount);
 
@@ -135,13 +137,18 @@ namespace Potop.Client.Gameplay.Progression
 
         /// <summary>
         /// 업그레이드 선택이 완료되었을 때 호출하여 게임 상태(시간)를 복원합니다.
+        /// 여러 번의 레벨업이 발생했을 경우 모든 처리가 완료되어야 타임스케일이 복원됩니다.
         /// </summary>
         public void ResolveLevelUp()
         {
-            if (_isLevelUpPending)
+            if (_pendingLevelUpsCount > 0)
             {
-                Time.timeScale = _originalTimeScale;
-                _isLevelUpPending = false;
+                _pendingLevelUpsCount--;
+
+                if (_pendingLevelUpsCount == 0)
+                {
+                    Time.timeScale = _originalTimeScale;
+                }
             }
         }
     }
