@@ -1,6 +1,6 @@
 # 📊 WBS (Work Breakdown Structure) — Phase 3.5 이후
 
-> **작성일:** 2026-05-14 | **작성자:** PM (Antigravity) | **기준:** Phase 1~3 완료
+> **작성일:** 2026-05-15 | **작성자:** PM (Antigravity) | **기준:** Phase 1~3 완료
 
 ## 범례
 
@@ -35,12 +35,24 @@
 
 ---
 
+## Phase 4.5: 코어 루프 리팩토링 및 안정화 (1주)
+
+| WBS ID | 작업 | 세부 분해 | 담당 | 의존성 | 산출물 |
+|:---|:---|:---|:---|:---|:---|
+| 4.5.1 | [04501] 무기 아키텍처 통합 | ① `TurretShooter.cs`를 `WeaponBase` 상속 구조로 리팩토링 ② `IFireStrategy` 적용 | **J** (단일) | → Phase 4 완료 | `TurretShooter.cs` 수정, 무기 아키텍처 |
+| 4.5.2 | [04502] 투사체 핵심 특성 추가 | ① `NovaWeapon`용 AoE 데미지 판정 로직 추가 ② `JuggernautWeapon`용 관통 및 넉백 구현 | **J** (단일) | → 4.5.1 | `Projectile.cs` 수정, 각 무기 로직 |
+| 4.5.3 | [04503] 데이터 및 UI 기술 부채 해결 | ① `EXPGemData`를 독립 스크립트로 분리 ② `UpgradeSelectController` 내 `FindFirstObjectByType` 제거 | **J** (병렬 p03) | → Phase 4 완료 | `EXPGemData.cs`, UI 컨트롤러 수정 |
+| 4.5.4 | [04504] 피드백 및 최적화 통합 | ① 전투 루프에 `CameraShakeController` 연동 ② `VFXTrigger` 디스폰 로직을 코루틴에서 `PoolManager`로 이관 | **A** (병렬 p04) | → Phase 4 완료 | 연동된 카메라 및 최적화된 VFX |
+| 4.5.5 | [04599] Phase 4.5 통합 검증 | ① 무기 발사 및 특성 정상 작동 여부 검증 ② 런타임 성능 프로파일링 및 에러 로그 체크 | **G** | → 4.5.1 ~ 4.5.4 | Phase 4.5 검증 보고서 |
+
+---
+
 ## Phase 5: 빌드 다양성 (2주)
 
 | WBS ID | 작업 | 세부 분해 | 담당 | 의존성 | 산출물 |
 |:---|:---|:---|:---|:---|:---|
-| 5.1 | [05001] 업그레이드 확률 테이블 | ① `UpgradeTableData.asset` SO 설계 (레어리티별 가중치) ② 중복 방지 + 보장 시스템 (Pity) ③ 밸런스 테이블 CSV 임포터 | **J** (병렬 p01) | → Phase 4 완료 | `UpgradeTableData.cs/.asset` |
-| 5.2 | [05002] 무기 변이 & 시너지 | ① `MutationSynergyManager.cs` — 조합 감지 ② 3종 시너지 규칙 (Pierce+Explosion 등) ③ `IModifier` 인터페이스 확장 | **J** (병렬 p02) | → Phase 4 완료 | `MutationSynergyManager.cs` |
+| 5.1 | [05001] 업그레이드 확률 테이블 | ① `UpgradeTableData.asset` SO 설계 (레어리티별 가중치) ② 중복 방지 + 보장 시스템 (Pity) ③ 밸런스 테이블 CSV 임포터 | **J** (병렬 p01) | → Phase 4.5 완료 | `UpgradeTableData.cs/.asset` |
+| 5.2 | [05002] 무기 변이 & 시너지 | ① `MutationSynergyManager.cs` — 조합 감지 ② 3종 시너지 규칙 (Pierce+Explosion 등) ③ `IModifier` 인터페이스 확장 | **J** (병렬 p02) | → Phase 4.5 완료 | `MutationSynergyManager.cs` |
 | 5.3 | [05003] 투사체 변이 물리 | ① 관통 로직 (`PierceModifier`) ② 도탄 로직 (`BounceModifier`) — 레이캐스트 기반 ③ 거대화/유도 로직 | **J** (병렬 p03) | → 5.2 | 4개 Modifier 클래스 |
 | 5.4 | [05004] 궁극 진화 | ① `OverdriveEvolution.cs` — 시너지 완성 감지 ② 3종 궁극 무기 프리팹 & SO ③ 보스 상자 획득 시 진화 트리거 | **J** | → 5.2, 5.3 | `OverdriveEvolution.cs`, 3개 프리팹 |
 | 5.5 | [05099] Phase 5 통합 검증 | ① 변이 조합 교차 테스트 ② 투사체 물리 안정성 (무한 루프/관통 무한 방지) ③ 궁극 진화 발동 조건 검증 | **G** | → 5.4 | 검증 보고서 |
@@ -89,7 +101,7 @@
 ## 크리티컬 패스
 
 ```
-Phase 3.5 → Phase 4 → Phase 5 → Phase 6 → Phase 7(VS) → Phase 8 → Phase 9(출시)
+Phase 3.5 → Phase 4 → Phase 4.5 → Phase 5 → Phase 6 → Phase 7(VS) → Phase 8 → Phase 9(출시)
 ```
 
-**총 예상 기간 (모바일 출시까지):** 14~17주 (약 3.5~4.5개월)
+**총 예상 기간 (모바일 출시까지):** 15~18주 (약 4개월)

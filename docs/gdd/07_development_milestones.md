@@ -94,6 +94,24 @@
 
 ---
 
+### **Phase 4.5: 코어 루프 리팩토링 및 안정화 (Core Loop Refactor & Stabilization)** `[예상: 1주]`
+> [!IMPORTANT]
+> **Phase 4.5는 기술 부채 해결 및 코어 루프 통합을 위한 필수 마일스톤입니다.**
+> [!TIP]
+> AI Prompts:
+> - 04501: [Jules] [04501_jules_p01_weapon_integration.md](../prompts/045/04501_jules_p01_weapon_integration.md)
+> - 04502: [Jules] [04502_jules_p02_projectile_features.md](../prompts/045/04502_jules_p02_projectile_features.md)
+> - 04503: [Jules] [04503_jules_p03_data_ui_cleanup.md](../prompts/045/04503_jules_p03_data_ui_cleanup.md)
+> - 04504: [Antigravity] [04504_antigravity_p04_feedback_polish.md](../prompts/045/04504_antigravity_p04_feedback_polish.md)
+> - QA: [Gemini CLI] [04599_gemini_validation.md](../prompts/045/04599_gemini_validation.md)
+
+*   **[04501] 무기 아키텍처 통합 (Weapon Integration)** — `TurretShooter.cs`를 `WeaponBase` 및 `IFireStrategy` 기반으로 리팩토링
+*   **[04502] 투사체 핵심 특성 구현 (Projectile Features)** — `NovaWeapon`의 광역 피해(AoE) 및 `JuggernautWeapon`의 넉백/관통 로직 추가
+*   **[04503] 데이터 및 UI 기술 부채 해결 (Data & UI Cleanup)** — `EXPGemData` 분리, `UpgradeSelectController`에서 `FindFirstObjectByType` 제거
+*   **[04504] 컴뱃 피드백 및 최적화 (Feedback & Polish)** — `CameraShakeController` 전투 연동, `VFXTrigger` 코루틴을 `PoolManager` 기반으로 최적화
+
+---
+
 ### **Phase 5: 빌드 다양성 (Build Diversity)** `[예상: 2주]`
 > [!TIP]
 > AI Prompts:
