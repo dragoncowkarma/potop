@@ -25,6 +25,8 @@ namespace Potop.Client.Gameplay.Weapons {
 
         [Header("Combat Settings")]
         [SerializeField] private float _sensitivity = 5.0f;
+        [SerializeField, Tooltip("피버 활성화 시 발사 속도 배율입니다.")]
+        private float _feverFireRateMultiplier = 2.0f;
 
         /// <summary>
         /// 시점 회전 민감도입니다.
@@ -32,7 +34,6 @@ namespace Potop.Client.Gameplay.Weapons {
         public float Sensitivity => _sensitivity;
 
         private bool _isFeverActive;
-        private const float FEVER_FIRE_RATE_MULTIPLIER = 2.0f;
 
         private void OnEnable() {
             EventBroker.Subscribe<FeverStateChangedEvent>(OnFeverStateChanged);
@@ -59,7 +60,9 @@ namespace Potop.Client.Gameplay.Weapons {
         protected override void Start() {
             base.Start();
 
-            _fireStrategy = new Potop.Client.Gameplay.Weapons.Strategies.StraightFireStrategy();
+            if (_fireStrategy == null) {
+                _fireStrategy = new Strategies.StraightFireStrategy();
+            }
 
             if (GameManager.Instance != null) {
                 GameManager.Instance.PlayerTransform = transform;
@@ -88,19 +91,21 @@ namespace Potop.Client.Gameplay.Weapons {
         }
 
         /// <summary>
-        /// 터렛의 특성에 맞게 발사 가능 여부를 재정의합니다. 피버 모드의 영향을 받습니다.
+        /// 현재 계산된 발사 속도를 반환합니다. 피버 모드 배율이 적용됩니다.
+        /// </summary>
+        public override float GetModifiedFireRate() {
+            float baseRate = base.GetModifiedFireRate();
+            return _isFeverActive ? baseRate * _feverFireRateMultiplier : baseRate;
+        }
+
+        /// <summary>
+        /// 터렛의 특성에 맞게 발사 가능 여부를 재정의합니다. 잔탄 소모를 무시합니다.
         /// </summary>
         protected override bool CanFire() {
             if (_weaponData == null) return false;
 
-            // 터렛은 잔탄을 소모하지 않거나 확인하지 않습니다.
-            float currentFireRate = _weaponBody != null ? _weaponBody.ModifyFireRate(_weaponData.BaseFireRate) : _weaponData.BaseFireRate;
+            float currentFireRate = GetModifiedFireRate();
 
-            if (_isFeverActive) {
-                currentFireRate *= FEVER_FIRE_RATE_MULTIPLIER;
-            }
-
-            // FireRate가 0 이하일 경우 발사하지 않습니다.
             if (currentFireRate <= 0) return false;
 
             float fireInterval = 1f / currentFireRate;
