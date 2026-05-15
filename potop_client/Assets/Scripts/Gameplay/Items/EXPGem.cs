@@ -192,7 +192,8 @@ namespace Potop.Client.Gameplay.Items
         {
             if (_gemData != null)
             {
-                EventBroker.Publish(new EXPGemCollectedEvent { XPValue = _gemData.XPValue });
+                // LevelingManager가 기대하는 EXPCollectedEvent로 통일
+                EventBroker.Publish(new Progression.EXPCollectedEvent { Amount = _gemData.XPValue });
             }
 
             if (PoolManager.Instance != null)

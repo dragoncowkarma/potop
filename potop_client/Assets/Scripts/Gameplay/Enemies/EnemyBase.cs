@@ -170,6 +170,13 @@ namespace Potop.Client.Gameplay {
 
         private void HandleDeath() {
             Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.EnemyDiedEvent { ScoreValue = ScoreValue });
+            
+            // Phase 4: 경험치 보석 스폰을 위한 이벤트 발행
+            Potop.Client.Core.Events.EventBroker.Publish(new Items.EnemyKilledEvent { 
+                Position = transform.position, 
+                ExpValue = _enemyData != null ? _enemyData.ScoreValue : 10 // ScoreValue를 경험치로 재사용
+            });
+
             StateMachine.ChangeState(DeathState, this);
         }
 
