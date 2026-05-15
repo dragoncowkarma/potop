@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Potop.Client.Gameplay.Items
+namespace Potop.Client.Data.Items
 {
     /// <summary>
     /// 경험치 보석 데이터를 정의하는 ScriptableObject입니다.

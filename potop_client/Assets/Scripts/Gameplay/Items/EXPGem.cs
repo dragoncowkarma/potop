@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Potop.Client.Core.Events;
 using Potop.Client.Core.Pooling;
+using Potop.Client.Data.Items;
 
 namespace Potop.Client.Gameplay.Items
 {

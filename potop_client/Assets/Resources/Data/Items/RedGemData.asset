@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81a7b4c92e104a39b25206385d88ab29, type: 3}
+  m_Script: {fileID: 11500000, guid: f288af4c2a69414899391737539f4829, type: 3}
   m_Name: RedGemData
-  m_EditorClassIdentifier: Potop.Client.Gameplay.Items.EXPGemData
+  m_EditorClassIdentifier: Potop.Client.Data.Items.EXPGemData
   _xpValue: 200
   _prefab: {fileID: 100000, guid: 81a7b4c92e104a39b25206385d88ab33, type: 3}
   _visualColor:

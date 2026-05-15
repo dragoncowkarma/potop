@@ -24,6 +24,15 @@ namespace Potop.Client.Gameplay.Progression
     }
 
     /// <summary>
+    /// 업그레이드가 선택되었을 때 발생하는 이벤트입니다.
+    /// (GameEvents.cs의 수정 권한이 제한된 상황이므로 로컬에서 정의)
+    /// </summary>
+    public struct UpgradeSelectedEvent
+    {
+        public string SelectedId;
+    }
+
+    /// <summary>
     /// 플레이어의 경험치 누적 및 레벨업 판정을 관리하는 매니저입니다.
     /// </summary>
     [RequireComponent(typeof(UpgradePool))]
@@ -61,11 +70,13 @@ namespace Potop.Client.Gameplay.Progression
         private void OnEnable()
         {
             EventBroker.Subscribe<EXPCollectedEvent>(OnEXPCollected);
+            EventBroker.Subscribe<UpgradeSelectedEvent>(OnUpgradeSelected);
         }
 
         private void OnDisable()
         {
             EventBroker.Unsubscribe<EXPCollectedEvent>(OnEXPCollected);
+            EventBroker.Unsubscribe<UpgradeSelectedEvent>(OnUpgradeSelected);
 
             // 매니저가 비활성화될 때 타임스케일 복원 보장
             if (_pendingLevelUpsCount > 0)
@@ -73,6 +84,11 @@ namespace Potop.Client.Gameplay.Progression
                 _pendingLevelUpsCount = 0;
                 Time.timeScale = _originalTimeScale;
             }
+        }
+
+        private void OnUpgradeSelected(UpgradeSelectedEvent evt)
+        {
+            ResolveLevelUp();
         }
 
         /// <summary>

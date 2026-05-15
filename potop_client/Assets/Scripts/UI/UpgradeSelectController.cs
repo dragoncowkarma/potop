@@ -11,9 +11,6 @@ namespace Potop.Client.UI
     /// </summary>
     public class UpgradeSelectController : MonoBehaviour
     {
-        [Header("Manager References")]
-        [SerializeField] private LevelingManager _levelingManager;
-
         [Header("UI References")]
         [SerializeField] private UIDocument _uiDocument;
         
@@ -103,15 +100,10 @@ namespace Potop.Client.UI
 
         private void OnCardClicked(UpgradeOption option)
         {
-            // 선택 이벤트 발행 (필요한 경우)
-            // EventBroker.Publish(new UpgradeSelectedEvent { SelectedId = option.UpgradeId });
+            // 선택 이벤트 발행 (LevelingManager가 구독하여 처리)
+            EventBroker.Publish(new UpgradeSelectedEvent { SelectedId = option.UpgradeId });
 
             HideUpgradePanel();
-
-            if (_levelingManager != null)
-            {
-                _levelingManager.ResolveLevelUp();
-            }
         }
 
         private void HideUpgradePanel()
