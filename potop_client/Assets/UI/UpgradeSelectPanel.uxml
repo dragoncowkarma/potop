@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi:http://www.w3.org/2001/XMLSchema-instance="engine" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd">
+    <ui:Style src="UpgradeSelectPanel.uss" />
+    <ui:VisualElement name="upgrade-panel" class="panel-container">
+        <ui:Label text="SYSTEM UPGRADE" class="panel-title" />
+        <ui:VisualElement name="card-container" class="card-list">
+            <!-- Template for cards (will be cloned in code) -->
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

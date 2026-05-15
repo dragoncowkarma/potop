@@ -4,6 +4,13 @@ using System.Linq;
 
 namespace Potop.Client.Gameplay.Progression
 {
+    public enum UpgradeRarity
+    {
+        Common,
+        Rare,
+        Epic
+    }
+
     /// <summary>
     /// 업그레이드 선택지 하나의 정보를 담는 구조체 (혹은 클래스)
     /// </summary>
@@ -13,6 +20,8 @@ namespace Potop.Client.Gameplay.Progression
         public string UpgradeId;
         public string DisplayName;
         public string Description;
+        public UpgradeRarity Rarity;
+        public Sprite Icon;
         // Phase 6에서 사용될 확장 인터페이스를 위한 변수
         public int RarityWeight;
     }

@@ -1,0 +1,99 @@
+.panel-container {
+    flex-grow: 1;
+    background-color: rgba(10, 10, 15, 0.95);
+    justify-content: center;
+    align-items: center;
+    transition-property: opacity, scale;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out-back;
+    opacity: 0;
+    scale: 0.8 0.8;
+}
+
+.panel-container.visible {
+    opacity: 1;
+    scale: 1 1;
+}
+
+.panel-title {
+    font-size: 52px;
+    color: #00FFFF;
+    -unity-font-style: bold;
+    margin-bottom: 60px;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    letter-spacing: 5px;
+}
+
+.card-list {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.upgrade-card {
+    width: 300px;
+    height: 440px;
+    margin: 0 25px;
+    background-color: rgba(25, 25, 35, 0.9);
+    border-width: 2px;
+    border-radius: 20px;
+    padding: 30px;
+    align-items: center;
+    transition-property: scale, border-color, translate;
+    transition-duration: 0.2s;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.upgrade-card:hover {
+    scale: 1.08 1.08;
+    translate: 0 -10px;
+}
+
+/* Rarity Styles */
+.rarity-common {
+    border-color: #00E5FF;
+}
+.rarity-common:hover {
+    border-color: #00FFFF;
+    -unity-background-image-tint-color: rgba(0, 255, 255, 0.05);
+}
+
+.rarity-rare {
+    border-color: #9D00FF;
+}
+.rarity-rare:hover {
+    border-color: #BF00FF;
+}
+
+.rarity-epic {
+    border-color: #FFD700;
+}
+.rarity-epic:hover {
+    border-color: #FFEA00;
+}
+
+.card-icon {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-name {
+    font-size: 30px;
+    color: white;
+    -unity-font-style: bold;
+    margin-bottom: 15px;
+    -unity-text-align: middle-center;
+}
+
+.card-description {
+    font-size: 18px;
+    color: #BBBBBB;
+    white-space: normal;
+    -unity-text-align: middle-center;
+    line-height: 24px;
+}
