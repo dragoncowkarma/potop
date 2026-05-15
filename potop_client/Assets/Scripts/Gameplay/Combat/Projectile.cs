@@ -14,6 +14,7 @@ namespace Potop.Client.Gameplay {
         private float _aoeRadius;
         private int _currentPierceCount;
         private float _knockbackForce;
+        private int _enemyLayerMask;
 
         private readonly Collider[] _hitColliders = new Collider[MAX_AOE_TARGETS];
 
@@ -61,6 +62,10 @@ namespace Potop.Client.Gameplay {
             _knockbackForce = knockbackForce;
         }
 
+        private void Awake() {
+            _enemyLayerMask = LayerMask.GetMask(ENEMY_LAYER_NAME);
+        }
+
         private void OnEnable() {
             Invoke(nameof(DespawnSelf), _lifeTime);
         }
@@ -87,15 +92,18 @@ namespace Potop.Client.Gameplay {
                     contact.point,
                     _aoeRadius,
                     _hitColliders,
-                    LayerMask.GetMask(ENEMY_LAYER_NAME)
+                    _enemyLayerMask
                 );
 
                 for (int i = 0; i < hitCount; i++) {
                     GameObject hitObj = _hitColliders[i].gameObject;
-                    ProcessHit(hitObj, hitObj.transform.position, (hitObj.transform.position - contact.point).normalized);
+                    Vector3 radialDirection = (hitObj.transform.position - contact.point).normalized;
+                    // AoE의 경우 넉백 방향을 방사형으로 전달
+                    ProcessHit(hitObj, hitObj.transform.position, radialDirection, radialDirection);
                 }
             } else {
-                ProcessHit(collision.gameObject, contact.point, contact.normal);
+                // 단일 대상의 경우 넉백 방향은 발사체의 전방(transform.forward) 사용
+                ProcessHit(collision.gameObject, contact.point, contact.normal, transform.forward);
             }
 
             if (_currentPierceCount > 0) {
@@ -105,9 +113,8 @@ namespace Potop.Client.Gameplay {
             }
         }
 
-        private void ProcessHit(GameObject target, Vector3 hitPoint, Vector3 hitNormal) {
-            IDamageable damageable = target.GetComponent<IDamageable>();
-            if (damageable != null) {
+        private void ProcessHit(GameObject target, Vector3 hitPoint, Vector3 hitNormal, Vector3 knockbackDirection) {
+            if (target.TryGetComponent<IDamageable>(out var damageable)) {
                 damageable.TakeDamage(new DamageInfo {
                     Amount = _damage,
                     HitPoint = hitPoint,
@@ -115,11 +122,8 @@ namespace Potop.Client.Gameplay {
                     Instigator = gameObject
                 });
 
-                if (_knockbackForce > 0) {
-                    Rigidbody rb = target.GetComponent<Rigidbody>();
-                    if (rb != null) {
-                        rb.AddForce(transform.forward * _knockbackForce, ForceMode.Impulse);
-                    }
+                if (_knockbackForce > 0 && target.TryGetComponent<Rigidbody>(out var rb)) {
+                    rb.AddForce(knockbackDirection * _knockbackForce, ForceMode.Impulse);
                 }
             }
         }
