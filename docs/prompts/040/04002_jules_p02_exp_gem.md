@@ -56,9 +56,9 @@ Before starting, read `../SUMMARY.xml` and `../../REFACTOR_TRACKING.md` to under
 - Create EXPGem system with PoolManager integration.
 </implementation>
 <verification>
-- [ ] 적 처치 시 적 위치에 보석 정상 스폰
-- [ ] 자력 반경 내 보석이 플레이어 방향으로 이동 후 흡수
-- [ ] PoolManager를 통한 재활용 확인 (Instantiate/Destroy 0건)
-- [ ] **Scope Restriction strictly verified**
+- [x] 적 처치 시 적 위치에 보석 정상 스폰
+- [x] 자력 반경 내 보석이 플레이어 방향으로 이동 후 흡수
+- [x] PoolManager를 통한 재활용 확인 (Instantiate/Destroy 0건)
+- [x] **Scope Restriction strictly verified**
 </verification>
 </output_format>
