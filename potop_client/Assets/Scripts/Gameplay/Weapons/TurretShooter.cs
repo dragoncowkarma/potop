@@ -4,11 +4,11 @@ using Potop.Client.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Potop.Client.Gameplay {
+namespace Potop.Client.Gameplay.Weapons {
     /// <summary>
     /// 플레이어의 입력(회전 및 발사)을 처리하는 터렛 컨트롤러 클래스입니다.
     /// </summary>
-    public class TurretShooter : MonoBehaviour {
+    public class TurretShooter : WeaponBase {
         [Header("Input Settings")]
         [SerializeField] private InputActionReference _attackAction;
         [SerializeField] private InputActionReference _lookAction;
@@ -24,31 +24,13 @@ namespace Potop.Client.Gameplay {
         public InputActionReference LookAction => _lookAction;
 
         [Header("Combat Settings")]
-        [SerializeField] private WeaponData _weaponData;
-        [SerializeField] private Transform _firePoint;
         [SerializeField] private float _sensitivity = 5.0f;
-
-        /// <summary>
-        /// 발사할 발사체 프리팹입니다.
-        /// </summary>
-        public GameObject ProjectilePrefab => _weaponData != null ? _weaponData.ProjectilePrefab : null;
-
-        /// <summary>
-        /// 발사체가 생성될 위치(Transform)입니다.
-        /// </summary>
-        public Transform FirePoint => _firePoint;
-
-        /// <summary>
-        /// 발사 주기(초 단위)입니다.
-        /// </summary>
-        public float FireRate => _weaponData != null ? _weaponData.FireRate : 0f;
 
         /// <summary>
         /// 시점 회전 민감도입니다.
         /// </summary>
         public float Sensitivity => _sensitivity;
 
-        private float _nextFireTime = 0f;
         private bool _isFeverActive;
         private const float FEVER_FIRE_RATE_MULTIPLIER = 2.0f;
 
@@ -74,7 +56,11 @@ namespace Potop.Client.Gameplay {
             }
         }
 
-        private void Start() {
+        protected override void Start() {
+            base.Start();
+
+            _fireStrategy = new Potop.Client.Gameplay.Weapons.Strategies.StraightFireStrategy();
+
             if (GameManager.Instance != null) {
                 GameManager.Instance.PlayerTransform = transform;
             }
@@ -92,10 +78,8 @@ namespace Potop.Client.Gameplay {
             }
 
             // 발사
-            if (_attackAction != null && _attackAction.action.IsPressed() && Time.time >= _nextFireTime && FireRate > 0) {
-                Shoot();
-                float interval = _isFeverActive ? FireRate / FEVER_FIRE_RATE_MULTIPLIER : FireRate;
-                _nextFireTime = Time.time + interval;
+            if (_attackAction != null && _attackAction.action.IsPressed()) {
+                Fire();
             }
         }
 
@@ -103,19 +87,37 @@ namespace Potop.Client.Gameplay {
             _isFeverActive = e.IsFeverActive;
         }
 
-        private void Shoot() {
-            if (ProjectilePrefab != null && _firePoint != null) {
-                Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(ProjectilePrefab, _firePoint.position, _firePoint.rotation);
-            } else {
-#if UNITY_EDITOR
-                if (ProjectilePrefab == null) {
-                    Debug.LogWarning("Projectile Prefab is missing!");
-                }
-                if (_firePoint == null) {
-                    Debug.LogWarning("FirePoint is missing!");
-                }
-#endif
+        /// <summary>
+        /// 터렛의 특성에 맞게 발사 가능 여부를 재정의합니다. 피버 모드의 영향을 받습니다.
+        /// </summary>
+        protected override bool CanFire() {
+            if (_weaponData == null) return false;
+
+            // 터렛은 잔탄을 소모하지 않거나 확인하지 않습니다.
+            float currentFireRate = _weaponBody != null ? _weaponBody.ModifyFireRate(_weaponData.BaseFireRate) : _weaponData.BaseFireRate;
+
+            if (_isFeverActive) {
+                currentFireRate *= FEVER_FIRE_RATE_MULTIPLIER;
             }
+
+            // FireRate가 0 이하일 경우 발사하지 않습니다.
+            if (currentFireRate <= 0) return false;
+
+            float fireInterval = 1f / currentFireRate;
+            return Time.time >= _lastFireTime + fireInterval;
+        }
+
+        /// <summary>
+        /// 터렛의 발사 로직입니다. 잔탄 소모를 무시합니다.
+        /// </summary>
+        public override void Fire() {
+            if (!CanFire()) return;
+
+            _lastFireTime = Time.time;
+
+            _fireStrategy?.ExecuteFire(this);
+
+            EventBroker.Publish(new WeaponFiredEvent { Weapon = this });
         }
     }
 }
