@@ -38,10 +38,7 @@ namespace Potop.Client.Gameplay {
                 GameObject projectileObj = Core.Pooling.PoolManager.Instance.Spawn(projectilePrefab, firePoint.position, firePoint.rotation);
 
                 if (projectileObj.TryGetComponent<Projectile>(out var projectile)) {
-                    projectile.Initialize(speed, Mathf.RoundToInt(damage));
-
-                    // TODO: Projectile 시스템 확장 시 폭발 반경 전달
-                    // 현재 Projectile에는 폭발 범위(AoE) 설정이 없으므로, 추후 반영을 위해 구조만 둡니다.
+                    projectile.Initialize(speed, Mathf.RoundToInt(damage), _explosionRadius, 0, 0f);
                 }
             }
         }
