@@ -80,15 +80,23 @@ namespace Potop.Client.Gameplay.Weapons {
         }
 
         /// <summary>
+        /// 현재 계산된 발사 속도를 반환합니다. 파츠의 영향을 받습니다.
+        /// </summary>
+        public virtual float GetModifiedFireRate() {
+            if (_weaponData == null) return 0f;
+            return _weaponBody != null ? _weaponBody.ModifyFireRate(_weaponData.BaseFireRate) : _weaponData.BaseFireRate;
+        }
+
+        /// <summary>
         /// 현재 발사가 가능한 상태인지 확인합니다.
         /// </summary>
         protected virtual bool CanFire() {
             if (_weaponData == null || _currentAmmo <= 0) return false;
 
-            // 파츠가 발사 속도를 수정할 수 있도록 계산 (파츠가 없으면 기본값)
-            float currentFireRate = _weaponBody != null ? _weaponBody.ModifyFireRate(_weaponData.BaseFireRate) : _weaponData.BaseFireRate;
-            float fireInterval = 1f / currentFireRate;
+            float currentFireRate = GetModifiedFireRate();
+            if (currentFireRate <= 0) return false;
 
+            float fireInterval = 1f / currentFireRate;
             return Time.time >= _lastFireTime + fireInterval;
         }
 
