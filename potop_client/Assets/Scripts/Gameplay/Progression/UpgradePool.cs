@@ -1,69 +1,123 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using Potop.Client.Gameplay;
 
-namespace Potop.Client.Gameplay.Progression
-{
-    public enum UpgradeRarity
-    {
-        Common,
-        Rare,
-        Epic
-    }
-
+namespace Potop.Client.Gameplay.Progression {
     /// <summary>
-    /// 업그레이드 선택지 하나의 정보를 담는 구조체 (혹은 클래스)
+    /// Manages the pool of available upgrades and handles weighted probability random extraction and pity mechanisms.
     /// </summary>
-    [System.Serializable]
-    public struct UpgradeOption
-    {
-        public string UpgradeId;
-        public string DisplayName;
-        public string Description;
-        public UpgradeRarity Rarity;
-        public Sprite Icon;
-        // Phase 6에서 사용될 확장 인터페이스를 위한 변수
-        public int RarityWeight;
-    }
-
-    /// <summary>
-    /// 전체 업그레이드 목록을 관리하고 랜덤으로 추출하는 클래스
-    /// </summary>
-    public class UpgradePool : MonoBehaviour
-    {
-        [Tooltip("전체 업그레이드 옵션 풀")]
+    public class UpgradePool : MonoBehaviour {
+        [Tooltip("Fallback local list of upgrade options if UpgradeTableData is not assigned")]
         [SerializeField] private List<UpgradeOption> _availableUpgrades = new List<UpgradeOption>();
 
-        /// <summary>
-        /// 주어진 개수만큼 중복되지 않는 랜덤 업그레이드 옵션을 추출합니다.
-        /// Phase 6에서 확률에 기반한 로직이 추가될 예정입니다.
-        /// </summary>
-        private System.Random _random = new System.Random();
+        [Tooltip("ScriptableObject containing weighted probabilities and the master upgrade list")]
+        [SerializeField] private UpgradeTableData _upgradeTable;
 
-        /// <param name="count">추출할 옵션 개수 (일반적으로 3~4개)</param>
-        /// <returns>선택된 업그레이드 옵션 리스트</returns>
-        public List<UpgradeOption> GetRandomUpgrades(int count)
-        {
-            if (_availableUpgrades == null || _availableUpgrades.Count == 0)
-            {
-                Debug.LogWarning("[UpgradePool] 업그레이드 풀이 비어있습니다.");
+        private System.Random _random = new System.Random();
+        private int _epicPityCounter = 0;
+
+        /// <summary>
+        /// Gets the current pity counter (consecutive option draws without Epic).
+        /// </summary>
+        public int EpicPityCounter => _epicPityCounter;
+
+        /// <summary>
+        /// Sets the pity counter directly (useful for testing and debugging).
+        /// </summary>
+        public void SetEpicPityCounter(int count) {
+            _epicPityCounter = count;
+        }
+
+        /// <summary>
+        /// Selects a specified number of unique upgrade options based on weights and the pity system.
+        /// </summary>
+        /// <param name="count">Number of upgrade options to return</param>
+        /// <returns>A list of selected UpgradeOption structs</returns>
+        public List<UpgradeOption> GetRandomUpgrades(int count) {
+            List<UpgradeOption> poolOptions = _upgradeTable != null ? _upgradeTable.UpgradeOptions : _availableUpgrades;
+
+            if (poolOptions == null || poolOptions.Count == 0) {
+                Debug.LogWarning("[UpgradePool] Upgrade pool is empty.");
                 return new List<UpgradeOption>();
             }
 
-            int extractCount = Mathf.Min(count, _availableUpgrades.Count);
+            int extractCount = Mathf.Min(count, poolOptions.Count);
+            List<UpgradeOption> selectedOptions = new List<UpgradeOption>();
 
-            // Phase 6 가중치 시스템 도입 전 임시 Fisher-Yates shuffle
-            var result = new List<UpgradeOption>(_availableUpgrades);
-            for (int i = 0; i < extractCount; i++)
-            {
-                int randomIndex = _random.Next(i, result.Count);
-                var temp = result[i];
-                result[i] = result[randomIndex];
-                result[randomIndex] = temp;
+            float commonWeight = _upgradeTable != null ? _upgradeTable.CommonWeight : 70f;
+            float rareWeight = _upgradeTable != null ? _upgradeTable.RareWeight : 25f;
+            float epicWeight = _upgradeTable != null ? _upgradeTable.EpicWeight : 5f;
+            float totalWeight = commonWeight + rareWeight + epicWeight;
+
+            for (int i = 0; i < extractCount; i++) {
+                UpgradeRarity rolledRarity;
+                bool isPityTriggered = (_epicPityCounter >= 10);
+
+                if (isPityTriggered) {
+                    rolledRarity = UpgradeRarity.Epic;
+                } else {
+                    float roll = (float)_random.NextDouble() * totalWeight;
+                    if (roll < commonWeight) {
+                        rolledRarity = UpgradeRarity.Common;
+                    } else if (roll < commonWeight + rareWeight) {
+                        rolledRarity = UpgradeRarity.Rare;
+                    } else {
+                        rolledRarity = UpgradeRarity.Epic;
+                    }
+                }
+
+                // Filter options that match the rolled rarity and are not already selected
+                List<UpgradeOption> availableOfRarity = new List<UpgradeOption>();
+                for (int j = 0; j < poolOptions.Count; j++) {
+                    UpgradeOption opt = poolOptions[j];
+                    if (opt.Rarity == rolledRarity) {
+                        bool alreadySelected = false;
+                        for (int k = 0; k < selectedOptions.Count; k++) {
+                            if (selectedOptions[k].UpgradeId == opt.UpgradeId) {
+                                alreadySelected = true;
+                                break;
+                            }
+                        }
+                        if (!alreadySelected) {
+                            availableOfRarity.Add(opt);
+                        }
+                    }
+                }
+
+                // Graceful fallback to any remaining unselected option if rarity is depleted
+                if (availableOfRarity.Count == 0) {
+                    for (int j = 0; j < poolOptions.Count; j++) {
+                        UpgradeOption opt = poolOptions[j];
+                        bool alreadySelected = false;
+                        for (int k = 0; k < selectedOptions.Count; k++) {
+                            if (selectedOptions[k].UpgradeId == opt.UpgradeId) {
+                                alreadySelected = true;
+                                break;
+                            }
+                        }
+                        if (!alreadySelected) {
+                            availableOfRarity.Add(opt);
+                        }
+                    }
+                }
+
+                if (availableOfRarity.Count == 0) {
+                    break;
+                }
+
+                int randomIndex = _random.Next(availableOfRarity.Count);
+                UpgradeOption selectedOption = availableOfRarity[randomIndex];
+                selectedOptions.Add(selectedOption);
+
+                // Reset pity counter on Epic, increment on non-Epic
+                if (selectedOption.Rarity == UpgradeRarity.Epic) {
+                    _epicPityCounter = 0;
+                } else {
+                    _epicPityCounter++;
+                }
             }
 
-            return result.GetRange(0, extractCount);
+            return selectedOptions;
         }
-
     }
 }
