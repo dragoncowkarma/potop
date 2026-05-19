@@ -76,6 +76,8 @@ namespace Potop.Client.Gameplay {
 
         private void OnDisable() {
             CancelInvoke(nameof(DespawnSelf));
+            // Reset scale to avoid state leakage from modifiers like OrbitalStrike
+            transform.localScale = Vector3.one;
         }
 
         private void DespawnSelf() {
@@ -140,4 +142,3 @@ namespace Potop.Client.Gameplay {
         }
     }
 }
-

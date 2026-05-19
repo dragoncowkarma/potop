@@ -24,9 +24,8 @@ namespace Potop.Client.Gameplay.Weapons.Overdrive
 
             GameObject projectileObj = Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(projectilePrefab, firePoint.position, firePoint.rotation);
 
-            if (!projectileObj.GetComponent<PierceModifier>())
+            if (projectileObj.TryGetComponent<PierceModifier>(out var pierce))
             {
-                var pierce = projectileObj.AddComponent<PierceModifier>();
                 pierce.enabled = true;
             }
 

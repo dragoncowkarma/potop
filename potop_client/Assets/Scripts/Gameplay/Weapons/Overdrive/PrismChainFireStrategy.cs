@@ -24,7 +24,7 @@ namespace Potop.Client.Gameplay.Weapons.Overdrive
             float damage = weapon.GetCalculatedDamage();
             float speed = weapon.GetCalculatedProjectileSpeed();
 
-            float angleStep = SPREAD_ANGLE / (PROJECTILE_COUNT - 1);
+            float angleStep = PROJECTILE_COUNT > 1 ? SPREAD_ANGLE / (PROJECTILE_COUNT - 1) : 0f;
             float startAngle = -SPREAD_ANGLE / 2f;
 
             for (int i = 0; i < PROJECTILE_COUNT; i++)
@@ -35,15 +35,13 @@ namespace Potop.Client.Gameplay.Weapons.Overdrive
                 GameObject projectileObj = Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(projectilePrefab, firePoint.position, rotation);
 
                 // 궁극 무기 전용 모디파이어 추가
-                if (!projectileObj.GetComponent<BounceModifier>())
+                if (projectileObj.TryGetComponent<BounceModifier>(out var bounce))
                 {
-                    var bounce = projectileObj.AddComponent<BounceModifier>();
-                    bounce.enabled = true; // 풀링 호환성을 위해 OnEnable/OnDisable 사용 고려
+                    bounce.enabled = true;
                 }
 
-                if (!projectileObj.GetComponent<HomingModifier>())
+                if (projectileObj.TryGetComponent<HomingModifier>(out var homing))
                 {
-                    var homing = projectileObj.AddComponent<HomingModifier>();
                     homing.enabled = true;
                 }
 
