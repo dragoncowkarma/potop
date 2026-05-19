@@ -36,10 +36,16 @@ namespace Potop.Client.Gameplay {
                 return;
             }
 
-            ContactPoint contact = collision.GetContact(0);
-            Vector3 reflectedDirection = Vector3.Reflect(transform.forward, contact.normal);
+            if (collision.contactCount == 0) return;
 
-            transform.forward = reflectedDirection.normalized;
+            ContactPoint contact = collision.GetContact(0);
+            if (TryGetComponent<Rigidbody>(out var rb)) {
+                rb.velocity = Vector3.Reflect(rb.velocity, contact.normal);
+                transform.forward = rb.velocity.normalized;
+            } else {
+                Vector3 reflectedDirection = Vector3.Reflect(transform.forward, contact.normal);
+                transform.forward = reflectedDirection.normalized;
+            }
         }
     }
 }

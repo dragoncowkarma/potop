@@ -8,11 +8,14 @@ namespace Potop.Client.Gameplay {
     public class HomingModifier : MonoBehaviour, IModifier {
         [SerializeField, Min(1f)] private float _rotationSpeed = 90f;
         [SerializeField, Min(1f)] private float _searchRadius = 20f;
+        [SerializeField, Min(0.1f)] private float _searchInterval = 0.5f;
 
         private Projectile _projectile;
         private Transform _target;
         private int _enemyLayerMask;
-        private readonly Collider[] _hitColliders = new Collider[MAX_TARGETS];
+        private float _lastSearchTime;
+
+        private static readonly Collider[] _hitColliders = new Collider[MAX_TARGETS];
         private const string ENEMY_LAYER_NAME = "Enemy";
         private const int MAX_TARGETS = 10;
 
@@ -40,7 +43,10 @@ namespace Potop.Client.Gameplay {
             if (_projectile == null) return;
 
             if (_target == null || !_target.gameObject.activeInHierarchy) {
-                FindTarget();
+                if (Time.time >= _lastSearchTime + _searchInterval) {
+                    FindTarget();
+                    _lastSearchTime = Time.time;
+                }
             }
 
             if (_target != null) {
@@ -49,6 +55,10 @@ namespace Potop.Client.Gameplay {
                 if (targetDirection != Vector3.zero) {
                     Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, _rotationSpeed * Mathf.Deg2Rad * Time.deltaTime, 0f);
                     transform.forward = newDirection;
+
+                    if (TryGetComponent<Rigidbody>(out var rb)) {
+                        rb.velocity = newDirection * rb.velocity.magnitude;
+                    }
                 }
             }
         }

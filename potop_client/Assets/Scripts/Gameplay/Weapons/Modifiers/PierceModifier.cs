@@ -6,11 +6,16 @@ namespace Potop.Client.Gameplay {
     /// 최대 관통 횟수 초과 시 투사체가 제거됩니다.
     /// </summary>
     public class PierceModifier : MonoBehaviour, IModifier {
-        private const string ENEMY_TAG = "Enemy";
+        private const string ENEMY_LAYER_NAME = "Enemy";
         [SerializeField, Min(1)] private int _maxPierceCount = 3;
 
         private int _currentPierceCount;
         private Projectile _projectile;
+        private int _enemyLayer;
+
+        private void Awake() {
+            _enemyLayer = LayerMask.NameToLayer(ENEMY_LAYER_NAME);
+        }
 
         /// <summary>
         /// 투사체에 관통 변이를 적용합니다.
@@ -30,7 +35,12 @@ namespace Potop.Client.Gameplay {
         private void OnCollisionEnter(Collision collision) {
             if (_projectile == null) return;
 
-            if (collision.gameObject.CompareTag(ENEMY_TAG)) {
+            if (collision.gameObject.layer == _enemyLayer) {
+                // Ignore collision to prevent physical deflection
+                if (TryGetComponent<Collider>(out var myCollider)) {
+                    Physics.IgnoreCollision(myCollider, collision.collider);
+                }
+
                 _currentPierceCount--;
 
                 if (_currentPierceCount <= 0) {
