@@ -24,6 +24,7 @@ namespace Potop.Client.Gameplay.Tests {
         public void PitySystem_GuaranteesEpic_AfterTenNonEpics() {
             // Set up test upgrade options using Reflection to populate the fallback pool
             var upgradesField = typeof(UpgradePool).GetField("_availableUpgrades", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var upgradeTableField = typeof(UpgradePool).GetField("_upgradeTable", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             
             var options = new List<UpgradeOption> {
                 new UpgradeOption { UpgradeId = "common1", Rarity = UpgradeRarity.Common },
@@ -33,6 +34,9 @@ namespace Potop.Client.Gameplay.Tests {
             };
             
             upgradesField.SetValue(_pool, options);
+
+            var upgradeTable = ScriptableObject.CreateInstance<UpgradeTableData>();
+            upgradeTableField.SetValue(_pool, upgradeTable);
 
             // Force pity state close to triggering
             _pool.SetEpicPityCounter(9);

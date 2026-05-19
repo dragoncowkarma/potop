@@ -13,6 +13,8 @@ namespace Potop.Client.Gameplay.Progression {
         [Tooltip("ScriptableObject containing weighted probabilities and the master upgrade list")]
         [SerializeField] private UpgradeTableData _upgradeTable;
 
+        private const int EPIC_PITY_THRESHOLD = 10;
+
         private System.Random _random = new System.Random();
         private int _epicPityCounter = 0;
 
@@ -34,7 +36,14 @@ namespace Potop.Client.Gameplay.Progression {
         /// <param name="count">Number of upgrade options to return</param>
         /// <returns>A list of selected UpgradeOption structs</returns>
         public List<UpgradeOption> GetRandomUpgrades(int count) {
-            List<UpgradeOption> poolOptions = _upgradeTable != null ? _upgradeTable.UpgradeOptions : _availableUpgrades;
+            if (_upgradeTable == null) {
+                Debug.LogError("[UpgradePool] UpgradeTableData is not assigned.");
+                return new List<UpgradeOption>();
+            }
+
+            List<UpgradeOption> poolOptions = _upgradeTable.UpgradeOptions != null && _upgradeTable.UpgradeOptions.Count > 0
+                ? _upgradeTable.UpgradeOptions
+                : _availableUpgrades;
 
             if (poolOptions == null || poolOptions.Count == 0) {
                 Debug.LogWarning("[UpgradePool] Upgrade pool is empty.");
@@ -44,14 +53,14 @@ namespace Potop.Client.Gameplay.Progression {
             int extractCount = Mathf.Min(count, poolOptions.Count);
             List<UpgradeOption> selectedOptions = new List<UpgradeOption>();
 
-            float commonWeight = _upgradeTable != null ? _upgradeTable.CommonWeight : 70f;
-            float rareWeight = _upgradeTable != null ? _upgradeTable.RareWeight : 25f;
-            float epicWeight = _upgradeTable != null ? _upgradeTable.EpicWeight : 5f;
+            float commonWeight = _upgradeTable.CommonWeight;
+            float rareWeight = _upgradeTable.RareWeight;
+            float epicWeight = _upgradeTable.EpicWeight;
             float totalWeight = commonWeight + rareWeight + epicWeight;
 
             for (int i = 0; i < extractCount; i++) {
                 UpgradeRarity rolledRarity;
-                bool isPityTriggered = (_epicPityCounter >= 10);
+                bool isPityTriggered = (_epicPityCounter >= EPIC_PITY_THRESHOLD);
 
                 if (isPityTriggered) {
                     rolledRarity = UpgradeRarity.Epic;
