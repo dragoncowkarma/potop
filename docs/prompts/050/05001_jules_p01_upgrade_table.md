@@ -1,5 +1,5 @@
-# [Phase 06] [jules] [p01] 업그레이드 확률 테이블
-- parallel: [p02](06002_jules_p02_mutation_synergy.md), [p03](06003_jules_p03_projectile_mutation.md)
+# [Phase 050] [jules] [p01] 업그레이드 확률 테이블
+- parallel: [p02](05002_jules_p02_mutation_synergy.md), [p03](05003_jules_p03_projectile_mutation.md)
 
 ---
 
@@ -7,9 +7,12 @@
 You are a **Senior Software Engineer with 10 years of experience**, specializing in perfect architectural design and optimization for the 'POTOP' project. (Jules)
 
 # 📋 Context
+> [!IMPORTANT]
+> **Before starting, review [`AGENTS.md`](../../../AGENTS.md) and [`potop_client/AGENTS.md`](../../../potop_client/AGENTS.md).**
+
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game
-- Current Module: Upgrade Probability Table (06001)
+- Current Module: Upgrade Probability Table (05001)
 - Background: Phase 6 — UpgradePool(Phase 5)을 확장하여 레어리티별 가중 확률, Pity 시스템 구현
 - Related Systems: UpgradePool (Phase 5), LevelingManager
 - GDD Reference: `02_gameplay_mechanics.md` §레벨업 패시브
@@ -38,3 +41,21 @@ You are a **Senior Software Engineer with 10 years of experience**, specializing
 <input_data>
 - Scope: `Assets/Scripts/Gameplay/Progression/UpgradePool.cs` (확장), `Assets/Data/Progression/UpgradeTableData.cs`, `Assets/Data/Progression/UpgradeTableData.asset`
 </input_data>
+
+# 📝 Output Format
+Generate your response strictly following the structure below (including XML tags).
+<output_format>
+<thinking>
+- Analyze the requirements and constraints.
+- Plan the implementation strategy and edge cases.
+- Verification of `AGENTS.md` compliance.
+</thinking>
+<implementation>
+- [Instructions: Use agent tools or Diff format]
+</implementation>
+<verification>
+- [ ] Requirements met
+- [ ] EOF empty line and comment cleanup completed
+- [ ] Magic Numbers removed
+</verification>
+</output_format>

@@ -1,5 +1,5 @@
-# [Phase 06] [jules] [p03] 투사체 변이 물리 로직
-- parallel: [p01](06001_jules_p01_upgrade_table.md), [p02](06002_jules_p02_mutation_synergy.md)
+# [Phase 050] [jules] [p03] 투사체 변이 물리 로직
+- parallel: [p01](05001_jules_p01_upgrade_table.md), [p02](05002_jules_p02_mutation_synergy.md)
 
 ---
 
@@ -7,10 +7,13 @@
 You are a **Senior Software Engineer with 10 years of experience**, specializing in perfect architectural design and optimization for the 'POTOP' project. (Jules)
 
 # 📋 Context
+> [!IMPORTANT]
+> **Before starting, review [`AGENTS.md`](../../../AGENTS.md) and [`potop_client/AGENTS.md`](../../../potop_client/AGENTS.md).**
+
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game
-- Current Module: Projectile Mutation Physics (06003)
-- Background: Phase 6 — 관통/도탄/유도/거대화 각 투사체 변이의 물리 로직 구현
+- Current Module: Projectile Mutation Physics (05003)
+- Background: Phase 050 — 관통/도탄/유도/거대화 각 투사체 변이의 물리 로직 구현
 - Related Systems: Projectile (Phase 1), IModifier, Physics Layers
 - GDD Reference: `02_gameplay_mechanics.md` §물리 규칙, `03_data_and_balance.md`
 </context>
@@ -42,3 +45,21 @@ You are a **Senior Software Engineer with 10 years of experience**, specializing
 - Scope: `Assets/Scripts/Gameplay/Weapons/Modifiers/PierceModifier.cs`, `BounceModifier.cs`, `HomingModifier.cs`, `ScaleModifier.cs`
 - Reference (Read-only): `Assets/Scripts/Gameplay/Weapons/WeaponBase.cs`, `Assets/Scripts/Gameplay/Projectile.cs`
 </input_data>
+
+# 📝 Output Format
+Generate your response strictly following the structure below (including XML tags).
+<output_format>
+<thinking>
+- Analyze the requirements and constraints.
+- Plan the implementation strategy and edge cases.
+- Verification of `AGENTS.md` compliance.
+</thinking>
+<implementation>
+- [Instructions: Use agent tools or Diff format]
+</implementation>
+<verification>
+- [ ] Requirements met
+- [ ] EOF empty line and comment cleanup completed
+- [ ] Magic Numbers removed
+</verification>
+</output_format>

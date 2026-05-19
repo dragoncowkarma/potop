@@ -1,5 +1,5 @@
-# [Phase 06] [jules] [p02] 무기 변이 & 시너지
-- parallel: [p01](06001_jules_p01_upgrade_table.md), [p03](06003_jules_p03_projectile_mutation.md)
+# [Phase 050] [jules] [p02] 무기 변이 & 시너지
+- parallel: [p01](05001_jules_p01_upgrade_table.md), [p03](05003_jules_p03_projectile_mutation.md)
 
 ---
 
@@ -7,9 +7,12 @@
 You are a **Senior Software Engineer with 10 years of experience**, specializing in perfect architectural design and optimization for the 'POTOP' project. (Jules)
 
 # 📋 Context
+> [!IMPORTANT]
+> **Before starting, review [`AGENTS.md`](../../../AGENTS.md) and [`potop_client/AGENTS.md`](../../../potop_client/AGENTS.md).**
+
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game
-- Current Module: Mutation Synergy System (06002)
+- Current Module: Mutation Synergy System (05002)
 - Background: Phase 6 — 특정 변이 조합 감지 시 시너지 보너스 적용
 - Related Systems: IModifier, WeaponBase, Modifier System (Phase 2.5)
 - GDD Reference: `02_gameplay_mechanics.md` §무기 변이 및 시너지 (Pierce+Explosion, Multi+Bounce, Scale+Knockback)
@@ -42,3 +45,21 @@ You are a **Senior Software Engineer with 10 years of experience**, specializing
 - Scope: `Assets/Scripts/Gameplay/Weapons/Modifiers/MutationSynergyManager.cs`, `Assets/Data/Weapons/SynergyRuleData.cs`, `Assets/Data/Weapons/SynergyRuleData.asset`
 - Reference (Read-only): `Assets/Scripts/Gameplay/Weapons/WeaponBase.cs`, `Assets/Scripts/Gameplay/Weapons/IWeapon.cs`
 </input_data>
+
+# 📝 Output Format
+Generate your response strictly following the structure below (including XML tags).
+<output_format>
+<thinking>
+- Analyze the requirements and constraints.
+- Plan the implementation strategy and edge cases.
+- Verification of `AGENTS.md` compliance.
+</thinking>
+<implementation>
+- [Instructions: Use agent tools or Diff format]
+</implementation>
+<verification>
+- [ ] Requirements met
+- [ ] EOF empty line and comment cleanup completed
+- [ ] Magic Numbers removed
+</verification>
+</output_format>

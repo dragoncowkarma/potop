@@ -23,10 +23,11 @@ This document tracks all parallel processing groups within the project to ensure
     - [04003_jules_p03_xp_leveling.md](file:///Users/macbook/Desktop/potop/docs/prompts/040/04003_jules_p03_xp_leveling.md)
 
 ## 🟢 Phase 050: Build Diversity
-- **Group 1**:
+- **Group 1** (병렬 실행 가능):
     - [05001_jules_p01_upgrade_table.md](file:///Users/macbook/Desktop/potop/docs/prompts/050/05001_jules_p01_upgrade_table.md)
     - [05002_jules_p02_mutation_synergy.md](file:///Users/macbook/Desktop/potop/docs/prompts/050/05002_jules_p02_mutation_synergy.md)
     - [05003_jules_p03_projectile_mutation.md](file:///Users/macbook/Desktop/potop/docs/prompts/050/05003_jules_p03_projectile_mutation.md)
+- **Group 2** (Group 1 완료 후 실행 — 05002, 05003 API 의존):
     - [05004_jules_overdrive_evolution.md](file:///Users/macbook/Desktop/potop/docs/prompts/050/05004_jules_overdrive_evolution.md)
 
 ## 🟢 Phase 060: Tactics & Meta Economy

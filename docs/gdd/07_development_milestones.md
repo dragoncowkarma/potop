@@ -103,12 +103,14 @@
 > - 04502: [Jules] [04502_jules_p02_projectile_features.md](../prompts/045/04502_jules_p02_projectile_features.md)
 > - 04503: [Jules] [04503_jules_p03_data_ui_cleanup.md](../prompts/045/04503_jules_p03_data_ui_cleanup.md)
 > - 04504: [Antigravity] [04504_antigravity_p04_feedback_polish.md](../prompts/045/04504_antigravity_p04_feedback_polish.md)
+> - 04505: [Antigravity] [04505_antigravity_p05_asset_setup.md](../prompts/045/04505_antigravity_p05_asset_setup.md)
 > - QA: [Gemini CLI] [04599_gemini_validation.md](../prompts/045/04599_gemini_validation.md)
 
 *   **[04501] 무기 아키텍처 통합 (Weapon Integration)** — `TurretShooter.cs`를 `WeaponBase` 및 `IFireStrategy` 기반으로 리팩토링
 *   **[04502] 투사체 핵심 특성 구현 (Projectile Features)** — `NovaWeapon`의 광역 피해(AoE) 및 `JuggernautWeapon`의 넉백/관통 로직 추가
 *   **[04503] 데이터 및 UI 기술 부채 해결 (Data & UI Cleanup)** — `EXPGemData` 분리, `UpgradeSelectController`에서 `FindFirstObjectByType` 제거
 *   **[04504] 컴뱃 피드백 및 최적화 (Feedback & Polish)** — `CameraShakeController` 전투 연동, `VFXTrigger` 코루틴을 `PoolManager` 기반으로 최적화
+*   **[04505] 오디오 및 현지화 에셋 셋업 (Asset Setup)** — 로컬라이제이션 및 오디오 소스 기본 리소스 임포트 및 바인딩
 
 ---
 
@@ -163,6 +165,9 @@
 ---
 
 ### **Phase 8: 폴리싱 & 게임필 (Polish & Game Feel)** `[예상: 2주]`
+> [!TIP]
+> AI Prompts:
+> - 08002: [Jules] [08002_jules_sound_manager.md](../prompts/080/08002_jules_sound_manager.md)
 
 *   **[08001] 컴뱃 쥬스 최종 정비** — 히트스탑, 슬로우모션, 화면 흔들림 강도 튜닝
 *   **[08002] 사운드 시스템** — Adaptive BGM 5단계(Lo-fi→EDM) + SFX 통합
@@ -172,6 +177,9 @@
 ---
 
 ### **Phase 9: 모바일 출시 준비 (Mobile Launch)** `[예상: 3~4주]`
+> [!TIP]
+> AI Prompts:
+> - 09008: [Jules] [09008_jules_localization.md](../prompts/090/09008_jules_localization.md)
 
 *   **[09001] 로비 UI 완성** — 터렛 선택/강화 상점/설정 화면
 *   **[09002] 업적 시스템** — AC_001~AC_010 (10종 업적)

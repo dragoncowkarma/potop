@@ -1,4 +1,4 @@
-# [Phase 06] [jules] 궁극 진화 시스템
+# [Phase 050] [jules] 궁극 진화 시스템
 
 ---
 
@@ -6,13 +6,23 @@
 You are a **Senior Software Engineer with 10 years of experience**, specializing in perfect architectural design and optimization for the 'POTOP' project. (Jules)
 
 # 📋 Context
+> [!IMPORTANT]
+> **Before starting, review [`AGENTS.md`](../../../AGENTS.md) and [`potop_client/AGENTS.md`](../../../potop_client/AGENTS.md).**
+
 <context>
 - Project Goal: 3D Roguelite Turret Defense Game
-- Current Module: Overdrive Evolution System (06004)
-- Background: Phase 6 — 최종 시너지 완성 + 보스 상자 획득 시 궁극 진화 무기 발동
-- Related Systems: MutationSynergyManager (06002), WeaponBase, EventBroker
+- Current Module: Overdrive Evolution System (05004)
+- Background: Phase 050 — 최종 시너지 완성 + 보스 상자 획득 시 궁극 진화 무기 발동
+- Related Systems: MutationSynergyManager (05002), WeaponBase, EventBroker
 - GDD Reference: `02_gameplay_mechanics.md` §궁극 진화 (Overdrive Evolution)
 </context>
+
+# 🔗 Dependencies
+<dependencies>
+- [BLOCKING] `05002_jules_p02_mutation_synergy.md` 완료 필요 (API: `MutationSynergyManager.HasCompleteSynergy(SynergyType)`)
+- [BLOCKING] `05003_jules_p03_projectile_mutation.md` 완료 필요 (API: `IModifier.Apply/Remove`)
+- [DEFERRED] 보스 상자 트리거 연동 → Phase 070에서 처리 (현 단계에서는 `EventBroker` 이벤트 stub만 구현)
+</dependencies>
 
 # 🛠️ Task
 <task>
@@ -38,3 +48,21 @@ You are a **Senior Software Engineer with 10 years of experience**, specializing
 - Scope: `Assets/Scripts/Gameplay/Weapons/Overdrive/OverdriveEvolution.cs`, `OrbitalStrikeWeapon.cs`, `PrismChainWeapon.cs`, `GatlingRailgunWeapon.cs`, `Assets/Data/Weapons/Overdrive/` (SO 에셋)
 - Reference (Read-only): `Assets/Scripts/Gameplay/Weapons/Modifiers/MutationSynergyManager.cs`, `WeaponBase.cs`
 </input_data>
+
+# 📝 Output Format
+Generate your response strictly following the structure below (including XML tags).
+<output_format>
+<thinking>
+- Analyze the requirements and constraints.
+- Plan the implementation strategy and edge cases.
+- Verification of `AGENTS.md` compliance.
+</thinking>
+<implementation>
+- [Instructions: Use agent tools or Diff format]
+</implementation>
+<verification>
+- [ ] Requirements met
+- [ ] EOF empty line and comment cleanup completed
+- [ ] Magic Numbers removed
+</verification>
+</output_format>
