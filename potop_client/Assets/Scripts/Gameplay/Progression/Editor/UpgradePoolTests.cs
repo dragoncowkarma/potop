@@ -22,9 +22,12 @@ namespace Potop.Client.Gameplay.Tests {
 
         [Test]
         public void PitySystem_GuaranteesEpic_AfterTenNonEpics() {
-            // Set up test upgrade options using Reflection to populate the fallback pool
-            var upgradesField = typeof(UpgradePool).GetField("_availableUpgrades", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            // Set up test upgrade options using Reflection
             var upgradeTableField = typeof(UpgradePool).GetField("_upgradeTable", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var tableOptionsField = typeof(UpgradeTableData).GetField("_upgradeOptions", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var commonWeightField = typeof(UpgradeTableData).GetField("_commonWeight", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var rareWeightField = typeof(UpgradeTableData).GetField("_rareWeight", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var epicWeightField = typeof(UpgradeTableData).GetField("_epicWeight", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             
             var options = new List<UpgradeOption> {
                 new UpgradeOption { UpgradeId = "common1", Rarity = UpgradeRarity.Common },
@@ -32,10 +35,13 @@ namespace Potop.Client.Gameplay.Tests {
                 new UpgradeOption { UpgradeId = "common3", Rarity = UpgradeRarity.Common },
                 new UpgradeOption { UpgradeId = "epic1", Rarity = UpgradeRarity.Epic }
             };
-            
-            upgradesField.SetValue(_pool, options);
 
             var upgradeTable = ScriptableObject.CreateInstance<UpgradeTableData>();
+            tableOptionsField.SetValue(upgradeTable, options);
+            commonWeightField.SetValue(upgradeTable, 70f);
+            rareWeightField.SetValue(upgradeTable, 25f);
+            epicWeightField.SetValue(upgradeTable, 5f);
+
             upgradeTableField.SetValue(_pool, upgradeTable);
 
             // Force pity state close to triggering

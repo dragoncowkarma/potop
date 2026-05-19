@@ -7,9 +7,6 @@ namespace Potop.Client.Gameplay.Progression {
     /// Manages the pool of available upgrades and handles weighted probability random extraction and pity mechanisms.
     /// </summary>
     public class UpgradePool : MonoBehaviour {
-        [Tooltip("Fallback local list of upgrade options if UpgradeTableData is not assigned")]
-        [SerializeField] private List<UpgradeOption> _availableUpgrades = new List<UpgradeOption>();
-
         [Tooltip("ScriptableObject containing weighted probabilities and the master upgrade list")]
         [SerializeField] private UpgradeTableData _upgradeTable;
 
@@ -41,9 +38,7 @@ namespace Potop.Client.Gameplay.Progression {
                 return new List<UpgradeOption>();
             }
 
-            List<UpgradeOption> poolOptions = _upgradeTable.UpgradeOptions != null && _upgradeTable.UpgradeOptions.Count > 0
-                ? _upgradeTable.UpgradeOptions
-                : _availableUpgrades;
+            List<UpgradeOption> poolOptions = _upgradeTable.UpgradeOptions;
 
             if (poolOptions == null || poolOptions.Count == 0) {
                 Debug.LogWarning("[UpgradePool] Upgrade pool is empty.");
@@ -57,6 +52,11 @@ namespace Potop.Client.Gameplay.Progression {
             float rareWeight = _upgradeTable.RareWeight;
             float epicWeight = _upgradeTable.EpicWeight;
             float totalWeight = commonWeight + rareWeight + epicWeight;
+
+            if (totalWeight <= 0f) {
+                Debug.LogError($"[UpgradePool] Total weight in {_upgradeTable.name} is zero. Please configure weights.");
+                return new List<UpgradeOption>();
+            }
 
             for (int i = 0; i < extractCount; i++) {
                 UpgradeRarity rolledRarity;
