@@ -54,5 +54,39 @@ namespace Potop.Client.Gameplay
     {
         [Tooltip("시너지 규칙 목록")]
         public List<SynergyRule> Rules = new List<SynergyRule>();
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (Rules == null) return;
+
+            HashSet<(ModifierType, ModifierType)> ruleSet = new HashSet<(ModifierType, ModifierType)>();
+
+            for (int i = 0; i < Rules.Count; i++)
+            {
+                SynergyRule rule = Rules[i];
+
+                // 규칙 정규화 (오름차순 정렬)
+                if (rule.Modifier1 > rule.Modifier2)
+                {
+                    ModifierType temp = rule.Modifier1;
+                    rule.Modifier1 = rule.Modifier2;
+                    rule.Modifier2 = temp;
+                    Rules[i] = rule;
+                }
+
+                // 중복 검사
+                var ruleKey = (rule.Modifier1, rule.Modifier2);
+                if (ruleSet.Contains(ruleKey))
+                {
+                    Debug.LogWarning($"[SynergyRuleData] 중복된 시너지 규칙이 발견되었습니다: {rule.Modifier1} + {rule.Modifier2}");
+                }
+                else
+                {
+                    ruleSet.Add(ruleKey);
+                }
+            }
+        }
+#endif
     }
 }

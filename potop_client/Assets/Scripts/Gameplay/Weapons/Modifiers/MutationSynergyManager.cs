@@ -16,7 +16,10 @@ namespace Potop.Client.Gameplay
         private readonly HashSet<ModifierType> _activeModifiers = new HashSet<ModifierType>();
 
         // 현재 활성화된 시너지를 추적합니다.
-        private readonly HashSet<SynergyType> _activeSynergies = new HashSet<SynergyType>();
+        private HashSet<SynergyType> _activeSynergies = new HashSet<SynergyType>();
+
+        public event System.Action<SynergyType> SynergyActivated;
+        public event System.Action<SynergyType> SynergyDeactivated;
 
         /// <summary>
         /// 새로운 모디파이어를 추가하고 시너지를 재평가합니다.
@@ -58,61 +61,39 @@ namespace Potop.Client.Gameplay
         /// </summary>
         private void EvaluateSynergies()
         {
-            if (_synergyRuleData == null || _synergyRuleData.Rules == null)
-            {
-                return;
-            }
+            if (_synergyRuleData == null || _synergyRuleData.Rules == null) return;
 
-            _activeSynergies.Clear();
-
-            // 설정된 모든 규칙을 순회하며 조건을 만족하는지 확인합니다.
+            var newActiveSynergies = new HashSet<SynergyType>();
             foreach (var rule in _synergyRuleData.Rules)
             {
-                if (rule.Modifier1 == ModifierType.None || rule.Modifier2 == ModifierType.None)
+                if (rule.Modifier1 != ModifierType.None && rule.Modifier2 != ModifierType.None &&
+                    _activeModifiers.Contains(rule.Modifier1) && _activeModifiers.Contains(rule.Modifier2))
                 {
-                    continue;
-                }
-
-                if (_activeModifiers.Contains(rule.Modifier1) && _activeModifiers.Contains(rule.Modifier2))
-                {
-                    _activeSynergies.Add(rule.Synergy);
+                    newActiveSynergies.Add(rule.Synergy);
                 }
             }
-        }
 
-        /// <summary>
-        /// 관통+폭발 시너지: 관통 시 소형 폭발을 트리거합니다.
-        /// </summary>
-        public void OnPierceExplosion()
-        {
-            if (HasSynergy(SynergyType.PierceExplosion))
+            var oldActiveSynergies = _activeSynergies;
+            _activeSynergies = newActiveSynergies;
+
+            // 비활성화된 시너지에 대한 이벤트 발생
+            foreach (var synergy in oldActiveSynergies)
             {
-                // 관통 시 소형 폭발 로직 트리거
-                Debug.Log("[MutationSynergyManager] 관통 시 소형 폭발이 트리거되었습니다.");
+                if (!_activeSynergies.Contains(synergy))
+                {
+                    SynergyDeactivated?.Invoke(synergy);
+                    Debug.Log($"[MutationSynergyManager] 시너지 비활성화: {synergy}");
+                }
             }
-        }
 
-        /// <summary>
-        /// 다연발+도탄 시너지: 도탄 시 가장 가까운 적을 자동 추적합니다.
-        /// </summary>
-        public void OnBounceHoming()
-        {
-            if (HasSynergy(SynergyType.BounceHoming))
+            // 새로 활성화된 시너지에 대한 이벤트 발생
+            foreach (var synergy in _activeSynergies)
             {
-                // 도탄 시 가장 가까운 적 자동 추적 로직 트리거
-                Debug.Log("[MutationSynergyManager] 도탄 시 가장 가까운 적을 자동 추적합니다.");
-            }
-        }
-
-        /// <summary>
-        /// 거대화+넉백 시너지: 투사체 충격파 범위를 확대합니다.
-        /// </summary>
-        public void OnScaleShockwave()
-        {
-            if (HasSynergy(SynergyType.ScaleShockwave))
-            {
-                // 투사체 충격파 범위 확대 로직 트리거
-                Debug.Log("[MutationSynergyManager] 투사체 충격파 범위가 확대되었습니다.");
+                if (!oldActiveSynergies.Contains(synergy))
+                {
+                    SynergyActivated?.Invoke(synergy);
+                    Debug.Log($"[MutationSynergyManager] 시너지 활성화: {synergy}");
+                }
             }
         }
     }
