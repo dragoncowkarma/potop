@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Potop.Client.Core.Events;
+using Potop.Client.Gameplay.Weapons;
 
 namespace Potop.Client.Gameplay.Weapons.Overdrive
 {
@@ -13,6 +14,7 @@ namespace Potop.Client.Gameplay.Weapons.Overdrive
 
     /// <summary>
     /// 보스 상자 획득 시 시너지 완성 상태를 감지하여 궁극 진화 무기를 발동하는 시스템입니다.
+    /// WeaponTransitionHandler를 사용하여 기존 상태를 안전하게 정리하고 진화합니다.
     /// </summary>
     public class OverdriveEvolution : MonoBehaviour
     {
@@ -58,14 +60,10 @@ namespace Potop.Client.Gameplay.Weapons.Overdrive
         {
             _hasEvolved = true;
 
-            if (_currentWeapon != null)
-            {
-                Destroy(_currentWeapon.gameObject);
-            }
-
             if (mapping.WeaponPrefab != null && _weaponMountPoint != null)
             {
-                _currentWeapon = Instantiate(mapping.WeaponPrefab, _weaponMountPoint.position, _weaponMountPoint.rotation, _weaponMountPoint);
+                // WeaponTransitionHandler를 사용하여 기존 무기 파괴, 남은 투사체 회수, 새 무기 스폰을 일괄 처리합니다.
+                _currentWeapon = WeaponTransitionHandler.TransitionWeapon(_currentWeapon, mapping.WeaponPrefab, _weaponMountPoint);
                 Debug.Log($"[OverdriveEvolution] 궁극 진화 발동! {mapping.Data.name}");
             }
             else
