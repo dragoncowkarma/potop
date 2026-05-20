@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Potop.Client.Core.Events;
+using Potop.Client.Gameplay.Weapons;
 
 namespace Potop.Client.Gameplay.Weapons.Overdrive
 {

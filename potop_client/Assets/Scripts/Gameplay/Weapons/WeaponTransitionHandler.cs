@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Potop.Client.Core.Pooling;
+using Potop.Client.Gameplay;
 
 namespace Potop.Client.Gameplay.Weapons {
     /// <summary>
@@ -21,11 +23,13 @@ namespace Potop.Client.Gameplay.Weapons {
                 Object.Destroy(currentWeapon.gameObject);
             }
 
-            // 2. 현재 씬에 활성화된 모든 투사체 회수 (안전한 화면 정리)
-            // 성능 이슈 방지를 위해 FindObjectsByType 사용 (Unity 2023.1+)
-            Projectile[] activeProjectiles = Object.FindObjectsByType<Projectile>(FindObjectsSortMode.None);
-            for (int i = 0; i < activeProjectiles.Length; i++) {
-                PoolManager.Instance.Despawn(activeProjectiles[i].gameObject);
+            // 2. 현재 활성화된 모든 투사체 회수 (안전한 화면 정리)
+            // 성능 이슈 방지를 위해 씬 검색 함수 대신 추적된 해시셋의 복사본을 순회합니다.
+            List<Projectile> projectilesToDespawn = new List<Projectile>(Projectile.ActiveProjectiles);
+            for (int i = 0; i < projectilesToDespawn.Count; i++) {
+                if (projectilesToDespawn[i] != null) {
+                    PoolManager.Instance.Despawn(projectilesToDespawn[i].gameObject);
+                }
             }
 
             // 3. 새 무기 생성 및 반환

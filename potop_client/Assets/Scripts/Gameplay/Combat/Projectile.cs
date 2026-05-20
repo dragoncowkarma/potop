@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Potop.Client.Core;
 using Potop.Client.Gameplay.Combat;
 using Potop.Client.Core.Events;
@@ -6,6 +7,7 @@ using UnityEngine;
 namespace Potop.Client.Gameplay {
     /// <summary>
     /// 발사체의 이동, 수명, 그리고 적과의 충돌 처리를 담당하는 클래스입니다.
+    /// 활성화된 투사체를 추적하여 씬 전체 검색 없이 관리할 수 있도록 지원합니다.
     /// </summary>
     public class Projectile : MonoBehaviour {
         [SerializeField] private float _speed = 20f;
@@ -18,6 +20,7 @@ namespace Potop.Client.Gameplay {
         private int _enemyLayerMask;
 
         private readonly Collider[] _hitColliders = new Collider[MAX_AOE_TARGETS];
+        private static readonly List<IModifier> _modifierCache = new List<IModifier>();
 
         private const float HEAVY_IMPACT_THRESHOLD = 50f;
         private const float IMPACT_INTENSITY_MULTIPLIER = 0.1f;
@@ -36,6 +39,11 @@ namespace Potop.Client.Gameplay {
         /// 발사체의 피해량입니다.
         /// </summary>
         public int Damage => _damage;
+
+        /// <summary>
+        /// 현재 활성화된 모든 투사체의 목록입니다. (글로벌 검색 O(N) 방지용)
+        /// </summary>
+        public static readonly HashSet<Projectile> ActiveProjectiles = new HashSet<Projectile>();
 
         private const string ENEMY_TAG = "Enemy";
         private const string ENEMY_LAYER_NAME = "Enemy";
@@ -71,19 +79,23 @@ namespace Potop.Client.Gameplay {
         }
 
         private void OnEnable() {
+            ActiveProjectiles.Add(this);
             Invoke(nameof(DespawnSelf), _lifeTime);
         }
 
         private void OnDisable() {
+            ActiveProjectiles.Remove(this);
             CancelInvoke(nameof(DespawnSelf));
             // Reset scale to avoid state leakage from modifiers like OrbitalStrike
             transform.localScale = Vector3.one;
 
             // Remove and clear all IModifiers attached to this projectile to prevent memory leaks in Object Pool
-            IModifier[] modifiers = GetComponents<IModifier>();
-            for (int i = 0; i < modifiers.Length; i++) {
-                modifiers[i].Remove(this);
+            // Uses a non-allocating method to reduce garbage collection pressure
+            GetComponents<IModifier>(_modifierCache);
+            for (int i = 0; i < _modifierCache.Count; i++) {
+                _modifierCache[i].Remove(this);
             }
+            _modifierCache.Clear();
         }
 
         private void DespawnSelf() {
