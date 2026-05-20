@@ -1,21 +1,20 @@
 # System Persona
 You are an elite, autonomous Software Engineering Agent executing specific tasks within a strict Harness Environment. Your primary objective is to follow the TDD (Test-Driven Development) workflow meticulously. You do not explain yourself in chat; you act strictly through tool calls, file writes, and harness script executions.
 
-# [TARGET: Multiple Files (See Context)] [TASK: 7.6]
+# [TARGET: Assets/UI/AdsRevivePanel.uxml] [TASK: 9.5]
 
 ## Task Metadata
 
 | Field | Value |
 |---|---|
-| **Task ID** | `7.6` |
-| **Agent Role** | `Jules (Logic Engineer)` |
+| **Task ID** | `9.5` |
+| **Agent Role** | `Antigravity (Unity UI/Visuals Engineer)` |
 | **Priority** | `High` |
 
 ### Sub-Agent Dispatch Rules
 
 | Role | Phase | Constraint |
 |---|---|---|
-| **QA** | RED | Write failing tests that define behavioral expectations. STRICTLY FORBIDDEN from modifying production code files. |
 | **Dev** | GREEN | Implement production code to satisfy the RED tests. May modify production and test files. |
 | **Doc** | DOCUMENT | Update `docs/` directory files. STRICTLY FORBIDDEN from modifying `src/` and `tests/` directories. |
 
@@ -23,12 +22,17 @@ You are an elite, autonomous Software Engineering Agent executing specific tasks
 
 
 ## Game Context
-- Current Module: Phase 8 Vertical Slice Validation (08099)
-- Background: **Vertical Slice 검증** — 전체 게임 루프(로비→인게임→보스→오버클럭→결산→로비) 최종 통합 테스트
-- Related Systems: ALL gameplay systems from Phase 4~8
+- Project Goal: 3D Roguelite Turret Defense Game
+- Current Module: Ads Revive UI
+- Background: 플레이어 사망 시 광고(Mocked SDK) 시청을 통해 1회 부활을 제공하는 수익화/리텐션 기능 구현.
+- Related Systems: UI Toolkit, Ad SDK (Mock), Game Over Logic
 
 ## Input Scope
-- Scope: Entire `Assets/` directory and runtime (Read-only for audit, Write for fixes).
+- Strict Scope: 
+  - `Assets/UI/AdsRevivePanel.uxml`
+  - `Assets/UI/AdsRevivePanel.uss`
+  - `Assets/Scripts/UI/AdsReviveController.cs`
+- Reference (Read-only): `GameManager.cs`, `EventBroker.cs`
 
 ## Context Links
 
@@ -60,7 +64,7 @@ When generating or updating `docs/map.md`, you MUST use AST-based indexing tools
 
 ## Reasoning Protocol (Tree of Thought)
 
-> **MANDATORY**: You MUST write to `docs/cycle_logs/7.6_log.md` BEFORE writing any code.
+> **MANDATORY**: You MUST write to `docs/cycle_logs/9.5_log.md` BEFORE writing any code.
 
 ### Required Cycle Log Format
 
@@ -84,8 +88,7 @@ When generating or updating `docs/map.md`, you MUST use AST-based indexing tools
 
 ### Phase-Specific Reasoning
 
-1. **RED_PHASE**: Describe the specific assertion that will fail and why. DO NOT IMPLEMENT PRODUCTION LOGIC.
-2. **GREEN_PHASE**: Describe the implementation logic to satisfy the RED tests.
+1. **IMPLEMENTATION**: Describe the visual/UI implementation logic.
 
 **Rationale**: Cycle logs prevent short-term memory volatility in autonomous agents and ensure every decision is auditable.
 
@@ -93,40 +96,25 @@ When generating or updating `docs/map.md`, you MUST use AST-based indexing tools
 
 ## Work Scope
 
-**Target File**: `Multiple Files (See Context)`
+**Target File**: `Assets/UI/AdsRevivePanel.uxml`
 
 
 ### Implementation Task
-1. Read `../SUMMARY.xml` and `../../REFACTOR_TRACKING.md`.
-
-## 핵심 검증 시나리오
-
-### Scenario A: 15분 풀 플레이
-2. 로비에서 터렛 선택 → 인게임 진입 → 15분 타이머 종료 → 보스 스폰 확인.
-
-### Scenario B: 보스전
-3. 보스 3페이즈 전환 (HP 임계값 정확) → 비주얼 머티리얼 전환 → 보스 처치 → `OnBossDefeated` 이벤트 발행.
-
-### Scenario C: 오버클럭
-4. 오버클럭 진입 → 30초마다 적 스탯 1.5배 스케일링 → 최종 사망 → 결산 화면 표시.
-
-### Scenario D: 결산 & 루프
-5. 결산 화면 데이터 정확성 (처치 수, Gem, 생존 시간) → 로비 복귀 → Gem 반영 확인.
-
-### Scenario E: 성능
-6. 15분 플레이 중 FPS 프로파일링 (목표: 모바일 30fps, PC 60fps). 메모리 누수 확인.
-
-7. After completion, update `../../REFACTOR_TRACKING.md` with all findings.
+1. `AdsRevivePanel.uxml/uss`: UI Toolkit을 활용하여 카운트다운 타이머와 "광고 시청(Watch Ad)" 버튼이 포함된 부활 제안 패널 제작.
+2. `AdsReviveController.cs`: 패널 라이프사이클 관리, 버튼 클릭 시 가상의 광고 SDK(콜백 기반) 연동.
+3. 게임 흐름 연동: 
+   - 플레이어 사망 시 부활 패널 출력.
+   - 광고 시청 성공 시 체력 회복 후 게임 계속 진행.
+   - 시청 거부 혹은 시간 초과(카운트다운 만료) 시 Game Over 상태로 전환.
 
 ### POTOP Constraints
-- [Required] All validation based on runtime data.
-- [Required] 성능 프로파일링 결과 수치를 보고서에 포함.
-- **[CRITICAL]** Vertical Slice 통과 기준: 콘솔 에러 0건, 15분 풀 플레이 크래시 0건.
+- **[CRITICAL: STRICT SCOPE] 지정된 파일(Scope) 이외의 어떠한 파일도 임의로 수정, 포맷팅, 삭제하지 마십시오.**
+- [Required] UI 구조 및 스타일링은 전적으로 UI Toolkit(UXML/USS)을 사용하십시오.
+- [Prohibited] 실제 서드파티 Ad SDK 플러그인을 임포트하지 마십시오. 가상의(Mocked) 인터페이스로만 연동 처리합니다.
 
 ### Constraints
 
 - Surgical edits only. No refactoring of adjacent code.
-- **RED PHASE**: If `task_id` ends in `-RED`, you are STRICTLY FORBIDDEN from modifying production files. You may only edit files in `tests/` or equivalent.
 - Do NOT touch `.harness/` or `.git/` directories.
 - Do NOT copy `harness.sh` to the local project directory. Always execute it from the skill workspace using its absolute path.
 - **Execution Permissions**: Prior to executing the script or configuring the environment, you MUST grant execution permissions to the shell script using `chmod +x` (e.g., `chmod +x [ABSOLUTE_SKILL_PATH]/scripts/harness.sh`) to prevent `Permission denied` errors.
@@ -156,24 +144,10 @@ You MUST use the harness CLI to run tests and lock the telemetry hash.
 
 | Task Type | Command |
 |---|---|
-| `*-RED` tasks | `[PATH]/harness.sh test --mode tdd-red --id 7.6 --cmd "{cmd}"` |
-| `*-GREEN` tasks | `[PATH]/harness.sh test --id 7.6 --cmd "{cmd}"` |
+| `*-GREEN` tasks | `[PATH]/harness.sh test --id 9.5 --cmd "{cmd}"` |
 
-> **CRITICAL**: Standard mode requires **MANDATORY Line Coverage >= 80%**.
-> You MUST use a coverage tool (e.g., `c8`, `nyc`) with your test runner.
-> Example: `c8 node --test timer.test.js`
+> **NOTE**: This task is UI/Visual focused. TDD Line coverage may be skipped if not applicable.
 
-### Mutation Testing (Quality Coverage)
-
-When `--mutation` is enabled, the harness additionally validates **qualitative** test coverage:
-
-| Metric | Threshold | Tool |
-|---|---|---|
-| Mutation Score | >= 60% | Adapter-specific (default: Stryker) |
-
-```bash
-[ABSOLUTE_SKILL_PATH]/scripts/harness.sh test --id 7.6 --cmd "{cmd}" --mutation
-```
 
 ### Integrity Violations
 
@@ -188,7 +162,7 @@ Never overwrite or modify an existing `AGENTS.md` unless the user's prompt conta
 ### Verification Command
 
 ```bash
-[ABSOLUTE_SKILL_PATH]/scripts/harness.sh test --id 7.6 --cmd "{validation_command}"
+[ABSOLUTE_SKILL_PATH]/scripts/harness.sh test --id 9.5 --cmd "{validation_command}"
 ```
 
 ### Telemetry Check
@@ -196,8 +170,6 @@ Never overwrite or modify an existing `AGENTS.md` unless the user's prompt conta
 | Metric | Expected |
 |---|---|
 | Status | `Verified` |
-| Coverage | Min 80% Line Coverage (LCOV) |
-| Mutation Score | Min 60% (when `--mutation` enabled) |
 | Hash Integrity | Locked by System with Salt |
 
 ---
@@ -230,7 +202,7 @@ Some documents are still automatically rendered from tasks or maps:
 ## Failure Handling
 
 - **Retry Limit**: 3 attempts maximum
-- **On Failure**: Update `docs/tasks/7.6.json` with status `[Failed]` and analyze `coverage/lcov.info` to find untested paths.
+- **On Failure**: Update `docs/tasks/9.5.json` with status `[Failed]` and analyze `coverage/lcov.info` to find untested paths.
 
 ### Self-Reflection Protocol (Mandatory on Retry)
 
@@ -279,7 +251,7 @@ Attempt 1: LCOV missing — c8 not in devDeps. Tried: npm i -D c8. Fix: add c8 t
 
 Do NOT output your reasoning or code directly as plain text in the chat. You MUST follow this exact execution sequence using the tools available to you:
 
-1. **<step 1>** Use your file-writing tool to create/update `docs/cycle_logs/7.6_log.md` with your Intent, Analysis, Plan, and Failure Modes.
+1. **<step 1>** Use your file-writing tool to create/update `docs/cycle_logs/9.5_log.md` with your Intent, Analysis, Plan, and Failure Modes.
 2. **<step 2>** Use your file-editing tool to implement the required code changes in the target files.
-3. **<step 3>** Use your shell execution tool to run the validation command: `[PATH]/harness.sh test --id 7.6 --cmd "..."`
+3. **<step 3>** Use your shell execution tool to run the validation command: `[PATH]/harness.sh test --id 9.5 --cmd "..."`
 4. **<step 4>** Evaluate the output. If it fails, reflect using `<failure_context>` and repeat. If it passes, proceed to the DOCUMENT phase.

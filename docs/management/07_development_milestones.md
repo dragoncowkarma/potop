@@ -148,11 +148,10 @@
 ### **Phase 6: 전술 시스템 & 메타 경제 (Tactics & Meta Economy)** `[예상: 2.5주]`
 > [!TIP]
 > AI Prompts:
-> - 06001: [Jules] [06001_jules_p01_overcharge.md](../prompts/060/06001_jules_p01_overcharge.md)
-> - 06002: [Jules] [06002_jules_p02_tactical_skills.md](../prompts/060/06002_jules_p02_tactical_skills.md)
-> - 06003: [Jules] [06003_jules_p03_item_drop.md](../prompts/060/06003_jules_p03_item_drop.md)
-> - 06004: [Jules+Antigravity] [06004_meta_upgrade_lobby.md](../prompts/060/06004_meta_upgrade_lobby.md)
-> - QA: [Gemini CLI] [06099_gemini_validation.md](../prompts/060/06099_gemini_validation.md)
+> - 06001: [06001_code_overcharge.md](../prompts/060/06001_code_overcharge.md)
+> - 06002: [06002_code_tactical_skills.md](../prompts/060/06002_code_tactical_skills.md)
+> - 06003: [06003_code_item_drop.md](../prompts/060/06003_code_item_drop.md)
+> - 06004: [06004_unity_mcp_meta_upgrade_lobby.md](../prompts/060/06004_unity_mcp_meta_upgrade_lobby.md)
 
 *   **[06001] 오버차지 시스템** — 공격 속도 200%↑, 게이지 과부하 시 3초 과열 패널티
 *   **[06002] 액티브 전술 스킬 3종** — EMP(500E), 궤도 폭격(700E), 과부하 보호막(1000E)
@@ -166,10 +165,10 @@
 > **Phase 7 완료 = Vertical Slice.** 이 시점에서 내부 플레이테스트를 실시하여 코어 루프를 검증합니다.
 > [!TIP]
 > AI Prompts:
-> - 07001: [Antigravity] [07001_antigravity_boss_visual.md](../prompts/070/07001_antigravity_boss_visual.md)
-> - 07002: [Jules] [07002_jules_boss_ai.md](../prompts/070/07002_jules_boss_ai.md)
-> - 07003: [Jules] [07003_jules_overclock_gameflow.md](../prompts/070/07003_jules_overclock_gameflow.md)
-> - QA: [Gemini CLI] [07099_gemini_vs_validation.md](../prompts/070/07099_gemini_vs_validation.md)
+> - 07001: [07001_unity_mcp_boss_visual.md](../prompts/070/07001_unity_mcp_boss_visual.md)
+> - 07002: [07002_code_boss_ai.md](../prompts/070/07002_code_boss_ai.md)
+> - 07003: [07003_code_overclock_gameflow.md](../prompts/070/07003_code_overclock_gameflow.md)
+> - QA: [07099_gemini_vs_validation.md](../prompts/070/07099_gemini_vs_validation.md)
 
 *   **[07001] 보스 프리팹 & 비주얼** — 타이탄 코어, 페이즈별 컬러 전환 (Blue→Red)
 *   **[07002] 보스 AI 3페이즈** — ① 회전 쉴드 → ② 타겟 레이저 → ③ 광폭화
@@ -194,7 +193,10 @@
 ### **Phase 9: 모바일 출시 준비 (Mobile Launch)** `[예상: 3~4주]`
 > [!TIP]
 > AI Prompts:
-> - 09008: [Jules] [09008_jules_localization.md](../prompts/090/09008_jules_localization.md)
+> - 09002: [09002_code_achievement_save.md](../prompts/090/09002_code_achievement_save.md)
+> - 09004: [09004_unity_mcp_mobile_input.md](../prompts/090/09004_unity_mcp_mobile_input.md)
+> - 09005: [09005_unity_mcp_ads_revive_ui.md](../prompts/090/09005_unity_mcp_ads_revive_ui.md)
+> - 09008: [09008_jules_localization.md](../prompts/090/09008_jules_localization.md)
 
 *   **[09001] 로비 UI 완성** — 터렛 선택/강화 상점/설정 화면
 *   **[09002] 업적 시스템** — AC_001~AC_010 (10종 업적)

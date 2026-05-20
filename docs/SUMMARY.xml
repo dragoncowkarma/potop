@@ -4,15 +4,17 @@
     </project>
 
     <agents>
-        <document path="docs/AGENTS.md" role="entry_point">
-            <description>Main index and high-level directives for documentation agents.</description>
-        </document>
-        <document path="docs/AGENTS_ROLES.md" role="role_definition">
-            <description>Detailed personas for Jules (Logic) and Antigravity (Unity/UI).</description>
-        </document>
-        <document path="docs/AGENTS_CONVENTIONS.md" role="conventions">
-            <description>Coding standards, project structure, and technical constraints.</description>
-        </document>
+        <GlobalDocumentation>
+            <File Path="docs/AGENTS.md" Description="Main entry point for documentation agents"/>
+            <File Path="docs/SUMMARY.xml" Description="Index and milestone mapping for docs/"/>
+            <File Path="docs/requirements/01_overview.md" Description="Project high-level overview &amp; vision"/>
+            <File Path="docs/requirements/02_gameplay_mechanics.md" Description="Core gameplay loops, controls, and combat systems"/>
+            <File Path="docs/requirements/03_data_and_balance.md" Description="Detailed balance metrics, enemy scaling, and wave progression"/>
+            <File Path="docs/architecture/04_technical_architecture.md" Description="Core technical systems (Event Broker, Pooling) and Server Interfaces"/>
+            <File Path="docs/requirements/05_meta_and_progression.md" Description="Progression systems, meta-upgrades, and achievements"/>
+            <File Path="docs/architecture/06_art_and_sound.md" Description="Art style, sound design, and production pipelines"/>
+            <File Path="docs/management/07_development_milestones.md" Description="Centralized development roadmap and expansion plan"/>
+        </GlobalDocumentation>
     </agents>
 
     <milestone_tasks>
@@ -74,21 +76,27 @@
             <prompt path="docs/prompts/055/05503_gemini_validation.md" status="planned" />
         </phase>
         <phase id="6" title="Tactics &amp; Meta Economy">
-            <prompt path="docs/prompts/060/06001_antigravity_p01_boss_design.md" status="planned" />
-            <prompt path="docs/prompts/060/06001_jules_p01_overcharge.md" status="planned" />
-            <prompt path="docs/prompts/060/06001_jules_p02_boss_ai.md" status="planned" />
-            <prompt path="docs/prompts/060/06001_antigravity_p03_mobile_input.md" status="planned" />
-            <prompt path="docs/prompts/060/06002_jules_p02_tactical_skills.md" status="planned" />
-            <prompt path="docs/prompts/060/06002_jules_p04_achievement_save.md" status="planned" />
-            <prompt path="docs/prompts/060/06003_jules_p03_item_drop.md" status="planned" />
-            <prompt path="docs/prompts/060/06003_jules_p05_overclock_mode.md" status="planned" />
-            <prompt path="docs/prompts/060/06004_antigravity_ads_revive_ui.md" status="planned" />
-            <prompt path="docs/prompts/060/06004_meta_upgrade_lobby.md" status="planned" />
+            <prompt path="docs/prompts/060/06001_code_overcharge.md" status="planned" />
+            <prompt path="docs/prompts/060/06002_code_tactical_skills.md" status="planned" />
+            <prompt path="docs/prompts/060/06003_code_item_drop.md" status="planned" />
+            <prompt path="docs/prompts/060/06004_unity_mcp_meta_upgrade_lobby.md" status="planned" />
+        </phase>
+        <phase id="7" title="Endgame &amp; Boss">
+            <prompt path="docs/prompts/070/07001_unity_mcp_boss_visual.md" status="planned" />
+            <prompt path="docs/prompts/070/07002_code_boss_ai.md" status="planned" />
+            <prompt path="docs/prompts/070/07003_code_overclock_gameflow.md" status="planned" />
+            <prompt path="docs/prompts/070/07099_gemini_vs_validation.md" status="planned" />
+        </phase>
+        <phase id="9" title="Mobile Launch">
+            <prompt path="docs/prompts/090/09002_code_achievement_save.md" status="planned" />
+            <prompt path="docs/prompts/090/09004_unity_mcp_mobile_input.md" status="planned" />
+            <prompt path="docs/prompts/090/09005_unity_mcp_ads_revive_ui.md" status="planned" />
+            <prompt path="docs/prompts/090/09008_jules_localization.md" status="planned" />
         </phase>
     </milestone_tasks>
 
     <context_rules>
-        <rule>Always sync tasks with docs/gdd/07_development_milestones.md</rule>
+        <rule>Always sync tasks with docs/management/07_development_milestones.md</rule>
         <rule>Refer to docs/AGENTS_CONVENTIONS.md for every code modification</rule>
         <rule>Split documents if they exceed 4000 tokens while maintaining these categories</rule>
     </context_rules>
