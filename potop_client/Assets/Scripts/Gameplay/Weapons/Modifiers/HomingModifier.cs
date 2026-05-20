@@ -51,7 +51,7 @@ namespace Potop.Client.Gameplay {
                 transform.forward = newDirection;
 
                 if (_rigidbody != null) {
-                    _rigidbody.velocity = newDirection * _rigidbody.velocity.magnitude;
+                    _rigidbody.linearVelocity = newDirection * _rigidbody.linearVelocity.magnitude;
                 }
             }
         }

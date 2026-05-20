@@ -45,8 +45,8 @@ namespace Potop.Client.Gameplay {
 
             ContactPoint contact = collision.GetContact(0);
             if (_rigidbody != null) {
-                _rigidbody.velocity = Vector3.Reflect(_rigidbody.velocity, contact.normal);
-                transform.forward = _rigidbody.velocity.normalized;
+                _rigidbody.linearVelocity = Vector3.Reflect(_rigidbody.linearVelocity, contact.normal);
+                transform.forward = _rigidbody.linearVelocity.normalized;
             } else {
                 Vector3 reflectedDirection = Vector3.Reflect(transform.forward, contact.normal);
                 transform.forward = reflectedDirection.normalized;

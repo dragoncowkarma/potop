@@ -23,6 +23,9 @@
         <ui:Label name="crosshair" text="+" class="crosshair-text" />
     </ui:VisualElement>
 
+    <!-- 시너지 완성 및 오버드라이브 진화 연출 알림 메시지가 추가될 컨테이너입니다. -->
+    <ui:VisualElement name="notification-container" class="notification-container" pointer-events="none" />
+
     <ui:VisualElement name="game-over-screen" class="game-over-overlay" style="display: none;">
         <ui:VisualElement class="game-over-panel">
             <ui:Label text="GAME OVER" class="game-over-title" />

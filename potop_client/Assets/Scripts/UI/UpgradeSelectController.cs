@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Potop.Client.Core.Events;
+using Potop.Client.Gameplay;
 using Potop.Client.Gameplay.Progression;
 
 namespace Potop.Client.UI
@@ -17,6 +18,13 @@ namespace Potop.Client.UI
         private VisualElement _root;
         private VisualElement _panel;
         private VisualElement _cardContainer;
+        private MutationSynergyManager _synergyManager;
+
+        private void Start()
+        {
+            // 씬 내의 MutationSynergyManager를 찾아 연동합니다.
+            _synergyManager = FindFirstObjectByType<MutationSynergyManager>();
+        }
 
         private void Awake()
         {
@@ -95,11 +103,28 @@ namespace Potop.Client.UI
             // 클릭 이벤트
             card.RegisterCallback<ClickEvent>(evt => OnCardClicked(option));
 
+            // 시너지 힌트 UI 추가
+            var synergyHint = CreateSynergyHintLabel(option);
+            if (synergyHint != null)
+            {
+                card.Add(synergyHint);
+            }
+
             return card;
         }
 
         private void OnCardClicked(UpgradeOption option)
         {
+            // 선택된 카드의 모디파이어를 MutationSynergyManager에 추가합니다.
+            if (_synergyManager != null)
+            {
+                ModifierType modifier = GetModifierFromOption(option);
+                if (modifier != ModifierType.None)
+                {
+                    _synergyManager.AddModifier(modifier);
+                }
+            }
+
             // 선택 이벤트 발행 (LevelingManager가 구독하여 처리)
             EventBroker.Publish(new UpgradeSelectedEvent { SelectedId = option.UpgradeId });
 
@@ -118,6 +143,99 @@ namespace Potop.Client.UI
         {
             yield return new WaitForSecondsRealtime(delay);
             _panel.style.display = DisplayStyle.None;
+        }
+
+        /// <summary>
+        /// 업그레이드 선택지에서 연관 모디파이어를 결정합니다.
+        /// </summary>
+        private ModifierType GetModifierFromOption(UpgradeOption option)
+        {
+            if (option.AssociatedModifier != ModifierType.None)
+            {
+                return option.AssociatedModifier;
+            }
+
+            // ID 매칭을 통한 Fallback 처리
+            string id = option.UpgradeId.ToLower();
+            if (id.Contains("pierce")) return ModifierType.Pierce;
+            if (id.Contains("explosion") || id.Contains("explode")) return ModifierType.Explosion;
+            if (id.Contains("multi") || id.Contains("shot")) return ModifierType.MultiShot;
+            if (id.Contains("bounce")) return ModifierType.Bounce;
+            if (id.Contains("scale") || id.Contains("size")) return ModifierType.Scale;
+            if (id.Contains("knockback") || id.Contains("push")) return ModifierType.Knockback;
+
+            // 프리셋 데이터 예외 매핑
+            if (id == "overdrive") return ModifierType.Pierce;
+
+            return ModifierType.None;
+        }
+
+        /// <summary>
+        /// 시너지 타입별 플레이어 친화적인 이름 문자열을 반환합니다.
+        /// </summary>
+        private string GetSynergyFriendlyName(SynergyType synergy)
+        {
+            switch (synergy)
+            {
+                case SynergyType.PierceExplosion: return "Pierce Explosion";
+                case SynergyType.BounceHoming: return "Bounce Homing";
+                case SynergyType.ScaleShockwave: return "Scale Shockwave";
+                default: return synergy.ToString();
+            }
+        }
+
+        /// <summary>
+        /// 업그레이드 옵션에 대응하는 시너지 진행 상황 힌트 라벨을 생성합니다.
+        /// </summary>
+        private Label CreateSynergyHintLabel(UpgradeOption option)
+        {
+            if (_synergyManager == null || _synergyManager.SynergyRuleData == null) return null;
+
+            ModifierType modifier = GetModifierFromOption(option);
+            if (modifier == ModifierType.None) return null;
+
+            var rules = _synergyManager.SynergyRuleData.Rules;
+            if (rules == null || rules.Count == 0) return null;
+
+            List<string> hints = new List<string>();
+            bool isAnySynergyCompletedByThis = false;
+
+            foreach (var rule in rules)
+            {
+                if (rule.Modifier1 == modifier || rule.Modifier2 == modifier)
+                {
+                    ModifierType otherModifier = (rule.Modifier1 == modifier) ? rule.Modifier2 : rule.Modifier1;
+                    
+                    bool hasOtherMod = _synergyManager.HasModifier(otherModifier);
+
+                    // 이 카드를 선택할 경우 시너지 진행도가 2/2가 되는지 판정합니다.
+                    int progress = hasOtherMod ? 2 : 1;
+                    if (progress == 2)
+                    {
+                        isAnySynergyCompletedByThis = true;
+                    }
+
+                    string synergyName = GetSynergyFriendlyName(rule.Synergy);
+                    if (progress == 2)
+                    {
+                        hints.Add($"★ {synergyName} Synergy: 2/2 (Ready!)");
+                    }
+                    else
+                    {
+                        hints.Add($"{synergyName} Synergy: 1/2");
+                    }
+                }
+            }
+
+            if (hints.Count == 0) return null;
+
+            var label = new Label(string.Join("\n", hints));
+            label.AddToClassList("card-synergy-hint");
+            if (isAnySynergyCompletedByThis)
+            {
+                label.AddToClassList("complete");
+            }
+            return label;
         }
     }
 }

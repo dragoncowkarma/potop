@@ -56,6 +56,21 @@ namespace Potop.Client.Gameplay
         }
 
         /// <summary>
+        /// 시너지 규칙 데이터를 가져옵니다.
+        /// </summary>
+        public SynergyRuleData SynergyRuleData => _synergyRuleData;
+
+        /// <summary>
+        /// 특정 모디파이어가 활성화되어 있는지 확인합니다.
+        /// </summary>
+        /// <param name="modifier">확인할 모디파이어 타입</param>
+        /// <returns>활성화 여부</returns>
+        public bool HasModifier(ModifierType modifier)
+        {
+            return _activeModifiers.Contains(modifier);
+        }
+
+        /// <summary>
         /// 현재 활성화된 모디파이어를 기반으로 시너지 규칙을 평가합니다.
         /// 복잡도는 O(R)입니다. (R은 전체 규칙의 개수)
         /// </summary>
@@ -92,9 +107,18 @@ namespace Potop.Client.Gameplay
                 if (!oldActiveSynergies.Contains(synergy))
                 {
                     SynergyActivated?.Invoke(synergy);
+                    Potop.Client.Core.Events.EventBroker.Publish(new SynergyActivatedEvent { Synergy = synergy });
                     Debug.Log($"[MutationSynergyManager] 시너지 활성화: {synergy}");
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 새로운 시너지가 활성화되었을 때 발행되는 이벤트입니다.
+    /// </summary>
+    public struct SynergyActivatedEvent
+    {
+        public SynergyType Synergy;
     }
 }

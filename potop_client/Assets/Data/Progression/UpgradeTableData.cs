@@ -19,6 +19,9 @@ namespace Potop.Client.Gameplay.Progression {
         public UpgradeRarity Rarity;
         public Sprite Icon;
         public int RarityWeight;
+
+        [Tooltip("Associated modifier for synergy tracking")]
+        public Potop.Client.Gameplay.ModifierType AssociatedModifier;
     }
 }
 

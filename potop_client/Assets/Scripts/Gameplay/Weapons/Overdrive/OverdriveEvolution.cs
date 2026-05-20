@@ -65,11 +65,56 @@ namespace Potop.Client.Gameplay.Weapons.Overdrive
                 // WeaponTransitionHandler를 사용하여 기존 무기 파괴, 남은 투사체 회수, 새 무기 스폰을 일괄 처리합니다.
                 _currentWeapon = WeaponTransitionHandler.TransitionWeapon(_currentWeapon, mapping.WeaponPrefab, _weaponMountPoint);
                 Debug.Log($"[OverdriveEvolution] 궁극 진화 발동! {mapping.Data.name}");
+
+                // EventBroker를 통해 진화 이벤트 발행
+                EventBroker.Publish(new OverdriveEvolvedEvent
+                {
+                    OverdriveName = mapping.Data != null ? mapping.Data.name : "Overdrive Weapon",
+                    RequiredSynergy = mapping.Data != null ? mapping.Data.RequiredSynergy : SynergyType.None
+                });
+
+                // VFX 연출 훅 호출
+                TriggerEvolutionVFX(mapping);
             }
             else
             {
                 Debug.LogWarning("[OverdriveEvolution] 무기 프리팹 또는 장착 위치가 설정되지 않았습니다.");
             }
         }
+
+        /// <summary>
+        /// 무기 진화 시 호출되는 VFX 연출 훅입니다.
+        /// 화면 흔들림 및 파티클 재생 등을 처리합니다.
+        /// </summary>
+        private void TriggerEvolutionVFX(OverdriveMapping mapping)
+        {
+            // CinemachineImpulseSource를 활성화하기 위해 CombatImpactEvent를 발행합니다.
+            EventBroker.Publish(new CombatImpactEvent
+            {
+                Position = _weaponMountPoint != null ? _weaponMountPoint.position : Vector3.zero,
+                Intensity = 1.0f, // 강렬한 화면 흔들림
+                IsHeavy = true
+            });
+
+            PlayEvolutionParticles();
+        }
+
+        /// <summary>
+        /// 진화 시 재생할 시각 파티클 연출용 빈 메서드 (VFX Hook)
+        /// </summary>
+        private void PlayEvolutionParticles()
+        {
+            // 실제 에셋 바인딩 생략, 연출 후킹용 로그 출력
+            Debug.Log("[OverdriveEvolution VFX Hook] 궁극 진화 파티클 연출을 시작합니다.");
+        }
+    }
+
+    /// <summary>
+    /// 무기가 궁극 무기로 진화했을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct OverdriveEvolvedEvent
+    {
+        public string OverdriveName;
+        public SynergyType RequiredSynergy;
     }
 }
