@@ -78,6 +78,12 @@ namespace Potop.Client.Gameplay {
             CancelInvoke(nameof(DespawnSelf));
             // Reset scale to avoid state leakage from modifiers like OrbitalStrike
             transform.localScale = Vector3.one;
+
+            // Remove and clear all IModifiers attached to this projectile to prevent memory leaks in Object Pool
+            IModifier[] modifiers = GetComponents<IModifier>();
+            for (int i = 0; i < modifiers.Length; i++) {
+                modifiers[i].Remove(this);
+            }
         }
 
         private void DespawnSelf() {

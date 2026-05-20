@@ -10,6 +10,11 @@ namespace Potop.Client.Gameplay {
 
         private int _currentBounceCount;
         private Projectile _projectile;
+        private Rigidbody _rigidbody;
+
+        private void Awake() {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
 
         /// <summary>
         /// 투사체에 도탄 변이를 적용합니다.
@@ -39,9 +44,9 @@ namespace Potop.Client.Gameplay {
             if (collision.contactCount == 0) return;
 
             ContactPoint contact = collision.GetContact(0);
-            if (TryGetComponent<Rigidbody>(out var rb)) {
-                rb.velocity = Vector3.Reflect(rb.velocity, contact.normal);
-                transform.forward = rb.velocity.normalized;
+            if (_rigidbody != null) {
+                _rigidbody.velocity = Vector3.Reflect(_rigidbody.velocity, contact.normal);
+                transform.forward = _rigidbody.velocity.normalized;
             } else {
                 Vector3 reflectedDirection = Vector3.Reflect(transform.forward, contact.normal);
                 transform.forward = reflectedDirection.normalized;
