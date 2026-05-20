@@ -20,10 +20,10 @@
             <prompt path="docs/prompts/010_core_loop_mvp.md" status="completed" />
         </phase>
         <phase id="1.5" title="Stability">
-            <prompt path="docs/prompts/015_stability_refactoring.md" status="in_progress" />
+            <prompt path="docs/prompts/015_stability_refactoring.md" status="completed" />
         </phase>
         <phase id="2" title="Architecture">
-            <prompt path="docs/prompts/020_architecture.md" status="planned" />
+            <prompt path="docs/prompts/020_architecture.md" status="completed" />
         </phase>
         <phase id="2.5" title="Foundation &amp; Modularization">
             <prompt path="docs/prompts/025/02501_jules_p01_weapon_architecture.md" status="completed" />
@@ -42,30 +42,48 @@
             <prompt path="docs/prompts/030/03004_jules_p05_fever_system.md" status="completed" />
             <prompt path="docs/prompts/030/03099_gemini_validation.md" status="completed" />
         </phase>
-        <phase id="4" title="Progression">
-            <prompt path="docs/prompts/040/04001_jules_p01_weapon_architecture.md" status="completed" />
-            <prompt path="docs/prompts/040/04001_jules_p02_weapon_logic.md" status="completed" />
-            <prompt path="docs/prompts/040/04002_jules_p03_mutation_synergy.md" status="completed" />
-            <prompt path="docs/prompts/040/04003_jules_p04_xp_leveling.md" status="completed" />
-            <prompt path="docs/prompts/040/04003_antigravity_p05_upgrade_ui.md" status="completed" />
-            <prompt path="docs/prompts/040/04004_jules_p06_projectile_mutation.md" status="completed" />
+        <phase id="3.5" title="System Refinement">
+            <prompt path="docs/prompts/035/03501_jules_p01_enemy_ai.md" status="completed" />
+            <prompt path="docs/prompts/035/03502_jules_p02_fever_decouple.md" status="completed" />
+            <prompt path="docs/prompts/035/03599_gemini_validation.md" status="completed" />
+        </phase>
+        <phase id="4" title="Roguelite Foundation">
+            <prompt path="docs/prompts/040/04001_jules_p01_turret_classes.md" status="completed" />
+            <prompt path="docs/prompts/040/04002_jules_p02_exp_gem.md" status="completed" />
+            <prompt path="docs/prompts/040/04003_jules_p03_xp_leveling.md" status="completed" />
+            <prompt path="docs/prompts/040/04004_antigravity_p04_upgrade_ui.md" status="completed" />
             <prompt path="docs/prompts/040/04099_gemini_validation.md" status="completed" />
         </phase>
-        <phase id="5" title="Polish">
-            <prompt path="docs/prompts/050/05001_antigravity_p01_combat_juice.md" status="completed" />
-            <prompt path="docs/prompts/050/05001_antigravity_p02_asset_setup.md" status="completed" />
-            <prompt path="docs/prompts/050/05002_jules_p03_sound_manager.md" status="completed" />
-            <prompt path="docs/prompts/050/05003_jules_p04_localization.md" status="completed" />
-            <prompt path="docs/prompts/050/05099_gemini_validation.md" status="completed" />
+        <phase id="4.5" title="Core Loop Refactor &amp; Stabilization">
+            <prompt path="docs/prompts/045/04501_jules_p01_weapon_integration.md" status="completed" />
+            <prompt path="docs/prompts/045/04502_jules_p02_projectile_features.md" status="completed" />
+            <prompt path="docs/prompts/045/04503_jules_p03_data_ui_cleanup.md" status="completed" />
+            <prompt path="docs/prompts/045/04504_antigravity_p04_feedback_polish.md" status="completed" />
+            <prompt path="docs/prompts/045/04505_antigravity_p05_asset_setup.md" status="completed" />
+            <prompt path="docs/prompts/045/04599_gemini_validation.md" status="completed" />
         </phase>
-        <phase id="6" title="Mobile/Endgame">
-            <prompt path="docs/prompts/060/06001_antigravity_p01_boss_design.md" status="completed" />
-            <prompt path="docs/prompts/060/06001_jules_p02_boss_ai.md" status="completed" />
-            <prompt path="docs/prompts/060/06001_antigravity_p03_mobile_input.md" status="completed" />
-            <prompt path="docs/prompts/060/06002_jules_p04_achievement_save.md" status="completed" />
-            <prompt path="docs/prompts/060/06003_jules_p05_overclock_mode.md" status="completed" />
-            <prompt path="docs/prompts/060/06004_antigravity_ads_revive_ui.md" status="completed" />
-            <prompt path="docs/prompts/060/06099_gemini_validation.md" status="completed" />
+        <phase id="5" title="Build Diversity">
+            <prompt path="docs/prompts/050/05001_jules_p01_upgrade_table.md" status="completed" />
+            <prompt path="docs/prompts/050/05002_jules_p02_mutation_synergy.md" status="completed" />
+            <prompt path="docs/prompts/050/05003_jules_p03_projectile_mutation.md" status="completed" />
+            <prompt path="docs/prompts/050/05004_jules_overdrive_evolution.md" status="completed" />
+        </phase>
+        <phase id="5.5" title="System Stabilization &amp; Polishing">
+            <prompt path="docs/prompts/055/05501_jules_combat_core_stabilization.md" status="planned" />
+            <prompt path="docs/prompts/055/05502_antigravity_synergy_ux.md" status="planned" />
+            <prompt path="docs/prompts/055/05503_gemini_validation.md" status="planned" />
+        </phase>
+        <phase id="6" title="Tactics &amp; Meta Economy">
+            <prompt path="docs/prompts/060/06001_antigravity_p01_boss_design.md" status="planned" />
+            <prompt path="docs/prompts/060/06001_jules_p01_overcharge.md" status="planned" />
+            <prompt path="docs/prompts/060/06001_jules_p02_boss_ai.md" status="planned" />
+            <prompt path="docs/prompts/060/06001_antigravity_p03_mobile_input.md" status="planned" />
+            <prompt path="docs/prompts/060/06002_jules_p02_tactical_skills.md" status="planned" />
+            <prompt path="docs/prompts/060/06002_jules_p04_achievement_save.md" status="planned" />
+            <prompt path="docs/prompts/060/06003_jules_p03_item_drop.md" status="planned" />
+            <prompt path="docs/prompts/060/06003_jules_p05_overclock_mode.md" status="planned" />
+            <prompt path="docs/prompts/060/06004_antigravity_ads_revive_ui.md" status="planned" />
+            <prompt path="docs/prompts/060/06004_meta_upgrade_lobby.md" status="planned" />
         </phase>
     </milestone_tasks>
 

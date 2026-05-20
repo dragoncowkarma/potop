@@ -130,6 +130,21 @@
 
 ---
 
+### **Phase 5.5: 시스템 안정화 및 폴리싱 (System Stabilization & Polishing)** `[예상: 1주]`
+> [!IMPORTANT]
+> **Phase 5.5는 복잡해진 전투 로직과 시너지 시스템의 안정성 확보를 위한 필수 마일스톤입니다.**
+> [!TIP]
+> AI Prompts:
+> - 05501: [Jules] [05501_jules_combat_core_stabilization.md](../prompts/055/05501_jules_combat_core_stabilization.md)
+> - 05502: [Antigravity] [05502_antigravity_synergy_ux.md](../prompts/055/05502_antigravity_synergy_ux.md)
+> - 05503: [Gemini CLI] [05503_gemini_validation.md](../prompts/055/05503_gemini_validation.md)
+
+*   **[05501] 전투 코어 안정화** — 투사체 연산 최적화(Tick 기반), 무기 교체(Transition) 로직 구현
+*   **[05502] 시너지 UX 및 시각 피드백** — 업그레이드 UI 시너지 힌트, 진화 알림 팝업 및 VFX 훅
+*   **[05503] 자동화 검증 시스템** — Pity 시스템 시뮬레이션 및 시너지 적용 유닛 테스트
+
+---
+
 ### **Phase 6: 전술 시스템 & 메타 경제 (Tactics & Meta Economy)** `[예상: 2.5주]`
 > [!TIP]
 > AI Prompts:
