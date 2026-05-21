@@ -1,0 +1,132 @@
+using System.Collections.Generic;
+using System.Reflection;
+using NUnit.Framework;
+using UnityEngine;
+using Potop.Client.Gameplay.Meta;
+using Potop.Client.Core.Events;
+
+namespace Potop.Client.Tests.EditMode {
+    public class MetaUpgradeTests {
+        private GameObject _goManager;
+        private MetaUpgradeManager _manager;
+        private GameObject _goWallet;
+        private GemWallet _wallet;
+        private List<Object> _createdObjects;
+        private List<string> _usedPlayerPrefKeys;
+
+        [SetUp]
+        public void Setup() {
+            _createdObjects = new List<Object>();
+            _usedPlayerPrefKeys = new List<string>();
+            EventBroker.ClearAllSubscriptions();
+
+            _goManager = new GameObject();
+            _createdObjects.Add(_goManager);
+            _manager = _goManager.AddComponent<MetaUpgradeManager>();
+
+            _goWallet = new GameObject();
+            _createdObjects.Add(_goWallet);
+            _wallet = _goWallet.AddComponent<GemWallet>();
+        }
+
+        [TearDown]
+        public void Teardown() {
+            foreach(var obj in _createdObjects) {
+                if(obj != null) {
+                    Object.DestroyImmediate(obj);
+                }
+            }
+            _createdObjects.Clear();
+
+            foreach(var key in _usedPlayerPrefKeys) {
+                PlayerPrefs.DeleteKey(key);
+            }
+            PlayerPrefs.DeleteKey("gem_wallet_balance");
+            _usedPlayerPrefKeys.Clear();
+
+            EventBroker.ClearAllSubscriptions();
+        }
+
+        [Test]
+        public void TryPurchase_MaxLevelReached_ReturnsFalse() {
+            var data = ScriptableObject.CreateInstance<MetaUpgradeData>();
+            _createdObjects.Add(data);
+            typeof(MetaUpgradeData).GetField("_upgradeId", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, "armor");
+            typeof(MetaUpgradeData).GetField("_costPerLevel", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, new int[] { 100 });
+
+            PlayerPrefs.SetInt("meta_upgrade_armor_level", 1); // Set to max level
+            _usedPlayerPrefKeys.Add("meta_upgrade_armor_level");
+
+            bool result = _manager.TryPurchase(data);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TryPurchase_InsufficientGems_ReturnsFalse() {
+            var data = ScriptableObject.CreateInstance<MetaUpgradeData>();
+            _createdObjects.Add(data);
+            typeof(MetaUpgradeData).GetField("_upgradeId", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, "armor");
+            typeof(MetaUpgradeData).GetField("_costPerLevel", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, new int[] { 100 }); // Cost is 100
+
+            // Wallet has 0 gems by default
+            _usedPlayerPrefKeys.Add("meta_upgrade_armor_level");
+
+            bool result = _manager.TryPurchase(data);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TryPurchase_NormalConditions_LevelIncreasesAndGemsDeducted() {
+            var data = ScriptableObject.CreateInstance<MetaUpgradeData>();
+            _createdObjects.Add(data);
+            typeof(MetaUpgradeData).GetField("_upgradeId", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, "armor");
+            typeof(MetaUpgradeData).GetField("_costPerLevel", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, new int[] { 100 });
+
+            _wallet.Earn(150); // Provide enough gems
+            _usedPlayerPrefKeys.Add("meta_upgrade_armor_level");
+
+            bool eventFired = false;
+            EventBroker.Subscribe<MetaUpgradePurchasedEvent>(e => {
+                eventFired = true;
+                Assert.AreEqual("armor", e.UpgradeId);
+                Assert.AreEqual(1, e.NewLevel);
+            });
+
+            bool result = _manager.TryPurchase(data);
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(1, _manager.GetLevel("armor"));
+            Assert.AreEqual(50, _wallet.Balance);
+            Assert.IsTrue(eventFired);
+        }
+
+        [Test]
+        public void GetStatBundle_AggregatesAllBonusesCorrectly() {
+            var armorData = ScriptableObject.CreateInstance<MetaUpgradeData>();
+            _createdObjects.Add(armorData);
+            typeof(MetaUpgradeData).GetField("_upgradeId", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(armorData, "armor");
+            typeof(MetaUpgradeData).GetField("_effectPerLevel", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(armorData, new float[] { 50f });
+
+            var motorData = ScriptableObject.CreateInstance<MetaUpgradeData>();
+            _createdObjects.Add(motorData);
+            typeof(MetaUpgradeData).GetField("_upgradeId", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(motorData, "motor");
+            typeof(MetaUpgradeData).GetField("_effectPerLevel", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(motorData, new float[] { 0.1f });
+
+            var upgrades = new MetaUpgradeData[] { armorData, motorData };
+            typeof(MetaUpgradeManager).GetField("_upgrades", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(_manager, upgrades);
+
+            PlayerPrefs.SetInt("meta_upgrade_armor_level", 1);
+            _usedPlayerPrefKeys.Add("meta_upgrade_armor_level");
+            PlayerPrefs.SetInt("meta_upgrade_motor_level", 1);
+            _usedPlayerPrefKeys.Add("meta_upgrade_motor_level");
+
+            var bundle = _manager.GetStatBundle();
+
+            Assert.AreEqual(50, bundle.BonusHp);
+            Assert.AreEqual(0.1f, bundle.RotationSpeedMultiplier);
+            Assert.AreEqual(0f, bundle.SkillChargeBonus); // Others should be default
+        }
+    }
+}
