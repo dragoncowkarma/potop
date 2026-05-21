@@ -67,6 +67,46 @@
       <Path>Assets/Scripts/Gameplay/Combat/HitFlash.cs</Path>
       <Responsibility>MaterialPropertyBlock emission flash on damage for visual hit feedback.</Responsibility>
     </Module>
+    <Module name="TacticalSkills" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/Combat/TacticalSkills/</Path>
+      <Responsibility>Active tactical skills (EMP, Orbital Strike, Overload Shield) triggered by player.</Responsibility>
+    </Module>
+    <Module name="EnergyManager" type="Manager">
+      <Path>Assets/Scripts/Gameplay/Combat/TacticalSkills/EnergyManager.cs</Path>
+      <Responsibility>Manages tactical energy gathered from enemy kills.</Responsibility>
+    </Module>
+    <Module name="OverchargeController" type="Controller">
+      <Path>Assets/Scripts/Gameplay/Combat/OverchargeController.cs</Path>
+      <Responsibility>Controls player weapon overcharge gauge, heat levels, and overheat penalty.</Responsibility>
+    </Module>
+    <Module name="ItemDrop" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/Items/ItemDrop.cs</Path>
+      <Responsibility>Drop item logic (Repair Kit, Magnet, Smart Bomb) that triggers corresponding gameplay effects on collection.</Responsibility>
+    </Module>
+    <Module name="ItemSpawner" type="Utility">
+      <Path>Assets/Scripts/Gameplay/Items/ItemSpawner.cs</Path>
+      <Responsibility>Handles item spawn rate, guaranteed thresholds, and spawning logic.</Responsibility>
+    </Module>
+    <Module name="MetaUpgradeManager" type="Manager">
+      <Path>Assets/Scripts/Gameplay/Meta/MetaUpgradeManager.cs</Path>
+      <Responsibility>Manages meta upgrades (permanent player stat improvements) purchased with Gems.</Responsibility>
+    </Module>
+    <Module name="GemWallet" type="Manager">
+      <Path>Assets/Scripts/Gameplay/Meta/GemWallet.cs</Path>
+      <Responsibility>Stores persistent player Gem currency balance and publishes GemChangedEvent.</Responsibility>
+    </Module>
+    <Module name="LobbyController" type="Controller">
+      <Path>Assets/Scripts/UI/LobbyController.cs</Path>
+      <Responsibility>Manages the lobby scene and Meta Upgrade UI shop cards.</Responsibility>
+    </Module>
+    <Module name="WeaponTransitionHandler" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/Weapons/WeaponTransitionHandler.cs</Path>
+      <Responsibility>Handles seamless weapon swapping and visual/logic transition states.</Responsibility>
+    </Module>
+    <Module name="OverdriveEvolution" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/Weapons/Overdrive/OverdriveEvolution.cs</Path>
+      <Responsibility>Controls ultimate overdrive evolution checks when boss chests are opened.</Responsibility>
+    </Module>
   </CoreScripts>
 
   <StrictConventions>

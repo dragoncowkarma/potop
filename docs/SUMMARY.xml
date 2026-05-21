@@ -71,15 +71,22 @@
             <prompt path="docs/prompts/050/05004_jules_overdrive_evolution.md" status="completed" />
         </phase>
         <phase id="5.5" title="System Stabilization &amp; Polishing">
-            <prompt path="docs/prompts/055/05501_jules_combat_core_stabilization.md" status="planned" />
-            <prompt path="docs/prompts/055/05502_antigravity_synergy_ux.md" status="planned" />
-            <prompt path="docs/prompts/055/05503_gemini_validation.md" status="planned" />
+            <prompt path="docs/prompts/055/05501_jules_combat_core_stabilization.md" status="completed" />
+            <prompt path="docs/prompts/055/05502_antigravity_synergy_ux.md" status="completed" />
+            <prompt path="docs/prompts/055/05503_gemini_validation.md" status="completed" />
         </phase>
         <phase id="6" title="Tactics &amp; Meta Economy">
-            <prompt path="docs/prompts/060/06001_code_overcharge.md" status="planned" />
-            <prompt path="docs/prompts/060/06002_code_tactical_skills.md" status="planned" />
-            <prompt path="docs/prompts/060/06003_code_item_drop.md" status="planned" />
-            <prompt path="docs/prompts/060/06004_unity_mcp_meta_upgrade_lobby.md" status="planned" />
+            <prompt path="docs/prompts/060/06001_code_overcharge.md" status="completed" />
+            <prompt path="docs/prompts/060/06002_code_tactical_skills.md" status="completed" />
+            <prompt path="docs/prompts/060/06003_code_item_drop.md" status="completed" />
+            <prompt path="docs/prompts/060/06004_unity_mcp_meta_upgrade_lobby.md" status="completed" />
+        </phase>
+        <phase id="6.5" title="System Integration &amp; Gap Filling">
+            <prompt path="docs/prompts/065/06501_code_system_integration.md" status="planned" />
+            <prompt path="docs/prompts/065/06502_code_phase6_tests.md" status="planned" />
+            <prompt path="docs/prompts/065/06503_unity_mcp_tactical_ui.md" status="planned" />
+            <prompt path="docs/prompts/065/06504_code_doc_meta_sync.md" status="planned" />
+            <prompt path="docs/prompts/065/06599_gemini_validation.md" status="planned" />
         </phase>
         <phase id="7" title="Endgame &amp; Boss">
             <prompt path="docs/prompts/070/07001_unity_mcp_boss_visual.md" status="planned" />

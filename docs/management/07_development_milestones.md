@@ -66,7 +66,7 @@
 
 ---
 
-### **Phase 3.5: 시스템 안정화 및 최적화 (System Refinement)** `[진행 중]`
+### **Phase 3.5: 시스템 안정화 및 최적화 (System Refinement)**
 > [!TIP]
 > AI Prompts:
 > - 03501: [Jules] [03501_jules_p01_enemy_ai.md](../prompts/035/03501_jules_p01_enemy_ai.md)
@@ -157,6 +157,24 @@
 *   **[06002] 액티브 전술 스킬 3종** — EMP(500E), 궤도 폭격(700E), 과부하 보호막(1000E)
 *   **[06003] 아이템 드랍 시스템** — 수리키트(HP 30 회복), 초강력 자석, 스마트 폭탄
 *   **[06004] 영구 강화 시스템 기초** — Gem 경제 + 기본 로비 UI + 6개 강화 항목
+
+---
+
+### **Phase 6.5: 전문가 점검 기반 시스템 통합 및 보강 (System Integration & Gap Filling)** `[진행 중]`
+> **Phase 1~6의 기능 구현 완료 후 발견된 5대 분야 결함을 해결하고 시스템 유기적 연결을 공고히 하는 품질 보강 마일스톤입니다.**
+> [!TIP]
+> AI Prompts:
+> - 06501: [06501_code_system_integration.md](../prompts/065/06501_code_system_integration.md)
+> - 06502: [06502_code_phase6_tests.md](../prompts/065/06502_code_phase6_tests.md)
+> - 06503: [06503_unity_mcp_tactical_ui.md](../prompts/065/06503_unity_mcp_tactical_ui.md)
+> - 06504: [06504_code_doc_meta_sync.md](../prompts/065/06504_code_doc_meta_sync.md)
+> - 06599: [06599_gemini_validation.md](../prompts/065/06599_gemini_validation.md)
+
+*   **[06501] 시스템 통합 연결** — MetaStatBundle 인게임 적용, Overcharge↔WeaponBase 연동, GameManager HP/Score 로직 분리, 피버×오버차지 시너지
+*   **[06502] Phase 6 시스템 테스트** — Overcharge, Energy, TacticalSkill, ItemSpawner, MetaUpgrade 에 대한 EditMode 테스트 구축
+*   **[06503] 전술 스킬 UI 바인딩** — 전술 스킬 HUD 아이콘, 쿨다운 오버레이, 에너지 게이지 바, 아이템 획득 시각 피드백 추가
+*   **[06504] 문서 및 메타 동기화** — SUMMARY.xml 동기화, 마일스톤 현행화, GDD 문서 청소 및 REFACTOR_TRACKING.md 정리
+*   **[06599] 통합 검증** — 컴파일 검증, 전체 EditMode 테스트 실행 및 성공 검증, 이벤트 연결 정적 분석
 
 ---
 
