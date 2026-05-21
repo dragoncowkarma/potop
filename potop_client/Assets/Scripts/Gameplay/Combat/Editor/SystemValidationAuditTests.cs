@@ -28,6 +28,8 @@ namespace Potop.Client.Gameplay.Combat.Tests {
             
             // Add components
             _health = _enemyGo.AddComponent<Health>();
+            _health.InitializeHealth(100);
+            
             _hitFlash = _enemyGo.AddComponent<HitFlash>();
             _vfxTrigger = _enemyGo.AddComponent<VFXTrigger>();
             _audioSource = _enemyGo.AddComponent<AudioSource>();
@@ -81,9 +83,14 @@ namespace Potop.Client.Gameplay.Combat.Tests {
             var poolGo = new GameObject("PoolManager");
             var manager = poolGo.AddComponent<PoolManager>();
             
+            // Invoke Awake to assign PoolManager.Instance singleton in EditMode test
+            var awake = typeof(PoolManager).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            awake?.Invoke(manager, null);
+            
             Assert.IsNotNull(PoolManager.Instance, "PoolManager Instance should be valid.");
             
             Object.DestroyImmediate(poolGo);
         }
     }
 }
+

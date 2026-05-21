@@ -1,0 +1,24 @@
+{
+  "task_id": "6.5.3",
+  "title": "Tactical Skill UI & Item Feedback",
+  "description": "Implement Tactical Skill UI & Item Feedback (EMP, Orbital Strike, Overload Shield) under Phase 6.5 Gap Filling (Task 6.5.3).",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "tdd_waiver": "UI/Visual task — TDD line coverage explicitly waived per task prompt. Manual validation required via script validation or Unity tests.",
+  "files_modified": [
+    "potop_client/Assets/Scripts/Gameplay/Combat/TacticalSkills/TacticalSkillBase.cs",
+    "potop_client/Assets/UI/GameHUD.uxml",
+    "potop_client/Assets/UI/GameHUD.uss",
+    "potop_client/Assets/Scripts/UI/GameHUD.cs"
+  ],
+  "metrics": {
+    "coverage": "N/A — UI/visual task",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

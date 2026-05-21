@@ -9,12 +9,40 @@
         <ui:VisualElement class="hud-stats-container">
             <ui:Label name="score-label" text="SCORE: 0" class="hud-text score-text" />
             <ui:Label name="health-label" text="100 / 100" class="hud-text health-text" />
+            <ui:VisualElement name="energy-bar-background" class="energy-bar-background">
+                <ui:VisualElement name="energy-bar-fill" class="energy-bar-fill" />
+            </ui:VisualElement>
         </ui:VisualElement>
         
         <ui:VisualElement name="fever-container" class="fever-container">
             <ui:Label name="fever-label" text="FEVER" class="hud-text fever-text" />
             <ui:VisualElement class="fever-bar-background">
                 <ui:VisualElement name="fever-bar-fill" class="fever-bar-fill" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="skills-container" class="skills-container">
+            <ui:VisualElement name="emp-slot" class="skill-slot">
+                <ui:VisualElement class="skill-icon emp-icon" />
+                <ui:VisualElement name="emp-cooldown-overlay" class="cooldown-overlay" />
+                <ui:Label name="emp-cooldown-label" class="cooldown-label" text="" />
+            </ui:VisualElement>
+            <ui:VisualElement name="orbital-slot" class="skill-slot">
+                <ui:VisualElement class="skill-icon orbital-icon" />
+                <ui:VisualElement name="orbital-cooldown-overlay" class="cooldown-overlay" />
+                <ui:Label name="orbital-cooldown-label" class="cooldown-label" text="" />
+            </ui:VisualElement>
+            <ui:VisualElement name="shield-slot" class="skill-slot">
+                <ui:VisualElement class="skill-icon shield-icon" />
+                <ui:VisualElement name="shield-cooldown-overlay" class="cooldown-overlay" />
+                <ui:Label name="shield-cooldown-label" class="cooldown-label" text="" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="overcharge-container" class="overcharge-container">
+            <ui:Label name="overcharge-label" text="OVERCHARGE" class="hud-text overcharge-text" />
+            <ui:VisualElement class="overcharge-bar-background">
+                <ui:VisualElement name="overcharge-bar-fill" class="overcharge-bar-fill" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
@@ -36,4 +64,6 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+
+    <ui:VisualElement name="fullscreen-flash-overlay" class="fullscreen-flash-overlay" pointer-events="none" />
 </ui:UXML>

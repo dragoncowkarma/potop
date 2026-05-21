@@ -17,6 +17,10 @@ namespace Potop.Client.Tests.EditMode {
             _goEnergyManager = new GameObject();
             _createdObjects.Add(_goEnergyManager);
             _energyManager = _goEnergyManager.AddComponent<EnergyManager>();
+
+            // Manually run Awake to assign EnergyManager.Instance
+            var awakeMethod = typeof(EnergyManager).GetMethod("Awake", BindingFlags.Instance | BindingFlags.NonPublic);
+            awakeMethod?.Invoke(_energyManager, null);
         }
 
         [TearDown]
@@ -27,6 +31,10 @@ namespace Potop.Client.Tests.EditMode {
                 }
             }
             _createdObjects.Clear();
+
+            // Clear static Instance to avoid test cross-contamination
+            var instanceProperty = typeof(EnergyManager).GetProperty("Instance", BindingFlags.Static | BindingFlags.Public);
+            instanceProperty?.GetSetMethod(true)?.Invoke(null, new object[] { null });
         }
 
         [Test]
@@ -110,3 +118,4 @@ namespace Potop.Client.Tests.EditMode {
         }
     }
 }
+

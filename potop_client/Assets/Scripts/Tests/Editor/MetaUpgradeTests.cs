@@ -39,9 +39,17 @@ namespace Potop.Client.Tests.EditMode {
             _createdObjects.Add(_goManager);
             _manager = _goManager.AddComponent<MetaUpgradeManager>();
 
+            // Manually run Awake to assign MetaUpgradeManager.Instance
+            var managerAwake = typeof(MetaUpgradeManager).GetMethod("Awake", BindingFlags.Instance | BindingFlags.NonPublic);
+            managerAwake?.Invoke(_manager, null);
+
             _goWallet = new GameObject();
             _createdObjects.Add(_goWallet);
             _wallet = _goWallet.AddComponent<GemWallet>();
+
+            // Manually run Awake to assign GemWallet.Instance
+            var walletAwake = typeof(GemWallet).GetMethod("Awake", BindingFlags.Instance | BindingFlags.NonPublic);
+            walletAwake?.Invoke(_wallet, null);
         }
 
         [TearDown]
@@ -52,6 +60,13 @@ namespace Potop.Client.Tests.EditMode {
                 }
             }
             _createdObjects.Clear();
+
+            // Clear static instances
+            var managerInstanceProperty = typeof(MetaUpgradeManager).GetProperty("Instance", BindingFlags.Static | BindingFlags.Public);
+            managerInstanceProperty?.GetSetMethod(true)?.Invoke(null, new object[] { null });
+
+            var walletInstanceProperty = typeof(GemWallet).GetProperty("Instance", BindingFlags.Static | BindingFlags.Public);
+            walletInstanceProperty?.GetSetMethod(true)?.Invoke(null, new object[] { null });
 
             // Restore original prefs
             foreach(var key in _keysToMock) {

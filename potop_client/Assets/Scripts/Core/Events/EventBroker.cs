@@ -9,6 +9,13 @@ namespace Potop.Client.Core.Events {
         private static readonly Dictionary<Type, Delegate> _subscribers = new Dictionary<Type, Delegate>();
 
         /// <summary>
+        /// 모든 구독을 해제합니다. (테스트 용도)
+        /// </summary>
+        public static void ClearAllSubscriptions() {
+            _subscribers.Clear();
+        }
+
+        /// <summary>
         /// 특정 이벤트 타입에 대한 구독을 추가합니다.
         /// </summary>
         /// <typeparam name="T">구독할 이벤트 타입</typeparam>

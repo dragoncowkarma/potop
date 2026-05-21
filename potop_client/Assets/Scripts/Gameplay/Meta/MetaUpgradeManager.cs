@@ -24,7 +24,9 @@ namespace Potop.Client.Gameplay.Meta {
                 return;
             }
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (Application.isPlaying) {
+                DontDestroyOnLoad(gameObject);
+            }
         }
 
         /// <summary>

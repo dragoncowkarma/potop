@@ -190,3 +190,204 @@
     text-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
     font-size: 32px;
 }
+
+/* Energy Bar */
+.energy-bar-background {
+    width: 200px;
+    height: 12px;
+    background-color: rgba(20, 20, 30, 0.6);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: rgba(0, 240, 255, 0.3);
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.energy-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #00F0FF;
+    border-radius: 5px;
+    transition-property: width;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+}
+
+/* Skills Container */
+.skills-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    translate: -50% 0;
+    flex-direction: row;
+    padding: 10px 20px;
+    background-color: rgba(10, 10, 15, 0.75);
+    border-radius: 16px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-slot {
+    width: 70px;
+    height: 70px;
+    margin: 0 10px;
+    background-color: rgba(20, 20, 30, 0.8);
+    border-radius: 12px;
+    border-width: 1.5px;
+    border-color: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    transition-property: scale, border-color;
+    transition-duration: 0.2s;
+}
+
+.skill-slot:hover {
+    scale: 1.08;
+    border-color: rgba(0, 240, 255, 0.8);
+}
+
+.skill-icon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.85;
+}
+
+/* Fallback icons styled with nice gradients and colors */
+.emp-icon {
+    background-image: none;
+    background-color: #3b0066;
+    border-width: 4px;
+    border-color: #9900ff;
+}
+
+.orbital-icon {
+    background-image: none;
+    background-color: #660000;
+    border-width: 4px;
+    border-color: #ff3300;
+}
+
+.shield-icon {
+    background-image: none;
+    background-color: #004d40;
+    border-width: 4px;
+    border-color: #00e676;
+}
+
+.cooldown-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    background-color: rgba(0, 0, 0, 0.75);
+    transition-property: height;
+    transition-duration: 0.1s;
+}
+
+.cooldown-label {
+    position: absolute;
+    font-size: 16px;
+    color: white;
+    -unity-font-style: bold;
+    text-shadow: 1px 1px 2px black;
+    -unity-text-align: middle-center;
+}
+
+/* Overcharge Gauge */
+.overcharge-container {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    translate: -50% 0;
+    width: 250px;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+}
+
+.overcharge-container.visible {
+    opacity: 1;
+}
+
+.overcharge-text {
+    font-size: 18px;
+    color: #FF5500;
+    -unity-font-style: bold;
+    margin-bottom: 4px;
+    text-shadow: 0px 0px 8px rgba(255, 85, 0, 0.7);
+    letter-spacing: 1px;
+}
+
+.overcharge-bar-background {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(20, 20, 30, 0.7);
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgba(255, 85, 0, 0.3);
+    overflow: hidden;
+}
+
+.overcharge-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #FF5500;
+    border-radius: 4px;
+    transition-property: width, background-color;
+    transition-duration: 0.1s;
+}
+
+/* Overcharge state visual styling */
+.overcharge-container.state-active .overcharge-bar-fill {
+    background-color: #FF9900;
+}
+
+.overcharge-container.state-overheat .overcharge-bar-fill {
+    background-color: #FF0000;
+}
+
+.overcharge-container.state-overheat .overcharge-text {
+    color: #FF0000;
+    text-shadow: 0px 0px 10px rgba(255, 0, 0, 0.9);
+}
+
+/* Fullscreen overlays for items */
+.fullscreen-flash-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    border-width: 0px;
+    border-color: rgba(0, 240, 255, 0);
+    transition-property: background-color, border-color, border-width;
+    transition-duration: 0.8s;
+    transition-timing-function: ease-out;
+}
+
+/* Smart Bomb flash effect */
+.fullscreen-flash-overlay.bomb-flash {
+    background-color: rgba(255, 255, 255, 0.95);
+    transition-duration: 0.05s; /* Instant flash in */
+}
+
+/* Magnet active glow border effect */
+.fullscreen-flash-overlay.magnet-active {
+    border-width: 25px;
+    border-color: rgba(0, 240, 255, 0.5);
+    transition-duration: 0.1s; /* Quick border show */
+}
+
+/* Health flash text class */
+.health-text.health-flash {
+    color: #00FF88;
+    scale: 1.15;
+    text-shadow: 0px 0px 10px rgba(0, 255, 136, 0.8);
+    transition-property: scale, color;
+    transition-duration: 0.1s;
+}

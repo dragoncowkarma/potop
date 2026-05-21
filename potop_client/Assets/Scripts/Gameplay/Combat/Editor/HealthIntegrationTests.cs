@@ -10,6 +10,7 @@ namespace Potop.Client.Gameplay.Combat.Tests {
         public void Health_TakeDamage_ReducesHealthAndPublishesEvents() {
             var go = new GameObject();
             var health = go.AddComponent<Health>();
+            health.InitializeHealth(100);
 
             bool damagedCalled = false;
             bool changedCalled = false;
@@ -45,11 +46,19 @@ namespace Potop.Client.Gameplay.Combat.Tests {
         public void EnemyBase_IntegratesWithHealth() {
             var go = new GameObject();
             var health = go.AddComponent<Health>();
+            health.InitializeHealth(100);
+            
             var bot = go.AddComponent<Potop.Client.Gameplay.AI.Variants.BlitzEnemy>(); // Use a concrete variant instead of abstract Base
 
             // Setup
             go.SetActive(false);
             go.SetActive(true);
+
+            // Invoke Awake and OnEnable on EnemyBase variant to setup health reference
+            var botAwake = typeof(EnemyBase).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            botAwake?.Invoke(bot, null);
+            var botOnEnable = typeof(EnemyBase).GetMethod("OnEnable", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            botOnEnable?.Invoke(bot, null);
 
             // Using the legacy int signature for damage
             bot.TakeDamage(100);
@@ -61,3 +70,4 @@ namespace Potop.Client.Gameplay.Combat.Tests {
         }
     }
 }
+

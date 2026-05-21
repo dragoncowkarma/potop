@@ -9,6 +9,12 @@ namespace Potop.Client.Gameplay.Combat {
         public int EnergyCost => _skillData != null ? _skillData.EnergyCost : 0;
         public float Cooldown => _skillData != null ? _skillData.Cooldown : 0f;
 
+        public float LastUseTime => _lastUseTime;
+
+        public float GetRemainingCooldown() {
+            return Mathf.Max(0f, Cooldown - (Time.time - _lastUseTime));
+        }
+
         public bool CanExecute() {
             if (Time.time < _lastUseTime + Cooldown) return false;
             if (EnergyManager.Instance == null || EnergyManager.Instance.CurrentEnergy < EnergyCost) return false;
@@ -21,6 +27,10 @@ namespace Potop.Client.Gameplay.Combat {
             if (EnergyManager.Instance.ConsumeEnergy(EnergyCost)) {
                 _lastUseTime = Time.time;
                 Execute();
+                Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.EnergyChangedEvent {
+                    CurrentEnergy = EnergyManager.Instance.CurrentEnergy,
+                    MaxEnergy = EnergyManager.MAX_ENERGY
+                });
                 return true;
             }
             return false;
