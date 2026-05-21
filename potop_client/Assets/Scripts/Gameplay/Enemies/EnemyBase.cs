@@ -58,6 +58,11 @@ namespace Potop.Client.Gameplay {
         /// </summary>
         public int ScoreValue => _enemyData != null ? _enemyData.ScoreValue : 0;
 
+        /// <summary>
+        /// 적 처치 시 획득하는 에너지입니다.
+        /// </summary>
+        public int EnergyReward => _enemyData != null ? _enemyData.EnergyReward : 10;
+
         protected Transform _target;
         public Transform Target => _target;
 
@@ -169,7 +174,7 @@ namespace Potop.Client.Gameplay {
         }
 
         private void HandleDeath() {
-            Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.EnemyDiedEvent { ScoreValue = ScoreValue });
+            Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.EnemyDiedEvent { ScoreValue = ScoreValue, EnergyReward = EnergyReward });
             
             // Phase 4: 경험치 보석 스폰을 위한 이벤트 발행
             Potop.Client.Core.Events.EventBroker.Publish(new Items.EnemyKilledEvent { 
