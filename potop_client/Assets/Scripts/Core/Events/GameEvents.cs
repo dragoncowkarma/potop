@@ -34,6 +34,11 @@ namespace Potop.Client.Core.Events {
         /// 적이 제공하는 점수(피버 게이지 증가량)입니다.
         /// </summary>
         public int ScoreValue;
+
+        /// <summary>
+        /// 적이 제공하는 에너지입니다.
+        /// </summary>
+        public int EnergyReward;
     }
 
     /// <summary>
@@ -55,6 +60,17 @@ namespace Potop.Client.Core.Events {
         /// </summary>
         public float Progress;
     }
+
+    /// <summary>
+    /// 피버 레벨이 변경되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct FeverLevelChangedEvent {
+        /// <summary>
+        /// 현재 피버 레벨입니다. (0~3)
+        /// </summary>
+        public int Level;
+    }
+
     /// <summary>
     /// 플레이어가 피해를 입었을 때 발생하는 이벤트입니다.
     /// </summary>
@@ -84,5 +100,12 @@ namespace Potop.Client.Core.Events {
         /// </summary>
         public bool IsHeavy;
     }
-}
 
+    /// <summary>
+    /// 에너지가 변경되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct EnergyChangedEvent {
+        public int CurrentEnergy;
+        public int MaxEnergy;
+    }
+}

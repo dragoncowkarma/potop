@@ -10,6 +10,7 @@ namespace Potop.Client.Data {
         [SerializeField] private int _maxHealth;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private int _scoreValue;
+        [SerializeField] private int _energyReward = 10;
 
         /// <summary>
         /// 적의 이름입니다.
@@ -30,5 +31,10 @@ namespace Potop.Client.Data {
         /// 적 처치 시 획득하는 점수입니다.
         /// </summary>
         public int ScoreValue => _scoreValue;
+
+        /// <summary>
+        /// 적 처치 시 획득하는 에너지입니다.
+        /// </summary>
+        public int EnergyReward => _energyReward;
     }
 }

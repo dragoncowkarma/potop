@@ -2,15 +2,6 @@ using UnityEngine;
 using Potop.Client.Core.Events;
 
 namespace Potop.Client.Gameplay {
-    /// <summary>
-    /// 피버 레벨이 변경되었을 때 발생하는 이벤트입니다.
-    /// </summary>
-    public struct FeverLevelChangedEvent {
-        /// <summary>
-        /// 현재 피버 레벨입니다. (0~3)
-        /// </summary>
-        public int Level;
-    }
 
     /// <summary>
     /// 피버 게이지를 관리하고 피버 모드 상태를 제어하는 매니저 클래스입니다.

@@ -26,16 +26,18 @@ namespace Potop.Client.Gameplay.Combat {
         }
 
         private void OnEnemyDied(EnemyDiedEvent e) {
-            AddEnergy(e.ScoreValue > 0 ? e.ScoreValue : DEFAULT_ENERGY_GAIN);
+            AddEnergy(e.EnergyReward);
         }
 
         public void AddEnergy(int amount) {
             CurrentEnergy = Mathf.Min(CurrentEnergy + amount, MAX_ENERGY);
+            EventBroker.Publish(new EnergyChangedEvent { CurrentEnergy = CurrentEnergy, MaxEnergy = MAX_ENERGY });
         }
 
         public bool ConsumeEnergy(int amount) {
             if (CurrentEnergy >= amount) {
                 CurrentEnergy -= amount;
+                EventBroker.Publish(new EnergyChangedEvent { CurrentEnergy = CurrentEnergy, MaxEnergy = MAX_ENERGY });
                 return true;
             }
             return false;

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Potop.Client.Core.Events;
+using Potop.Client.Gameplay.Meta;
 
 namespace Potop.Client.Core {
     /// <summary>
@@ -25,22 +26,7 @@ namespace Potop.Client.Core {
         /// </summary>
         public static GameManager Instance { get; private set; }
 
-        [Header("Player Settings")]
-        [SerializeField] private int _maxHealth = 100;
-
-        /// <summary>
-        /// 플레이어의 최대 HP입니다.
-        /// </summary>
-        public int MaxHealth => _maxHealth;
-
         [Header("Game State")]
-        [SerializeField] private int _health;
-
-        /// <summary>
-        /// 플레이어의 현재 HP입니다.
-        /// </summary>
-        public int Health { get { return _health; } private set { _health = value; } }
-
         [SerializeField] private int _score;
 
         /// <summary>
@@ -89,7 +75,6 @@ namespace Potop.Client.Core {
         }
 
         private void Start() {
-            EventBroker.Subscribe<PlayerTakeDamageEvent>(OnPlayerTakeDamage);
             ChangeState(GameState.Start);
             StartGame();
         }
@@ -116,44 +101,47 @@ namespace Potop.Client.Core {
         /// 게임을 초기 상태로 시작합니다.
         /// </summary>
         public void StartGame() {
-            Health = _maxHealth;
+            if (MetaUpgradeManager.Instance == null) {
+                Debug.LogWarning("MetaUpgradeManager.Instance is null during StartGame.");
+            }
+            if (GemWallet.Instance == null) {
+                Debug.LogWarning("GemWallet.Instance is null during StartGame.");
+            }
+
             Score = 0;
             _isGameOver = false;
             ChangeState(GameState.Playing);
             Time.timeScale = NORMAL_TIME_SCALE;
 
-            EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
+            if (PlayerHealthController.Instance != null) {
+                PlayerHealthController.Instance.InitializeHealth();
+            }
+
             EventBroker.Publish(new ScoreChangedEvent { CurrentScore = Score });
         }
 
         /// <summary>
         /// 플레이어에게 피해를 입힙니다.
+        /// 하위 호환성을 위한 래퍼 메서드입니다.
         /// </summary>
         /// <param name="value">입힐 피해량</param>
         public void TakeDamage(int value) {
             if (_isGameOver) return;
-
-            Health = Mathf.Max(0, Health - value);
-            EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
-
-            if (Health <= 0) {
-                GameOver();
+            if (PlayerHealthController.Instance != null) {
+                PlayerHealthController.Instance.TakeDamage(value);
             }
         }
 
         /// <summary>
         /// 플레이어의 체력을 회복합니다.
+        /// 하위 호환성을 위한 래퍼 메서드입니다.
         /// </summary>
         /// <param name="amount">회복할 체력량</param>
         public void Heal(int amount) {
-            if (_isGameOver || amount <= 0) return;
-
-            Health = Mathf.Min(_maxHealth, Health + amount);
-            EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
-        }
-
-        private void OnPlayerTakeDamage(PlayerTakeDamageEvent e) {
-            TakeDamage(e.Damage);
+            if (_isGameOver) return;
+            if (PlayerHealthController.Instance != null) {
+                PlayerHealthController.Instance.Heal(amount);
+            }
         }
 
         /// <summary>
@@ -167,7 +155,12 @@ namespace Potop.Client.Core {
             EventBroker.Publish(new ScoreChangedEvent { CurrentScore = Score });
         }
 
+        public void TriggerGameOver() {
+            GameOver();
+        }
+
         private void GameOver() {
+            if (_isGameOver) return;
             _isGameOver = true;
             ChangeState(GameState.GameOver);
             Time.timeScale = GAME_OVER_TIME_SCALE;
@@ -192,11 +185,9 @@ namespace Potop.Client.Core {
         }
 
         private void OnDestroy() {
-            EventBroker.Unsubscribe<PlayerTakeDamageEvent>(OnPlayerTakeDamage);
             if (Instance == this) {
                 Instance = null;
             }
         }
     }
 }
-

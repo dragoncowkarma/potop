@@ -2,6 +2,7 @@ using UnityEngine;
 using Potop.Client.Core.Events;
 using Potop.Client.Gameplay.Weapons.Parts;
 using Potop.Client.Gameplay.Weapons.Strategies;
+using Potop.Client.Gameplay.Combat;
 
 namespace Potop.Client.Gameplay.Weapons {
     /// <summary>
@@ -26,9 +27,25 @@ namespace Potop.Client.Gameplay.Weapons {
         protected float _lastFireTime;
         protected int _currentAmmo;
 
+        private OverchargeState _overchargeState = OverchargeState.Idle;
+        private float _overchargeMultiplier = 1f;
+
         protected virtual void Start() {
             // 초기화 시 장탄수를 꽉 채웁니다.
             _currentAmmo = _weaponMagazine != null ? _weaponMagazine.GetMaxAmmo() : 30;
+        }
+
+        protected virtual void OnEnable() {
+            EventBroker.Subscribe<OverchargeStateChangedEvent>(OnOverchargeStateChanged);
+        }
+
+        protected virtual void OnDisable() {
+            EventBroker.Unsubscribe<OverchargeStateChangedEvent>(OnOverchargeStateChanged);
+        }
+
+        private void OnOverchargeStateChanged(OverchargeStateChangedEvent e) {
+            _overchargeState = e.State;
+            _overchargeMultiplier = e.AttackSpeedMultiplier > 0f ? e.AttackSpeedMultiplier : 1f;
         }
 
         /// <summary>
@@ -84,14 +101,18 @@ namespace Potop.Client.Gameplay.Weapons {
         /// </summary>
         public virtual float GetModifiedFireRate() {
             if (_weaponData == null) return 0f;
-            return _weaponBody != null ? _weaponBody.ModifyFireRate(_weaponData.BaseFireRate) : _weaponData.BaseFireRate;
+            float rate = _weaponBody != null ? _weaponBody.ModifyFireRate(_weaponData.BaseFireRate) : _weaponData.BaseFireRate;
+            if (_overchargeState == OverchargeState.Active) {
+                rate *= _overchargeMultiplier;
+            }
+            return rate;
         }
 
         /// <summary>
         /// 현재 발사가 가능한 상태인지 확인합니다.
         /// </summary>
         protected virtual bool CanFire() {
-            if (_weaponData == null || _currentAmmo <= 0) return false;
+            if (_weaponData == null || _currentAmmo <= 0 || _overchargeState == OverchargeState.Overheat) return false;
 
             float currentFireRate = GetModifiedFireRate();
             if (currentFireRate <= 0) return false;
