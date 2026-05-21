@@ -42,9 +42,7 @@ namespace Potop.Client.Tests.EditMode {
             var dropTable = new List<ItemDropData>();
             typeof(ItemSpawner).GetField("_dropTable", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(_spawner, dropTable);
 
-            EventBroker.Publish(new EnemyKilledEvent { Position = Vector3.zero, ExpValue = 100 });
-
-            Assert.IsTrue(true); // Should not crash
+            Assert.DoesNotThrow(() => EventBroker.Publish(new EnemyKilledEvent { Position = Vector3.zero, ExpValue = 100 }));
         }
 
         [Test]
@@ -56,9 +54,7 @@ namespace Potop.Client.Tests.EditMode {
             typeof(ItemSpawner).GetField("_dropTable", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(_spawner, dropTable);
 
             // This triggers guaranteed drop logic if Exp is >= 200
-            EventBroker.Publish(new EnemyKilledEvent { Position = Vector3.zero, ExpValue = 250 });
-
-            Assert.IsTrue(true); // Should not crash despite PoolManager.Instance being null
+            Assert.DoesNotThrow(() => EventBroker.Publish(new EnemyKilledEvent { Position = Vector3.zero, ExpValue = 250 }));
         }
 
         [Test]
@@ -70,9 +66,7 @@ namespace Potop.Client.Tests.EditMode {
             typeof(ItemSpawner).GetField("_dropTable", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(_spawner, dropTable);
 
             // 200 is GUARANTEED_DROP_EXP_THRESHOLD
-            EventBroker.Publish(new EnemyKilledEvent { Position = Vector3.zero, ExpValue = 200 });
-
-            Assert.IsTrue(true); // Verifies path is executed without errors
+            Assert.DoesNotThrow(() => EventBroker.Publish(new EnemyKilledEvent { Position = Vector3.zero, ExpValue = 200 }));
         }
 
         [Test]
@@ -88,9 +82,7 @@ namespace Potop.Client.Tests.EditMode {
             // Set current wave to 10
             typeof(ItemSpawner).GetField("_currentWave", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(_spawner, 10);
 
-            EventBroker.Publish(new EnemyKilledEvent { Position = Vector3.zero, ExpValue = 10 }); // Not guaranteed
-
-            Assert.IsTrue(true); // Verifies probability path
+            Assert.DoesNotThrow(() => EventBroker.Publish(new EnemyKilledEvent { Position = Vector3.zero, ExpValue = 10 }));
         }
     }
 }

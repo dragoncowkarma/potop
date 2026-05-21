@@ -92,9 +92,7 @@ namespace Potop.Client.Tests.EditMode {
 
             // We invoke Execute directly to test its internal logic.
             // Due to reliance on FindObjectsByType and Camera.main, we just ensure it doesn't crash in Edit mode.
-            skill.Execute();
-
-            Assert.IsTrue(true);
+            Assert.DoesNotThrow(() => skill.Execute());
         }
 
         [Test]
@@ -107,10 +105,8 @@ namespace Potop.Client.Tests.EditMode {
             data.ExecuteCount = 5;
             typeof(TacticalSkillBase).GetField("_skillData", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(skill, data);
 
-            skill.Execute(); // Starts coroutine
-
             // In Edit Mode, Coroutines do not run automatically. Just verify no crash on calling.
-            Assert.IsTrue(true);
+            Assert.DoesNotThrow(() => skill.Execute());
         }
     }
 }

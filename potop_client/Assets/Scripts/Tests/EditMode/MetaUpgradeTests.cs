@@ -12,12 +12,27 @@ namespace Potop.Client.Tests.EditMode {
         private GameObject _goWallet;
         private GemWallet _wallet;
         private List<Object> _createdObjects;
-        private List<string> _usedPlayerPrefKeys;
+
+        private Dictionary<string, int> _originalPrefs;
+        private readonly string[] _keysToMock = new string[] {
+            "meta_upgrade_armor_level",
+            "meta_upgrade_motor_level",
+            "gem_wallet_balance"
+        };
 
         [SetUp]
         public void Setup() {
             _createdObjects = new List<Object>();
-            _usedPlayerPrefKeys = new List<string>();
+            _originalPrefs = new Dictionary<string, int>();
+
+            // Backup and clear specific keys
+            foreach(var key in _keysToMock) {
+                if(PlayerPrefs.HasKey(key)) {
+                    _originalPrefs[key] = PlayerPrefs.GetInt(key);
+                }
+                PlayerPrefs.DeleteKey(key);
+            }
+
             EventBroker.ClearAllSubscriptions();
 
             _goManager = new GameObject();
@@ -38,11 +53,13 @@ namespace Potop.Client.Tests.EditMode {
             }
             _createdObjects.Clear();
 
-            foreach(var key in _usedPlayerPrefKeys) {
-                PlayerPrefs.DeleteKey(key);
+            // Restore original prefs
+            foreach(var key in _keysToMock) {
+                PlayerPrefs.DeleteKey(key); // clear the mock values
+                if(_originalPrefs.ContainsKey(key)) {
+                    PlayerPrefs.SetInt(key, _originalPrefs[key]);
+                }
             }
-            PlayerPrefs.DeleteKey("gem_wallet_balance");
-            _usedPlayerPrefKeys.Clear();
 
             EventBroker.ClearAllSubscriptions();
         }
@@ -55,7 +72,6 @@ namespace Potop.Client.Tests.EditMode {
             typeof(MetaUpgradeData).GetField("_costPerLevel", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, new int[] { 100 });
 
             PlayerPrefs.SetInt("meta_upgrade_armor_level", 1); // Set to max level
-            _usedPlayerPrefKeys.Add("meta_upgrade_armor_level");
 
             bool result = _manager.TryPurchase(data);
 
@@ -70,7 +86,6 @@ namespace Potop.Client.Tests.EditMode {
             typeof(MetaUpgradeData).GetField("_costPerLevel", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, new int[] { 100 }); // Cost is 100
 
             // Wallet has 0 gems by default
-            _usedPlayerPrefKeys.Add("meta_upgrade_armor_level");
 
             bool result = _manager.TryPurchase(data);
 
@@ -85,7 +100,6 @@ namespace Potop.Client.Tests.EditMode {
             typeof(MetaUpgradeData).GetField("_costPerLevel", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(data, new int[] { 100 });
 
             _wallet.Earn(150); // Provide enough gems
-            _usedPlayerPrefKeys.Add("meta_upgrade_armor_level");
 
             bool eventFired = false;
             EventBroker.Subscribe<MetaUpgradePurchasedEvent>(e => {
@@ -118,9 +132,7 @@ namespace Potop.Client.Tests.EditMode {
             typeof(MetaUpgradeManager).GetField("_upgrades", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(_manager, upgrades);
 
             PlayerPrefs.SetInt("meta_upgrade_armor_level", 1);
-            _usedPlayerPrefKeys.Add("meta_upgrade_armor_level");
             PlayerPrefs.SetInt("meta_upgrade_motor_level", 1);
-            _usedPlayerPrefKeys.Add("meta_upgrade_motor_level");
 
             var bundle = _manager.GetStatBundle();
 
