@@ -69,7 +69,6 @@ namespace Potop.Client.Gameplay.Combat
             {
                 _overchargeAction.action.started += OnOverchargeStarted;
                 _overchargeAction.action.canceled += OnOverchargeCanceled;
-                _overchargeAction.action.Enable();
             }
         }
 
@@ -79,11 +78,11 @@ namespace Potop.Client.Gameplay.Combat
             {
                 _overchargeAction.action.started -= OnOverchargeStarted;
                 _overchargeAction.action.canceled -= OnOverchargeCanceled;
-                _overchargeAction.action.Disable();
             }
 
             // 상태 초기화
             _isButtonHeld = false;
+            _currentGauge = 0f;
             ChangeState(OverchargeState.Idle);
         }
 
