@@ -30,18 +30,21 @@ namespace Potop.Client.Gameplay.Combat {
     }
 
     public static class EnemyBaseExtensions {
-        public static async void Stun(this EnemyBase enemy, float duration) {
-            if (enemy == null || enemy.StateMachine == null) return;
+        public static void Stun(this EnemyBase enemy, float duration) {
+            if (enemy == null || !enemy.gameObject.activeInHierarchy || enemy.StateMachine == null) return;
 
+            enemy.StartCoroutine(StunRoutine(enemy, duration));
+        }
+
+        private static System.Collections.IEnumerator StunRoutine(EnemyBase enemy, float duration) {
             var prevState = enemy.StateMachine.CurrentState;
             enemy.StateMachine.ChangeState(EnemyBase.IdleState, enemy);
 
-            await System.Threading.Tasks.Task.Delay(Mathf.RoundToInt(duration * 1000));
+            yield return new WaitForSeconds(duration);
 
             if (enemy != null && enemy.gameObject.activeInHierarchy && enemy.StateMachine.CurrentState == EnemyBase.IdleState) {
-                // If it's still idle (meaning it wasn't dead or changed by something else), restore its previous state
-                // Actually, usually they go back to ChaseState.
-                enemy.StateMachine.ChangeState(EnemyBase.ChaseState, enemy);
+                // Restore its previous state
+                enemy.StateMachine.ChangeState(prevState, enemy);
             }
         }
     }

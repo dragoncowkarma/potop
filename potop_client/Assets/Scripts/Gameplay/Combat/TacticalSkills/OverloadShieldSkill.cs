@@ -4,6 +4,8 @@ using Potop.Client.Core;
 
 namespace Potop.Client.Gameplay.Combat {
     public class OverloadShieldSkill : TacticalSkillBase {
+        private const int INSTANT_KILL_DAMAGE = 999999;
+
         public override void Execute() {
             StartCoroutine(ShieldRoutine());
         }
@@ -13,7 +15,7 @@ namespace Potop.Client.Gameplay.Combat {
             float radius = _skillData != null ? _skillData.Radius : 3f;
             float endTime = Time.time + duration;
 
-            Collider[] hits = new Collider[20];
+            Collider[] hits = new Collider[64];
             int layerMask = LayerMask.GetMask("Enemy");
 
             while (Time.time < endTime) {
@@ -23,7 +25,7 @@ namespace Potop.Client.Gameplay.Combat {
                     for (int i = 0; i < count; i++) {
                         if (hits[i] != null && hits[i].TryGetComponent<IDamageable>(out var dmg)) {
                             // Instant kill contact
-                            dmg.TakeDamage(new DamageInfo { Amount = 999999, HitPoint = center });
+                            dmg.TakeDamage(new DamageInfo { Amount = INSTANT_KILL_DAMAGE, HitPoint = center });
                         }
                     }
                 }

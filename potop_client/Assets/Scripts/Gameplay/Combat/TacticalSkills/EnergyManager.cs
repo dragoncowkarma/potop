@@ -7,6 +7,7 @@ namespace Potop.Client.Gameplay.Combat {
 
         public int CurrentEnergy { get; private set; }
         public const int MAX_ENERGY = 1000;
+        public const int DEFAULT_ENERGY_GAIN = 10;
 
         private void Awake() {
             if (Instance == null) {
@@ -25,7 +26,7 @@ namespace Potop.Client.Gameplay.Combat {
         }
 
         private void OnEnemyDied(EnemyDiedEvent e) {
-            AddEnergy(e.ScoreValue > 0 ? e.ScoreValue : 10);
+            AddEnergy(e.ScoreValue > 0 ? e.ScoreValue : DEFAULT_ENERGY_GAIN);
         }
 
         public void AddEnergy(int amount) {
