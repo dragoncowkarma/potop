@@ -1,0 +1,28 @@
+{
+  "task_id": "6.4",
+  "title": "Meta Upgrade Manager & Lobby UI",
+  "description": "Implement GemWallet, MetaUpgradeData (SO), MetaUpgradeManager (6 permanent upgrade slots), LobbyScreen UXML/USS, MetaUpgradeCard UXML, and LobbyController wiring UI to logic via EventBroker.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "tdd_waiver": "UI/Visual task — TDD line coverage explicitly waived per task prompt. Manual validation required via mcp_unityMCP_validate_script in Unity Editor.",
+  "files_modified": [
+    "Assets/Scripts/Gameplay/Meta/GemWallet.cs",
+    "Assets/Scripts/Gameplay/Meta/MetaEvents.cs",
+    "Assets/Scripts/Gameplay/Meta/MetaUpgradeData.cs",
+    "Assets/Scripts/Gameplay/Meta/MetaUpgradeManager.cs",
+    "Assets/UI/Lobby/LobbyScreen.uxml",
+    "Assets/UI/Lobby/LobbyScreen.uss",
+    "Assets/UI/Lobby/MetaUpgradeCard.uxml",
+    "Assets/Scripts/UI/LobbyController.cs"
+  ],
+  "metrics": {
+    "coverage": "N/A — UI/visual task",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 3,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "bd20b79a1fc19184e3f1588d17e0c384d6372065fbd9db0814aa046d476ffc33",
+  "verification_mode": "standard"
+}

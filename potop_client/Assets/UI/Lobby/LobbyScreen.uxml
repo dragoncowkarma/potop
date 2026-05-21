@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:ue="UnityEditor.UIElements"
+>
+    <ui:Style src="LobbyScreen.uss" />
+
+    <!-- Root container -->
+    <ui:VisualElement name="lobby-root" class="lobby-root">
+
+        <!-- Header bar -->
+        <ui:VisualElement name="lobby-header" class="lobby-header">
+            <ui:Label name="title-label" text="POTOP" class="lobby-title" />
+            <ui:VisualElement name="gem-display" class="gem-display">
+                <ui:VisualElement name="gem-icon" class="gem-icon" />
+                <ui:Label name="gem-label" text="0" class="gem-label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Upgrade section label -->
+        <ui:Label text="PERMANENT UPGRADES" class="section-label" />
+
+        <!-- Upgrade cards scroll view -->
+        <ui:ScrollView name="upgrade-scroll" class="upgrade-scroll" horizontal-scroller-visibility="Hidden">
+            <ui:VisualElement name="upgrade-grid" class="upgrade-grid" />
+        </ui:ScrollView>
+
+        <!-- Play button -->
+        <ui:Button name="play-button" text="PLAY" class="play-button" />
+
+    </ui:VisualElement>
+</ui:UXML>

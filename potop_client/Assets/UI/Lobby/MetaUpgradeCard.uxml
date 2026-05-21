@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+>
+    <ui:Style src="LobbyScreen.uss" />
+
+    <!-- Individual meta upgrade card template -->
+    <ui:VisualElement name="upgrade-card" class="upgrade-card">
+        <ui:VisualElement name="card-icon" class="card-icon" />
+        <ui:Label name="card-name" text="Upgrade Name" class="card-name" />
+        <ui:Label name="card-description" text="Effect description" class="card-description" />
+        <ui:VisualElement name="level-bar-container" class="level-bar-container">
+            <!-- Level pip elements are added procedurally by LobbyController -->
+        </ui:VisualElement>
+        <ui:Label name="card-cost" text="Cost: 500 💎" class="card-cost" />
+        <ui:Button name="upgrade-button" text="UPGRADE" class="upgrade-button" />
+    </ui:VisualElement>
+</ui:UXML>
