@@ -3,6 +3,7 @@ using Potop.Client.Core.Events;
 using Potop.Client.Gameplay.Weapons.Parts;
 using Potop.Client.Gameplay.Weapons.Strategies;
 using Potop.Client.Gameplay.Combat;
+using Potop.Client.Core;
 
 namespace Potop.Client.Gameplay.Weapons {
     /// <summary>
@@ -27,20 +28,36 @@ namespace Potop.Client.Gameplay.Weapons {
         protected float _lastFireTime;
         protected int _currentAmmo;
 
-        private OverchargeState _overchargeState = OverchargeState.Idle;
-        private float _overchargeMultiplier = 1f;
+        protected OverchargeState _overchargeState = OverchargeState.Idle;
+        protected float _overchargeMultiplier = 1f;
 
         protected virtual void Start() {
             // 초기화 시 장탄수를 꽉 채웁니다.
             _currentAmmo = _weaponMagazine != null ? _weaponMagazine.GetMaxAmmo() : 30;
         }
 
-        protected virtual void OnEnable() {
+        protected void OnEnable() {
             EventBroker.Subscribe<OverchargeStateChangedEvent>(OnOverchargeStateChanged);
+            SyncOverchargeState();
+            OnWeaponEnabled();
         }
 
-        protected virtual void OnDisable() {
+        protected void OnDisable() {
             EventBroker.Unsubscribe<OverchargeStateChangedEvent>(OnOverchargeStateChanged);
+            OnWeaponDisabled();
+        }
+
+        protected virtual void OnWeaponEnabled() { }
+        protected virtual void OnWeaponDisabled() { }
+
+        private void SyncOverchargeState() {
+            if (GameManager.Instance != null && GameManager.Instance.PlayerTransform != null) {
+                var controller = GameManager.Instance.PlayerTransform.GetComponentInChildren<OverchargeController>();
+                if (controller != null) {
+                    _overchargeState = controller.CurrentState;
+                    _overchargeMultiplier = controller.GetCurrentMultiplier();
+                }
+            }
         }
 
         private void OnOverchargeStateChanged(OverchargeStateChangedEvent e) {

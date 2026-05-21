@@ -62,8 +62,14 @@ namespace Potop.Client.Gameplay.Combat
         private float _overheatTimer = 0f;
         private int _currentFeverLevel = 0;
 
+        private const float FEVER_DECAY_MULTIPLIER = 0.8f;
+
         public OverchargeState CurrentState => _currentState;
         public float CurrentGauge => _currentGauge;
+
+        public float GetCurrentMultiplier() {
+            return _currentState == OverchargeState.Active && _overchargeData != null ? _overchargeData.AttackSpeedMultiplier : 1f;
+        }
 
         private void OnEnable()
         {
@@ -135,7 +141,7 @@ namespace Potop.Client.Gameplay.Combat
             {
                 float decayRate = _overchargeData.DecayRate;
                 if (_currentFeverLevel >= 2) {
-                    decayRate *= 0.8f;
+                    decayRate *= FEVER_DECAY_MULTIPLIER;
                 }
                 _currentGauge -= decayRate * Time.deltaTime;
                 _currentGauge = Mathf.Max(0f, _currentGauge);
@@ -184,10 +190,7 @@ namespace Potop.Client.Gameplay.Combat
                 }
             }
 
-            float multiplier = 1f;
-            if (_overchargeData != null && _currentState == OverchargeState.Active) {
-                multiplier = _overchargeData.AttackSpeedMultiplier;
-            }
+            float multiplier = GetCurrentMultiplier();
             EventBroker.Publish(new OverchargeStateChangedEvent { State = _currentState, AttackSpeedMultiplier = multiplier });
         }
     }
