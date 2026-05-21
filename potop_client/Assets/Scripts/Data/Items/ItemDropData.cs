@@ -23,6 +23,7 @@ namespace Potop.Client.Data.Items
         [Header("Magnet Settings")]
         [SerializeField, Min(0.1f)] private float _magnetDuration = 5f;
         [SerializeField, Min(1f)] private float _magnetRadius = 10f;
+        [SerializeField, Min(1f)] private float _magnetPullSpeed = 30f;
 
         [Header("Smart Bomb Settings")]
         [SerializeField, Min(1)] private int _bombDamage = 9999;
@@ -36,6 +37,7 @@ namespace Potop.Client.Data.Items
 
         public float MagnetDuration => _magnetDuration;
         public float MagnetRadius => _magnetRadius;
+        public float MagnetPullSpeed => _magnetPullSpeed;
 
         public int BombDamage => _bombDamage;
         public float BombRadius => _bombRadius;

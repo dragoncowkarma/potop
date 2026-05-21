@@ -141,6 +141,17 @@ namespace Potop.Client.Core {
             }
         }
 
+        /// <summary>
+        /// 플레이어의 체력을 회복합니다.
+        /// </summary>
+        /// <param name="amount">회복할 체력량</param>
+        public void Heal(int amount) {
+            if (_isGameOver || amount <= 0) return;
+
+            Health = Mathf.Min(_maxHealth, Health + amount);
+            EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
+        }
+
         private void OnPlayerTakeDamage(PlayerTakeDamageEvent e) {
             TakeDamage(e.Damage);
         }

@@ -17,7 +17,8 @@ namespace Potop.Client.Gameplay.Items
         [SerializeField, Tooltip("Base drop chance multiplier. Increases with waves.")] private float _baseDropMultiplier = 1.0f;
 
         private int _currentWave = 0;
-        private static readonly Collider[] _overlapResults = new Collider[100];
+        private static readonly Collider[] _overlapResults = new Collider[512];
+        private const int GUARANTEED_DROP_EXP_THRESHOLD = 200;
 
         private void OnEnable()
         {
@@ -43,7 +44,7 @@ namespace Potop.Client.Gameplay.Items
             if (_dropTable == null || _dropTable.Count == 0) return;
 
             // 보장 드랍 로직 (특수 적 처치 시)
-            if (e.ExpValue >= 200)
+            if (e.ExpValue >= GUARANTEED_DROP_EXP_THRESHOLD)
             {
                 ItemDropData guaranteedItem = _dropTable[Random.Range(0, _dropTable.Count)];
                 SpawnItem(guaranteedItem, e.Position);
@@ -52,13 +53,6 @@ namespace Potop.Client.Gameplay.Items
 
             // 웨이브 진행도에 따른 추가 드랍 확률 (예: 1웨이브당 5% 증가)
             float waveMultiplier = _baseDropMultiplier + (_currentWave * 0.05f);
-
-            // 웨이브별 확률 기반 스폰
-            float totalProbability = 0f;
-            foreach (var item in _dropTable)
-            {
-                totalProbability += item.DropProbability * waveMultiplier;
-            }
 
             float randomValue = Random.Range(0f, 1f);
             float cumulativeProbability = 0f;
@@ -107,8 +101,7 @@ namespace Potop.Client.Gameplay.Items
         {
             if (GameManager.Instance != null)
             {
-                // Heal the player securely
-                GameManager.Instance.TakeDamage(-data.HealAmount); // Assuming GameManager handles negative damage gracefully for healing
+                GameManager.Instance.Heal(data.HealAmount);
             }
         }
 
@@ -116,27 +109,25 @@ namespace Potop.Client.Gameplay.Items
         {
             if (GameManager.Instance != null && GameManager.Instance.PlayerTransform != null)
             {
-                // Always start the coroutine to keep the magnet active for the duration
-                StartCoroutine(MagnetCoroutine(data.MagnetRadius, data.MagnetDuration));
+                StartCoroutine(MagnetCoroutine(data));
             }
         }
 
-        private System.Collections.IEnumerator MagnetCoroutine(float radius, float duration)
+        private System.Collections.IEnumerator MagnetCoroutine(ItemDropData data)
         {
             float elapsed = 0f;
-            while (elapsed < duration)
+            while (elapsed < data.MagnetDuration)
             {
                 if (GameManager.Instance != null && GameManager.Instance.PlayerTransform != null)
                 {
                     // Use LayerMask to filter ONLY Gems, preventing full array saturation
-                    int count = Physics.OverlapSphereNonAlloc(GameManager.Instance.PlayerTransform.position, radius, _overlapResults, _gemLayerMask);
+                    int count = Physics.OverlapSphereNonAlloc(GameManager.Instance.PlayerTransform.position, data.MagnetRadius, _overlapResults, _gemLayerMask);
                     for (int i = 0; i < count; i++)
                     {
-                        EXPGem gem = _overlapResults[i].GetComponent<EXPGem>();
-                        if (gem != null)
+                        if (_overlapResults[i].TryGetComponent<EXPGem>(out var gem))
                         {
                             // Move towards player fast
-                            gem.transform.position = Vector3.MoveTowards(gem.transform.position, GameManager.Instance.PlayerTransform.position, 30f * Time.deltaTime);
+                            gem.transform.position = Vector3.MoveTowards(gem.transform.position, GameManager.Instance.PlayerTransform.position, data.MagnetPullSpeed * Time.deltaTime);
                         }
                     }
                 }
@@ -148,10 +139,11 @@ namespace Potop.Client.Gameplay.Items
         private void ApplySmartBomb(ItemDropData data, Vector3 position)
         {
             int count = Physics.OverlapSphereNonAlloc(position, data.BombRadius, _overlapResults, _enemyLayerMask);
+            HashSet<EnemyBase> hitEnemies = new HashSet<EnemyBase>();
             for (int i = 0; i < count; i++)
             {
                 EnemyBase enemy = _overlapResults[i].GetComponentInParent<EnemyBase>();
-                if (enemy != null)
+                if (enemy != null && hitEnemies.Add(enemy))
                 {
                     enemy.TakeDamage(new DamageInfo { Amount = data.BombDamage });
                 }
