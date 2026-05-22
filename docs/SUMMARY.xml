@@ -14,6 +14,11 @@
             <File Path="docs/requirements/05_meta_and_progression.md" Description="Progression systems, meta-upgrades, and achievements"/>
             <File Path="docs/architecture/06_art_and_sound.md" Description="Art style, sound design, and production pipelines"/>
             <File Path="docs/management/07_development_milestones.md" Description="Centralized development roadmap and expansion plan"/>
+            <File Path="docs/prompts/065/06501_code_system_integration.md" Description="Phase 6.5: 시스템 통합 연결"/>
+            <File Path="docs/prompts/065/06502_code_phase6_tests.md" Description="Phase 6.5: Phase 6 시스템 테스트"/>
+            <File Path="docs/prompts/065/06503_unity_mcp_tactical_ui.md" Description="Phase 6.5: 전술 스킬 UI 바인딩"/>
+            <File Path="docs/prompts/065/06504_code_doc_meta_sync.md" Description="Phase 6.5: 문서 및 메타 동기화"/>
+            <File Path="docs/prompts/065/06599_gemini_validation.md" Description="Phase 6.5: 통합 검증"/>
         </GlobalDocumentation>
     </agents>
 
