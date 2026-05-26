@@ -115,7 +115,7 @@
             <prompt path="docs/prompts/065/06599_gemini_validation.md" status="completed" />
         </phase>
         <phase id="7" title="Endgame &amp; Boss">
-            <prompt path="docs/prompts/070/07001_unity_mcp_boss_visual.md" status="planned" />
+            <prompt path="docs/prompts/070/07001_unity_mcp_boss_visual.md" status="completed" />
             <prompt path="docs/prompts/070/07002_code_boss_ai.md" status="planned" />
             <prompt path="docs/prompts/070/07003_code_overclock_gameflow.md" status="planned" />
             <prompt path="docs/prompts/070/07004_code_gameflow_settlement.md" status="planned" />
