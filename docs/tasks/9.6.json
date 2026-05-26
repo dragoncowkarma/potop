@@ -1,0 +1,22 @@
+{
+  "id": "9.6",
+  "task_id": "9.6",
+  "title": "Mobile Rendering & LOD",
+  "description": "Vertex count audit, LOD group assignment for meshes, and mobile-specific shader adjustments.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/Editor/LODGroupAssigner.cs"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard",
+  "tdd_waiver": "Mobile optimization/rendering task — TDD line coverage explicitly waived."
+}

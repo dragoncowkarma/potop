@@ -1,0 +1,22 @@
+{
+  "id": "9.3",
+  "task_id": "9.3",
+  "title": "Local JSON Save System",
+  "description": "Save state serialization to JSON, encryption helper, and auto-save trigger on flow transition.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/Core/Save/ISaveSystem.cs",
+    "potop_client/Assets/Scripts/Core/Save/LocalJSONSaveSystem.cs"
+  ],
+  "metrics": {
+    "coverage": "0%",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

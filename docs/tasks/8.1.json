@@ -1,0 +1,23 @@
+{
+  "id": "8.1",
+  "task_id": "8.1",
+  "title": "Combat Juice & Polish",
+  "description": "Tune hitstop duration, frame-rate independent camera shake, and slow-motion triggers.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/Camera/CameraShakeController.cs",
+    "potop_client/Assets/Scripts/Gameplay/Flow/TimeController.cs"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard",
+  "tdd_waiver": "UI/Visual task — TDD line coverage explicitly waived."
+}

@@ -1,0 +1,23 @@
+{
+  "id": "8.3",
+  "task_id": "8.3",
+  "title": "VFX Final Polish",
+  "description": "Polishing boss phase-change visual cues, explosions, and recycling particle systems in PoolManager.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/VFX/VFXTrigger.cs",
+    "potop_client/Assets/Scripts/VFX/ExplosionEffect.cs"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard",
+  "tdd_waiver": "UI/Visual task — TDD line coverage explicitly waived."
+}

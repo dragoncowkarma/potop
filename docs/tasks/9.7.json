@@ -1,0 +1,21 @@
+{
+  "id": "9.7",
+  "task_id": "9.7",
+  "title": "Tutorial System Flow",
+  "description": "Decoupled tutorial step triggers, target highlight overlays, and step completion verification.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/Gameplay/Tutorial/TutorialFlowController.cs"
+  ],
+  "metrics": {
+    "coverage": "0%",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

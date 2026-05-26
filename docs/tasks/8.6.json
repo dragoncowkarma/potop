@@ -1,0 +1,21 @@
+{
+  "id": "8.6",
+  "task_id": "8.6",
+  "title": "Phase 8 Verification",
+  "description": "Audit performance metrics, GC spikes from audio/VFX, and combat feel tests.",
+  "status": "Ready",
+  "assigned_sub_agent": "QA",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Tests/Integration/PolishValidationTests.cs"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

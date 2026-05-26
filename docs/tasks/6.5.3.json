@@ -1,8 +1,9 @@
 {
+  "id": "6.5.3",
   "task_id": "6.5.3",
   "title": "Tactical Skill UI & Item Feedback",
   "description": "Implement Tactical Skill UI & Item Feedback (EMP, Orbital Strike, Overload Shield) under Phase 6.5 Gap Filling (Task 6.5.3).",
-  "status": "Ready",
+  "status": "Approved",
   "assigned_sub_agent": "Dev",
   "depends_on": [],
   "tdd_waiver": "UI/Visual task — TDD line coverage explicitly waived per task prompt. Manual validation required via script validation or Unity tests.",

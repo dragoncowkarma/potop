@@ -1,7 +1,4 @@
-# System Persona
-You are an elite, autonomous Software Engineering Agent executing specific tasks within a strict Harness Environment. Your primary objective is to follow the TDD (Test-Driven Development) workflow meticulously. You do not explain yourself in chat; you act strictly through tool calls, file writes, and harness script executions.
-
-# [TARGET: Assets/Scripts/Core/Input/MobileInputAdapter.cs] [TASK: 9.4]
+# [TARGET: Assets/Scripts/Input/MobileInputManager.cs] [TASK: 9.4]
 
 ## Task Metadata
 
@@ -11,245 +8,33 @@ You are an elite, autonomous Software Engineering Agent executing specific tasks
 | **Agent Role** | `Antigravity (Unity UI/Visuals Engineer)` |
 | **Priority** | `High` |
 
-### Sub-Agent Dispatch Rules
-
-| Role | Phase | Constraint |
-|---|---|---|
-| **Dev** | GREEN | Implement production code to satisfy the RED tests. May modify production and test files. |
-| **Doc** | DOCUMENT | Update `docs/` directory files. STRICTLY FORBIDDEN from modifying `src/` and `tests/` directories. |
-
 ---
-
-
-## Game Context
-- Project Goal: 3D Roguelite Turret Defense Game (Mobile/PC/VR/Console)
-- Current Module: Mobile Input Support (Phase 9)
-- Background: 모바일 환경을 위한 크로스 플랫폼 입력 처리 및 터치 인터페이스 구현
-- Related Systems: New Input System, UI Toolkit, Player Controller
-
-## Input Scope
-- Strict Scope: 
-  - `Assets/Scripts/Core/Input/MobileInputAdapter.cs`
-  - `Assets/UI/MobileHUD.uxml`
-  - `Assets/Settings/Input/PlayerInputActions.inputactions`
 
 ## Context Links
 
 Use the Semantic Map (`docs/map.md`) to locate symbols:
 
-- **Map**: `docs/map.md` — Required symbols: `Refer to AST index`
-- **Delta**: `docs/delta/none.json`
-
-> **Hybrid Reference Rule**: Do NOT paste large logs inline. Use path references instead.
-
-
-
-### Dynamic Analysis & AST Indexing
-
-When generating or updating `docs/map.md`, you MUST use AST-based indexing tools for accuracy:
-
-1. **Preferred Tools** (in order of preference):
-   - `tree-sitter` — Language-agnostic AST parsing. Use `tree-sitter parse <file>` to extract symbols.
-   - `ctags` / `universal-ctags` — Generate symbol tables. Run `ctags -R --output-format=json` for machine-readable output.
-   - `LSIF` (Language Server Index Format) — For IDE-grade precision. Use project-specific LSIF generators (e.g., `lsif-tsc` for TypeScript).
-
-2. **Synchronization Rule**: After any code change that adds, removes, or renames a public symbol (function, class, interface, type, constant), you MUST regenerate `docs/map.md` using the AST tool.
-   * Note: Since direct shell execution is restricted, use the approved harness command:
-     `[PATH]/harness.sh ast --update` (or specify the valid wrapper command here).
-
-3. **Fallback**: If no AST tool is available, manually inspect changed files and update `map.md` with accurate symbol locations. Mark the entry with `[manual]` tag.
-
----
-
-## Reasoning Protocol (Tree of Thought)
-
-> **MANDATORY**: You MUST write to `docs/cycle_logs/9.4_log.md` BEFORE writing any code.
-
-### Required Cycle Log Format
-
-```markdown
-## Cycle [N] — [timestamp]
-
-### Intent
-[Why am I doing this? What is the goal?]
-
-### Analysis
-[What did I observe? What context informs this decision?]
-
-### Plan
-[What specific changes will I make?]
-
-### Failure Modes
-[Predict at least 2 worst-case scenarios.]
-```
-
-> The harness engine will **REJECT** test execution if this file is missing or stale (>120s since last update).
-
-### Phase-Specific Reasoning
-
-1. **IMPLEMENTATION**: Describe the visual/UI implementation logic.
-
-**Rationale**: Cycle logs prevent short-term memory volatility in autonomous agents and ensure every decision is auditable.
+- **Map**: `docs/map.md` — Required symbols: `MobileInputManager`, `EventBroker`
+- **Delta**: `docs/delta/9.3.json`
 
 ---
 
 ## Work Scope
 
-**Target File**: `Assets/Scripts/Core/Input/MobileInputAdapter.cs`
+**Target File**: `Assets/Scripts/Input/MobileInputManager.cs`
 
+### Technical Requirements (10-Year Expert Feedback)
+1. **Virtual Joystick & Touch Controls**: Implement mobile controls via virtual joysticks and touch events.
+2. **Auto-Fire Integration**: Implement auto-fire logic which scans target ranges and automatically fires when target alignment thresholds are met.
+3. **Memory Safety**: Unsubscribe all touch events on disable or scene change.
 
-### Implementation Task
-1. `MobileInputAdapter.cs` 구현: Unity New Input System을 래핑하여 터치(Tap, Swipe, Pinch 등)를 게임플레이 액션으로 변환.
-2. Virtual Joysticks 구성: UI Toolkit을 활용하여 온스크린 조이스틱 UI 요소를 구성하고 이동/조준 입력과 연동.
-3. 입력 지연(Latency) 최적화: `Update` 또는 `FixedUpdate` 주기에서 터치 반응성 보장.
-4. 대체재(Fallback) 구성: PC 환경 구동 시 키보드/마우스 입력으로 자동 전환되도록 로직 추가.
-
-### POTOP Constraints
-- **[CRITICAL: STRICT SCOPE] 지정된 파일(Scope) 이외의 어떠한 파일도 임의로 수정, 포맷팅, 삭제하지 마십시오.**
-- [Required] 모든 입력 로직은 Unity New Input System 패키지를 통해서만 처리합니다.
-- [Required] 파일의 맨 마지막 줄(EOF)은 반드시 정확히 1개의 빈 줄만 존재해야 합니다.
-- [Required] 주석 작성 시 코드가 '무엇'을 하는지가 아닌, '왜' 그렇게 작성되었는지 의도(Intent)를 설명하십시오.
-
-### Constraints
-
-- Surgical edits only. No refactoring of adjacent code.
-- Do NOT touch `.harness/` or `.git/` directories.
-- Do NOT copy `harness.sh` to the local project directory. Always execute it from the skill workspace using its absolute path.
-- **Execution Permissions**: Prior to executing the script or configuring the environment, you MUST grant execution permissions to the shell script using `chmod +x` (e.g., `chmod +x [ABSOLUTE_SKILL_PATH]/scripts/harness.sh`) to prevent `Permission denied` errors.
-- **DOCUMENT PHASE**: During `[DOCUMENT]`, you are STRICTLY FORBIDDEN from modifying production or test code. You may ONLY update files in `docs/`.
-
-### Log Masking (Mandatory PII/Secrets Redaction)
-
-Before writing ANY log data to `cycle_logs`, `telemetry`, or any output file, you MUST apply the following redaction pipeline:
-
-| Pattern | Replacement | Example |
-|---|---|---|
-| Email addresses | `[REDACTED:email]` | `user@example.com` → `[REDACTED:email]` |
-| API keys / tokens / secrets | `[REDACTED:api_key]` | `api_key=sk-abc123` → `api_key=[REDACTED]` |
-| JWT tokens (`eyJ...`) | `[REDACTED:jwt]` | `eyJhbGciO...` → `[REDACTED:jwt]` |
-| IP addresses | `[REDACTED:ip]` | `192.168.1.1` → `[REDACTED:ip]` |
-| Passwords in config | `[REDACTED:password]` | `password=hunter2` → `password=[REDACTED]` |
-
-> **Rule**: The harness engine (`harness.sh`) applies automatic masking to telemetry logs. You MUST also apply masking in cycle logs and any manually written output.
-
----
-
-## Mechanical Definition of Done
-
-You MUST use the harness CLI to run tests and lock the telemetry hash.
-
-### TDD Enforcement
-
-| Task Type | Command |
-|---|---|
-| `*-GREEN` tasks | `[PATH]/harness.sh test --id 9.4 --cmd "{cmd}"` |
-
-> **NOTE**: This task is UI/Visual focused. TDD Line coverage may be skipped if not applicable.
-
-
-### Integrity Violations
-
-The system uses an **allowlist** approach — only approved test tool commands are permitted. Attempting to use shell commands like `grep`, `ls`, `cat`, `echo`, `node -e`, or chaining with `;`, `&&`, `||`, `|` will result in an **immediate task freeze**.
-
-You MUST write actual behavioral/functional test scripts that perform real assertions on the business logic.
-
-### Governance Constraint
-
-Never overwrite or modify an existing `AGENTS.md` unless the user's prompt contains an explicit request to do so. Default behavior is **Read-Only** for existing `AGENTS.md`.
-
-### Verification Command
-
-```bash
-[ABSOLUTE_SKILL_PATH]/scripts/harness.sh test --id 9.4 --cmd "{validation_command}"
-```
-
-### Telemetry Check
-
-| Metric | Expected |
-|---|---|
-| Status | `Verified` |
-| Hash Integrity | Locked by System with Salt |
-
----
-
-## Documentation Hook & Fragment Architecture
-
-Once Verified, you MUST synchronize the project documentation.
-This project uses a **Fragment-Based Documentation Architecture** to optimize context and avoid modifying massive monolithic files.
-
-### Fragment Routing Rule (MANDATORY)
-
-> **CRITICAL**: You are STRICTLY FORBIDDEN from rewriting entire monolithic documents (like a single large `SRS.md` or `SDD.md`).
-
-1. **Locate Target via Index**: First, read `docs/index.md` to understand the documentation structure.
-2. **Find the Fragment**: Identify the specific sub-file that needs updating (e.g., `docs/requirements/auth_feature.md` or `docs/architecture/database.md`).
-3. **Surgical Update**: Modify ONLY that specific fragment file. Do not touch other fragments.
-4. **Update Index**: If you created a new fragment file, you MUST add a link to it in `docs/index.md`.
-
-### Standard Rendering
-Some documents are still automatically rendered from tasks or maps:
-- **Architecture Diagram**: `[ABSOLUTE_SKILL_PATH]/scripts/harness.sh document --standard ISO_42010` (Generates `docs/architecture/system_architecture.md`)
-- **Quality Metrics**: `[ABSOLUTE_SKILL_PATH]/scripts/harness.sh document --standard ISO_25010` (Generates `docs/management/quality_metrics.md`)
-- **KANBAN**: Do NOT edit directly. Run `[ABSOLUTE_SKILL_PATH]/scripts/harness.sh kanban-render`.
-- **Human Readability**: Run `[ABSOLUTE_SKILL_PATH]/scripts/harness.sh document-build` to stitch fragments together for human review.
-
-**Rationale**: Fragment-based routing reduces token cost, preserves manual annotations, and prevents merge conflicts in multi-agent scenarios.
-
----
-
-## Failure Handling
-
-- **Retry Limit**: 3 attempts maximum
-- **On Failure**: Update `docs/tasks/9.4.json` with status `[Failed]` and analyze `coverage/lcov.info` to find untested paths.
-
-### Self-Reflection Protocol (Mandatory on Retry)
-
-When retrying a failed task, you MUST inject a compressed failure context into your reasoning:
-
-```xml
-<failure_context attempt="{N}" max_chars="100">
-Attempt {N-1}: {compressed reason for failure and what was tried}
-</failure_context>
-```
-
-**Rules**:
-- The `<failure_context>` content MUST be 100 characters or fewer.
-- Each retry appends to the accumulated context (most recent first).
-- Focus on ROOT CAUSE, not symptoms.
-- After 3 failed attempts, emit `<human_handoff reason="..."/>` and STOP.
-
-**Example**:
-```xml
-<failure_context attempt="2" max_chars="100">
-Attempt 1: LCOV missing — c8 not in devDeps. Tried: npm i -D c8. Fix: add c8 to test script.
-</failure_context>
-```
-
-
-
----
-
-## Workflow Reference
-
-> For the complete 7-step workflow (GOVERNANCE → PROPOSE → REASON → ACT → VERIFY → DOCUMENT → CLOSE), see [SKILL.md](../SKILL.md#workflow).
+### Verification Criteria (QA Perspective)
+1. **Input Mock Tests**: Simulate touch events in tests and verify the calculated movement vector matches expectations.
 
 ---
 
 ## Thought Process
-
 <!-- Write your System 2 reasoning here -->
 
 ## Code Change
-
 <!-- Implementation goes here -->
-
----
-
-## Execution Protocol
-
-Do NOT output your reasoning or code directly as plain text in the chat. You MUST follow this exact execution sequence using the tools available to you:
-
-1. **<step 1>** Use your file-writing tool to create/update `docs/cycle_logs/9.4_log.md` with your Intent, Analysis, Plan, and Failure Modes.
-2. **<step 2>** Use your file-editing tool to implement the required code changes in the target files.
-3. **<step 3>** Use your shell execution tool to run the validation command: `[PATH]/harness.sh test --id 9.4 --cmd "..."`
-4. **<step 4>** Evaluate the output. If it fails, reflect using `<failure_context>` and repeat. If it passes, proceed to the DOCUMENT phase.

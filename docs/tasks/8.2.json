@@ -1,0 +1,22 @@
+{
+  "id": "8.2",
+  "task_id": "8.2",
+  "title": "Centralized Sound Manager",
+  "description": "Central SoundManager with pooled AudioSources to prevent GC allocation spikes.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/Core/Audio/SoundManager.cs",
+    "potop_client/Assets/Scripts/Core/Audio/AudioPool.cs"
+  ],
+  "metrics": {
+    "coverage": "0%",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

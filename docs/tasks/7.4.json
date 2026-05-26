@@ -1,0 +1,22 @@
+{
+  "id": "7.4",
+  "task_id": "7.4",
+  "title": "Game Flow Integration & Settlement",
+  "description": "Central game flow state controller orchestration (Lobby -> Selection -> In-game -> Boss -> Overclock -> Result).",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/Gameplay/Flow/GameFlowController.cs",
+    "potop_client/Assets/Scripts/UI/ResultScreenController.cs"
+  ],
+  "metrics": {
+    "coverage": "0%",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

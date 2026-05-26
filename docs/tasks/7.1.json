@@ -1,0 +1,26 @@
+{
+  "id": "7.1",
+  "task_id": "7.1",
+  "title": "Boss Prefab & Visuals (TitanCore)",
+  "description": "Construct TitanCore.prefab visual hierarchy, URP lit phase emission materials, and animator transitions.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Prefabs/Enemies/TitanCore.prefab",
+    "potop_client/Assets/Materials/Boss/Phase1.mat",
+    "potop_client/Assets/Materials/Boss/Phase2.mat",
+    "potop_client/Assets/Materials/Boss/Phase3.mat",
+    "potop_client/Assets/Scripts/VFX/ShieldRingRotator.cs"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard",
+  "tdd_waiver": "UI/Visual task — TDD line coverage explicitly waived. Validate via EditMode hierarchy checks."
+}

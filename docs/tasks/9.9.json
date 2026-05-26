@@ -1,0 +1,22 @@
+{
+  "id": "9.9",
+  "task_id": "9.9",
+  "title": "Store Submission Packager",
+  "description": "AOT build validation, stripping debug logs, and Android app bundle creation.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Editor/Build/StoreSubmissionPackager.cs"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard",
+  "tdd_waiver": "Editor packaging script — TDD line coverage explicitly waived."
+}

@@ -95,12 +95,39 @@
 
 ---
 
-## Phase 8~13: 요약 (세부 WBS는 해당 Phase 착수 시 작성)
+## Phase 8: 폴리싱 & 게임필 (2주)
+
+| WBS ID | 작업 | 세부 분해 | 담당 | 의존성 | 산출물 |
+|:---|:---|:---|:---|:---|:---|
+| 8.1 | [08001] 컴뱃 쥬스 최종 정비 | ① 히트스탑 구현 및 TimeScale 보정 ② Cinemachine Multi-Channel Perlin 카메라 흔들림 연동 | **A** | → Phase 7 완료 | `CameraShakeController.cs`, `TimeController.cs` |
+| 8.2 | [08002] 사운드 시스템 | ① SoundManager 싱글톤 및 AudioSource 오브젝트 풀링 (AudioPool) ② ScriptableObject 오디오 데이터 연결 및 EventBroker 수신 | **J** | → 8.1 | `SoundManager.cs`, `AudioPool.cs`, `AudioData.asset` |
+| 8.3 | [08003] VFX 최종 정비 | ① Particle System 풀링 및 파클 에미션 완벽 리셋 ② 보스 페이즈 전환 및 폭발 연출 | **A** | → 8.2 | `VFXTrigger.cs`, PoolManager 통합 |
+| 8.4 | [08004] 밸런스 미세 조정 | ① Excel/CSV 데이터 임포터 설계 ② 터렛/적 밸런스 가중치 보정 및 시뮬레이션 | **J** | → 8.3 | CSV 데이터 시트, 밸런스 SO 데이터 |
+| 8.6 | [08099] Phase 8 검증 | ① GC Alloc 0건 확인 ② 타임스케일 및 사운드 스레드 누수 분석 | **G** | → 8.4 | 폴리싱 검증 보고서 |
+
+---
+
+## Phase 9: 모바일 출시 준비 (3~4주)
+
+| WBS ID | 작업 | 세부 분해 | 담당 | 의존성 | 산출물 |
+|:---|:---|:---|:---|:---|:---|
+| 9.1 | [09001] 로비 UI 완성 | ① 로비 화면 UI Toolkit UXML/USS 레이아웃 고도화 ② USS 스타일 시트 적용 및 EventBroker 연동 | **A** | → Phase 8 완료 | `LobbyScreen.uxml/uss`, `LobbyController.cs` |
+| 9.2 | [09002] 업적 시스템 | ① IAchievementSystem 추상화 및 AchievementManager 구현 ② 업적 10종 이벤트 연동 | **J** | → 9.1 | `IAchievementSystem.cs`, `AchievementManager.cs` |
+| 9.3 | [09003] 로컬 세이브 시스템 | ① ISaveSystem 추상화 및 LocalJSONSaveSystem 구현 ② JSON 직렬화 및 데이터 보호/암호화 적용 | **J** | → 9.2 | `ISaveSystem.cs`, `LocalJSONSaveSystem.cs` |
+| 9.4 | [09004] 모바일 입력 최적화 | ① 가상 터치 조이스틱 조작 구현 ② 자동 조준 보정 및 범위 내 오토 사격 구현 | **A** | → 9.3 | `MobileInputManager.cs`, `AutoFireController.cs` |
+| 9.5 | [09005] 모바일 광고 연동 | ① IAdProvider 추상화 및 AdManager 구현 ② 보상형/전면 광고 트리거 및 UI 연동 | **J** + **A** | → 9.4 | `IAdProvider.cs`, `AdManager.cs` |
+| 9.6 | [09006] 모바일 최적화 및 LOD | ① 드로우콜/배칭 최적화 ② 자동 LOD Group 할당 에디터 유틸리티 스크립트 작성 | **A** | → 9.5 | `LODGroupAssigner.cs` |
+| 9.7 | [09007] 튜토리얼 시스템 | ① 단계별 튜토리얼 흐름 제어 FSM 구현 ② 튜토리얼 하이라이트 UI 연동 | **J** + **A** | → 9.6 | `TutorialFlowController.cs` |
+| 9.8 | [09008] 다국어 지원 | ① KO/EN/JP 언어 리소스 및 딕셔너리 구축 ② UI Toolkit 다국어 바인딩 | **J** | → 9.7 | `LocalizationService.cs` |
+| 9.9 | [09009] 스토어 등록 준비 | ① AOT 빌드 오류 검증 ② 디버그 로그 제거 스크립트 ③ 빌드 자동화 스크립트 작성 | **J** | → 9.8 | `StoreSubmissionPackager.cs` |
+| 9.99 | [09099] Phase 9 모바일 검증 | ① 배터리/전류 및 발열 프로파일링 ② 프레임 드랍 및 UI 앵커 스케일링 검증 | **G** | → 9.9 | 모바일 출시 검증 보고서 |
+
+---
+
+## Phase 10~13: 요약 (세부 WBS는 해당 Phase 착수 시 작성)
 
 | Phase | 주제 | 예상 기간 | 핵심 산출물 |
 |:---|:---|:---|:---|
-| **8** | 폴리싱 & 게임필 | 2주 | 사운드 시스템, VFX 최종본, 밸런스 패치 |
-| **9** | 모바일 출시 | 3~4주 | 스토어 빌드, 튜토리얼, 다국어, 광고 SDK |
 | **10** | 글로벌 서버 | 4~6주 | API 서버, 리더보드, 클라우드 세이브 |
 | **11** | PC (Steam) | 4주 | SteamWorks 연동, PC 최적화 |
 | **12** | VR 이식 | 6~8주 | OpenXR, VR UI, 공간 음향 |
@@ -115,3 +142,4 @@ Phase 3.5 → Phase 4 → Phase 4.5 → Phase 5 → Phase 6 → Phase 7(VS) → 
 ```
 
 **총 예상 기간 (모바일 출시까지):** 15~18주 (약 4개월)
+

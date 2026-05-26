@@ -186,6 +186,8 @@
 > - 07001: [07001_unity_mcp_boss_visual.md](../prompts/070/07001_unity_mcp_boss_visual.md)
 > - 07002: [07002_code_boss_ai.md](../prompts/070/07002_code_boss_ai.md)
 > - 07003: [07003_code_overclock_gameflow.md](../prompts/070/07003_code_overclock_gameflow.md)
+> - 07004: [07004_code_gameflow_settlement.md](../prompts/070/07004_code_gameflow_settlement.md)
+> - 07005: [07005_code_tutorial_prototype.md](../prompts/070/07005_code_tutorial_prototype.md)
 > - QA: [07099_gemini_vs_validation.md](../prompts/070/07099_gemini_vs_validation.md)
 
 *   **[07001] 보스 프리팹 & 비주얼** — 타이탄 코어, 페이즈별 컬러 전환 (Blue→Red)
@@ -199,10 +201,14 @@
 ### **Phase 8: 폴리싱 & 게임필 (Polish & Game Feel)** `[예상: 2주]`
 > [!TIP]
 > AI Prompts:
-> - 08002: [Jules] [08002_jules_sound_manager.md](../prompts/080/08002_jules_sound_manager.md)
+> - 08001: [08001_unity_combat_juice.md](../prompts/080/08001_unity_combat_juice.md)
+> - 08002: [08002_jules_sound_manager.md](../prompts/080/08002_jules_sound_manager.md)
+> - 08003: [08003_unity_vfx_polish.md](../prompts/080/08003_unity_vfx_polish.md)
+> - 08004: [08004_code_balance_tuning.md](../prompts/080/08004_code_balance_tuning.md)
+> - QA: [08099_gemini_polish_validation.md](../prompts/080/08099_gemini_polish_validation.md)
 
 *   **[08001] 컴뱃 쥬스 최종 정비** — 히트스탑, 슬로우모션, 화면 흔들림 강도 튜닝
-*   **[08002] 사운드 시스템** — Adaptive BGM 5단계(Lo-fi→EDM) + SFX 통합
+*   **[08002] 사운드 시스템** — Centralized SoundManager + SFX 풀링 통합
 *   **[08003] VFX 최종 정비** — 적 사망 연출, 보스 페이즈 전환 연출, UI 전환 애니메이션
 *   **[08004] 밸런스 미세 조정** — 4종 터렛 × 변이 조합 교차 테스트, 플레이테스트 기반 수치 보정
 
@@ -211,10 +217,16 @@
 ### **Phase 9: 모바일 출시 준비 (Mobile Launch)** `[예상: 3~4주]`
 > [!TIP]
 > AI Prompts:
+> - 09001: [09001_unity_lobby_ui.md](../prompts/090/09001_unity_lobby_ui.md)
 > - 09002: [09002_code_achievement_save.md](../prompts/090/09002_code_achievement_save.md)
+> - 09003: [09003_code_local_save.md](../prompts/090/09003_code_local_save.md)
 > - 09004: [09004_unity_mcp_mobile_input.md](../prompts/090/09004_unity_mcp_mobile_input.md)
 > - 09005: [09005_unity_mcp_ads_revive_ui.md](../prompts/090/09005_unity_mcp_ads_revive_ui.md)
+> - 09006: [09006_unity_mobile_optimization.md](../prompts/090/09006_unity_mobile_optimization.md)
+> - 09007: [09007_code_tutorial_system.md](../prompts/090/09007_code_tutorial_system.md)
 > - 09008: [09008_jules_localization.md](../prompts/090/09008_jules_localization.md)
+> - 09009: [09009_code_store_deployment.md](../prompts/090/09009_code_store_deployment.md)
+> - QA: [09099_gemini_mobile_validation.md](../prompts/090/09099_gemini_mobile_validation.md)
 
 *   **[09001] 로비 UI 완성** — 터렛 선택/강화 상점/설정 화면
 *   **[09002] 업적 시스템** — AC_001~AC_010 (10종 업적)

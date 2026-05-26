@@ -1,0 +1,25 @@
+{
+  "id": "7.2",
+  "task_id": "7.2",
+  "title": "Boss AI FSM (TitanCoreAI)",
+  "description": "Implement FSM state transitions (HP thresholds) extending EnemyBase, front-only shield, target laser, and rage bullet-hell.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/Gameplay/Enemies/Boss/TitanCoreAI.cs",
+    "potop_client/Assets/Scripts/Gameplay/Enemies/Boss/BossPhase1State.cs",
+    "potop_client/Assets/Scripts/Gameplay/Enemies/Boss/BossPhase2State.cs",
+    "potop_client/Assets/Scripts/Gameplay/Enemies/Boss/BossPhase3State.cs",
+    "potop_client/Assets/Data/Enemies/TitanCoreData.asset"
+  ],
+  "metrics": {
+    "coverage": "0%",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

@@ -1,8 +1,9 @@
 {
+  "id": "6.4",
   "task_id": "6.4",
   "title": "Meta Upgrade Manager & Lobby UI",
   "description": "Implement GemWallet, MetaUpgradeData (SO), MetaUpgradeManager (6 permanent upgrade slots), LobbyScreen UXML/USS, MetaUpgradeCard UXML, and LobbyController wiring UI to logic via EventBroker.",
-  "status": "Ready",
+  "status": "Approved",
   "assigned_sub_agent": "Dev",
   "depends_on": [],
   "tdd_waiver": "UI/Visual task — TDD line coverage explicitly waived per task prompt. Manual validation required via mcp_unityMCP_validate_script in Unity Editor.",

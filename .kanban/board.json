@@ -1,0 +1,308 @@
+{
+  "version": "1.0.0",
+  "boardName": "potop",
+  "columns": [
+    {
+      "id": "col-4",
+      "title": "Expert Feedback",
+      "taskIds": [
+        "FEEDBACK-1",
+        "FEEDBACK-2",
+        "FEEDBACK-3"
+      ]
+    },
+    {
+      "id": "col-7",
+      "title": "Phase 7: Endgame & Boss",
+      "taskIds": [
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5",
+        "7.6"
+      ]
+    },
+    {
+      "id": "col-8",
+      "title": "Phase 8: Polish & Game Feel",
+      "taskIds": [
+        "8.1",
+        "8.2",
+        "8.3",
+        "8.4",
+        "8.6"
+      ]
+    },
+    {
+      "id": "col-9",
+      "title": "Phase 9: Mobile Launch",
+      "taskIds": [
+        "9.1",
+        "9.2",
+        "9.3",
+        "9.4",
+        "9.5",
+        "9.6",
+        "9.7",
+        "9.8",
+        "9.9",
+        "9.99"
+      ]
+    },
+    {
+      "id": "col-2",
+      "title": "In Progress",
+      "taskIds": []
+    },
+    {
+      "id": "col-3",
+      "title": "Done",
+      "taskIds": [
+        "6.4",
+        "6.5.3"
+      ]
+    }
+  ],
+  "tasks": {
+    "FEEDBACK-1": {
+      "id": "FEEDBACK-1",
+      "title": "Architecture: Boss FSM & Decoupling",
+      "description": "[10-Year Chief Architect Feedback] Verify FSM state transitions extend EnemyBase states without coroutines, define save/achievement/ad interfaces (ISaveSystem, IAchievementSystem, IAdProvider), and enforce event unsubscriptions.",
+      "priority": "high",
+      "checklists": [
+        {
+          "id": "fb1-cl1",
+          "text": "Define base state class extending EnemyBase FSM",
+          "checked": false
+        },
+        {
+          "id": "fb1-cl2",
+          "text": "Define ISaveSystem & local JSON encryptor",
+          "checked": false
+        },
+        {
+          "id": "fb1-cl3",
+          "text": "Create IAchievementSystem & mock trigger bindings",
+          "checked": false
+        },
+        {
+          "id": "fb1-cl4",
+          "text": "Verify EventBroker event unsubscription patterns",
+          "checked": false
+        }
+      ]
+    },
+    "FEEDBACK-2": {
+      "id": "FEEDBACK-2",
+      "title": "Visuals/UI: Material Property Blocks & SFX Pooling",
+      "description": "[10-Year Unity UI/Visuals Engineer Feedback] Implement MaterialPropertyBlock for boss phase color transitions to prevent runtime memory spikes, optimize UXML hierarchy, and use pooled AudioSource nodes.",
+      "priority": "high",
+      "checklists": [
+        {
+          "id": "fb2-cl1",
+          "text": "Apply MaterialPropertyBlock to TitanCore MeshRenderer",
+          "checked": false
+        },
+        {
+          "id": "fb2-cl2",
+          "text": "Flatten UI Toolkit UXML & CSS templates for mobile",
+          "checked": false
+        },
+        {
+          "id": "fb2-cl3",
+          "text": "Integrate SoundManager with AudioPool pooling",
+          "checked": false
+        }
+      ]
+    },
+    "FEEDBACK-3": {
+      "id": "FEEDBACK-3",
+      "title": "QA/Reliability: Prefab Structure & Decoupled State Tests",
+      "description": "[10-Year QA Expert Feedback] Write EditMode assertions to validate TitanCore prefab hierarchy integrity and test state machine transitions using stubbed virtual time.",
+      "priority": "medium",
+      "checklists": [
+        {
+          "id": "fb3-cl1",
+          "text": "Write TitanCorePrefabTests checking child nodes",
+          "checked": false
+        },
+        {
+          "id": "fb3-cl2",
+          "text": "Build FSM tests verifying HP threshold state transitions",
+          "checked": false
+        },
+        {
+          "id": "fb3-cl3",
+          "text": "Integrate Unity CLI runner with harness.sh script",
+          "checked": false
+        }
+      ]
+    },
+    "6.4": {
+      "id": "6.4",
+      "title": "Meta Upgrade Manager & Lobby UI",
+      "description": "Implement GemWallet, MetaUpgradeData (SO), MetaUpgradeManager (6 permanent upgrade slots), LobbyScreen UXML/USS, MetaUpgradeCard UXML, and LobbyController wiring UI to logic via EventBroker.",
+      "priority": "high",
+      "checklists": []
+    },
+    "6.5.3": {
+      "id": "6.5.3",
+      "title": "Tactical Skill UI & Item Feedback",
+      "description": "Implement Tactical Skill UI & Item Feedback (EMP, Orbital Strike, Overload Shield) under Phase 6.5 Gap Filling (Task 6.5.3).",
+      "priority": "high",
+      "checklists": []
+    },
+    "7.1": {
+      "id": "7.1",
+      "title": "Boss Prefab & Visuals (TitanCore)",
+      "description": "Construct TitanCore.prefab visual hierarchy, URP lit phase emission materials, and animator transitions.",
+      "priority": "high",
+      "checklists": []
+    },
+    "7.2": {
+      "id": "7.2",
+      "title": "Boss AI FSM (TitanCoreAI)",
+      "description": "Implement FSM state transitions (HP thresholds) extending EnemyBase, front-only shield, target laser, and rage bullet-hell.",
+      "priority": "high",
+      "checklists": []
+    },
+    "7.3": {
+      "id": "7.3",
+      "title": "Overclock Mode",
+      "description": "Implement infinite scaling mode (30s intervals HP/speed/damage x1.5) and wave manager integration.",
+      "priority": "high",
+      "checklists": []
+    },
+    "7.4": {
+      "id": "7.4",
+      "title": "Game Flow Integration",
+      "description": "Central game flow state controller orchestration (Lobby -> Selection -> In-game -> Boss -> Overclock -> Result).",
+      "priority": "high",
+      "checklists": []
+    },
+    "7.5": {
+      "id": "7.5",
+      "title": "Tutorial Prototype",
+      "description": "Setup tutorial scene, guided shoot/look overlays, and custom waves.",
+      "priority": "medium",
+      "checklists": []
+    },
+    "7.6": {
+      "id": "7.6",
+      "title": "VS Integration Verification",
+      "description": "Vertical Slice full automation loop testing (15m loop, boss transitions, overclock scaling).",
+      "priority": "high",
+      "checklists": []
+    },
+    "8.1": {
+      "id": "8.1",
+      "title": "Combat Juice & Polish",
+      "description": "Tune hitstop duration, frame-rate independent camera shake, and slow-motion triggers.",
+      "priority": "medium",
+      "checklists": []
+    },
+    "8.2": {
+      "id": "8.2",
+      "title": "Centralized Sound Manager",
+      "description": "Central SoundManager with pooled AudioSources to prevent GC allocation spikes.",
+      "priority": "high",
+      "checklists": []
+    },
+    "8.3": {
+      "id": "8.3",
+      "title": "VFX Final Polish",
+      "description": "Polishing boss phase-change visual cues, explosions, and recycling particle systems in PoolManager.",
+      "priority": "medium",
+      "checklists": []
+    },
+    "8.4": {
+      "id": "8.4",
+      "title": "Balance Calibration",
+      "description": "SO/CSV based damage balancing, weapon synergy scaling adjustments, and test metrics.",
+      "priority": "medium",
+      "checklists": []
+    },
+    "8.6": {
+      "id": "8.6",
+      "title": "Phase 8 Verification",
+      "description": "Audit performance metrics, GC spikes from audio/VFX, and combat feel tests.",
+      "priority": "high",
+      "checklists": []
+    },
+    "9.1": {
+      "id": "9.1",
+      "title": "Lobby UI Completion",
+      "description": "Upgrade shop cards, wallet UI Toolkit layout, and USS hierarchy decoupling.",
+      "priority": "high",
+      "checklists": []
+    },
+    "9.2": {
+      "id": "9.2",
+      "title": "Achievement System",
+      "description": "Decoupled logic for achievement triggers (AC_001 ~ AC_010) utilizing abstract interface.",
+      "priority": "medium",
+      "checklists": []
+    },
+    "9.3": {
+      "id": "9.3",
+      "title": "Local JSON Save System",
+      "description": "Save state serialization to JSON, encryption helper, and auto-save trigger on flow transition.",
+      "priority": "high",
+      "checklists": []
+    },
+    "9.4": {
+      "id": "9.4",
+      "title": "Mobile Input Optimization",
+      "description": "Virtual joysticks, auto-fire logic, and target auto-lock curves.",
+      "priority": "high",
+      "checklists": []
+    },
+    "9.5": {
+      "id": "9.5",
+      "title": "Mobile Ads Integration",
+      "description": "Rewarded ads for revive (1x) and interstitial ads tied to GameFlowController via abstract interface.",
+      "priority": "medium",
+      "checklists": []
+    },
+    "9.6": {
+      "id": "9.6",
+      "title": "Mobile Rendering & LOD",
+      "description": "Vertex count audit, LOD group assignment for meshes, and mobile-specific shader adjustments.",
+      "priority": "high",
+      "checklists": []
+    },
+    "9.7": {
+      "id": "9.7",
+      "title": "Tutorial System Flow",
+      "description": "Decoupled tutorial step triggers, target highlight overlays, and step completion verification.",
+      "priority": "medium",
+      "checklists": []
+    },
+    "9.8": {
+      "id": "9.8",
+      "title": "Localization Support",
+      "description": "Central localization service (KO, EN, JP) for all UI Toolkit elements.",
+      "priority": "medium",
+      "checklists": []
+    },
+    "9.9": {
+      "id": "9.9",
+      "title": "Store Submission Packager",
+      "description": "AOT build validation, stripping debug logs, and Android app bundle creation.",
+      "priority": "high",
+      "checklists": []
+    },
+    "9.99": {
+      "id": "9.99",
+      "title": "Phase 9 Mobile Verification",
+      "description": "Profiling memory, battery, thermal throttle metrics, and final mobile layout checks.",
+      "priority": "high",
+      "checklists": []
+    }
+  },
+  "metadata": {
+    "createdAt": "2026-05-23T12:02:20.436Z",
+    "updatedAt": "2026-05-26T16:23:00.000Z"
+  }
+}

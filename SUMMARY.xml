@@ -34,7 +34,7 @@
         <File Path="docs/prompts/010_core_loop_mvp.md" Description="Phase 1: 핵심 루프 프롬프트"/>
         <File Path="docs/prompts/015_stability_refactoring.md" Description="Phase 1.5: 안정화 프롬프트"/>
         <File Path="docs/prompts/020_architecture.md" Description="Phase 2: 기초 아키텍처 프롬프트"/>
-        <!-- Phase 3, 4, 5, 6, 6.5 prompts have been split into individual task files. -->
+        <!-- Phase 3, 4, 5, 6, 6.5, 7, 8, 9 prompts have been split into individual task files. -->
         <!-- Refer to docs/SUMMARY.xml for a detailed mapping of individual prompt files. -->
       </Directory>
   </GlobalDocumentation>

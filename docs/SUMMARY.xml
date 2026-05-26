@@ -19,6 +19,27 @@
             <File Path="docs/prompts/065/06503_unity_mcp_tactical_ui.md" Description="Phase 6.5: 전술 스킬 UI 바인딩"/>
             <File Path="docs/prompts/065/06504_code_doc_meta_sync.md" Description="Phase 6.5: 문서 및 메타 동기화"/>
             <File Path="docs/prompts/065/06599_gemini_validation.md" Description="Phase 6.5: 통합 검증"/>
+            <File Path="docs/prompts/070/07001_unity_mcp_boss_visual.md" Description="Phase 7: 보스 비주얼"/>
+            <File Path="docs/prompts/070/07002_code_boss_ai.md" Description="Phase 7: 보스 AI FSM"/>
+            <File Path="docs/prompts/070/07003_code_overclock_gameflow.md" Description="Phase 7: 오버클럭 스케일링"/>
+            <File Path="docs/prompts/070/07004_code_gameflow_settlement.md" Description="Phase 7: 게임 루프 및 결산"/>
+            <File Path="docs/prompts/070/07005_code_tutorial_prototype.md" Description="Phase 7: 튜토리얼 프로토타입"/>
+            <File Path="docs/prompts/070/07099_gemini_vs_validation.md" Description="Phase 7: Vertical Slice 검증"/>
+            <File Path="docs/prompts/080/08001_unity_combat_juice.md" Description="Phase 8: 컴뱃 쥬스"/>
+            <File Path="docs/prompts/080/08002_jules_sound_manager.md" Description="Phase 8: 사운드 매니저"/>
+            <File Path="docs/prompts/080/08003_unity_vfx_polish.md" Description="Phase 8: VFX 폴리싱"/>
+            <File Path="docs/prompts/080/08004_code_balance_tuning.md" Description="Phase 8: 밸런스 튜닝"/>
+            <File Path="docs/prompts/080/08099_gemini_polish_validation.md" Description="Phase 8: 폴리싱 검증"/>
+            <File Path="docs/prompts/090/09001_unity_lobby_ui.md" Description="Phase 9: 로비 UI"/>
+            <File Path="docs/prompts/090/09002_code_achievement_save.md" Description="Phase 9: 업적 시스템"/>
+            <File Path="docs/prompts/090/09003_code_local_save.md" Description="Phase 9: 로컬 세이브 시스템"/>
+            <File Path="docs/prompts/090/09004_unity_mcp_mobile_input.md" Description="Phase 9: 모바일 입력"/>
+            <File Path="docs/prompts/090/09005_unity_mcp_ads_revive_ui.md" Description="Phase 9: 모바일 광고"/>
+            <File Path="docs/prompts/090/09006_unity_mobile_optimization.md" Description="Phase 9: 모바일 최적화 및 LOD"/>
+            <File Path="docs/prompts/090/09007_code_tutorial_system.md" Description="Phase 9: 튜토리얼 시스템"/>
+            <File Path="docs/prompts/090/09008_jules_localization.md" Description="Phase 9: 다국어 지원"/>
+            <File Path="docs/prompts/090/09009_code_store_deployment.md" Description="Phase 9: 스토어 패키징"/>
+            <File Path="docs/prompts/090/09099_gemini_mobile_validation.md" Description="Phase 9: 모바일 검증"/>
         </GlobalDocumentation>
     </agents>
 
@@ -87,23 +108,38 @@
             <prompt path="docs/prompts/060/06004_unity_mcp_meta_upgrade_lobby.md" status="completed" />
         </phase>
         <phase id="6.5" title="System Integration &amp; Gap Filling">
-            <prompt path="docs/prompts/065/06501_code_system_integration.md" status="planned" />
-            <prompt path="docs/prompts/065/06502_code_phase6_tests.md" status="planned" />
-            <prompt path="docs/prompts/065/06503_unity_mcp_tactical_ui.md" status="planned" />
-            <prompt path="docs/prompts/065/06504_code_doc_meta_sync.md" status="planned" />
-            <prompt path="docs/prompts/065/06599_gemini_validation.md" status="planned" />
+            <prompt path="docs/prompts/065/06501_code_system_integration.md" status="completed" />
+            <prompt path="docs/prompts/065/06502_code_phase6_tests.md" status="completed" />
+            <prompt path="docs/prompts/065/06503_unity_mcp_tactical_ui.md" status="completed" />
+            <prompt path="docs/prompts/065/06504_code_doc_meta_sync.md" status="completed" />
+            <prompt path="docs/prompts/065/06599_gemini_validation.md" status="completed" />
         </phase>
         <phase id="7" title="Endgame &amp; Boss">
             <prompt path="docs/prompts/070/07001_unity_mcp_boss_visual.md" status="planned" />
             <prompt path="docs/prompts/070/07002_code_boss_ai.md" status="planned" />
             <prompt path="docs/prompts/070/07003_code_overclock_gameflow.md" status="planned" />
+            <prompt path="docs/prompts/070/07004_code_gameflow_settlement.md" status="planned" />
+            <prompt path="docs/prompts/070/07005_code_tutorial_prototype.md" status="planned" />
             <prompt path="docs/prompts/070/07099_gemini_vs_validation.md" status="planned" />
         </phase>
+        <phase id="8" title="Polish &amp; Game Feel">
+            <prompt path="docs/prompts/080/08001_unity_combat_juice.md" status="planned" />
+            <prompt path="docs/prompts/080/08002_jules_sound_manager.md" status="planned" />
+            <prompt path="docs/prompts/080/08003_unity_vfx_polish.md" status="planned" />
+            <prompt path="docs/prompts/080/08004_code_balance_tuning.md" status="planned" />
+            <prompt path="docs/prompts/080/08099_gemini_polish_validation.md" status="planned" />
+        </phase>
         <phase id="9" title="Mobile Launch">
+            <prompt path="docs/prompts/090/09001_unity_lobby_ui.md" status="planned" />
             <prompt path="docs/prompts/090/09002_code_achievement_save.md" status="planned" />
+            <prompt path="docs/prompts/090/09003_code_local_save.md" status="planned" />
             <prompt path="docs/prompts/090/09004_unity_mcp_mobile_input.md" status="planned" />
             <prompt path="docs/prompts/090/09005_unity_mcp_ads_revive_ui.md" status="planned" />
+            <prompt path="docs/prompts/090/09006_unity_mobile_optimization.md" status="planned" />
+            <prompt path="docs/prompts/090/09007_code_tutorial_system.md" status="planned" />
             <prompt path="docs/prompts/090/09008_jules_localization.md" status="planned" />
+            <prompt path="docs/prompts/090/09009_code_store_deployment.md" status="planned" />
+            <prompt path="docs/prompts/090/09099_gemini_mobile_validation.md" status="planned" />
         </phase>
     </milestone_tasks>
 
