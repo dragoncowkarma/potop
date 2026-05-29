@@ -43,6 +43,10 @@
       <Path>Assets/Scripts/Gameplay/EnemyBot.cs</Path>
       <Responsibility>Enemy AI and basic movement logic.</Responsibility>
     </Module>
+    <Module name="TitanCoreAI" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/Enemies/Boss/TitanCoreAI.cs</Path>
+      <Responsibility>Titan Core Boss AI logic with 3-phase combat, laser casting, and bullet spawning.</Responsibility>
+    </Module>
     <Module name="WaveManager" type="Manager">
       <Path>Assets/Scripts/Gameplay/Wave/WaveManager.cs</Path>
       <Responsibility>Manages wave progression and publishes WaveStarted/Completed events.</Responsibility>

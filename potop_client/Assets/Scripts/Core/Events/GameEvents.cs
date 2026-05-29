@@ -108,4 +108,21 @@ namespace Potop.Client.Core.Events {
         public int CurrentEnergy;
         public int MaxEnergy;
     }
+
+    /// <summary>
+    /// 보스 페이즈가 변경되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct BossPhaseChangedEvent {
+        public int Phase;
+
+        public BossPhaseChangedEvent(int phase) {
+            Phase = phase;
+        }
+    }
+
+    /// <summary>
+    /// 보스가 처치되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct BossDefeatedEvent {
+    }
 }
