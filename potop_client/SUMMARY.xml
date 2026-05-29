@@ -119,6 +119,18 @@
       <Path>Assets/Scripts/Gameplay/Flow/OverclockMode.cs</Path>
       <Responsibility>Singleton managing infinite enemy scaling gameflow after boss defeat.</Responsibility>
     </Module>
+    <Module name="GameFlowController" type="Controller">
+      <Path>Assets/Scripts/Gameplay/Flow/GameFlowController.cs</Path>
+      <Responsibility>Single-scene loop coordinator for gameflow states (Lobby, SelectTurret, InGame, BossBattle, Overclock, Result) and metric tracking.</Responsibility>
+    </Module>
+    <Module name="GameFlowEvents" type="Data">
+      <Path>Assets/Scripts/Gameplay/Flow/GameFlowEvents.cs</Path>
+      <Responsibility>Defines GameFlowState enum, SettlementData DTO, and GameFlowStateChangedEvent.</Responsibility>
+    </Module>
+    <Module name="ResultUIController" type="Controller">
+      <Path>Assets/Scripts/UI/ResultUIController.cs</Path>
+      <Responsibility>UI controller for presenting game results (metrics) via UI Toolkit.</Responsibility>
+    </Module>
   </CoreScripts>
 
   <StrictConventions>
