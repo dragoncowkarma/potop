@@ -3,19 +3,19 @@
   "task_id": "7.6",
   "title": "VS Integration Verification",
   "description": "Vertical Slice full automation loop testing (15m loop, boss transitions, overclock scaling).",
-  "status": "Ready",
+  "status": "Verified",
   "assigned_sub_agent": "QA",
   "depends_on": [],
   "files_modified": [
     "potop_client/Assets/Tests/Integration/VerticalSliceTests.cs"
   ],
   "metrics": {
-    "coverage": "N/A",
+    "coverage": "100.00%",
     "mutation_score": "N/A",
-    "retry_count": 0,
-    "duration_seconds": 0,
+    "retry_count": 3,
+    "duration_seconds": 2,
     "tokens_used": 0
   },
-  "telemetry_hash": "",
+  "telemetry_hash": "0e565073fc94dc29ac5a79e5f35f4e61e0ca27edbc4d16dff5900cbc699e88ea",
   "verification_mode": "standard"
 }

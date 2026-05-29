@@ -136,6 +136,10 @@
       <Path>Assets/Scripts/Gameplay/Tutorial/TutorialSystem.cs</Path>
       <Responsibility>Manages step-by-step tutorial (Look, Shoot) and guides overlays.</Responsibility>
     </Module>
+    <Module name="VerticalSliceTests" type="Test">
+      <Path>Assets/Scripts/Tests/Editor/VerticalSliceTests.cs</Path>
+      <Responsibility>Comprehensive integration test validating the entire game loop from Lobby to Result screen.</Responsibility>
+    </Module>
   </CoreScripts>
 
   <StrictConventions>
