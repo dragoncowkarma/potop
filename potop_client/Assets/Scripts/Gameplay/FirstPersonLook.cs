@@ -49,7 +49,8 @@ namespace Potop.Client.Gameplay {
             }
 
             if (_lookAction != null) {
-                float mouseY = _lookAction.action.ReadValue<Vector2>().y * _sensitivity * Time.deltaTime;
+                float dt = Time.timeScale == 0f ? Time.unscaledDeltaTime : Time.deltaTime;
+                float mouseY = _lookAction.action.ReadValue<Vector2>().y * _sensitivity * dt;
 
                 _verticalRotation -= mouseY;
                 _verticalRotation = Mathf.Clamp(_verticalRotation, MIN_X_ROTATION, MAX_X_ROTATION);

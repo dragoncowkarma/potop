@@ -16,6 +16,7 @@
   <CoreScenes>
     <Scene path="Assets/Scenes/Start.unity">Main menu and lobby for turret selection.</Scene>
     <Scene path="Assets/Scenes/MainScene.unity">Primary Wave Mode gameplay scene.</Scene>
+    <Scene path="Assets/Scenes/TutorialScene.unity">Tutorial mode gameplay scene featuring look and shoot guides.</Scene>
   </CoreScenes>
 
   <CoreScripts>
@@ -130,6 +131,10 @@
     <Module name="ResultUIController" type="Controller">
       <Path>Assets/Scripts/UI/ResultUIController.cs</Path>
       <Responsibility>UI controller for presenting game results (metrics) via UI Toolkit.</Responsibility>
+    </Module>
+    <Module name="TutorialSystem" type="Manager">
+      <Path>Assets/Scripts/Gameplay/Tutorial/TutorialSystem.cs</Path>
+      <Responsibility>Manages step-by-step tutorial (Look, Shoot) and guides overlays.</Responsibility>
     </Module>
   </CoreScripts>
 

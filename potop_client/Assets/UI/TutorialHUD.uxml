@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:ue="UnityEditor.UIElements"
+>
+    <ui:Style src="TutorialHUD.uss" />
+    <ui:VisualElement class="tutorial-container">
+        <ui:VisualElement name="tutorial-panel" class="tutorial-panel">
+            <ui:Label name="tutorial-title" text="TUTORIAL" class="tutorial-title" />
+            <ui:Label name="tutorial-instruction" text="Instruction goes here" class="tutorial-instruction" />
+            <ui:VisualElement name="progress-bar-bg" class="progress-bar-bg">
+                <ui:VisualElement name="progress-bar-fill" class="progress-bar-fill" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

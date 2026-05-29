@@ -20,6 +20,8 @@ namespace Potop.Client.Tests.EditMode {
         [SetUp]
         public void Setup() {
             _bossGo = new GameObject("Boss");
+            _bossGo.SetActive(false); // Disable first to defer OnEnable until references are injected
+
             _health = _bossGo.AddComponent<Health>();
             _bossAI = _bossGo.AddComponent<TitanCoreAI>();
 
@@ -37,6 +39,16 @@ namespace Potop.Client.Tests.EditMode {
             typeof(TitanCoreAI).GetField("_titanCoreData", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(_bossAI, _data);
 
             _bossGo.SetActive(true);
+
+            // Manually trigger lifecycle methods since Unity doesn't run them automatically in EditMode tests
+            var healthOnEnable = typeof(Health).GetMethod("OnEnable", BindingFlags.NonPublic | BindingFlags.Instance);
+            healthOnEnable?.Invoke(_health, null);
+
+            var bossAwake = typeof(TitanCoreAI).GetMethod("Awake", BindingFlags.NonPublic | BindingFlags.Instance);
+            bossAwake?.Invoke(_bossAI, null);
+
+            var bossOnEnable = typeof(TitanCoreAI).GetMethod("OnEnable", BindingFlags.NonPublic | BindingFlags.Instance);
+            bossOnEnable?.Invoke(_bossAI, null);
 
             EventBroker.ClearAllSubscriptions();
         }
