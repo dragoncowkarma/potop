@@ -26,10 +26,15 @@ namespace Potop.Client.Gameplay {
                     if (currentWave != null && currentWave.EnemySpawns.Count > 0) {
                         SpawnEnemy(currentWave);
                         
-                        // 진행도에 따른 스폰 간격 계산
-                        float progress = _waveManager.CurrentWaveProgress;
-                        float intensity = currentWave.SpawnIntensityCurve.Evaluate(progress);
-                        float interval = currentWave.BaseSpawnInterval / Mathf.Max(0.1f, intensity);
+                        float interval;
+                        if (_waveManager.IsOverclockActive) {
+                            interval = _waveManager.OverclockSpawnInterval;
+                        } else {
+                            // 진행도에 따른 스폰 간격 계산
+                            float progress = _waveManager.CurrentWaveProgress;
+                            float intensity = currentWave.SpawnIntensityCurve.Evaluate(progress);
+                            interval = currentWave.BaseSpawnInterval / Mathf.Max(0.1f, intensity);
+                        }
                         
                         yield return new WaitForSeconds(interval);
                     } else {

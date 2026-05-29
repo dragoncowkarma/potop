@@ -3,6 +3,7 @@ using Potop.Client.Data;
 using UnityEngine;
 
 using Potop.Client.Gameplay.Combat;
+using Potop.Client.Gameplay.Flow;
 
 namespace Potop.Client.Gameplay {
     /// <summary>
@@ -36,7 +37,15 @@ namespace Potop.Client.Gameplay {
         /// <summary>
         /// 적의 이동 속도입니다.
         /// </summary>
-        public virtual float MoveSpeed => _enemyData != null ? _enemyData.MoveSpeed : 0f;
+        public virtual float MoveSpeed {
+            get {
+                float baseSpeed = _enemyData != null ? _enemyData.MoveSpeed : 0f;
+                if (OverclockMode.Instance != null && OverclockMode.Instance.IsActive) {
+                    baseSpeed *= OverclockMode.Instance.CurrentSpeedMultiplier;
+                }
+                return baseSpeed;
+            }
+        }
 
         /// <summary>
         /// 적의 체력입니다.
@@ -46,7 +55,15 @@ namespace Potop.Client.Gameplay {
         /// <summary>
         /// 적이 플레이어에게 입히는 피해량입니다.
         /// </summary>
-        public int Damage => _damage;
+        public int Damage {
+            get {
+                int baseDamage = _damage;
+                if (OverclockMode.Instance != null && OverclockMode.Instance.IsActive) {
+                    baseDamage = Mathf.RoundToInt(baseDamage * OverclockMode.Instance.CurrentDamageMultiplier);
+                }
+                return baseDamage;
+            }
+        }
 
         /// <summary>
         /// 적의 공격 사거리입니다.
@@ -87,7 +104,11 @@ namespace Potop.Client.Gameplay {
             }
             if (_healthComponent != null) {
                 if (_enemyData != null) {
-                    _healthComponent.InitializeHealth(_enemyData.MaxHealth);
+                    int finalMaxHealth = _enemyData.MaxHealth;
+                    if (OverclockMode.Instance != null && OverclockMode.Instance.IsActive) {
+                        finalMaxHealth = Mathf.RoundToInt(finalMaxHealth * OverclockMode.Instance.CurrentHpMultiplier);
+                    }
+                    _healthComponent.InitializeHealth(finalMaxHealth);
                 }
                 _healthComponent.OnDeath += HandleDeath;
             }
@@ -186,7 +207,7 @@ namespace Potop.Client.Gameplay {
         }
 
         public virtual void TriggerAttack() {
-            Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.PlayerTakeDamageEvent { Damage = _damage });
+            Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.PlayerTakeDamageEvent { Damage = Damage });
             StateMachine.ChangeState(DeathState, this);
         }
 

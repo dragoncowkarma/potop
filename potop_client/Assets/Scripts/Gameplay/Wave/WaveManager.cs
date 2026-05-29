@@ -43,6 +43,11 @@ namespace Potop.Client.Gameplay.Wave {
         private float _delayTimer = 0f;
         private bool _isWaveActive = false;
         private bool _isGameComplete = false;
+        private bool _isOverclockActive = false;
+        private float _overclockSpawnInterval = 1f;
+
+        public bool IsOverclockActive => _isOverclockActive;
+        public float OverclockSpawnInterval => _overclockSpawnInterval;
 
         public float CurrentWaveProgress => _isWaveActive && _currentWaveIndex < _waves.Count 
             ? 1f - (_waveTimer / _waves[_currentWaveIndex].Duration) 
@@ -65,6 +70,12 @@ namespace Potop.Client.Gameplay.Wave {
         }
 
         private void Update() {
+            if (_isOverclockActive) {
+                _isWaveActive = true;
+                _isGameComplete = false;
+                return;
+            }
+
             if (_isGameComplete) {
                 return;
             }
@@ -136,6 +147,20 @@ namespace Potop.Client.Gameplay.Wave {
                 _isGameComplete = true;
             } else {
                 _delayTimer = _defaultWaveDelay;
+            }
+        }
+
+        /// <summary>
+        /// 오버클럭 모드를 시작하고 무한 스폰 모드로 전환합니다.
+        /// </summary>
+        /// <param name="spawnInterval">스폰 간격</param>
+        public void StartOverclockMode(float spawnInterval) {
+            _isOverclockActive = true;
+            _isGameComplete = false;
+            _isWaveActive = true;
+            _overclockSpawnInterval = spawnInterval;
+            if (_currentWaveIndex >= _waves.Count) {
+                _currentWaveIndex = Mathf.Max(0, _waves.Count - 1);
             }
         }
     }

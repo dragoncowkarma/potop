@@ -111,6 +111,14 @@
       <Path>Assets/Scripts/Gameplay/Weapons/Overdrive/OverdriveEvolution.cs</Path>
       <Responsibility>Controls ultimate overdrive evolution checks when boss chests are opened.</Responsibility>
     </Module>
+    <Module name="OverclockData" type="Data">
+      <Path>Assets/Scripts/Data/OverclockData.cs</Path>
+      <Responsibility>Defines ScriptableObject containing stats scaling rates and intervals for Overclock Mode.</Responsibility>
+    </Module>
+    <Module name="OverclockMode" type="Gameplay">
+      <Path>Assets/Scripts/Gameplay/Flow/OverclockMode.cs</Path>
+      <Responsibility>Singleton managing infinite enemy scaling gameflow after boss defeat.</Responsibility>
+    </Module>
   </CoreScripts>
 
   <StrictConventions>
