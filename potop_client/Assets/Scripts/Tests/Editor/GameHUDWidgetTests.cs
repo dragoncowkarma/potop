@@ -3,6 +3,7 @@ using Potop.Client.Core.Events;
 using Potop.Client.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Reflection;
 
 namespace Potop.Client.Tests.EditMode {
     public class GameHUDWidgetTests {
@@ -20,11 +21,17 @@ namespace Potop.Client.Tests.EditMode {
             EventBroker.ClearAllSubscriptions();
         }
 
+        private void InvokeOnEnable(MonoBehaviour behavior) {
+            var method = behavior.GetType().GetMethod("OnEnable", BindingFlags.Instance | BindingFlags.NonPublic);
+            method?.Invoke(behavior, null);
+        }
+
         [Test]
         public void ScoreWidget_OnScoreChangedEvent_UpdatesLabelText() {
             var widget = _go.AddComponent<ScoreWidget>();
             var label = new Label();
             widget.Initialize(label);
+            InvokeOnEnable(widget);
 
             Assert.AreEqual("SCORE: 0", label.text);
 
@@ -38,6 +45,7 @@ namespace Potop.Client.Tests.EditMode {
             var widget = _go.AddComponent<HealthBarWidget>();
             var label = new Label();
             widget.Initialize(label, null);
+            InvokeOnEnable(widget);
 
             EventBroker.Publish(new PlayerHealthChangedEvent { CurrentHealth = 80, MaxHealth = 120 });
 
@@ -49,6 +57,7 @@ namespace Potop.Client.Tests.EditMode {
             var widget = _go.AddComponent<FeverGaugeWidget>();
             var barFill = new VisualElement();
             widget.Initialize(barFill);
+            InvokeOnEnable(widget);
 
             // Initially progress should be 0, not active
             Assert.AreEqual(0f, barFill.style.width.value.value);
