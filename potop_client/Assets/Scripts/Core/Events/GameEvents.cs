@@ -125,4 +125,11 @@ namespace Potop.Client.Core.Events {
     /// </summary>
     public struct BossDefeatedEvent {
     }
+
+    /// <summary>
+    /// 적 처치 시 Gem이 드롭될 때 발행되는 이벤트입니다.
+    /// </summary>
+    public struct GemDropEvent {
+        public int Amount;
+    }
 }

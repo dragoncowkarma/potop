@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2db586a73b124fce948fc7f024b4dae, type: 3}
+  m_Script: {fileID: 11500000, guid: 985295918e8114462834690b2a32ae45, type: 3}
   m_Name: StarterGun
   m_EditorClassIdentifier: 
-  _fireRate: 0.5
-  _damage: 10
+  BaseDamage: 10
+  BaseFireRate: 2
+  BaseProjectileSpeed: 20
   _projectilePrefab: {fileID: 1684083608443189547, guid: c7a8298a40c1049359af229ba9bc1829, type: 3}

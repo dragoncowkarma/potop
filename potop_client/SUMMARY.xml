@@ -22,7 +22,7 @@
   <CoreScripts>
     <Module name="GameManager" type="Manager">
       <Path>Assets/Scripts/Core/GameManager.cs</Path>
-      <Responsibility>Singleton managing global state (HP, Score, GameState).</Responsibility>
+      <Responsibility>Singleton managing global state (HP, Score, IsPlaying).</Responsibility>
     </Module>
     <Module name="GameHUD" type="Controller">
       <Path>Assets/Scripts/UI/GameHUD.cs</Path>
@@ -147,6 +147,10 @@
     <Module name="CoreUIBridge" type="Bridge">
       <Path>Assets/Scripts/Core/CoreUIBridge.cs</Path>
       <Responsibility>Decouples GameFlowController from UI.ResultUIController.</Responsibility>
+    </Module>
+    <Module name="CoreFlowBridge" type="Bridge">
+      <Path>Assets/Scripts/Core/CoreFlowBridge.cs</Path>
+      <Responsibility>Decouples Core managers from Gameplay.Flow state systems and defines GameFlowState enum.</Responsibility>
     </Module>
   </CoreScripts>
 

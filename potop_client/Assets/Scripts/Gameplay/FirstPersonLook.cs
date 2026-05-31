@@ -44,7 +44,7 @@ namespace Potop.Client.Gameplay {
         }
 
         private void Update() {
-            if (GameManager.Instance != null && GameManager.Instance.CurrentState != GameState.Playing) {
+            if (GameManager.Instance != null && !GameManager.Instance.IsPlaying) {
                 return;
             }
 

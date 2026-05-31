@@ -168,9 +168,7 @@ namespace Potop.Client.Gameplay {
             }
         }
 
-        protected virtual void Move() {
-            // Deprecated: UpdateMovement()가 대신 처리합니다.
-        }
+
 
         /// <summary>
         /// 적이 데미지를 받을 때 호출되는 메서드입니다.
@@ -188,15 +186,17 @@ namespace Potop.Client.Gameplay {
         }
 
         public virtual void ApplyKnockback(Vector3 force) {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            if (rb != null) {
-                rb.AddForce(force, ForceMode.Impulse);
+            if (_rb != null) {
+                _rb.AddForce(force, ForceMode.Impulse);
             }
         }
 
         private void HandleDeath() {
             Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.EnemyDiedEvent { ScoreValue = ScoreValue, EnergyReward = EnergyReward });
             
+            // Gem 경제 분리: 적 처치 시 GemDropEvent 발행
+            Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.GemDropEvent { Amount = 1 });
+
             // Phase 4: 경험치 보석 스폰을 위한 이벤트 발행
             Potop.Client.Core.Events.EventBroker.Publish(new Items.EnemyKilledEvent { 
                 Position = transform.position, 

@@ -2,15 +2,23 @@ using NUnit.Framework;
 using UnityEngine;
 using Potop.Client.Core;
 using Potop.Client.Core.Events;
+using Potop.Client.Gameplay.Flow;
 
 namespace Potop.Client.Core.Tests {
     public class GameManagerTests {
         private GameManager _gameManager;
         private PlayerHealthController _healthController;
         private GameObject _gameObject;
+        private GameObject _flowGo;
+        private GameFlowController _flowController;
 
         [SetUp]
         public void SetUp() {
+            _flowGo = new GameObject("GameFlowController");
+            _flowController = _flowGo.AddComponent<GameFlowController>();
+            var flowAwake = typeof(GameFlowController).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            flowAwake?.Invoke(_flowController, null);
+
             _gameObject = new GameObject("GameManager");
             _healthController = _gameObject.AddComponent<PlayerHealthController>();
             
@@ -32,6 +40,9 @@ namespace Potop.Client.Core.Tests {
             if (_gameObject != null) {
                 Object.DestroyImmediate(_gameObject);
             }
+            if (_flowGo != null) {
+                Object.DestroyImmediate(_flowGo);
+            }
 
             // 싱글톤 인스턴스 정적 필드를 명시적으로 초기화하여 테스트 간 간섭을 방지합니다.
             var instanceProperty = typeof(GameManager).GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
@@ -39,6 +50,12 @@ namespace Potop.Client.Core.Tests {
 
             var healthInstanceProperty = typeof(PlayerHealthController).GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
             healthInstanceProperty?.GetSetMethod(true)?.Invoke(null, new object[] { null });
+
+            var flowInstanceProperty = typeof(GameFlowController).GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+            flowInstanceProperty?.GetSetMethod(true)?.Invoke(null, new object[] { null });
+
+            CoreFlowBridge.GetCurrentState = null;
+            CoreFlowBridge.TransitionTo = null;
         }
 
         [Test]
@@ -95,7 +112,7 @@ namespace Potop.Client.Core.Tests {
 
             // Assert
             Assert.IsTrue(_gameManager.IsGameOver);
-            Assert.AreEqual(GameState.GameOver, _gameManager.CurrentState);
+            Assert.AreEqual(GameFlowState.Result, GameFlowController.Instance.CurrentState);
         }
 
         [Test]

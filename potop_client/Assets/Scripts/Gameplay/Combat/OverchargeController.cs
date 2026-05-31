@@ -66,6 +66,7 @@ namespace Potop.Client.Gameplay.Combat
 
         public OverchargeState CurrentState => _currentState;
         public float CurrentGauge => _currentGauge;
+        public OverchargeData Data => _overchargeData;
 
         public float GetCurrentMultiplier() {
             return _currentState == OverchargeState.Active && _overchargeData != null ? _overchargeData.AttackSpeedMultiplier : 1f;

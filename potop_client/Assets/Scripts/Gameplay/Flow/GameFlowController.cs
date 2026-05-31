@@ -42,6 +42,16 @@ namespace Potop.Client.Gameplay.Flow {
                 return;
             }
             Instance = this;
+            CoreFlowBridge.GetCurrentState = () => _currentState;
+            CoreFlowBridge.TransitionTo = (state) => TransitionTo(state);
+        }
+
+        private void OnDestroy() {
+            if (Instance == this) {
+                Instance = null;
+                CoreFlowBridge.GetCurrentState = null;
+                CoreFlowBridge.TransitionTo = null;
+            }
         }
 
         private void OnDisable() {
@@ -113,6 +123,7 @@ namespace Potop.Client.Gameplay.Flow {
             EventBroker.Subscribe<EnemyDiedEvent>(OnEnemyDied);
             EventBroker.Subscribe<Potop.Client.Gameplay.Wave.WaveStartedEvent>(OnWaveStarted);
             EventBroker.Subscribe<Potop.Client.Gameplay.Progression.EXPCollectedEvent>(OnEXPCollected);
+            EventBroker.Subscribe<GemDropEvent>(OnGemDropped);
             EventBroker.Subscribe<BossDefeatedEvent>(OnBossDefeated);
 
             if (GameManager.Instance != null) {
@@ -127,6 +138,7 @@ namespace Potop.Client.Gameplay.Flow {
             EventBroker.Unsubscribe<EnemyDiedEvent>(OnEnemyDied);
             EventBroker.Unsubscribe<Potop.Client.Gameplay.Wave.WaveStartedEvent>(OnWaveStarted);
             EventBroker.Unsubscribe<Potop.Client.Gameplay.Progression.EXPCollectedEvent>(OnEXPCollected);
+            EventBroker.Unsubscribe<GemDropEvent>(OnGemDropped);
             EventBroker.Unsubscribe<BossDefeatedEvent>(OnBossDefeated);
 
             if (GameManager.Instance != null) {
@@ -143,7 +155,11 @@ namespace Potop.Client.Gameplay.Flow {
         }
 
         private void OnEXPCollected(Potop.Client.Gameplay.Progression.EXPCollectedEvent e) {
-            _gemsEarned += 1;
+            // EXP와 Gem은 독립 경제이므로 경험치 획득 시 보석을 추가하지 않습니다.
+        }
+
+        private void OnGemDropped(GemDropEvent e) {
+            _gemsEarned += e.Amount;
         }
 
         private void OnBossDefeated(BossDefeatedEvent e) {

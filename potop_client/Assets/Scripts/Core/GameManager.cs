@@ -2,21 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Potop.Client.Core.Events;
+using Potop.Client.Gameplay.Flow;
 
 
 namespace Potop.Client.Core {
-    /// <summary>
-    /// 게임의 전반적인 상태를 나타내는 열거형입니다.
-    /// </summary>
-    public enum GameState {
-        /// <summary>시작 화면 상태입니다.</summary>
-        Start,
-        /// <summary>게임 플레이 중 상태입니다.</summary>
-        Playing,
-        /// <summary>게임 오버 상태입니다.</summary>
-        GameOver
-    }
-
     /// <summary>
     /// 전역 게임 상태(HP, 점수, 게임 오버 등)를 관리하는 싱글톤 클래스입니다.
     /// </summary>
@@ -37,14 +26,22 @@ namespace Potop.Client.Core {
         [SerializeField] private bool _isGameOver;
 
         /// <summary>
-        /// 현재 게임 상태입니다.
-        /// </summary>
-        public GameState CurrentState { get; private set; }
-
-        /// <summary>
         /// 게임 오버 여부를 반환합니다.
         /// </summary>
         public bool IsGameOver => _isGameOver;
+
+        /// <summary>
+        /// 게임이 현재 플레이 중인지 여부를 반환합니다.
+        /// </summary>
+        public bool IsPlaying {
+            get {
+                if (CoreFlowBridge.GetCurrentState == null) return false;
+                var state = CoreFlowBridge.GetCurrentState();
+                return state == GameFlowState.InGame || 
+                       state == GameFlowState.BossBattle || 
+                       state == GameFlowState.Overclock;
+            }
+        }
 
         /// <summary>
         /// 플레이어의 Transform 위치 정보를 제공합니다.
@@ -56,11 +53,6 @@ namespace Potop.Client.Core {
         /// 게임 오버 시 호출되는 이벤트
         /// </summary>
         public static event Action OnGameOver;
-
-        /// <summary>
-        /// 게임 상태가 변경될 때 호출되는 이벤트 (현재 상태)
-        /// </summary>
-        public static event Action<GameState> OnStateChanged;
 
         private const float GAME_OVER_TIME_SCALE = 0f;
         private const float NORMAL_TIME_SCALE = 1f;
@@ -75,7 +67,7 @@ namespace Potop.Client.Core {
         }
 
         private void Start() {
-            ChangeState(GameState.Start);
+            ChangeState(GameFlowState.Lobby);
             StartGame();
         }
 
@@ -83,18 +75,22 @@ namespace Potop.Client.Core {
         /// 게임 상태를 변경합니다.
         /// </summary>
         /// <param name="newState">새로운 게임 상태</param>
-        public void ChangeState(GameState newState) {
-            CurrentState = newState;
+        public void ChangeState(GameFlowState newState) {
+            if (CoreFlowBridge.TransitionTo != null) {
+                CoreFlowBridge.TransitionTo(newState);
+            }
 
-            if (CurrentState == GameState.Playing) {
+            bool isPlayingState = newState == GameFlowState.InGame || 
+                                 newState == GameFlowState.BossBattle || 
+                                 newState == GameFlowState.Overclock;
+
+            if (isPlayingState) {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             } else {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-
-            OnStateChanged?.Invoke(CurrentState);
         }
 
         /// <summary>
@@ -110,7 +106,7 @@ namespace Potop.Client.Core {
 
             Score = 0;
             _isGameOver = false;
-            ChangeState(GameState.Playing);
+            ChangeState(GameFlowState.InGame);
             Time.timeScale = NORMAL_TIME_SCALE;
 
             if (PlayerHealthController.Instance != null) {
@@ -162,7 +158,7 @@ namespace Potop.Client.Core {
         private void GameOver() {
             if (_isGameOver) return;
             _isGameOver = true;
-            ChangeState(GameState.GameOver);
+            ChangeState(GameFlowState.Result);
             Time.timeScale = GAME_OVER_TIME_SCALE;
 
             OnGameOver?.Invoke();

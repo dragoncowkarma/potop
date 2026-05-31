@@ -3,6 +3,7 @@ using Potop.Client.Core;
 using Potop.Client.Core.Events;
 using Potop.Client.Data.Items;
 using Potop.Client.Gameplay.Combat;
+using Potop.Client.Gameplay.Flow;
 using Potop.Client.Gameplay.Items;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -73,7 +74,7 @@ namespace Potop.Client.UI {
             EventBroker.Subscribe<EnergyChangedEvent>(OnEnergyChanged);
             EventBroker.Subscribe<ItemCollectedEvent>(OnItemCollected);
             GameManager.OnGameOver += ShowGameOver;
-            GameManager.OnStateChanged += HandleStateChanged;
+            EventBroker.Subscribe<GameFlowStateChangedEvent>(OnGameFlowStateChanged);
 
             if (_empAction != null && _empAction.action != null) {
                 _empAction.action.Enable();
@@ -106,7 +107,7 @@ namespace Potop.Client.UI {
             EventBroker.Unsubscribe<EnergyChangedEvent>(OnEnergyChanged);
             EventBroker.Unsubscribe<ItemCollectedEvent>(OnItemCollected);
             GameManager.OnGameOver -= ShowGameOver;
-            GameManager.OnStateChanged -= HandleStateChanged;
+            EventBroker.Unsubscribe<GameFlowStateChangedEvent>(OnGameFlowStateChanged);
 
             if (_empAction != null && _empAction.action != null) {
                 _empAction.action.started -= OnEmpTriggered;
@@ -167,7 +168,9 @@ namespace Potop.Client.UI {
                 int hp = PlayerHealthController.Instance != null ? PlayerHealthController.Instance.Health : 100;
                 int maxHp = PlayerHealthController.Instance != null ? PlayerHealthController.Instance.MaxHealth : 100;
                 UpdateHP(hp, maxHp);
-                HandleStateChanged(GameManager.Instance.CurrentState);
+                if (GameFlowController.Instance != null) {
+                    HandleFlowState(GameFlowController.Instance.CurrentState);
+                }
             }
         }
 
@@ -265,13 +268,8 @@ namespace Potop.Client.UI {
                 float gauge = _overchargeController.CurrentGauge;
                 float maxGauge = 100f;
 
-                var field = _overchargeController.GetType().GetField("_overchargeData", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                var data = field?.GetValue(_overchargeController);
-                if (data != null) {
-                    var maxGaugeField = data.GetType().GetField("MaxGauge", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-                    if (maxGaugeField != null) {
-                        maxGauge = (float)maxGaugeField.GetValue(data);
-                    }
+                if (_overchargeController.Data != null) {
+                    maxGauge = _overchargeController.Data.MaxGauge;
                 }
 
                 float pct = (maxGauge > 0f) ? (gauge / maxGauge) * 100f : 0f;
@@ -431,8 +429,12 @@ namespace Potop.Client.UI {
             }
         }
 
-        private void HandleStateChanged(GameState state) {
-            if (state == GameState.Playing) {
+        private void OnGameFlowStateChanged(GameFlowStateChangedEvent evt) {
+            HandleFlowState(evt.NewState);
+        }
+
+        private void HandleFlowState(GameFlowState state) {
+            if (state == GameFlowState.InGame || state == GameFlowState.BossBattle || state == GameFlowState.Overclock) {
                 if (_gameOverScreen != null) _gameOverScreen.style.display = DisplayStyle.None;
                 if (_crosshairContainer != null) _crosshairContainer.style.display = DisplayStyle.Flex;
             }
