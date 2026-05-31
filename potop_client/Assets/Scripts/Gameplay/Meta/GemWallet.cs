@@ -25,6 +25,14 @@ namespace Potop.Client.Gameplay.Meta {
             }
 
             Balance = PlayerPrefs.GetInt(PREFS_KEY, 0);
+            Potop.Client.Core.CoreMetaBridge.IsGemWalletActive = () => Instance != null;
+        }
+
+        private void OnDestroy() {
+            if (Instance == this) {
+                Instance = null;
+                Potop.Client.Core.CoreMetaBridge.IsGemWalletActive = null;
+            }
         }
 
         /// <summary>

@@ -1,0 +1,20 @@
+{
+    "name": "Potop.Client.UI",
+    "rootNamespace": "Potop.Client.UI",
+    "references": [
+        "Potop.Client.Core",
+        "Potop.Client.Gameplay",
+        "Potop.Client.Data",
+        "Unity.InputSystem",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

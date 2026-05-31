@@ -140,6 +140,14 @@
       <Path>Assets/Scripts/Tests/Editor/VerticalSliceTests.cs</Path>
       <Responsibility>Comprehensive integration test validating the entire game loop from Lobby to Result screen.</Responsibility>
     </Module>
+    <Module name="CoreMetaBridge" type="Bridge">
+      <Path>Assets/Scripts/Core/CoreMetaBridge.cs</Path>
+      <Responsibility>Decouples Core managers from Gameplay.Meta permanent progression systems.</Responsibility>
+    </Module>
+    <Module name="CoreUIBridge" type="Bridge">
+      <Path>Assets/Scripts/Core/CoreUIBridge.cs</Path>
+      <Responsibility>Decouples GameFlowController from UI.ResultUIController.</Responsibility>
+    </Module>
   </CoreScripts>
 
   <StrictConventions>

@@ -1,6 +1,6 @@
 using UnityEngine;
 using Potop.Client.Core.Events;
-using Potop.Client.Gameplay.Meta;
+
 
 namespace Potop.Client.Core {
     public class PlayerHealthController : MonoBehaviour {
@@ -54,8 +54,8 @@ namespace Potop.Client.Core {
 
         public void InitializeHealth() {
             int bonusHp = 0;
-            if (MetaUpgradeManager.Instance != null) {
-                bonusHp = MetaUpgradeManager.Instance.GetStatBundle().BonusHp;
+            if (CoreMetaBridge.GetBonusHp != null) {
+                bonusHp = CoreMetaBridge.GetBonusHp();
             }
             _maxHealth = _baseMaxHealth + bonusHp;
             Health = _maxHealth;

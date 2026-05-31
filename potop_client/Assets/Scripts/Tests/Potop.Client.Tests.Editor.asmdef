@@ -1,0 +1,30 @@
+{
+    "name": "Potop.Client.Tests.Editor",
+    "rootNamespace": "Potop.Client.Tests.Editor",
+    "references": [
+        "Potop.Client.Core",
+        "Potop.Client.Gameplay",
+        "Potop.Client.Data",
+        "Potop.Client.UI",
+        "Unity.InputSystem",
+        "UnityEngine.UI"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

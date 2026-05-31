@@ -169,9 +169,8 @@ namespace Potop.Client.Gameplay.Flow {
             var uiObj = UIInstantiator("Prefabs/UI/ResultUI");
             if (uiObj != null) {
                 _resultUiInstance = uiObj;
-                var uiController = uiObj.GetComponent<Potop.Client.UI.ResultUIController>();
-                if (uiController != null) {
-                    uiController.Setup(_settlementData, () => TransitionTo(GameFlowState.Lobby));
+                if (CoreUIBridge.SetupResultUI != null) {
+                    CoreUIBridge.SetupResultUI(uiObj, _settlementData.Kills, _settlementData.MaxWaves, _settlementData.GemsEarned, _settlementData.SurvivalTime, () => TransitionTo(GameFlowState.Lobby));
                 }
             }
         }

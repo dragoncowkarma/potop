@@ -1,0 +1,16 @@
+{
+    "name": "Potop.Client.Data",
+    "rootNamespace": "Potop.Client.Data",
+    "references": [
+        "Potop.Client.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

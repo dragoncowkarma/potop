@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Potop.Client.Core.Events;
-using Potop.Client.Gameplay.Meta;
+
 
 namespace Potop.Client.Core {
     /// <summary>
@@ -101,11 +101,11 @@ namespace Potop.Client.Core {
         /// 게임을 초기 상태로 시작합니다.
         /// </summary>
         public void StartGame() {
-            if (MetaUpgradeManager.Instance == null) {
-                Debug.LogWarning("MetaUpgradeManager.Instance is null during StartGame.");
+            if (CoreMetaBridge.IsMetaUpgradeManagerActive == null || !CoreMetaBridge.IsMetaUpgradeManagerActive()) {
+                Debug.LogWarning("MetaUpgradeManager is null during StartGame.");
             }
-            if (GemWallet.Instance == null) {
-                Debug.LogWarning("GemWallet.Instance is null during StartGame.");
+            if (CoreMetaBridge.IsGemWalletActive == null || !CoreMetaBridge.IsGemWalletActive()) {
+                Debug.LogWarning("GemWallet is null during StartGame.");
             }
 
             Score = 0;

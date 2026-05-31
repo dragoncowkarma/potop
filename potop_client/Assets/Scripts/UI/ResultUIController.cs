@@ -20,6 +20,22 @@ namespace Potop.Client.UI {
 
         private Action _onReturnToLobby;
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void InitBridge() {
+            Potop.Client.Core.CoreUIBridge.SetupResultUI = (go, kills, maxWaves, gemsEarned, survivalTime, onRestart) => {
+                var controller = go.GetComponent<ResultUIController>();
+                if (controller != null) {
+                    var data = new SettlementData {
+                        Kills = kills,
+                        MaxWaves = maxWaves,
+                        GemsEarned = gemsEarned,
+                        SurvivalTime = survivalTime
+                    };
+                    controller.Setup(data, onRestart);
+                }
+            };
+        }
+
         private void Awake() {
             if (_uiDocument == null) {
                 _uiDocument = GetComponent<UIDocument>();
@@ -28,6 +44,19 @@ namespace Potop.Client.UI {
             if (_uiDocument != null && _uiDocument.rootVisualElement != null) {
                 BindVisualElements();
             }
+
+            Potop.Client.Core.CoreUIBridge.SetupResultUI = (go, kills, maxWaves, gemsEarned, survivalTime, onRestart) => {
+                var controller = go.GetComponent<ResultUIController>();
+                if (controller != null) {
+                    var data = new SettlementData {
+                        Kills = kills,
+                        MaxWaves = maxWaves,
+                        GemsEarned = gemsEarned,
+                        SurvivalTime = survivalTime
+                    };
+                    controller.Setup(data, onRestart);
+                }
+            };
         }
 
         private void OnEnable() {

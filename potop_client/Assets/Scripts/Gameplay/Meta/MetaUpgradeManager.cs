@@ -27,6 +27,17 @@ namespace Potop.Client.Gameplay.Meta {
             if (Application.isPlaying) {
                 DontDestroyOnLoad(gameObject);
             }
+
+            Potop.Client.Core.CoreMetaBridge.IsMetaUpgradeManagerActive = () => Instance != null;
+            Potop.Client.Core.CoreMetaBridge.GetBonusHp = () => GetStatBundle().BonusHp;
+        }
+
+        private void OnDestroy() {
+            if (Instance == this) {
+                Instance = null;
+                Potop.Client.Core.CoreMetaBridge.IsMetaUpgradeManagerActive = null;
+                Potop.Client.Core.CoreMetaBridge.GetBonusHp = null;
+            }
         }
 
         /// <summary>

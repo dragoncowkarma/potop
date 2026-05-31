@@ -1,0 +1,21 @@
+{
+    "name": "Potop.Client.Gameplay",
+    "rootNamespace": "Potop.Client.Gameplay",
+    "references": [
+        "Potop.Client.Core",
+        "Potop.Client.Data",
+        "Unity.InputSystem",
+        "Unity.Cinemachine",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Core.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

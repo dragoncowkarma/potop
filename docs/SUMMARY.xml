@@ -123,7 +123,7 @@
             <prompt path="docs/prompts/070/07099_gemini_vs_validation.md" status="completed" />
         </phase>
         <phase id="7.5" title="Structural Reinforcement">
-            <prompt path="docs/prompts/075/07501_code_asmdef_setup.md" status="planned" />
+            <prompt path="docs/prompts/075/07501_code_asmdef_setup.md" status="completed" />
             <prompt path="docs/prompts/075/07502_code_state_unification.md" status="planned" />
             <prompt path="docs/prompts/075/07503_unity_hud_decomposition.md" status="planned" />
             <prompt path="docs/prompts/075/07504_code_boss_spawn_integration.md" status="planned" />
