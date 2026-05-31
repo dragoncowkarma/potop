@@ -1,0 +1,25 @@
+{
+  "id": "7.5.1",
+  "task_id": "7.5.1",
+  "title": "Assembly Definition Setup",
+  "description": "Create 5 assembly definitions (Core, Data, Gameplay, UI, Tests.Editor) for proper compilation isolation and test separation.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [],
+  "files_modified": [
+    "potop_client/Assets/Scripts/Core/Potop.Client.Core.asmdef",
+    "potop_client/Assets/Scripts/Data/Potop.Client.Data.asmdef",
+    "potop_client/Assets/Scripts/Gameplay/Potop.Client.Gameplay.asmdef",
+    "potop_client/Assets/Scripts/UI/Potop.Client.UI.asmdef",
+    "potop_client/Assets/Scripts/Tests/Potop.Client.Tests.Editor.asmdef"
+  ],
+  "metrics": {
+    "coverage": "0%",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

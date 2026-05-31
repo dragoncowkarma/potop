@@ -36,12 +36,12 @@ POTOP은 대규모 물량(적, 투사체)을 효율적으로 처리하기 위해
   * `VRInputProvider`: HMD 시선 + 모션 컨트롤러.
 * **이점:** 플랫폼 추가 시 핵심 조작 로직 수정 없이 `Provider`만 교체 가능.
 
-#### **2. 오브젝트 풀링 (Object Pooling)**
+#### **3. 오브젝트 풀링 (Object Pooling)**
 * **대상:** `Projectile`, `Enemy`, `EXPGem`, `VFX`.
 * **도구:** Unity 6 `UnityEngine.Pool<T>` 활용.
 * **목표:** 런타임 가비지 컬렉션(GC) 최소화.
 
-#### **3. 데이터 주도 설계 (Data-Driven Design)**
+#### **4. 데이터 주도 설계 (Data-Driven Design)**
 * **형식:** `ScriptableObject` 기반 에셋 관리.
 * **구성:**
   * `TurretData`: 스탯 및 프리팹 정보.

@@ -28,4 +28,4 @@
   * **타격감:** 샷건 형태의 공격에는 하이햇과 킥 사운드를 섞어 리듬감 있는 타격 피드백 제공.
 * **구현 방식:**
   * **Audio Mixer:** Master, BGM, SFX 그룹으로 분리하여 실시간 볼륨 및 Pitch 제어.
-  * **Spatial Audio:** 3D 공간 음향은 지양하고, 하이퍼캐주얼의 직관성을 위해 2D/Stereo 위주로 믹싱.
+  * **Spatial Audio:** 기본 출력은 2D 스테레오. VR 빌드에서는 Spatial Audio로 전환하여 공간 음향을 제공합니다.

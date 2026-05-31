@@ -8,7 +8,9 @@ This file tracks technical debt, deprecated fields, and pending refactors that c
 - [x] Phase 6.5: GameManager God Object 분리 등 완료
 
 - [ ] **Stability**: Investigate Unity MCP connection drops during Play Mode transitions.
+- [ ] **Architecture**: 8 Singletons remain (GameManager, PlayerHealthController, PoolManager, EnergyManager, GameFlowController, OverclockMode, GemWallet, MetaUpgradeManager). Consider Service Locator pattern in future phases.
 
 ---
 *Note: Delete items from this list once they are fully resolved and verified.*
+
 

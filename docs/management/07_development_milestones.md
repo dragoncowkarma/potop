@@ -198,6 +198,25 @@
 
 ---
 
+### **Phase 7.5: 전문가 점검 기반 구조 보강 (Structural Reinforcement)**
+> **Phase 7 Vertical Slice 완료 후 5대 분야 전문가 점검에서 발견된 구조적 결함(Assembly Definition 부재, 이중 상태관리, GameHUD 비대화, 보스 스폰 미연결, 문서 비동기) 해소.**
+> [!TIP]
+> AI Prompts:
+> - 07501: [07501_code_asmdef_setup.md](../prompts/075/07501_code_asmdef_setup.md)
+> - 07502: [07502_code_state_unification.md](../prompts/075/07502_code_state_unification.md)
+> - 07503: [07503_unity_hud_decomposition.md](../prompts/075/07503_unity_hud_decomposition.md)
+> - 07504: [07504_code_boss_spawn_integration.md](../prompts/075/07504_code_boss_spawn_integration.md)
+> - 07505: [07505_code_doc_sync.md](../prompts/075/07505_code_doc_sync.md)
+> - QA: [07599_gemini_validation.md](../prompts/075/07599_gemini_validation.md)
+
+*   **[07501] Assembly Definition 도입** — Core/Data/Gameplay/UI/Tests 5개 asmdef 설정, 테스트 격리
+*   **[07502] 상태 및 데이터 통합** — GameState→GameFlowState 일원화, WeaponData 통합, Gem 경제 분리, Reflection 제거
+*   **[07503] GameHUD 위젯 분리** — 454줄 God Class를 6개 독립 위젯으로 분해
+*   **[07504] 보스 스폰 및 발사 전략** — 15분 자동 스폰, Overclock 연동, SpreadFire/LobFire 구현
+*   **[07505] 문서 동기화** — KANBAN/SUMMARY/GDD 결함 수정 및 현행화
+
+---
+
 ### **Phase 8: 폴리싱 & 게임필 (Polish & Game Feel)** `[예상: 2주]`
 > [!TIP]
 > AI Prompts:

@@ -36,6 +36,12 @@
         <File Path="docs/prompts/020_architecture.md" Description="Phase 2: 기초 아키텍처 프롬프트"/>
         <!-- Phase 3, 4, 5, 6, 6.5, 7, 8, 9 prompts have been split into individual task files. -->
         <!-- Refer to docs/SUMMARY.xml for a detailed mapping of individual prompt files. -->
+        <File Path="docs/prompts/075/07501_code_asmdef_setup.md" Description="Phase 7.5: Assembly Definition 설정"/>
+        <File Path="docs/prompts/075/07502_code_state_unification.md" Description="Phase 7.5: 상태 통합"/>
+        <File Path="docs/prompts/075/07503_unity_hud_decomposition.md" Description="Phase 7.5: HUD 분리"/>
+        <File Path="docs/prompts/075/07504_code_boss_spawn_integration.md" Description="Phase 7.5: 보스 스폰 통합"/>
+        <File Path="docs/prompts/075/07505_code_doc_sync.md" Description="Phase 7.5: 문서 동기화"/>
+        <File Path="docs/prompts/075/07599_gemini_validation.md" Description="Phase 7.5: 구조 검증"/>
       </Directory>
   </GlobalDocumentation>
 </ProjectContext>

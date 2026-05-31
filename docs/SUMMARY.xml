@@ -116,11 +116,19 @@
         </phase>
         <phase id="7" title="Endgame &amp; Boss">
             <prompt path="docs/prompts/070/07001_unity_mcp_boss_visual.md" status="completed" />
-            <prompt path="docs/prompts/070/07002_code_boss_ai.md" status="planned" />
-            <prompt path="docs/prompts/070/07003_code_overclock_gameflow.md" status="planned" />
-            <prompt path="docs/prompts/070/07004_code_gameflow_settlement.md" status="planned" />
-            <prompt path="docs/prompts/070/07005_code_tutorial_prototype.md" status="planned" />
-            <prompt path="docs/prompts/070/07099_gemini_vs_validation.md" status="planned" />
+            <prompt path="docs/prompts/070/07002_code_boss_ai.md" status="completed" />
+            <prompt path="docs/prompts/070/07003_code_overclock_gameflow.md" status="completed" />
+            <prompt path="docs/prompts/070/07004_code_gameflow_settlement.md" status="completed" />
+            <prompt path="docs/prompts/070/07005_code_tutorial_prototype.md" status="completed" />
+            <prompt path="docs/prompts/070/07099_gemini_vs_validation.md" status="completed" />
+        </phase>
+        <phase id="7.5" title="Structural Reinforcement">
+            <prompt path="docs/prompts/075/07501_code_asmdef_setup.md" status="planned" />
+            <prompt path="docs/prompts/075/07502_code_state_unification.md" status="planned" />
+            <prompt path="docs/prompts/075/07503_unity_hud_decomposition.md" status="planned" />
+            <prompt path="docs/prompts/075/07504_code_boss_spawn_integration.md" status="planned" />
+            <prompt path="docs/prompts/075/07505_code_doc_sync.md" status="planned" />
+            <prompt path="docs/prompts/075/07599_gemini_validation.md" status="planned" />
         </phase>
         <phase id="8" title="Polish &amp; Game Feel">
             <prompt path="docs/prompts/080/08001_unity_combat_juice.md" status="planned" />

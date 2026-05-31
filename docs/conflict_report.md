@@ -1,40 +1,47 @@
 # 🚨 Implementation Conflict Report (docs/conflict_report.md)
 
+> [!NOTE]
+> **원본 작성 시점**: Phase 2 (2026-05-02). Phase 3~7을 거치며 대부분의 항목이 해결되었습니다.
+> **마지막 검토**: Phase 7.5 전문가 점검 (2026-05-31)
+
 This document records discrepancies between the project's Game Design Document (GDD) and the current technical implementation in `potop_client/`.
 
 ## 1. Core Gameplay & Controls
 
-| Feature | GDD Specification | Current Implementation | Status / Conflict Reason |
+| Feature | GDD Specification | Current Implementation | Status |
 | :--- | :--- | :--- | :--- |
-| **Turret Rotation Speed** | Constant 180°/sec. | Input-based (Delta * Sensitivity). | **Conflict**: No cap on rotation speed; sensitivity varies by device/setting. |
-| **Keyboard Input** | WASD/Arrow keys for rotation. | LookAction (Delta/Vector2) only. | **Conflict**: Keyboard rotation is not explicitly handled for constant speed. |
-| **Turret Classes** | 4 distinct types (Guardian, Valkyrie, etc.). | Single generic `TurretShooter`. | **Incomplete**: Class selection and variant logic missing. |
+| **Turret Rotation Speed** | Constant 180°/sec. | Input-based (Delta * Sensitivity). | ⚠️ **Open**: 회전 속도 상한 미적용 |
+| **Keyboard Input** | WASD/Arrow keys for rotation. | LookAction (Delta/Vector2) only. | ⚠️ **Open**: 키보드 회전 미구현 |
+| **Turret Classes** | 4 distinct types (Guardian, Valkyrie, etc.). | 4종 WeaponBase 상속체 구현 완료. | ✅ **Resolved** (Phase 4) |
 
 ## 2. Enemy System
 
-| Feature | GDD Specification | Current Implementation | Status / Conflict Reason |
+| Feature | GDD Specification | Current Implementation | Status |
 | :--- | :--- | :--- | :--- |
-| **Enemy Types** | Scouter, Blitz, Armored, Hellfire. | Single `EnemyBot` class. | **Incomplete**: Variant behaviors (e.g., Blitz zigzag) not implemented. |
-| **Spawning Logic** | Wave-based timeline (Phase 1-5). | Constant interval spawning. | **Conflict**: Time-based difficulty and wave progression missing. |
+| **Enemy Types** | 6종 (Scouter~Titan Core). | EnemyBase FSM + 4 variant + TitanCoreAI 구현. | ✅ **Resolved** (Phase 3~7) |
+| **Spawning Logic** | Wave-based timeline (Phase 1-5). | WaveManager 5단계 타임라인 구현. | ✅ **Resolved** (Phase 3) |
 
 ## 3. Architecture & Data
 
-| Feature | GDD Specification | Current Implementation | Status / Conflict Reason |
+| Feature | GDD Specification | Current Implementation | Status |
 | :--- | :--- | :--- | :--- |
-| **Data Management** | `ScriptableObject` driven. | Hardcoded / Serialized fields. | **Conflict**: Violation of Data-Driven Design principle mentioned in GDD 04. |
-| **Object Pooling** | `UnityEngine.Pool` for projectiles/enemies. | `Instantiate` / `Destroy` usage. | **Conflict**: Performance concern; not aligned with Technical Architecture goals. |
-| **Event System** | Centralized Event Broker. | Static `Action` events in `GameManager`. | **Partial**: Decoupling exists but is tied to the Singleton instance. |
+| **Data Management** | `ScriptableObject` driven. | 15+ SO 타입 구현 (WeaponData, EnemyData 등). | ✅ **Resolved** (Phase 2~4) |
+| **Object Pooling** | `UnityEngine.Pool` for projectiles/enemies. | PoolManager 구현 완료. | ✅ **Resolved** (Phase 2) |
+| **Event System** | Centralized Event Broker. | EventBroker 정적 클래스 + 12개 이벤트 타입. | ✅ **Resolved** (Phase 2) |
+| **Assembly Definitions** | 레이어별 컴파일 격리. | 미구현 (단일 Assembly-CSharp). | ⚠️ **Open** → Phase 7.5.1에서 해결 예정 |
 
 ## 4. Progression & Meta
 
-| Feature | GDD Specification | Current Implementation | Status / Conflict Reason |
+| Feature | GDD Specification | Current Implementation | Status |
 | :--- | :--- | :--- | :--- |
-| **RPG Elements** | EXP, Leveling, Passive choices. | Score-only tracking. | **Incomplete**: Core Roguelite loop missing in code. |
-| **Game Lifecycle** | 15m Wave -> Boss -> Overclock. | Start -> Playing -> GameOver. | **Incomplete**: Progression timer and endgame states missing. |
+| **RPG Elements** | EXP, Leveling, Passive choices. | EXPGem + LevelingSystem + UpgradeSelectUI 구현. | ✅ **Resolved** (Phase 4) |
+| **Game Lifecycle** | 15m Wave → Boss → Overclock. | GameFlowController 6상태 FSM 구현. | ✅ **Resolved** (Phase 7) |
 
 ## 5. Summary of Divergence
-The current implementation serves as a **functional MVP** for movement and basic shooting, but it lacks the **architectural foundation** (ScriptableObjects, Pooling, Event Broker) and the **roguelite depth** (Waves, Leveling, Variants) specified in the GDD.
+Phase 7 Vertical Slice 완료 시점에서 대부분의 GDD↔구현 간 차이가 해소되었습니다.
+**잔여 항목**: 입력 시스템 상세 (회전 속도 상한, 키보드 회전) — Phase 9.4 모바일 입력 최적화 시 함께 처리 예정.
 
 ---
-**Last Updated**: 2026-05-02
-**Agent**: Gemini CLI
+**Last Updated**: 2026-05-31
+**Agent**: Gemini CLI (Phase 7.5 Expert Review)
+
