@@ -31,6 +31,10 @@ namespace Potop.Client.Gameplay.Combat {
                     CurrentEnergy = EnergyManager.Instance.CurrentEnergy,
                     MaxEnergy = EnergyManager.MAX_ENERGY
                 });
+                Potop.Client.Core.Events.EventBroker.Publish(new Potop.Client.Core.Events.SkillCooldownEvent {
+                    SkillName = GetType().Name,
+                    CooldownDuration = Cooldown
+                });
                 return true;
             }
             return false;

@@ -28,6 +28,30 @@
       <Path>Assets/Scripts/UI/GameHUD.cs</Path>
       <Responsibility>UI controller for real-time gameplay feedback via UI Toolkit.</Responsibility>
     </Module>
+    <Module name="HealthBarWidget" type="UI">
+      <Path>Assets/Scripts/UI/HealthBarWidget.cs</Path>
+      <Responsibility>Displays player HP and handles health/item collection flash effects.</Responsibility>
+    </Module>
+    <Module name="ScoreWidget" type="UI">
+      <Path>Assets/Scripts/UI/ScoreWidget.cs</Path>
+      <Responsibility>Displays current game score.</Responsibility>
+    </Module>
+    <Module name="FeverGaugeWidget" type="UI">
+      <Path>Assets/Scripts/UI/FeverGaugeWidget.cs</Path>
+      <Responsibility>Displays fever mode gauge and active state styling.</Responsibility>
+    </Module>
+    <Module name="OverchargeWidget" type="UI">
+      <Path>Assets/Scripts/UI/OverchargeWidget.cs</Path>
+      <Responsibility>Displays overcharge gauge and active/overheat status styling.</Responsibility>
+    </Module>
+    <Module name="TacticalSkillBar" type="UI">
+      <Path>Assets/Scripts/UI/TacticalSkillBar.cs</Path>
+      <Responsibility>Handles tactical skill inputs, energy bar fill, and cooldown overlays.</Responsibility>
+    </Module>
+    <Module name="GameOverPanel" type="UI">
+      <Path>Assets/Scripts/UI/GameOverPanel.cs</Path>
+      <Responsibility>Controls game-over panel display, final score, and restart/menu buttons.</Responsibility>
+    </Module>
     <Module name="TurretShooter" type="Controller">
       <Path>Assets/Scripts/Gameplay/TurretShooter.cs</Path>
       <Responsibility>Player input handling for 360-degree combat.</Responsibility>
@@ -139,6 +163,10 @@
     <Module name="VerticalSliceTests" type="Test">
       <Path>Assets/Scripts/Tests/Editor/VerticalSliceTests.cs</Path>
       <Responsibility>Comprehensive integration test validating the entire game loop from Lobby to Result screen.</Responsibility>
+    </Module>
+    <Module name="BossSpawnIntegrationTests" type="Test">
+      <Path>Assets/Scripts/Tests/Editor/BossSpawnIntegrationTests.cs</Path>
+      <Responsibility>Tests boss automatic spawning, continuous mode transitions, and custom fire strategies.</Responsibility>
     </Module>
     <Module name="CoreMetaBridge" type="Bridge">
       <Path>Assets/Scripts/Core/CoreMetaBridge.cs</Path>

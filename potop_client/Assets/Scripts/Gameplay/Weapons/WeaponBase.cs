@@ -14,6 +14,11 @@ namespace Potop.Client.Gameplay.Weapons {
         [SerializeField, Tooltip("무기의 기본 스탯 데이터")]
         protected WeaponData _weaponData;
 
+        /// <summary>
+        /// 무기의 기본 스탯 데이터입니다.
+        /// </summary>
+        public WeaponData WeaponData => _weaponData;
+
         [SerializeField, Tooltip("투사체가 발사될 위치")]
         protected Transform _firePoint;
 

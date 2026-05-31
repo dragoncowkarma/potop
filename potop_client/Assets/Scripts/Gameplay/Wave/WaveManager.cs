@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Potop.Client.Core;
 using Potop.Client.Core.Events;
+using Potop.Client.Gameplay.Flow;
 
 namespace Potop.Client.Gameplay.Wave {
     /// <summary>
@@ -38,6 +40,9 @@ namespace Potop.Client.Gameplay.Wave {
         /// </summary>
         [SerializeField] private float _defaultWaveDelay = 5f;
 
+        [SerializeField] private GameObject _bossPrefab;
+        [SerializeField] private float _bossSpawnThreshold = 900f;
+
         private int _currentWaveIndex = 0;
         private float _waveTimer = 0f;
         private float _delayTimer = 0f;
@@ -46,8 +51,13 @@ namespace Potop.Client.Gameplay.Wave {
         private bool _isOverclockActive = false;
         private float _overclockSpawnInterval = 1f;
 
+        private float _gameplayTimer = 0f;
+        private bool _hasBossSpawned = false;
+        private bool _isContinuousMode = false;
+
         public bool IsOverclockActive => _isOverclockActive;
         public float OverclockSpawnInterval => _overclockSpawnInterval;
+        public bool IsContinuousMode => _isContinuousMode;
 
         public float CurrentWaveProgress => _isWaveActive && _currentWaveIndex < _waves.Count 
             ? 1f - (_waveTimer / _waves[_currentWaveIndex].Duration) 
@@ -70,6 +80,27 @@ namespace Potop.Client.Gameplay.Wave {
         }
 
         private void Update() {
+            if (GameManager.Instance != null && GameManager.Instance.IsPlaying) {
+                _gameplayTimer += Time.deltaTime;
+                if (_gameplayTimer >= _bossSpawnThreshold && !_hasBossSpawned) {
+                    SpawnBoss();
+                }
+            } else {
+                _gameplayTimer += Time.deltaTime;
+                if (_gameplayTimer >= _bossSpawnThreshold && !_hasBossSpawned) {
+                    SpawnBoss();
+                }
+            }
+
+            if (_isContinuousMode) {
+                _isGameComplete = false;
+                if (!_isWaveActive) {
+                    StartNextWave();
+                }
+                UpdateWaveTimer();
+                return;
+            }
+
             if (_isOverclockActive) {
                 _isWaveActive = true;
                 _isGameComplete = false;
@@ -85,6 +116,32 @@ namespace Potop.Client.Gameplay.Wave {
             } else {
                 UpdateDelayTimer();
             }
+        }
+
+        private void SpawnBoss() {
+            _hasBossSpawned = true;
+
+            if (_bossPrefab != null) {
+                Vector3 spawnPos = Vector3.zero;
+                if (GameManager.Instance != null && GameManager.Instance.PlayerTransform != null) {
+                    Transform playerT = GameManager.Instance.PlayerTransform;
+                    spawnPos = playerT.position + playerT.forward * 50f;
+                } else {
+                    spawnPos = Vector3.forward * 50f;
+                }
+
+                if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
+                    Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(_bossPrefab, spawnPos, Quaternion.identity);
+                } else {
+                    Instantiate(_bossPrefab, spawnPos, Quaternion.identity);
+                }
+            }
+
+            if (GameFlowController.Instance != null) {
+                GameFlowController.Instance.TransitionTo(GameFlowState.BossBattle);
+            }
+
+            EventBroker.Publish(new BossSpawnedEvent());
         }
 
         /// <summary>
@@ -144,8 +201,17 @@ namespace Potop.Client.Gameplay.Wave {
             _currentWaveIndex++;
 
             if (_currentWaveIndex >= _waves.Count) {
-                _isGameComplete = true;
-            } else {
+                if (_isContinuousMode) {
+                    _currentWaveIndex = 0;
+                } else {
+                    _isGameComplete = true;
+                }
+            }
+
+            if (_isContinuousMode) {
+                _delayTimer = 0f;
+                StartNextWave();
+            } else if (!_isGameComplete) {
                 _delayTimer = _defaultWaveDelay;
             }
         }
@@ -161,6 +227,20 @@ namespace Potop.Client.Gameplay.Wave {
             _overclockSpawnInterval = spawnInterval;
             if (_currentWaveIndex >= _waves.Count) {
                 _currentWaveIndex = Mathf.Max(0, _waves.Count - 1);
+            }
+        }
+
+        /// <summary>
+        /// 웨이브 간 대기시간을 0으로 설정하고 무한 루프 모드에 진입합니다.
+        /// </summary>
+        public void EnterContinuousMode() {
+            _isContinuousMode = true;
+            _defaultWaveDelay = 0f;
+            _delayTimer = 0f;
+            _isGameComplete = false;
+            _isWaveActive = true;
+            if (_currentWaveIndex >= _waves.Count) {
+                _currentWaveIndex = 0;
             }
         }
     }

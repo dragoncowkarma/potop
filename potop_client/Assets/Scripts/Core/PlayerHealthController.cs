@@ -35,6 +35,7 @@ namespace Potop.Client.Core {
         public void TakeDamage(int value) {
             Health = Mathf.Max(0, Health - value);
             EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
+            EventBroker.Publish(new PlayerHealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
 
             if (Health <= 0 && GameManager.Instance != null && !GameManager.Instance.IsGameOver) {
                 GameManager.Instance.TriggerGameOver();
@@ -46,6 +47,7 @@ namespace Potop.Client.Core {
 
             Health = Mathf.Min(_maxHealth, Health + amount);
             EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
+            EventBroker.Publish(new PlayerHealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
         }
 
         private void OnPlayerTakeDamage(PlayerTakeDamageEvent e) {
@@ -60,6 +62,7 @@ namespace Potop.Client.Core {
             _maxHealth = _baseMaxHealth + bonusHp;
             Health = _maxHealth;
             EventBroker.Publish(new HealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
+            EventBroker.Publish(new PlayerHealthChangedEvent { CurrentHealth = Health, MaxHealth = _maxHealth });
         }
     }
 }

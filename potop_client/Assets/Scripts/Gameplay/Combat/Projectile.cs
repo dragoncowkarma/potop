@@ -74,8 +74,11 @@ namespace Potop.Client.Gameplay {
             _knockbackForce = knockbackForce;
         }
 
+        private Rigidbody _rb;
+
         private void Awake() {
             _enemyLayerMask = LayerMask.GetMask(ENEMY_LAYER_NAME);
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void OnEnable() {
@@ -103,6 +106,7 @@ namespace Potop.Client.Gameplay {
         }
 
         private void Update() {
+            if (_rb != null && !_rb.isKinematic) return;
             transform.Translate(Vector3.forward * _speed * Time.deltaTime);
         }
 

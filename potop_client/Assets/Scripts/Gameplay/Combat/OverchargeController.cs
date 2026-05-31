@@ -24,6 +24,16 @@ namespace Potop.Client.Gameplay.Combat
     }
 
     /// <summary>
+    /// 오버차지 게이지 및 상태가 변경되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct OverchargeChangedEvent
+    {
+        public float CurrentGauge;
+        public float MaxGauge;
+        public OverchargeState State;
+    }
+
+    /// <summary>
     /// 오버차지 시스템의 설정을 관리하는 ScriptableObject입니다.
     /// </summary>
     [CreateAssetMenu(fileName = "NewOverchargeData", menuName = "POTOP/Combat/Overcharge Data")]
@@ -95,6 +105,7 @@ namespace Potop.Client.Gameplay.Combat
             _isButtonHeld = false;
             _currentGauge = 0f;
             ChangeState(OverchargeState.Idle);
+            PublishOverchargeChanged();
         }
 
         private void Update()
@@ -113,6 +124,8 @@ namespace Potop.Client.Gameplay.Combat
                     UpdateOverheatState();
                     break;
             }
+
+            PublishOverchargeChanged();
         }
 
         private void OnOverchargeStarted(InputAction.CallbackContext context)
@@ -193,6 +206,17 @@ namespace Potop.Client.Gameplay.Combat
 
             float multiplier = GetCurrentMultiplier();
             EventBroker.Publish(new OverchargeStateChangedEvent { State = _currentState, AttackSpeedMultiplier = multiplier });
+        }
+
+        private void PublishOverchargeChanged()
+        {
+            float maxGauge = _overchargeData != null ? _overchargeData.MaxGauge : 100f;
+            EventBroker.Publish(new OverchargeChangedEvent
+            {
+                CurrentGauge = _currentGauge,
+                MaxGauge = maxGauge,
+                State = _currentState
+            });
         }
     }
 }

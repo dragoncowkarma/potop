@@ -7,13 +7,41 @@ namespace Potop.Client.Gameplay.Weapons.Strategies {
     /// </summary>
     public class LobFireStrategy : IFireStrategy {
         public void ExecuteFire(WeaponBase weapon) {
+            GameObject projectilePrefab = weapon.ProjectilePrefab;
+            Transform firePoint = weapon.FirePoint;
+
+            if (projectilePrefab == null || firePoint == null) {
+                return;
+            }
+
             float damage = weapon.GetCalculatedDamage();
             float speed = weapon.GetCalculatedProjectileSpeed();
+            float launchAngle = weapon.WeaponData != null ? weapon.WeaponData.LaunchAngle : 45f;
+            float aoeRadius = weapon.WeaponData != null ? weapon.WeaponData.AoERadius : 3f;
 
-#if UNITY_EDITOR
-            Debug.Log($"[LobFireStrategy] 곡사 발사! 피해량: {damage}, 속도: {speed}");
-#endif
-            // TODO: 투사체에 중력의 영향을 받도록 물리 기반 초기화를 수행하여 포물선 궤도 구현
+            GameObject projectileObj = null;
+            if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
+                projectileObj = Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(projectilePrefab, firePoint.position, firePoint.rotation);
+            } else {
+                projectileObj = Object.Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            }
+
+            if (projectileObj == null) {
+                return;
+            }
+
+            if (!projectileObj.TryGetComponent<Rigidbody>(out var rb)) {
+                rb = projectileObj.AddComponent<Rigidbody>();
+            }
+            rb.useGravity = true;
+            rb.isKinematic = false;
+
+            Vector3 launchDirection = Quaternion.AngleAxis(-launchAngle, firePoint.right) * firePoint.forward;
+            rb.linearVelocity = launchDirection * speed;
+
+            if (projectileObj.TryGetComponent<Projectile>(out var projectile)) {
+                projectile.Initialize(speed, Mathf.RoundToInt(damage), aoeRadius, 0, 5f);
+            }
         }
     }
 }

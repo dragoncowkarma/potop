@@ -17,6 +17,7 @@ namespace Potop.Client.Gameplay {
         private int _currentGauge;
         private float _feverTimer;
         private bool _isFeverActive;
+        private int _currentLevel = 0;
 
         private void OnEnable() {
             EventBroker.Subscribe<ComboChangedEvent>(OnComboChanged);
@@ -34,6 +35,7 @@ namespace Potop.Client.Gameplay {
                 _feverTimer -= Time.deltaTime;
                 
                 EventBroker.Publish(new FeverProgressChangedEvent { Progress = Mathf.Clamp01(_feverTimer / _feverDuration) });
+                PublishFeverChanged();
 
                 if (_feverTimer <= 0) {
                     DeactivateFever();
@@ -50,6 +52,7 @@ namespace Potop.Client.Gameplay {
             _currentGauge += scoreToAdd;
             
             EventBroker.Publish(new FeverProgressChangedEvent { Progress = Mathf.Clamp01((float)_currentGauge / _maxGauge) });
+            PublishFeverChanged();
 
             if (_currentGauge >= _maxGauge) {
                 ActivateFever();
@@ -58,16 +61,24 @@ namespace Potop.Client.Gameplay {
 
         private void CheckFeverLevel(int comboCount) {
             if (comboCount == 0) {
+                _currentLevel = 0;
                 EventBroker.Publish(new FeverLevelChangedEvent { Level = 0 });
+                PublishFeverChanged();
                 return;
             }
 
+            int prevLevel = _currentLevel;
             if (comboCount == FEVER_LV1_THRESHOLD) {
-                EventBroker.Publish(new FeverLevelChangedEvent { Level = 1 });
+                _currentLevel = 1;
             } else if (comboCount == FEVER_LV2_THRESHOLD) {
-                EventBroker.Publish(new FeverLevelChangedEvent { Level = 2 });
+                _currentLevel = 2;
             } else if (comboCount == FEVER_LV3_THRESHOLD) {
-                EventBroker.Publish(new FeverLevelChangedEvent { Level = 3 });
+                _currentLevel = 3;
+            }
+
+            if (_currentLevel != prevLevel) {
+                EventBroker.Publish(new FeverLevelChangedEvent { Level = _currentLevel });
+                PublishFeverChanged();
             }
         }
 
@@ -78,6 +89,7 @@ namespace Potop.Client.Gameplay {
 
             EventBroker.Publish(new FeverStateChangedEvent { IsFeverActive = true });
             EventBroker.Publish(new FeverProgressChangedEvent { Progress = 1f });
+            PublishFeverChanged();
         }
 
         private void DeactivateFever() {
@@ -85,6 +97,18 @@ namespace Potop.Client.Gameplay {
 
             EventBroker.Publish(new FeverStateChangedEvent { IsFeverActive = false });
             EventBroker.Publish(new FeverProgressChangedEvent { Progress = 0f });
+            PublishFeverChanged();
+        }
+
+        private void PublishFeverChanged() {
+            float progress = _isFeverActive 
+                ? Mathf.Clamp01(_feverTimer / _feverDuration) 
+                : Mathf.Clamp01((float)_currentGauge / _maxGauge);
+            EventBroker.Publish(new FeverChangedEvent {
+                Progress = progress,
+                IsFeverActive = _isFeverActive,
+                Level = _currentLevel
+            });
         }
     }
 }

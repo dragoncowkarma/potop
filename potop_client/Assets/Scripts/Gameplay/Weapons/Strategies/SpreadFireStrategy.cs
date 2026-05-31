@@ -7,13 +7,34 @@ namespace Potop.Client.Gameplay.Weapons.Strategies {
     /// </summary>
     public class SpreadFireStrategy : IFireStrategy {
         public void ExecuteFire(WeaponBase weapon) {
+            GameObject projectilePrefab = weapon.ProjectilePrefab;
+            Transform firePoint = weapon.FirePoint;
+
+            if (projectilePrefab == null || firePoint == null) {
+                return;
+            }
+
             float damage = weapon.GetCalculatedDamage();
             float speed = weapon.GetCalculatedProjectileSpeed();
 
-#if UNITY_EDITOR
-            Debug.Log($"[SpreadFireStrategy] 산탄 발사! 피해량: {damage}, 속도: {speed}");
-#endif
-            // TODO: 무기 파츠의 스프레드 감소율을 반영하여 다수의 투사체를 각기 다른 각도로 생성 및 초기화
+            int count = weapon.WeaponData != null ? weapon.WeaponData.SpreadProjectileCount : 3;
+            float spreadAngle = weapon.WeaponData != null ? weapon.WeaponData.SpreadAngle : 10f;
+
+            for (int i = 0; i < count; i++) {
+                float angle = (i - (count - 1) / 2f) * spreadAngle;
+                Quaternion projectileRotation = firePoint.rotation * Quaternion.Euler(0f, angle, 0f);
+
+                GameObject projectileObj = null;
+                if (Potop.Client.Core.Pooling.PoolManager.Instance != null) {
+                    projectileObj = Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(projectilePrefab, firePoint.position, projectileRotation);
+                } else {
+                    projectileObj = Object.Instantiate(projectilePrefab, firePoint.position, projectileRotation);
+                }
+
+                if (projectileObj != null && projectileObj.TryGetComponent<Projectile>(out var projectile)) {
+                    projectile.Initialize(speed, Mathf.RoundToInt(damage));
+                }
+            }
         }
     }
 }

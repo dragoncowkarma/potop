@@ -83,10 +83,12 @@ namespace Potop.Client.Gameplay.Flow {
 
                 if (_waveManager != null) {
                     _waveManager.StartOverclockMode(_overclockData.OverclockSpawnInterval);
+                    _waveManager.EnterContinuousMode();
                 }
             } else {
                 if (_waveManager != null) {
                     _waveManager.StartOverclockMode(1f);
+                    _waveManager.EnterContinuousMode();
                 }
             }
         }

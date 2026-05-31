@@ -23,5 +23,17 @@ namespace Potop.Client.Gameplay.Weapons {
         /// 발사할 투사체 프리팹입니다.
         /// </summary>
         public GameObject ProjectilePrefab => _projectilePrefab;
+
+        [Tooltip("산탄 분산 각도")]
+        public float SpreadAngle = 10f;
+
+        [Tooltip("산탄 투사체 개수")]
+        public int SpreadProjectileCount = 3;
+
+        [Tooltip("포물선 발사 시 위쪽으로 기울일 각도")]
+        public float LaunchAngle = 45f;
+
+        [Tooltip("범위 공격 반경 (AoE)")]
+        public float AoERadius = 3f;
     }
 }

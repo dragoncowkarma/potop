@@ -127,9 +127,40 @@ namespace Potop.Client.Core.Events {
     }
 
     /// <summary>
+    /// 보스가 스폰되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct BossSpawnedEvent {
+    }
+
+    /// <summary>
     /// 적 처치 시 Gem이 드롭될 때 발행되는 이벤트입니다.
     /// </summary>
     public struct GemDropEvent {
         public int Amount;
+    }
+
+    /// <summary>
+    /// 플레이어의 체력이 변경되었을 때 발생하는 UI용 이벤트입니다.
+    /// </summary>
+    public struct PlayerHealthChangedEvent {
+        public int CurrentHealth;
+        public int MaxHealth;
+    }
+
+    /// <summary>
+    /// 피버 상태와 게이지 진행도가 통합되어 변경되었을 때 발생하는 UI용 이벤트입니다.
+    /// </summary>
+    public struct FeverChangedEvent {
+        public float Progress;
+        public bool IsFeverActive;
+        public int Level;
+    }
+
+    /// <summary>
+    /// 전술 스킬의 쿨다운이 갱신(시작)되었을 때 발생하는 이벤트입니다.
+    /// </summary>
+    public struct SkillCooldownEvent {
+        public string SkillName;
+        public float CooldownDuration;
     }
 }
