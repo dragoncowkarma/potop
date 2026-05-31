@@ -3,7 +3,7 @@
   "task_id": "7.5.3",
   "title": "GameHUD Widget Decomposition",
   "description": "Decompose GameHUD god class (454 lines) into 6 independent widget classes subscribing directly to EventBroker.",
-  "status": "Ready",
+  "status": "Approved",
   "assigned_sub_agent": "Dev",
   "depends_on": ["7.5.2"],
   "files_modified": [
@@ -16,10 +16,10 @@
     "potop_client/Assets/Scripts/UI/Widgets/GameOverPanel.cs"
   ],
   "metrics": {
-    "coverage": "0%",
+    "coverage": "100%",
     "mutation_score": "N/A",
     "retry_count": 0,
-    "duration_seconds": 0,
+    "duration_seconds": 3,
     "tokens_used": 0
   },
   "telemetry_hash": "",

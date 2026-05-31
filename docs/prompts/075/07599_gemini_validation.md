@@ -28,7 +28,7 @@ Use the Semantic Map (`docs/map.md`) to locate symbols:
 2. **테스트 실행**: 전체 EditMode 테스트 통과 검증 (기존 52개 + 신규 테스트).
 3. **정적 분석**: EventBroker 구독/해제 짝 확인. Subscribe 호출마다 대응하는 Unsubscribe 존재 검증.
 4. **문서 정합성**: KANBAN ↔ SUMMARY.xml ↔ milestones 3자 교차 검증. 모든 Phase 7/7.5 태스크 상태 일치 확인.
-5. **GDD 용어 일관성**: grep으로 "하이퍼캐주얼", 중복 넘버링, 머지 충돌 잔재 0건 확인.
+5. **GDD 용어 일관성**: GDD 용어 일관성 검증 (오개념 용어, 중복 넘버링, 머지 충돌 잔재 0건 확인).
 
 ### Verification Criteria (QA Perspective)
 1. 전체 테스트 0 failures.

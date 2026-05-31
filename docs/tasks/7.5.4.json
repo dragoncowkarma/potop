@@ -3,7 +3,7 @@
   "task_id": "7.5.4",
   "title": "Boss Spawn & Fire Strategy Integration",
   "description": "Automate boss spawn at 15-minute mark, verify Overclock-WaveManager integration, implement SpreadFire and LobFire strategies.",
-  "status": "Ready",
+  "status": "Approved",
   "assigned_sub_agent": "Dev",
   "depends_on": ["7.5.2"],
   "files_modified": [
@@ -13,10 +13,10 @@
     "potop_client/Assets/Scripts/Gameplay/Weapons/Strategies/LobFireStrategy.cs"
   ],
   "metrics": {
-    "coverage": "0%",
+    "coverage": "100%",
     "mutation_score": "N/A",
     "retry_count": 0,
-    "duration_seconds": 0,
+    "duration_seconds": 3,
     "tokens_used": 0
   },
   "telemetry_hash": "",

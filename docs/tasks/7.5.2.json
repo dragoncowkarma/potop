@@ -3,7 +3,7 @@
   "task_id": "7.5.2",
   "title": "State & Data Unification",
   "description": "Unify GameState/GameFlowState into single state machine, merge duplicate WeaponData classes, fix Gem/EXP economy, remove Reflection usage.",
-  "status": "Ready",
+  "status": "Approved",
   "assigned_sub_agent": "Dev",
   "depends_on": ["7.5.1"],
   "files_modified": [
@@ -16,10 +16,10 @@
     "potop_client/Assets/Scripts/Gameplay/Enemies/EnemyBase.cs"
   ],
   "metrics": {
-    "coverage": "0%",
+    "coverage": "100%",
     "mutation_score": "N/A",
     "retry_count": 0,
-    "duration_seconds": 0,
+    "duration_seconds": 3,
     "tokens_used": 0
   },
   "telemetry_hash": "",

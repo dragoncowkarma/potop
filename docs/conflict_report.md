@@ -28,7 +28,7 @@ This document records discrepancies between the project's Game Design Document (
 | **Data Management** | `ScriptableObject` driven. | 15+ SO 타입 구현 (WeaponData, EnemyData 등). | ✅ **Resolved** (Phase 2~4) |
 | **Object Pooling** | `UnityEngine.Pool` for projectiles/enemies. | PoolManager 구현 완료. | ✅ **Resolved** (Phase 2) |
 | **Event System** | Centralized Event Broker. | EventBroker 정적 클래스 + 12개 이벤트 타입. | ✅ **Resolved** (Phase 2) |
-| **Assembly Definitions** | 레이어별 컴파일 격리. | 미구현 (단일 Assembly-CSharp). | ⚠️ **Open** → Phase 7.5.1에서 해결 예정 |
+| **Assembly Definitions** | 레이어별 컴파일 격리. | 5개 asmdef 파일 설정 완료 (Core, Data, Gameplay, UI, Tests.Editor). | ✅ **Resolved** (Phase 7.5) |
 
 ## 4. Progression & Meta
 
