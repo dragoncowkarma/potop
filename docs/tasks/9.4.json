@@ -2,10 +2,12 @@
   "id": "9.4",
   "task_id": "9.4",
   "title": "Mobile Input Optimization",
-  "description": "Virtual joysticks, auto-fire logic, and target auto-lock curves.",
+  "description": "Mobile input provider with virtual joystick, auto-fire, 180deg/sec rotation cap, and keyboard fallback.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "9.3"
+  ],
   "files_modified": [
     "potop_client/Assets/Scripts/Input/MobileInputManager.cs",
     "potop_client/Assets/Scripts/Input/AutoFireController.cs"

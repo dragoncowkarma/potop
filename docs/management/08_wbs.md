@@ -88,7 +88,7 @@
 |:---|:---|:---|:---|:---|:---|
 | 7.1 | [07001] 보스 비주얼 | ① `TitanCore.prefab` 계층 구조 ② 페이즈별 머티리얼 전환 (Blue→Red) ③ 보스 Animator 구성 | **A** | → Phase 6 완료 | 프리팹, 머티리얼, Animator |
 | 7.2 | [07002] 보스 AI | ① `TitanCoreAI.cs` — 3페이즈 FSM ② Phase 1: 회전 쉴드 패턴 ③ Phase 2: 타겟 레이저 ④ Phase 3: 광폭화 | **J** | → 7.1 | `TitanCoreAI.cs` |
-| 7.3 | [07003] 오버클럭 모드 | ① `OverclockMode.cs` — 30초마다 1.5배 스케일링 ② 점수 배율 가산 (+0.1x/분) ③ WaveManager 무한 모드 플래그 | **J** | → 7.2 | `OverclockMode.cs` |
+| 7.3 | [07003] 오버클럭 모드 | ① `OverclockMode.cs` — 30초마다 1.5배 스케일링 ② 점수 배율 가산 (+0.2x/30초) ③ WaveManager 무한 모드 플래그 | **J** | → 7.2 | `OverclockMode.cs` |
 | 7.4 | [07004] 게임 플로우 통합 | ① `GameFlowController.cs` — 15분 타이머→보스 스폰→오버클럭 진입 ② 게임오버 결산 화면 ③ 로비 복귀 루프 | **J** + **A** | → 7.3 | `GameFlowController.cs`, 결산 UI |
 | 7.5 | [07005] 튜토리얼 프로토타입 | ① 핵심 조작(Look/Shoot) 가이드 ② 업그레이드 흐름 기초 UI ③ 튜토리얼 전용 소규모 웨이브 구성 | **J** + **A** | → 7.4 | `TutorialSystem.cs`, 튜토리얼 씬 |
 | 7.6 | [07099] VS 통합 검증 | ① 15분 풀 플레이 테스트 ② 보스전 3페이즈 전환 검증 ③ 오버클럭 스케일링 안정성 ④ 튜토리얼 흐름 확인 | **G** | → 7.5 | **Vertical Slice 검증 보고서** |
@@ -99,11 +99,11 @@
 
 | WBS ID | 작업 | 세부 분해 | 담당 | 의존성 | 산출물 |
 |:---|:---|:---|:---|:---|:---|
-| 8.1 | [08001] 컴뱃 쥬스 최종 정비 | ① 히트스탑 구현 및 TimeScale 보정 ② Cinemachine Multi-Channel Perlin 카메라 흔들림 연동 | **A** | → Phase 7 완료 | `CameraShakeController.cs`, `TimeController.cs` |
-| 8.2 | [08002] 사운드 시스템 | ① SoundManager 싱글톤 및 AudioSource 오브젝트 풀링 (AudioPool) ② ScriptableObject 오디오 데이터 연결 및 EventBroker 수신 | **J** | → 8.1 | `SoundManager.cs`, `AudioPool.cs`, `AudioData.asset` |
-| 8.3 | [08003] VFX 최종 정비 | ① Particle System 풀링 및 파클 에미션 완벽 리셋 ② 보스 페이즈 전환 및 폭발 연출 | **A** | → 8.2 | `VFXTrigger.cs`, PoolManager 통합 |
-| 8.4 | [08004] 밸런스 미세 조정 | ① Excel/CSV 데이터 임포터 설계 ② 터렛/적 밸런스 가중치 보정 및 시뮬레이션 | **J** | → 8.3 | CSV 데이터 시트, 밸런스 SO 데이터 |
-| 8.6 | [08099] Phase 8 검증 | ① GC Alloc 0건 확인 ② 타임스케일 및 사운드 스레드 누수 분석 | **G** | → 8.4 | 폴리싱 검증 보고서 |
+| 8.1 | [08001] 컴뱃 쥬스 최종 정비 | ① 중앙 `TimeController`로 히트스탑/슬로우모션 중첩 제어 ② Cinemachine 흔들림 프레임 독립화 ③ 위협 인디케이터 밴드 연결 | **A** | → Phase 7.5 완료 | `CameraShakeController.cs`, `TimeController.cs`, HUD 위젯 |
+| 8.2 | [08002] 사운드 시스템 | ① SoundManager + AudioPool 프리워밍 ② AudioData SO, Audio Mixer 그룹, 동시 재생 수 제한 ③ EventBroker 구독 정리 | **J** | → 8.1 | `SoundManager.cs`, `AudioPool.cs`, `AudioData.asset` |
+| 8.3 | [08003] VFX 최종 정비 | ① Particle/VFX 풀링 및 완전 리셋 ② 보스 페이즈/오버클럭 연출 ③ 모바일 품질 폴백 | **A** | → 8.2 | `VFXTrigger.cs`, PoolManager 통합, 품질 티어 |
+| 8.4 | [08004] 밸런스 미세 조정 | ① CSV/SO 에디터 임포트 검증 ② 4종 터렛 × 변이 × 웨이브/보스/오버클럭 시뮬레이션 ③ 점수/에너지 경제 보정 | **J** | → 8.3 | CSV 데이터 시트, 밸런스 SO 데이터, 시뮬레이션 리포트 |
+| 8.6 | [08099] Phase 8 검증 | ① GC Alloc 0B 핫패스 확인 ② TimeScale 복구/구독 중복/콘솔 에러 0건 ③ 밸런스 리포트 존재 검증 | **G** | → 8.1~8.4 | 폴리싱 검증 보고서 |
 
 ---
 
@@ -111,16 +111,16 @@
 
 | WBS ID | 작업 | 세부 분해 | 담당 | 의존성 | 산출물 |
 |:---|:---|:---|:---|:---|:---|
-| 9.1 | [09001] 로비 UI 완성 | ① 로비 화면 UI Toolkit UXML/USS 레이아웃 고도화 ② USS 스타일 시트 적용 및 EventBroker 연동 | **A** | → Phase 8 완료 | `LobbyScreen.uxml/uss`, `LobbyController.cs` |
-| 9.2 | [09002] 업적 시스템 | ① IAchievementSystem 추상화 및 AchievementManager 구현 ② 업적 10종 이벤트 연동 | **J** | → 9.1 | `IAchievementSystem.cs`, `AchievementManager.cs` |
-| 9.3 | [09003] 로컬 세이브 시스템 | ① ISaveSystem 추상화 및 LocalJSONSaveSystem 구현 ② JSON 직렬화 및 데이터 보호/암호화 적용 | **J** | → 9.2 | `ISaveSystem.cs`, `LocalJSONSaveSystem.cs` |
-| 9.4 | [09004] 모바일 입력 최적화 | ① 가상 터치 조이스틱 조작 구현 ② 자동 조준 보정 및 범위 내 오토 사격 구현 | **A** | → 9.3 | `MobileInputManager.cs`, `AutoFireController.cs` |
-| 9.5 | [09005] 모바일 광고 연동 | ① IAdProvider 추상화 및 AdManager 구현 ② 보상형/전면 광고 트리거 및 UI 연동 | **J** + **A** | → 9.4 | `IAdProvider.cs`, `AdManager.cs` |
-| 9.6 | [09006] 모바일 최적화 및 LOD | ① 드로우콜/배칭 최적화 ② 자동 LOD Group 할당 에디터 유틸리티 스크립트 작성 | **A** | → 9.5 | `LODGroupAssigner.cs` |
-| 9.7 | [09007] 튜토리얼 시스템 | ① 단계별 튜토리얼 흐름 제어 FSM 구현 ② 튜토리얼 하이라이트 UI 연동 | **J** + **A** | → 9.6 | `TutorialFlowController.cs` |
-| 9.8 | [09008] 다국어 지원 | ① KO/EN/JP 언어 리소스 및 딕셔너리 구축 ② UI Toolkit 다국어 바인딩 | **J** | → 9.7 | `LocalizationService.cs` |
-| 9.9 | [09009] 스토어 등록 준비 | ① AOT 빌드 오류 검증 ② 디버그 로그 제거 스크립트 ③ 빌드 자동화 스크립트 작성 | **J** | → 9.8 | `StoreSubmissionPackager.cs` |
-| 9.99 | [09099] Phase 9 모바일 검증 | ① 배터리/전류 및 발열 프로파일링 ② 프레임 드랍 및 UI 앵커 스케일링 검증 | **G** | → 9.9 | 모바일 출시 검증 보고서 |
+| 9.1 | [09001] 로비 UI 완성 | ① 터렛/강화/설정/업적 진입 UI ② Safe Area/다중 비율 대응 ③ EventBroker 연동 및 저장 상태 핸드오프 | **A** | → Phase 8 완료 | `LobbyScreen.uxml/uss`, `LobbyController.cs` |
+| 9.2 | [09002] 업적 시스템 | ① IAchievementSystem 추상화 및 AchievementManager 구현 ② 업적 10종 이벤트 연동 ③ 저장 가능한 스냅샷/보상 1회 지급 | **J** | → 9.1 | `IAchievementSystem.cs`, `AchievementManager.cs` |
+| 9.3 | [09003] 로컬 세이브 시스템 | ① ISaveSystem + LocalJSONSaveSystem ② 버전/원자적 쓰기/백업/마이그레이션 ③ 업적/설정/튜토리얼 플래그 저장 | **J** | → 9.2 | `ISaveSystem.cs`, `LocalJSONSaveSystem.cs` |
+| 9.4 | [09004] 모바일 입력 최적화 | ① 가상 조이스틱/자이로/자동사격 ② 180°/sec 회전 상한 및 키보드 폴백 ③ 입력 감도/접근성 옵션 | **A** | → 9.3 | `MobileInputManager.cs`, `AutoFireController.cs` |
+| 9.5 | [09005] 모바일 광고 연동 | ① IAdProvider + Fake/Null Provider ② 보상형 부활 1회/전면 광고 3~5판 ③ no-ads/동의/실패 경로 | **J** + **A** | → 9.4 | `IAdProvider.cs`, `AdManager.cs` |
+| 9.6 | [09006] 모바일 최적화 및 LOD | ① LOD 자동 할당 dry-run ② 드로우콜/배칭/품질 티어 ③ 발열 안정 우선 기본값 | **A** | → 9.5 | `LODGroupAssigner.cs`, 품질 설정 |
+| 9.7 | [09007] 튜토리얼 시스템 | ① Phase 7 프로토타입 하드닝 ② 단계별 FSM/하이라이트/스킵 ③ 저장/현지화/모바일 입력 연동 | **J** + **A** | → 9.6 | `TutorialFlowController.cs` |
+| 9.8 | [09008] 다국어 지원 | ① KO/EN/JP 리소스 구축 ② UI Toolkit 키 바인딩/런타임 전환 ③ 하드코딩 문자열 감사 | **J** | → 9.7 | `LocalizationService.cs`, locale data |
+| 9.9 | [09009] 스토어 등록 준비 | ① AOT/IL2CPP/릴리즈 설정 검증 ② 디버그/테스트 Provider 제거 ③ 광고/개인정보/스크린샷 체크리스트 생성 | **J** | → 9.8 | `StoreSubmissionPackager.cs`, 제출 체크리스트 |
+| 9.99 | [09099] Phase 9 모바일 검증 | ① First Launch→Tutorial→Lobby→Run→Revive/Settlement→Lobby 루프 ② 저장/광고/현지화/입력/성능/빌드 게이트 검증 | **G** | → 9.1~9.9 | 모바일 출시 검증 보고서 |
 
 ---
 
@@ -142,4 +142,3 @@ Phase 3.5 → Phase 4 → Phase 4.5 → Phase 5 → Phase 6 → Phase 7(VS) → 
 ```
 
 **총 예상 기간 (모바일 출시까지):** 15~18주 (약 4개월)
-

@@ -2,10 +2,12 @@
   "id": "8.4",
   "task_id": "8.4",
   "title": "Balance Calibration",
-  "description": "SO/CSV based damage balancing, weapon synergy scaling adjustments, and test metrics.",
+  "description": "Editor-time CSV/SO balance import, turret/mutation simulation matrix, and overclock economy validation.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "8.3"
+  ],
   "files_modified": [
     "potop_client/Assets/Data/Balance/WeaponBalanceData.csv",
     "potop_client/Assets/Data/Balance/EnemyBalanceData.csv"

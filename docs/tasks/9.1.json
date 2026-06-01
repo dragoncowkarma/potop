@@ -2,10 +2,12 @@
   "id": "9.1",
   "task_id": "9.1",
   "title": "Lobby UI Completion",
-  "description": "Upgrade shop cards, wallet UI Toolkit layout, and USS hierarchy decoupling.",
+  "description": "Launch-ready lobby UI with turret/setup/settings flow, Safe Area support, and save-state handoff.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "8.6"
+  ],
   "files_modified": [
     "potop_client/Assets/UI/Lobby/LobbyScreen.uxml",
     "potop_client/Assets/UI/Lobby/LobbyScreen.uss",

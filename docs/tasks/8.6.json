@@ -2,10 +2,15 @@
   "id": "8.6",
   "task_id": "8.6",
   "title": "Phase 8 Verification",
-  "description": "Audit performance metrics, GC spikes from audio/VFX, and combat feel tests.",
+  "description": "Audit Phase 8 polish gates: GC 0B hot paths, TimeScale recovery, pooling evidence, and balance report.",
   "status": "Ready",
   "assigned_sub_agent": "QA",
-  "depends_on": [],
+  "depends_on": [
+    "8.1",
+    "8.2",
+    "8.3",
+    "8.4"
+  ],
   "files_modified": [
     "potop_client/Assets/Tests/Integration/PolishValidationTests.cs"
   ],

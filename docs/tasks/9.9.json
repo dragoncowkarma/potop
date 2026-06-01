@@ -2,10 +2,12 @@
   "id": "9.9",
   "task_id": "9.9",
   "title": "Store Submission Packager",
-  "description": "AOT build validation, stripping debug logs, and Android app bundle creation.",
+  "description": "Store submission packager with AOT/IL2CPP validation, release stripping, checklist generation, and build logging.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "9.8"
+  ],
   "files_modified": [
     "potop_client/Assets/Editor/Build/StoreSubmissionPackager.cs"
   ],

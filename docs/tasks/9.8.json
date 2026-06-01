@@ -2,10 +2,12 @@
   "id": "9.8",
   "task_id": "9.8",
   "title": "Localization Support",
-  "description": "Central localization service (KO, EN, JP) for all UI Toolkit elements.",
+  "description": "Central localization service for KO/EN/JP with runtime switching, fallback, UI binding, and coverage audit.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "9.7"
+  ],
   "files_modified": [
     "potop_client/Assets/Scripts/Core/Localization/LocalizationService.cs"
   ],

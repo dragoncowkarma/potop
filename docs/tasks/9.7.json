@@ -2,10 +2,12 @@
   "id": "9.7",
   "task_id": "9.7",
   "title": "Tutorial System Flow",
-  "description": "Decoupled tutorial step triggers, target highlight overlays, and step completion verification.",
+  "description": "Phase 7 tutorial hardening with step FSM, skip/replay, save flag, localization keys, and mobile input coverage.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "9.6"
+  ],
   "files_modified": [
     "potop_client/Assets/Scripts/Gameplay/Tutorial/TutorialFlowController.cs"
   ],

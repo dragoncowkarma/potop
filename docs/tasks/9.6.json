@@ -2,10 +2,12 @@
   "id": "9.6",
   "task_id": "9.6",
   "title": "Mobile Rendering & LOD",
-  "description": "Vertex count audit, LOD group assignment for meshes, and mobile-specific shader adjustments.",
+  "description": "Mobile rendering optimization with LOD dry-run, quality tiers, batching/instancing, and draw-call budget checks.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "9.5"
+  ],
   "files_modified": [
     "potop_client/Assets/Scripts/Editor/LODGroupAssigner.cs"
   ],

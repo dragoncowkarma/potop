@@ -2,10 +2,12 @@
   "id": "9.2",
   "task_id": "9.2",
   "title": "Achievement System",
-  "description": "Decoupled logic for achievement triggers (AC_001 ~ AC_010) utilizing abstract interface.",
+  "description": "Decoupled achievement triggers (AC_001 ~ AC_010), one-time rewards, and serializable snapshot contract.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "9.1"
+  ],
   "files_modified": [
     "potop_client/Assets/Scripts/Core/Achievements/IAchievementSystem.cs",
     "potop_client/Assets/Scripts/Core/Achievements/AchievementManager.cs"

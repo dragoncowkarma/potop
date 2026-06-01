@@ -2,10 +2,12 @@
   "id": "9.5",
   "task_id": "9.5",
   "title": "Mobile Ads Integration",
-  "description": "Rewarded ads for revive (1x) and interstitial ads tied to GameFlowController via abstract interface.",
+  "description": "IAdProvider-backed rewarded revive/interstitial flow with no-ads, consent, failure, and idempotent callback guards.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "9.4"
+  ],
   "files_modified": [
     "potop_client/Assets/Scripts/Core/Ads/IAdProvider.cs",
     "potop_client/Assets/Scripts/Core/Ads/AdManager.cs"

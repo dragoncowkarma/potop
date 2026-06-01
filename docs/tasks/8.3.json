@@ -2,10 +2,12 @@
   "id": "8.3",
   "task_id": "8.3",
   "title": "VFX Final Polish",
-  "description": "Polishing boss phase-change visual cues, explosions, and recycling particle systems in PoolManager.",
+  "description": "Pooled VFX polish with complete particle reset, boss/overclock readability, and mobile quality fallback.",
   "status": "Ready",
   "assigned_sub_agent": "Dev",
-  "depends_on": [],
+  "depends_on": [
+    "8.2"
+  ],
   "files_modified": [
     "potop_client/Assets/Scripts/VFX/VFXTrigger.cs",
     "potop_client/Assets/Scripts/VFX/ExplosionEffect.cs"

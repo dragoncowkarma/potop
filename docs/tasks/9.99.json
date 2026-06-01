@@ -2,10 +2,20 @@
   "id": "9.99",
   "task_id": "9.99",
   "title": "Phase 9 Mobile Verification",
-  "description": "Profiling memory, battery, thermal throttle metrics, and final mobile layout checks.",
+  "description": "Full mobile launch validation across first-run loop, save, ads, localization, input, performance, and packaging gates.",
   "status": "Ready",
   "assigned_sub_agent": "QA",
-  "depends_on": [],
+  "depends_on": [
+    "9.1",
+    "9.2",
+    "9.3",
+    "9.4",
+    "9.5",
+    "9.6",
+    "9.7",
+    "9.8",
+    "9.9"
+  ],
   "files_modified": [
     "potop_client/Assets/Tests/Performance/MobilePerformanceTests.cs"
   ],

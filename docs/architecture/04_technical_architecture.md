@@ -47,6 +47,14 @@ POTOP은 대규모 물량(적, 투사체)을 효율적으로 처리하기 위해
   * `TurretData`: 스탯 및 프리팹 정보.
   * `EnemyData`: AI 스탯 및 드랍 테이블.
   * `WaveData`: 타임라인 및 스폰 구성.
+* **Phase 8 밸런스:** CSV/시트 데이터는 에디터 임포트 단계에서 검증 후 ScriptableObject에 반영합니다. 런타임 전투 중 문자열 파싱은 금지합니다.
+
+#### **5. Phase 8+ 출시 준비 시스템 (Launch-Ready Systems)**
+* **Audio:** `SoundManager`는 Audio Mixer 그룹과 풀링된 `AudioSource`를 사용합니다. 전투 중 빈번한 SFX 재생에서 런타임 생성과 GC 할당을 허용하지 않습니다.
+* **VFX:** 전투/VFX는 `PoolManager`를 통해 재사용하며, 반환 시 파티클·트레일·서브 이미터 상태를 완전히 초기화합니다.
+* **Save:** `ISaveSystem`은 버전이 있는 로컬 JSON 저장, 원자적 쓰기, 백업 복구, 마이그레이션 훅을 제공합니다.
+* **Ads:** 광고 SDK는 `IAdProvider` 뒤에 숨기며, 게임플레이와 UI는 구체 SDK 타입을 참조하지 않습니다.
+* **Localization:** UI 텍스트는 키 기반으로 바인딩하고 KO/EN/JP 누락 키는 안전하게 폴백합니다.
 
 ---
 
