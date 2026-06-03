@@ -20,6 +20,10 @@ namespace Potop.Client.UI
         private VisualElement _cardContainer;
         private MutationSynergyManager _synergyManager;
 
+        private Label _timerLabel;
+        private Coroutine _timerCoroutine;
+        private List<UpgradeOption> _currentOptions;
+
         private void Start()
         {
             // 씬 내의 MutationSynergyManager를 찾아 연동합니다.
@@ -57,6 +61,7 @@ namespace Potop.Client.UI
 
         private void ShowUpgradePanel(List<UpgradeOption> options)
         {
+            _currentOptions = options;
             _cardContainer.Clear();
 
             for (int i = 0; i < options.Count; i++)
@@ -69,6 +74,12 @@ namespace Potop.Client.UI
             _panel.style.display = DisplayStyle.Flex;
             // 트랜지션을 위한 한 프레임 대기 대신 클래스 추가
             _panel.RegisterCallback<GeometryChangedEvent>(OnPanelLayoutChanged);
+
+            if (_timerCoroutine != null)
+            {
+                StopCoroutine(_timerCoroutine);
+            }
+            _timerCoroutine = StartCoroutine(TimerCountdownRoutine());
         }
 
         private void OnPanelLayoutChanged(GeometryChangedEvent evt)
@@ -115,6 +126,16 @@ namespace Potop.Client.UI
 
         private void OnCardClicked(UpgradeOption option)
         {
+            if (_timerCoroutine != null)
+            {
+                StopCoroutine(_timerCoroutine);
+                _timerCoroutine = null;
+            }
+            if (_timerLabel != null)
+            {
+                _timerLabel.style.display = DisplayStyle.None;
+            }
+
             // 선택된 카드의 모디파이어를 MutationSynergyManager에 추가합니다.
             if (_synergyManager != null)
             {
@@ -133,6 +154,16 @@ namespace Potop.Client.UI
 
         private void HideUpgradePanel()
         {
+            if (_timerCoroutine != null)
+            {
+                StopCoroutine(_timerCoroutine);
+                _timerCoroutine = null;
+            }
+            if (_timerLabel != null)
+            {
+                _timerLabel.style.display = DisplayStyle.None;
+            }
+
             _panel.RemoveFromClassList("visible");
             
             // 트랜지션 완료 후 display none (0.3s)
@@ -143,6 +174,38 @@ namespace Potop.Client.UI
         {
             yield return new WaitForSecondsRealtime(delay);
             _panel.style.display = DisplayStyle.None;
+        }
+
+        private System.Collections.IEnumerator TimerCountdownRoutine()
+        {
+            float remaining = 5f;
+            if (_timerLabel == null)
+            {
+                _timerLabel = new Label();
+                _timerLabel.name = "timer-label";
+                _timerLabel.style.fontSize = 24;
+                _timerLabel.style.color = new Color(1f, 0.7f, 0f);
+                _timerLabel.style.marginBottom = 20;
+                _timerLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+                _panel.Insert(1, _timerLabel);
+            }
+
+            _timerLabel.style.display = DisplayStyle.Flex;
+
+            while (remaining > 0f)
+            {
+                _timerLabel.text = $"Auto-selecting in {remaining:F1}s...";
+                yield return null;
+                remaining -= Time.unscaledDeltaTime;
+            }
+
+            _timerLabel.text = "Auto-selecting...";
+
+            if (_currentOptions != null && _currentOptions.Count > 0)
+            {
+                int randomIndex = UnityEngine.Random.Range(0, _currentOptions.Count);
+                OnCardClicked(_currentOptions[randomIndex]);
+            }
         }
 
         /// <summary>

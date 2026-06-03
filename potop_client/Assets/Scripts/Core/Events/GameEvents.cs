@@ -163,4 +163,34 @@ namespace Potop.Client.Core.Events {
         public string SkillName;
         public float CooldownDuration;
     }
+
+    /// <summary>
+    /// 플레이어가 젬을 수집했을 때 발생하는 이벤트입니다. (GemDropEvent와 구분)
+    /// </summary>
+    public struct GemPickedUpEvent {
+        public int Amount;
+    }
+
+    /// <summary>
+    /// SoundManager가 BGM 상태를 변경했을 때 발행하는 이벤트입니다.
+    /// 적응형 음악 소비자(위젯, 비주얼 이펙트 등)가 구독합니다.
+    /// </summary>
+    public struct BgmStateChangedEvent {
+        public BgmState State;
+    }
+
+    /// <summary>
+    /// BGM 상태머신 열거형입니다. SoundManager.SetMusicState()로 전환되며
+    /// 적응형 음악 훅 제공의 목적으로 사용됩니다.
+    /// </summary>
+    public enum BgmState {
+        Normal,
+        WaveIntensified,
+        FeverActive,
+        FeverMax,
+        BossIntro,
+        BossActive,
+        BossDefeated,
+        Overclock
+    }
 }

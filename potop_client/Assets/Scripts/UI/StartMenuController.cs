@@ -27,7 +27,7 @@ namespace Potop.Client.UI {
         private void Start() {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Time.timeScale = NORMAL_TIME_SCALE;
+            Potop.Client.Core.TimeController.ResetTimeEffects();
 
             if (_startButton != null) {
                 _startButton.onClick.AddListener(OnStartClicked);

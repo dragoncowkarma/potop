@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Potop.Client.Core;
 using Potop.Client.Data;
 using UnityEngine;
@@ -28,6 +29,8 @@ namespace Potop.Client.Gameplay {
         public static readonly IEnemyState ChaseState = new EnemyChaseState();
         public static readonly IEnemyState AttackState = new EnemyAttackState();
         public static readonly IEnemyState DeathState = new EnemyDeathState();
+
+        public static readonly List<EnemyBase> ActiveEnemies = new List<EnemyBase>();
 
         private int _rotationFrameOffset;
         private const int ROTATION_FRAME_COUNT = 3;
@@ -95,6 +98,8 @@ namespace Potop.Client.Gameplay {
         }
 
         protected virtual void OnEnable() {
+            ActiveEnemies.Add(this);
+
             if (StateMachine == null) {
                 StateMachine = new EnemyStateMachine();
             }
@@ -121,6 +126,8 @@ namespace Potop.Client.Gameplay {
         }
 
         protected virtual void OnDisable() {
+            ActiveEnemies.Remove(this);
+
             StateMachine?.ChangeState(null, this);
 
             if (_healthComponent != null) {

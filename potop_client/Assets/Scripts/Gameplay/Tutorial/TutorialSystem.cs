@@ -50,7 +50,7 @@ namespace Potop.Client.Gameplay.Tutorial {
 
         private void OnDisable() {
             EventBroker.Unsubscribe<EnemyDiedEvent>(OnEnemyDied);
-            Time.timeScale = 1.0f;
+            TimeController.ResetTimeEffects();
         }
 
         private void Start() {
@@ -101,14 +101,14 @@ namespace Potop.Client.Gameplay.Tutorial {
 
             switch (_currentStep) {
                 case TutorialStep.Look:
-                    Time.timeScale = 0f;
+                    TimeController.RequestPause();
                     if (_attackAction != null && _attackAction.action != null) {
                         _attackAction.action.Disable();
                     }
                     break;
 
                 case TutorialStep.Shoot:
-                    Time.timeScale = 1f;
+                    TimeController.RemovePause();
                     if (_attackAction != null && _attackAction.action != null) {
                         _attackAction.action.Enable();
                     }
@@ -116,7 +116,7 @@ namespace Potop.Client.Gameplay.Tutorial {
                     break;
 
                 case TutorialStep.Complete:
-                    Time.timeScale = 1f;
+                    TimeController.RemovePause();
                     if (_spawnedEnemy != null) {
                         var enemyBase = _spawnedEnemy.GetComponent<EnemyBase>();
                         if (enemyBase != null) {

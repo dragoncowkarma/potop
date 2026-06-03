@@ -33,6 +33,14 @@ namespace Potop.Client.Gameplay.Progression
     }
 
     /// <summary>
+    /// Lv.1~5 및 비선택 레벨 패시브 자동 적용 시 발생하는 이벤트입니다.
+    /// </summary>
+    public struct PassiveUpgradeAppliedEvent
+    {
+        public string UpgradeName;
+    }
+
+    /// <summary>
     /// 플레이어의 경험치 누적 및 레벨업 판정을 관리하는 매니저입니다.
     /// </summary>
     [RequireComponent(typeof(UpgradePool))]
@@ -49,8 +57,6 @@ namespace Potop.Client.Gameplay.Progression
         private int _currentLevel = 1;
         private int _currentXp = 0;
 
-        // Time.timeScale 원본 복원을 위한 저장 변수
-        private float _originalTimeScale = 1f;
         private int _pendingLevelUpsCount = 0;
 
         public int CurrentLevel => _currentLevel;
@@ -82,7 +88,7 @@ namespace Potop.Client.Gameplay.Progression
             if (_pendingLevelUpsCount > 0)
             {
                 _pendingLevelUpsCount = 0;
-                Time.timeScale = _originalTimeScale;
+                Potop.Client.Core.TimeController.ClearSlowMotion();
             }
         }
 
@@ -128,27 +134,69 @@ namespace Potop.Client.Gameplay.Progression
         /// </summary>
         private void TriggerLevelUp()
         {
-            if (_pendingLevelUpsCount == 0)
+            bool isSelection = _currentLevel >= 6 && (_currentLevel - 6) % 3 == 0;
+
+            if (isSelection)
             {
-                _originalTimeScale = Time.timeScale;
-                Time.timeScale = 0f;
-            }
+                if (_pendingLevelUpsCount == 0)
+                {
+                    Potop.Client.Core.TimeController.TriggerSlowMotion(5f, 0.1f);
+                }
 
-            _pendingLevelUpsCount++;
+                _pendingLevelUpsCount++;
 
-            List<UpgradeOption> options = _upgradePool.GetRandomUpgrades(_optionsCount);
+                List<UpgradeOption> options = _upgradePool.GetRandomUpgrades(_optionsCount);
 
-            LevelUpEvent levelUpEvent = new LevelUpEvent
-            {
-                NewLevel = _currentLevel,
-                UpgradeOptions = options
-            };
+                LevelUpEvent levelUpEvent = new LevelUpEvent
+                {
+                    NewLevel = _currentLevel,
+                    UpgradeOptions = options
+                };
 
-            EventBroker.Publish(levelUpEvent);
+                EventBroker.Publish(levelUpEvent);
 
 #if UNITY_EDITOR
-            Debug.Log($"[LevelingManager] Level Up! Current Level: {_currentLevel}, Pending Options: {options.Count}");
+                Debug.Log($"[LevelingManager] Level Up! Current Level: {_currentLevel}, Pending Options: {options.Count}");
 #endif
+            }
+            else
+            {
+                // Auto-apply passive upgrade for non-selection levels
+                List<UpgradeOption> options = _upgradePool.GetRandomUpgrades(1);
+                if (options != null && options.Count > 0)
+                {
+                    UpgradeOption option = options[0];
+                    var synergyManager = FindFirstObjectByType<MutationSynergyManager>();
+                    if (synergyManager != null)
+                    {
+                        ModifierType modifier = GetModifierFromOption(option);
+                        if (modifier != ModifierType.None)
+                        {
+                            synergyManager.AddModifier(modifier);
+                        }
+                    }
+
+                    EventBroker.Publish(new PassiveUpgradeAppliedEvent { UpgradeName = option.DisplayName });
+                }
+            }
+        }
+
+        private ModifierType GetModifierFromOption(UpgradeOption option)
+        {
+            if (option.AssociatedModifier != ModifierType.None)
+            {
+                return option.AssociatedModifier;
+            }
+
+            string id = option.UpgradeId.ToLower();
+            if (id.Contains("pierce")) return ModifierType.Pierce;
+            if (id.Contains("explosion") || id.Contains("explode")) return ModifierType.Explosion;
+            if (id.Contains("multi") || id.Contains("shot")) return ModifierType.MultiShot;
+            if (id.Contains("bounce")) return ModifierType.Bounce;
+            if (id.Contains("scale") || id.Contains("size")) return ModifierType.Scale;
+            if (id.Contains("knockback") || id.Contains("push")) return ModifierType.Knockback;
+
+            return ModifierType.None;
         }
 
         /// <summary>
@@ -163,7 +211,7 @@ namespace Potop.Client.Gameplay.Progression
 
                 if (_pendingLevelUpsCount == 0)
                 {
-                    Time.timeScale = _originalTimeScale;
+                    Potop.Client.Core.TimeController.ClearSlowMotion();
                 }
             }
         }

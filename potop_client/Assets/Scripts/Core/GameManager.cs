@@ -107,7 +107,7 @@ namespace Potop.Client.Core {
             Score = 0;
             _isGameOver = false;
             ChangeState(GameFlowState.InGame);
-            Time.timeScale = NORMAL_TIME_SCALE;
+            TimeController.ResetTimeEffects();
 
             if (PlayerHealthController.Instance != null) {
                 PlayerHealthController.Instance.InitializeHealth();
@@ -159,7 +159,7 @@ namespace Potop.Client.Core {
             if (_isGameOver) return;
             _isGameOver = true;
             ChangeState(GameFlowState.Result);
-            Time.timeScale = GAME_OVER_TIME_SCALE;
+            TimeController.SetBaseTimeScale(GAME_OVER_TIME_SCALE);
 
             OnGameOver?.Invoke();
         }
@@ -168,7 +168,7 @@ namespace Potop.Client.Core {
         /// 현재 씬을 다시 로드하여 게임을 재시작합니다.
         /// </summary>
         public void RestartGame() {
-            Time.timeScale = NORMAL_TIME_SCALE;
+            TimeController.ResetTimeEffects();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -176,7 +176,7 @@ namespace Potop.Client.Core {
         /// 시작 메뉴 씬으로 이동합니다.
         /// </summary>
         public void GoToMainMenu() {
-            Time.timeScale = NORMAL_TIME_SCALE;
+            TimeController.ResetTimeEffects();
             SceneManager.LoadScene(START_SCENE_NAME);
         }
 

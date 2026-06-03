@@ -26,11 +26,25 @@
 * **효과음(SFX) 제작:**
   * **사운드 소스:** 합성(Synthesizer) 기반의 기계음과 타격음 위주로 구성.
   * **타격감:** 샷건 형태의 공격에는 하이햇과 킥 사운드를 섞어 리듬감 있는 타격 피드백 제공.
-* **구현 방식:**
-  * **Audio Mixer:** Master, BGM, SFX 그룹으로 분리하여 실시간 볼륨 및 Pitch 제어.
+* **구현 방식 (Task 8.2 — Phase 8 완료):**
+  * **Audio Mixer 그룹 (4개):**
+    * `Master` — 전체 볼륨 마스터
+    * `BGM` — 배경음악 (위상별 적응형 음악 라우팅)
+    * `SFX` — 전투/게임플레이 효과음
+    * `UI` — 버튼·알림 효과음 (미래 경고 큐 포함)
+  * **Audio Mixer 노출:** `SoundManager` Inspector에서 `BGM`·`SFX`·`UI` Mixer Group을 `AudioData` 에셋에 할당. Phase 9 Lobby/Settings에서 볼륨 슬라이더로 제어 가능.
   * **Spatial Audio:** 기본 2D 스테레오. VR 빌드에서는 Spatial Audio 활성화.
-  * **Voice Budget:** 동일 SFX의 동시 재생 수를 제한하여 다중 처치/연사 상황에서도 소리 뭉개짐과 CPU 스파이크를 방지.
-  * **Pooling:** 전투 SFX는 사전 준비된 `AudioSource` 풀을 사용하며, 런타임 핫패스에서 오브젝트를 생성하지 않음.
+  * **Voice Budget:** `AudioData.MaxVoices` 필드로 키별 동시 보이스 수 상한을 설정. `SoundManager`가 `Dictionary<AudioData, int>` 카운터로 실시간 적용.
+  * **Cooldown:** `AudioData.Cooldown(초)` 이하 간격의 동일 SFX 재생 요청은 자동 차단.
+  * **Pooling:** `AudioPool`이 `SoundManager` 자식 오브젝트로 `Prewarm(32)` 호출 시 32개 `AudioSource`를 선 할당. 런타임 핫패스에서 `AddComponent` / `new GameObject` 호출 없음.
+  * **BGM 상태머신 (`BgmState` enum):**
+    ```
+    Normal → WaveIntensified → FeverActive → FeverMax
+    BossIntro → BossActive → BossDefeated
+    Overclock (오버클럭 모드 전용)
+    ```
+    `SoundManager.SetMusicState(BgmState)`로 전환; `BgmStateChangedEvent`를 발행하여 Phase 9+ 레이어드 컴포지션 구현 가능.
+  * **적응형 음악 훅:** BGM 크로스페이드 및 레이어 추가 로직은 Phase 9+ 범위. 현재는 상태 전환 시 지정 BGM `AudioData`를 즉시 교체.
 
 ### **✨ Phase 8+ VFX 품질 기준 (VFX Quality Gates)**
 * **가독성:** 보스 페이즈 전환, 적 사망, 오버클럭 진입 연출은 HUD와 공격 텔레그래프를 가리지 않아야 합니다.

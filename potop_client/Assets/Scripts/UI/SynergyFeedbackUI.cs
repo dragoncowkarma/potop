@@ -56,12 +56,14 @@ namespace Potop.Client.UI
         {
             EventBroker.Subscribe<SynergyActivatedEvent>(OnSynergyActivated);
             EventBroker.Subscribe<OverdriveEvolvedEvent>(OnOverdriveEvolved);
+            EventBroker.Subscribe<Potop.Client.Gameplay.Progression.PassiveUpgradeAppliedEvent>(OnPassiveUpgradeApplied);
         }
 
         private void OnDisable()
         {
             EventBroker.Unsubscribe<SynergyActivatedEvent>(OnSynergyActivated);
             EventBroker.Unsubscribe<OverdriveEvolvedEvent>(OnOverdriveEvolved);
+            EventBroker.Unsubscribe<Potop.Client.Gameplay.Progression.PassiveUpgradeAppliedEvent>(OnPassiveUpgradeApplied);
         }
 
         private void OnSynergyActivated(SynergyActivatedEvent evt)
@@ -76,6 +78,13 @@ namespace Potop.Client.UI
             string title = "WEAPON EVOLVED!";
             string desc = $"{evt.OverdriveName}\n({GetSynergyFriendlyName(evt.RequiredSynergy)})";
             ShowNotification(title, desc, true);
+        }
+
+        private void OnPassiveUpgradeApplied(Potop.Client.Gameplay.Progression.PassiveUpgradeAppliedEvent evt)
+        {
+            string title = "PASSIVE UPGRADE APPLIED!";
+            string desc = evt.UpgradeName;
+            ShowNotification(title, desc, false);
         }
 
         /// <summary>
