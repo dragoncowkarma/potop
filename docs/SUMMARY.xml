@@ -135,7 +135,7 @@
         <phase id="8" title="Polish &amp; Game Feel">
             <prompt path="docs/prompts/080/08001_unity_combat_juice.md" status="planned" />
             <prompt path="docs/prompts/080/08002_jules_sound_manager.md" status="completed" />
-            <prompt path="docs/prompts/080/08003_unity_vfx_polish.md" status="planned" />
+            <prompt path="docs/prompts/080/08003_unity_vfx_polish.md" status="completed" />
             <prompt path="docs/prompts/080/08004_code_balance_tuning.md" status="planned" />
             <prompt path="docs/prompts/080/08099_gemini_polish_validation.md" status="planned" />
         </phase>

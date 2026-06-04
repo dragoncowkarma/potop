@@ -88,6 +88,18 @@
       <Path>Assets/Scripts/Gameplay/VFX/VFXTrigger.cs</Path>
       <Responsibility>Spawns particle VFX at hit location on damage/death events.</Responsibility>
     </Module>
+    <Module name="VFXQualitySettings" type="Data">
+      <Path>Assets/Scripts/Gameplay/VFX/VFXQualitySettings.cs</Path>
+      <Responsibility>Defines quality tiers (Low/Medium/High) for VFX optimization.</Responsibility>
+    </Module>
+    <Module name="VFXBudgetManager" type="Manager">
+      <Path>Assets/Scripts/Gameplay/VFX/VFXBudgetManager.cs</Path>
+      <Responsibility>Tracks and limits active particle count to enforce the 10,000 particle budget.</Responsibility>
+    </Module>
+    <Module name="ExplosionEffect" type="Feedback">
+      <Path>Assets/Scripts/Gameplay/VFX/ExplosionEffect.cs</Path>
+      <Responsibility>Controls visual component adjustments based on quality and resets components on release.</Responsibility>
+    </Module>
     <Module name="SFXTrigger" type="Feedback">
       <Path>Assets/Scripts/Gameplay/SFX/SFXTrigger.cs</Path>
       <Responsibility>Plays sound effects on damage/death events.</Responsibility>

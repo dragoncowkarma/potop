@@ -60,7 +60,9 @@ namespace Potop.Client.Core.Audio {
                 return;
             }
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (Application.isPlaying) {
+                DontDestroyOnLoad(gameObject);
+            }
 
             // BGM 전용 소스 (풀과 무관하게 상시 유지)
             _bgmSource = gameObject.AddComponent<AudioSource>();

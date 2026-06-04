@@ -22,9 +22,8 @@ namespace Potop.Client.Tests.Editor {
             _sm = _go.AddComponent<SoundManager>();
 
             // SoundManager.Awake()를 수동으로 트리거 (EditMode에서 자동 호출 안 됨)
-            // SendMessage를 사용하지 않고, 동일 결과를 얻기 위해 Awake는 private이므로
-            // 실제 동작은 GameObject 추가 시점에 호출됩니다.
-            // → poolCapacity 기본값(32)으로 Prewarm이 완료됩니다.
+            var awake = typeof(SoundManager).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            awake?.Invoke(_sm, null);
 
             _testData = ScriptableObject.CreateInstance<AudioData>();
         }
