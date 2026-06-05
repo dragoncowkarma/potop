@@ -23,20 +23,23 @@
   <GlobalDocumentation>
     <File Path="docs/AGENTS.md" Description="Main entry point for documentation agents"/>
     <File Path="docs/SUMMARY.xml" Description="Index and milestone mapping for docs/"/>
-    <File Path="docs/requirements/01_overview.md" Description="Project high-level overview & vision"/>
+    <File Path="docs/requirements/01_overview.md" Description="Project high-level overview &amp; vision"/>
     <File Path="docs/requirements/02_gameplay_mechanics.md" Description="Core gameplay loops, controls, and combat systems"/>
     <File Path="docs/requirements/03_data_and_balance.md" Description="Detailed balance metrics, enemy scaling, and wave progression"/>
     <File Path="docs/architecture/04_technical_architecture.md" Description="Core technical systems (Event Broker, Pooling) and Server Interfaces"/>
     <File Path="docs/requirements/05_meta_and_progression.md" Description="Progression systems, meta-upgrades, and achievements"/>
     <File Path="docs/architecture/06_art_and_sound.md" Description="Art style, sound design, and production pipelines"/>
     <File Path="docs/management/07_development_milestones.md" Description="Centralized development roadmap and expansion plan"/>
+    <File Path="docs/management/08_5_phase8_5_expert_gap_closure.md" Description="Phase 8.5 expert progress review and gap closure plan"/>
     <File Path="docs/management/09_phase8_plus_expert_review.md" Description="Phase 8+ expert feedback and launch-quality gates"/>
+    <File Path="docs/walkthroughs/8.5_docs_prompt_expansion_walkthrough.md" Description="Evidence for Phase 8.5 documentation and prompt expansion"/>
+    <File Path="docs/walkthroughs/8.5_model_reassignment_walkthrough.md" Description="Evidence for Phase 8.5 agent model reassignment"/>
     <File Path="docs/walkthroughs/phase8_plus_docs_prompt_improvement_walkthrough.md" Description="Evidence for Phase 8+ documentation and prompt improvement"/>
       <Directory Path="docs/prompts/" Description="AI-specific task prompts organized by phase">
         <File Path="docs/prompts/010_core_loop_mvp.md" Description="Phase 1: 핵심 루프 프롬프트"/>
         <File Path="docs/prompts/015_stability_refactoring.md" Description="Phase 1.5: 안정화 프롬프트"/>
         <File Path="docs/prompts/020_architecture.md" Description="Phase 2: 기초 아키텍처 프롬프트"/>
-        <!-- Phase 3, 4, 5, 6, 6.5, 7, 8, 9 prompts have been split into individual task files. -->
+        <!-- Phase 3, 4, 5, 6, 6.5, 7, 8, 8.5, 9 prompts have been split into individual task files. -->
         <!-- Refer to docs/SUMMARY.xml for a detailed mapping of individual prompt files. -->
         <File Path="docs/prompts/075/07501_code_asmdef_setup.md" Description="Phase 7.5: Assembly Definition 설정"/>
         <File Path="docs/prompts/075/07502_code_state_unification.md" Description="Phase 7.5: 상태 통합"/>
@@ -44,6 +47,11 @@
         <File Path="docs/prompts/075/07504_code_boss_spawn_integration.md" Description="Phase 7.5: 보스 스폰 통합"/>
         <File Path="docs/prompts/075/07505_code_doc_sync.md" Description="Phase 7.5: 문서 동기화"/>
         <File Path="docs/prompts/075/07599_gemini_validation.md" Description="Phase 7.5: 구조 검증"/>
+        <File Path="docs/prompts/085/08501_code_phase8_ssot_reconciliation.md" Description="Phase 8.5: Phase 8 상태 정합화"/>
+        <File Path="docs/prompts/085/08502_code_polish_evidence_pack.md" Description="Phase 8.5: 폴리싱 증거 패키지"/>
+        <File Path="docs/prompts/085/08503_unity_gamefeel_readability_audit.md" Description="Phase 8.5: 게임필 가독성 감사"/>
+        <File Path="docs/prompts/085/08504_code_phase9_contract_prep.md" Description="Phase 8.5: Phase 9 핸드오프 계약"/>
+        <File Path="docs/prompts/085/08599_gemini_phase8_5_validation.md" Description="Phase 8.5: 검증"/>
       </Directory>
   </GlobalDocumentation>
 </ProjectContext>

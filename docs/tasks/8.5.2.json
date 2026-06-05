@@ -1,0 +1,24 @@
+{
+  "id": "8.5.2",
+  "task_id": "8.5.2",
+  "title": "Phase 8 Evidence Pack",
+  "description": "Assemble objective evidence for Phase 8 time, audio, VFX, balance, and console acceptance gates.",
+  "status": "Ready",
+  "assigned_sub_agent": "QA",
+  "depends_on": [
+    "8.5.1"
+  ],
+  "files_modified": [
+    "docs/walkthroughs/8.5_evidence_ledger.md",
+    "docs/walkthroughs/balance_simulation_report.md"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

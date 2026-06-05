@@ -236,6 +236,25 @@
 
 ---
 
+### **Phase 8.5: 전문가 점검 기반 품질 봉합 (Expert Gap Closure)** `[예상: 1주]`
+> [!IMPORTANT]
+> **Phase 8.5는 Phase 9 기능을 앞당기는 단계가 아닙니다.** Phase 8 완료 선언에 필요한 상태 정합성, 증거 패키징, 전투 가독성, Phase 9 핸드오프 계약만 보강합니다.
+> [!TIP]
+> AI Prompts:
+> - 08501: [Codex `codex-5.5` / 매우높음] [08501_code_phase8_ssot_reconciliation.md](../prompts/085/08501_code_phase8_ssot_reconciliation.md)
+> - 08502: [Gemini CLI `gemini-3.1-pro-preview`] [08502_code_polish_evidence_pack.md](../prompts/085/08502_code_polish_evidence_pack.md)
+> - 08503: [Antigravity `gemini 3.5` / high] [08503_unity_gamefeel_readability_audit.md](../prompts/085/08503_unity_gamefeel_readability_audit.md)
+> - 08504: [Codex `codex-5.4` / 높음] [08504_code_phase9_contract_prep.md](../prompts/085/08504_code_phase9_contract_prep.md)
+> - QA: [Gemini CLI `gemini-3.1-pro-preview`] [08599_gemini_phase8_5_validation.md](../prompts/085/08599_gemini_phase8_5_validation.md)
+
+*   **[08501] Phase 8 상태 정합화** — SUMMARY, task JSON, walkthrough, Kanban 간 planned/Ready/completed 불일치 해소
+*   **[08502] 폴리싱 증거 패키지** — TimeScale, Audio GC, VFX Pooling, Balance, Console 상태를 단일 evidence ledger로 연결
+*   **[08503] 게임필 가독성 감사** — 위협 인디케이터, 보스 텔레그래프, VFX/HUD 겹침, 경고음 우선순위 검증
+*   **[08504] Phase 9 핸드오프 계약** — 결산 payload, 오버클럭 점수, 오디오/품질 설정 hook, 튜토리얼 경계 문서화
+*   **[08599] Phase 8.5 검증** — 링크 무결성, 문서 정합성, evidence completeness, Phase 9 scope leakage 0건 확인
+
+---
+
 ### **Phase 9: 모바일 출시 준비 (Mobile Launch)** `[예상: 3~4주]`
 > [!IMPORTANT]
 > **Phase 9는 모바일 출시 게이트입니다.** 로비, 저장, 업적, 입력, 광고, 최적화, 튜토리얼, 현지화, 패키징이 한 번의 First Launch -> Run -> Settlement -> Lobby 루프로 검증되어야 합니다.

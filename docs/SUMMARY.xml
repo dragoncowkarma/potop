@@ -14,7 +14,10 @@
             <File Path="docs/requirements/05_meta_and_progression.md" Description="Progression systems, meta-upgrades, and achievements"/>
             <File Path="docs/architecture/06_art_and_sound.md" Description="Art style, sound design, and production pipelines"/>
             <File Path="docs/management/07_development_milestones.md" Description="Centralized development roadmap and expansion plan"/>
+            <File Path="docs/management/08_5_phase8_5_expert_gap_closure.md" Description="Phase 8.5 expert progress review and gap closure plan"/>
             <File Path="docs/management/09_phase8_plus_expert_review.md" Description="Phase 8+ expert feedback and launch-quality gates"/>
+            <File Path="docs/walkthroughs/8.5_docs_prompt_expansion_walkthrough.md" Description="Evidence for Phase 8.5 documentation and prompt expansion"/>
+            <File Path="docs/walkthroughs/8.5_model_reassignment_walkthrough.md" Description="Evidence for Phase 8.5 agent model reassignment"/>
             <File Path="docs/walkthroughs/phase8_plus_docs_prompt_improvement_walkthrough.md" Description="Evidence for Phase 8+ documentation and prompt improvement"/>
             <File Path="docs/prompts/065/06501_code_system_integration.md" Description="Phase 6.5: 시스템 통합 연결"/>
             <File Path="docs/prompts/065/06502_code_phase6_tests.md" Description="Phase 6.5: Phase 6 시스템 테스트"/>
@@ -32,6 +35,11 @@
             <File Path="docs/prompts/080/08003_unity_vfx_polish.md" Description="Phase 8: VFX 폴리싱"/>
             <File Path="docs/prompts/080/08004_code_balance_tuning.md" Description="Phase 8: 밸런스 튜닝"/>
             <File Path="docs/prompts/080/08099_gemini_polish_validation.md" Description="Phase 8: 폴리싱 검증"/>
+            <File Path="docs/prompts/085/08501_code_phase8_ssot_reconciliation.md" Description="Phase 8.5: Phase 8 상태 정합화"/>
+            <File Path="docs/prompts/085/08502_code_polish_evidence_pack.md" Description="Phase 8.5: 폴리싱 증거 패키지"/>
+            <File Path="docs/prompts/085/08503_unity_gamefeel_readability_audit.md" Description="Phase 8.5: 게임필 가독성 감사"/>
+            <File Path="docs/prompts/085/08504_code_phase9_contract_prep.md" Description="Phase 8.5: Phase 9 핸드오프 계약"/>
+            <File Path="docs/prompts/085/08599_gemini_phase8_5_validation.md" Description="Phase 8.5: 검증"/>
             <File Path="docs/prompts/090/09001_unity_lobby_ui.md" Description="Phase 9: 로비 UI"/>
             <File Path="docs/prompts/090/09002_code_achievement_save.md" Description="Phase 9: 업적 시스템"/>
             <File Path="docs/prompts/090/09003_code_local_save.md" Description="Phase 9: 로컬 세이브 시스템"/>
@@ -138,6 +146,13 @@
             <prompt path="docs/prompts/080/08003_unity_vfx_polish.md" status="completed" />
             <prompt path="docs/prompts/080/08004_code_balance_tuning.md" status="planned" />
             <prompt path="docs/prompts/080/08099_gemini_polish_validation.md" status="planned" />
+        </phase>
+        <phase id="8.5" title="Expert Gap Closure">
+            <prompt path="docs/prompts/085/08501_code_phase8_ssot_reconciliation.md" status="planned" />
+            <prompt path="docs/prompts/085/08502_code_polish_evidence_pack.md" status="planned" />
+            <prompt path="docs/prompts/085/08503_unity_gamefeel_readability_audit.md" status="planned" />
+            <prompt path="docs/prompts/085/08504_code_phase9_contract_prep.md" status="planned" />
+            <prompt path="docs/prompts/085/08599_gemini_phase8_5_validation.md" status="planned" />
         </phase>
         <phase id="9" title="Mobile Launch">
             <prompt path="docs/prompts/090/09001_unity_lobby_ui.md" status="planned" />

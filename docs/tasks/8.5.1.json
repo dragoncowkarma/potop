@@ -1,0 +1,29 @@
+{
+  "id": "8.5.1",
+  "task_id": "8.5.1",
+  "title": "Phase 8 SSOT Reconciliation",
+  "description": "Reconcile Phase 8 status across SUMMARY files, task JSON, walkthroughs, and generated Kanban evidence.",
+  "status": "Ready",
+  "assigned_sub_agent": "QA",
+  "depends_on": [
+    "8.6"
+  ],
+  "files_modified": [
+    "SUMMARY.xml",
+    "docs/SUMMARY.xml",
+    "docs/tasks/8.1.json",
+    "docs/tasks/8.2.json",
+    "docs/tasks/8.3.json",
+    "docs/tasks/8.4.json",
+    "docs/tasks/8.6.json"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

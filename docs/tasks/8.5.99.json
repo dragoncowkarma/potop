@@ -1,0 +1,26 @@
+{
+  "id": "8.5.99",
+  "task_id": "8.5.99",
+  "title": "Phase 8.5 Validation",
+  "description": "Validate Phase 8.5 documentation, evidence completeness, link integrity, status consistency, and no Phase 9 scope leakage.",
+  "status": "Ready",
+  "assigned_sub_agent": "QA",
+  "depends_on": [
+    "8.5.1",
+    "8.5.2",
+    "8.5.3",
+    "8.5.4"
+  ],
+  "files_modified": [
+    "docs/walkthroughs/8.5.99_walkthrough.md"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard"
+}

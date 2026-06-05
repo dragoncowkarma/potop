@@ -1,0 +1,24 @@
+{
+  "id": "8.5.3",
+  "task_id": "8.5.3",
+  "title": "Phase 8 Readability Audit",
+  "description": "Audit combat readability for threat bands, boss telegraphs, VFX opacity, hitstop feedback, and warning audio hierarchy.",
+  "status": "Ready",
+  "assigned_sub_agent": "Dev",
+  "depends_on": [
+    "8.5.2"
+  ],
+  "files_modified": [
+    "docs/walkthroughs/8.5_readability_audit.md"
+  ],
+  "metrics": {
+    "coverage": "N/A",
+    "mutation_score": "N/A",
+    "retry_count": 0,
+    "duration_seconds": 0,
+    "tokens_used": 0
+  },
+  "telemetry_hash": "",
+  "verification_mode": "standard",
+  "tdd_waiver": "Visual/readability audit task — TDD line coverage explicitly waived."
+}
