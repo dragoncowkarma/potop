@@ -1,0 +1,8 @@
+AssetName,AssetPath,BaseDamage,BaseFireRate,BaseProjectileSpeed,SpreadAngle,SpreadProjectileCount,LaunchAngle,AoERadius,BasePierce,KnockbackForce
+GuardianData,Assets/Data/Turrets/GuardianData.asset,10.0,2.0,20.0,0.0,1,0.0,0.0,0,0.0
+ValkyrieData,Assets/Data/Turrets/ValkyrieData.asset,4.0,6.666667,25.0,15.0,1,0.0,0.0,0,0.0
+JuggernautData,Assets/Data/Turrets/JuggernautData.asset,35.0,0.666667,15.0,0.0,1,0.0,0.0,1,5.0
+NovaData,Assets/Data/Turrets/NovaData.asset,12.0,1.0,12.0,0.0,1,0.0,1.5,9999,0.0
+PrismChainData,Assets/Data/Weapons/Overdrive/PrismChainData.asset,15.0,2.0,30.0,0.0,1,0.0,0.0,0,0.0
+GatlingRailgunData,Assets/Data/Weapons/Overdrive/GatlingRailgunData.asset,5.0,10.0,50.0,0.0,1,0.0,0.0,5,0.0
+OrbitalStrikeData,Assets/Data/Weapons/Overdrive/OrbitalStrikeData.asset,50.0,0.5,10.0,0.0,1,0.0,5.0,0,0.0

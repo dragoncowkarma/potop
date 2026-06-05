@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3544245420723371502}
   - component: {fileID: 4704426787926794643}
   - component: {fileID: 6431591179092584875}
+  - component: {fileID: 7508067625160575632}
   m_Layer: 8
   m_Name: EnemyBot
   m_TagString: Enemy
@@ -154,3 +155,16 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7508067625160575632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915809031558455249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a370992d75f42aa84653162e62ba66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100

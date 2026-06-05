@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7690bf4cdb984193827a059c8680ebf, type: 3}
-  m_Name: NormalEnemy
+  m_Name: ArmoredEnemy
   m_EditorClassIdentifier: 
-  _enemyName: Scouter
-  _maxHealth: 10
-  _moveSpeed: 3
-  _scoreValue: 10
-  _energyReward: 10
-  _baseDamage: 10
-  _spawnWeight: 0.7
+  _enemyName: Armored
+  _maxHealth: 60
+  _moveSpeed: 1.5
+  _scoreValue: 30
+  _energyReward: 30
+  _baseDamage: 25
+  _spawnWeight: 0.1

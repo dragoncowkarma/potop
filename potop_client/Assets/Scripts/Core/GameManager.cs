@@ -158,6 +158,14 @@ namespace Potop.Client.Core {
         private void GameOver() {
             if (_isGameOver) return;
             _isGameOver = true;
+
+            if (CoreFlowBridge.GetCurrentState != null && CoreFlowBridge.GetCurrentState() == GameFlowState.Overclock) {
+                float survivalTime = CoreFlowBridge.GetOverclockSurvivalTime != null ? CoreFlowBridge.GetOverclockSurvivalTime() : 0f;
+                float multiplier = 1.0f + Mathf.Floor(survivalTime / 30f) * 0.2f;
+                Score = Mathf.RoundToInt(Score * multiplier);
+                EventBroker.Publish(new ScoreChangedEvent { CurrentScore = Score });
+            }
+
             ChangeState(GameFlowState.Result);
             TimeController.SetBaseTimeScale(GAME_OVER_TIME_SCALE);
 

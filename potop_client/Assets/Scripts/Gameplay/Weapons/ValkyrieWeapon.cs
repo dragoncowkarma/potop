@@ -13,7 +13,8 @@ namespace Potop.Client.Gameplay {
         protected override void Start() {
             base.Start();
             // 스프레드 발사 전략을 설정합니다.
-            SetFireStrategy(new ValkyrieSpreadStrategy(SPREAD_ANGLE));
+            float spreadAngle = _weaponData != null ? _weaponData.SpreadAngle : SPREAD_ANGLE;
+            SetFireStrategy(new ValkyrieSpreadStrategy(spreadAngle));
         }
 
         /// <summary>

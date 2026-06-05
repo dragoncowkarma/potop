@@ -11,9 +11,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 025e2300e59146dd81198c8d7a569abf, type: 3}
   m_Name: GatlingRailgunData
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   BaseDamage: 5
   BaseFireRate: 10
   BaseProjectileSpeed: 50
   _projectilePrefab: {fileID: 0}
+  SpreadAngle: 0
+  SpreadProjectileCount: 1
+  LaunchAngle: 0
+  AoERadius: 0
+  BasePierce: 5
+  KnockbackForce: 0
   RequiredSynergy: 1

@@ -13,7 +13,8 @@ namespace Potop.Client.Gameplay {
         protected override void Start() {
             base.Start();
             // 노바 전용 범위 공격 발사 전략 설정
-            SetFireStrategy(new NovaFireStrategy(EXPLOSION_RADIUS));
+            float explosionRadius = _weaponData != null ? _weaponData.AoERadius : EXPLOSION_RADIUS;
+            SetFireStrategy(new NovaFireStrategy(explosionRadius));
         }
 
         /// <summary>

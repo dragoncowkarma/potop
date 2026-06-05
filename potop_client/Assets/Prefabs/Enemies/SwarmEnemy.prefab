@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1a0d398293f46bc9ff45469763cf70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyData: {fileID: 0}
+  _enemyData: {fileID: 11400000, guid: 1caf9ab1f89c244c8853605831128db2, type: 2}
   _damage: 10
   _attackRange: 2
   _groupingRadius: 3

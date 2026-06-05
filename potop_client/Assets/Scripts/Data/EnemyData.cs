@@ -36,5 +36,28 @@ namespace Potop.Client.Data {
         /// 적 처치 시 획득하는 에너지입니다.
         /// </summary>
         public int EnergyReward => _energyReward;
+
+        [SerializeField] private int _baseDamage;
+        [SerializeField] private float _spawnWeight = 1f;
+
+        /// <summary>
+        /// 적의 기본 공격 피해량입니다.
+        /// </summary>
+        public int BaseDamage => _baseDamage;
+
+        /// <summary>
+        /// 적의 웨이브 스폰 가중치입니다.
+        /// </summary>
+        public float SpawnWeight => _spawnWeight;
+
+        public void InitializeFromBalance(string name, int maxHealth, float moveSpeed, int scoreValue, int energyReward, int baseDamage, float spawnWeight) {
+            _enemyName = name;
+            _maxHealth = maxHealth;
+            _moveSpeed = moveSpeed;
+            _scoreValue = scoreValue;
+            _energyReward = energyReward;
+            _baseDamage = baseDamage;
+            _spawnWeight = spawnWeight;
+        }
     }
 }

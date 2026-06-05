@@ -11,8 +11,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 985295918e8114462834690b2a32ae45, type: 3}
   m_Name: ValkyrieData
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   BaseDamage: 4
   BaseFireRate: 6.666667
   BaseProjectileSpeed: 25
   _projectilePrefab: {fileID: 0}
+  SpreadAngle: 15
+  SpreadProjectileCount: 1
+  LaunchAngle: 0
+  AoERadius: 0
+  BasePierce: 0
+  KnockbackForce: 0

@@ -20,6 +20,8 @@ namespace Potop.Client.Gameplay.Flow {
         private int _maxWaves;
         private int _gemsEarned;
         private float _survivalTime;
+        private float _overclockSurvivalTime;
+        public float OverclockSurvivalTime => _overclockSurvivalTime;
         private SettlementData _settlementData;
 
         // 동적 UI 결과 인스턴스
@@ -44,6 +46,7 @@ namespace Potop.Client.Gameplay.Flow {
             Instance = this;
             CoreFlowBridge.GetCurrentState = () => _currentState;
             CoreFlowBridge.TransitionTo = (state) => TransitionTo(state);
+            CoreFlowBridge.GetOverclockSurvivalTime = () => _overclockSurvivalTime;
         }
 
         private void OnDestroy() {
@@ -51,6 +54,7 @@ namespace Potop.Client.Gameplay.Flow {
                 Instance = null;
                 CoreFlowBridge.GetCurrentState = null;
                 CoreFlowBridge.TransitionTo = null;
+                CoreFlowBridge.GetOverclockSurvivalTime = null;
             }
         }
 
@@ -64,6 +68,9 @@ namespace Potop.Client.Gameplay.Flow {
                 _currentState == GameFlowState.BossBattle || 
                 _currentState == GameFlowState.Overclock) {
                 _survivalTime += Time.deltaTime;
+            }
+            if (_currentState == GameFlowState.Overclock) {
+                _overclockSurvivalTime += Time.deltaTime;
             }
         }
 
@@ -92,6 +99,7 @@ namespace Potop.Client.Gameplay.Flow {
                     _maxWaves = 0;
                     _gemsEarned = 0;
                     _survivalTime = 0f;
+                    _overclockSurvivalTime = 0f;
                     _settlementData = null;
                     break;
             }
@@ -148,6 +156,9 @@ namespace Potop.Client.Gameplay.Flow {
 
         private void OnEnemyDied(EnemyDiedEvent e) {
             _kills++;
+            if (GameManager.Instance != null) {
+                GameManager.Instance.AddScore(e.ScoreValue);
+            }
         }
 
         private void OnWaveStarted(Potop.Client.Gameplay.Wave.WaveStartedEvent e) {

@@ -1,0 +1,20 @@
+{
+    "name": "Potop.Client.Editor",
+    "rootNamespace": "Potop.Client.Editor",
+    "references": [
+        "Potop.Client.Core",
+        "Potop.Client.Gameplay",
+        "Potop.Client.Data"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

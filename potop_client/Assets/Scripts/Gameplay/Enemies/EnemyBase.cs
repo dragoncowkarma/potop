@@ -14,6 +14,7 @@ namespace Potop.Client.Gameplay {
     [RequireComponent(typeof(Health))]
     public class EnemyBase : MonoBehaviour {
         [SerializeField] protected EnemyData _enemyData;
+        public EnemyData EnemyData => _enemyData;
         [SerializeField] protected int _damage = 10;
         [SerializeField] protected float _attackRange = 2f;
 
@@ -60,7 +61,7 @@ namespace Potop.Client.Gameplay {
         /// </summary>
         public int Damage {
             get {
-                int baseDamage = _damage;
+                int baseDamage = _enemyData != null ? _enemyData.BaseDamage : _damage;
                 if (OverclockMode.Instance != null && OverclockMode.Instance.IsActive) {
                     baseDamage = Mathf.RoundToInt(baseDamage * OverclockMode.Instance.CurrentDamageMultiplier);
                 }

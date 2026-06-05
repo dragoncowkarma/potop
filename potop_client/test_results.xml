@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="80" result="Passed" total="80" passed="80" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:24Z" duration="2.2628121">
-  <test-suite type="TestSuite" id="1000" name="potop" fullname="potop" runstate="Runnable" testcasecount="80" result="Passed" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:24Z" duration="2.262812" total="80" passed="80" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="86" result="Passed" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:48Z" duration="2.4334311">
+  <test-suite type="TestSuite" id="1000" name="potop" fullname="potop" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:48Z" duration="2.433431" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties>
       <property name="platform" value="EditMode" />
     </properties>
-    <test-suite type="Assembly" id="1105" name="Potop.Client.Tests.Editor.dll" fullname="/Users/macbook/Desktop/potop/potop_client/Library/ScriptAssemblies/Potop.Client.Tests.Editor.dll" runstate="Runnable" testcasecount="80" result="Passed" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:24Z" duration="2.230644" total="80" passed="80" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <test-suite type="Assembly" id="1112" name="Potop.Client.Tests.Editor.dll" fullname="/Users/macbook/Desktop/potop/potop_client/Library/ScriptAssemblies/Potop.Client.Tests.Editor.dll" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:48Z" duration="2.411672" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
       <properties>
-        <property name="_PID" value="13486" />
+        <property name="_PID" value="53866" />
         <property name="_APPDOMAIN" value="Unity Child Domain" />
         <property name="platform" value="EditMode" />
         <property name="EditorOnly" value="True" />
       </properties>
-      <test-suite type="TestSuite" id="1106" name="Potop" fullname="Potop" runstate="Runnable" testcasecount="80" result="Passed" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:24Z" duration="2.229493" total="80" passed="80" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestSuite" id="1113" name="Potop" fullname="Potop" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:48Z" duration="2.410610" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-suite type="TestSuite" id="1107" name="Client" fullname="Potop.Client" runstate="Runnable" testcasecount="80" result="Passed" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:24Z" duration="2.228003" total="80" passed="80" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <test-suite type="TestSuite" id="1114" name="Client" fullname="Potop.Client" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:48Z" duration="2.410073" total="86" passed="86" failed="0" inconclusive="0" skipped="0" asserts="0">
           <properties />
-          <test-suite type="TestSuite" id="1114" name="Core" fullname="Potop.Client.Core" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:23Z" duration="0.681644" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <test-suite type="TestSuite" id="1121" name="Core" fullname="Potop.Client.Core" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.148144" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
             <properties />
-            <test-suite type="TestSuite" id="1115" name="Tests" fullname="Potop.Client.Core.Tests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:23Z" duration="0.680850" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="TestSuite" id="1122" name="Tests" fullname="Potop.Client.Core.Tests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.147691" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-suite type="TestFixture" id="1015" name="GameManagerTests" fullname="Potop.Client.Core.Tests.GameManagerTests" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:23Z" duration="0.673975" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1015" name="GameManagerTests" fullname="Potop.Client.Core.Tests.GameManagerTests" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.144929" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1020" name="TakeDamage_AfterGameOver_DoesNotReduceHealthFurther" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_AfterGameOver_DoesNotReduceHealthFurther" methodname="TakeDamage_AfterGameOver_DoesNotReduceHealthFurther" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="1924652474" result="Passed" start-time="2026-06-04 13:32:22Z" end-time="2026-06-04 13:32:22Z" duration="0.300387" asserts="0">
+                <test-case id="1020" name="TakeDamage_AfterGameOver_DoesNotReduceHealthFurther" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_AfterGameOver_DoesNotReduceHealthFurther" methodname="TakeDamage_AfterGameOver_DoesNotReduceHealthFurther" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="1731246747" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.088026" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -30,7 +30,7 @@
 GemWallet is null during StartGame.
 ]]></output>
                 </test-case>
-                <test-case id="1017" name="TakeDamage_ClampsHealthAtZero" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_ClampsHealthAtZero" methodname="TakeDamage_ClampsHealthAtZero" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="1409872081" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.003605" asserts="0">
+                <test-case id="1017" name="TakeDamage_ClampsHealthAtZero" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_ClampsHealthAtZero" methodname="TakeDamage_ClampsHealthAtZero" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="2065599738" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.004417" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -39,7 +39,7 @@ GemWallet is null during StartGame.
 GemWallet is null during StartGame.
 ]]></output>
                 </test-case>
-                <test-case id="1018" name="TakeDamage_PublishesHealthChangedEvent" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_PublishesHealthChangedEvent" methodname="TakeDamage_PublishesHealthChangedEvent" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="1108691879" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.009043" asserts="0">
+                <test-case id="1018" name="TakeDamage_PublishesHealthChangedEvent" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_PublishesHealthChangedEvent" methodname="TakeDamage_PublishesHealthChangedEvent" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="1778744340" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.005900" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -48,7 +48,7 @@ GemWallet is null during StartGame.
 GemWallet is null during StartGame.
 ]]></output>
                 </test-case>
-                <test-case id="1016" name="TakeDamage_ReducesHealthCorrectly" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_ReducesHealthCorrectly" methodname="TakeDamage_ReducesHealthCorrectly" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="41875375" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.002882" asserts="0">
+                <test-case id="1016" name="TakeDamage_ReducesHealthCorrectly" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_ReducesHealthCorrectly" methodname="TakeDamage_ReducesHealthCorrectly" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="2134010315" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.003991" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -57,7 +57,7 @@ GemWallet is null during StartGame.
 GemWallet is null during StartGame.
 ]]></output>
                 </test-case>
-                <test-case id="1019" name="TakeDamage_WhenHealthReachesZero_TriggersGameOver" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_WhenHealthReachesZero_TriggersGameOver" methodname="TakeDamage_WhenHealthReachesZero_TriggersGameOver" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="450914784" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.092496" asserts="0">
+                <test-case id="1019" name="TakeDamage_WhenHealthReachesZero_TriggersGameOver" fullname="Potop.Client.Core.Tests.GameManagerTests.TakeDamage_WhenHealthReachesZero_TriggersGameOver" methodname="TakeDamage_WhenHealthReachesZero_TriggersGameOver" classname="Potop.Client.Core.Tests.GameManagerTests" runstate="Runnable" seed="937759928" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.007511" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -69,36 +69,36 @@ GemWallet is null during StartGame.
               </test-suite>
             </test-suite>
           </test-suite>
-          <test-suite type="TestSuite" id="1108" name="Gameplay" fullname="Potop.Client.Gameplay" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.367122" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <test-suite type="TestSuite" id="1115" name="Gameplay" fullname="Potop.Client.Gameplay" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.089017" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
             <properties />
-            <test-suite type="TestSuite" id="1112" name="Combat" fullname="Potop.Client.Gameplay.Combat" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.218248" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="TestSuite" id="1119" name="Combat" fullname="Potop.Client.Gameplay.Combat" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.034937" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-suite type="TestSuite" id="1113" name="Tests" fullname="Potop.Client.Gameplay.Combat.Tests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.217754" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestSuite" id="1120" name="Tests" fullname="Potop.Client.Gameplay.Combat.Tests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.034463" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-suite type="TestFixture" id="1009" name="HealthIntegrationTests" fullname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests" classname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.027438" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <test-suite type="TestFixture" id="1009" name="HealthIntegrationTests" fullname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests" classname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.015289" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
                   <properties />
-                  <test-case id="1011" name="EnemyBase_IntegratesWithHealth" fullname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests.EnemyBase_IntegratesWithHealth" methodname="EnemyBase_IntegratesWithHealth" classname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests" runstate="Runnable" seed="869195935" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.018876" asserts="0">
+                  <test-case id="1011" name="EnemyBase_IntegratesWithHealth" fullname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests.EnemyBase_IntegratesWithHealth" methodname="EnemyBase_IntegratesWithHealth" classname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests" runstate="Runnable" seed="618206166" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.011013" asserts="0">
                     <properties>
                       <property name="retryIteration" value="0" />
                       <property name="repeatIteration" value="0" />
                     </properties>
                   </test-case>
-                  <test-case id="1010" name="Health_TakeDamage_ReducesHealthAndPublishesEvents" fullname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests.Health_TakeDamage_ReducesHealthAndPublishesEvents" methodname="Health_TakeDamage_ReducesHealthAndPublishesEvents" classname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests" runstate="Runnable" seed="144768134" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.005934" asserts="0">
+                  <test-case id="1010" name="Health_TakeDamage_ReducesHealthAndPublishesEvents" fullname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests.Health_TakeDamage_ReducesHealthAndPublishesEvents" methodname="Health_TakeDamage_ReducesHealthAndPublishesEvents" classname="Potop.Client.Gameplay.Combat.Tests.HealthIntegrationTests" runstate="Runnable" seed="747856519" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.002328" asserts="0">
                     <properties>
                       <property name="retryIteration" value="0" />
                       <property name="repeatIteration" value="0" />
                     </properties>
                   </test-case>
                 </test-suite>
-                <test-suite type="TestFixture" id="1012" name="SystemValidationAuditTests" fullname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests" classname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.188913" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <test-suite type="TestFixture" id="1012" name="SystemValidationAuditTests" fullname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests" classname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.018528" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
                   <properties />
-                  <test-case id="1013" name="CombatFeedbackLoop_Verification" fullname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests.CombatFeedbackLoop_Verification" methodname="CombatFeedbackLoop_Verification" classname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests" runstate="Runnable" seed="797912799" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.092662" asserts="0">
+                  <test-case id="1013" name="CombatFeedbackLoop_Verification" fullname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests.CombatFeedbackLoop_Verification" methodname="CombatFeedbackLoop_Verification" classname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests" runstate="Runnable" seed="14378271" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.013377" asserts="0">
                     <properties>
                       <property name="retryIteration" value="0" />
                       <property name="repeatIteration" value="0" />
                     </properties>
                   </test-case>
-                  <test-case id="1014" name="PoolManager_Existence_Check" fullname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests.PoolManager_Existence_Check" methodname="PoolManager_Existence_Check" classname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests" runstate="Runnable" seed="134249743" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.085198" asserts="0">
+                  <test-case id="1014" name="PoolManager_Existence_Check" fullname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests.PoolManager_Existence_Check" methodname="PoolManager_Existence_Check" classname="Potop.Client.Gameplay.Combat.Tests.SystemValidationAuditTests" runstate="Runnable" seed="1752373724" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.002749" asserts="0">
                     <properties>
                       <property name="retryIteration" value="0" />
                       <property name="repeatIteration" value="0" />
@@ -107,11 +107,11 @@ GemWallet is null during StartGame.
                 </test-suite>
               </test-suite>
             </test-suite>
-            <test-suite type="TestSuite" id="1111" name="Tests" fullname="Potop.Client.Gameplay.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.018981" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="TestSuite" id="1118" name="Tests" fullname="Potop.Client.Gameplay.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.017481" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-suite type="TestFixture" id="1007" name="UpgradePoolTests" fullname="Potop.Client.Gameplay.Tests.UpgradePoolTests" classname="Potop.Client.Gameplay.Tests.UpgradePoolTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.017947" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1007" name="UpgradePoolTests" fullname="Potop.Client.Gameplay.Tests.UpgradePoolTests" classname="Potop.Client.Gameplay.Tests.UpgradePoolTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.016248" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1008" name="PitySystem_GuaranteesEpic_AfterTenNonEpics" fullname="Potop.Client.Gameplay.Tests.UpgradePoolTests.PitySystem_GuaranteesEpic_AfterTenNonEpics" methodname="PitySystem_GuaranteesEpic_AfterTenNonEpics" classname="Potop.Client.Gameplay.Tests.UpgradePoolTests" runstate="Runnable" seed="1572710400" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.016393" asserts="0">
+                <test-case id="1008" name="PitySystem_GuaranteesEpic_AfterTenNonEpics" fullname="Potop.Client.Gameplay.Tests.UpgradePoolTests.PitySystem_GuaranteesEpic_AfterTenNonEpics" methodname="PitySystem_GuaranteesEpic_AfterTenNonEpics" classname="Potop.Client.Gameplay.Tests.UpgradePoolTests" runstate="Runnable" seed="1112057451" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.014936" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -119,31 +119,31 @@ GemWallet is null during StartGame.
                 </test-case>
               </test-suite>
             </test-suite>
-            <test-suite type="TestSuite" id="1109" name="VFX" fullname="Potop.Client.Gameplay.VFX" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.128503" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="TestSuite" id="1116" name="VFX" fullname="Potop.Client.Gameplay.VFX" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.035342" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-suite type="TestSuite" id="1110" name="Tests" fullname="Potop.Client.Gameplay.VFX.Tests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.127650" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestSuite" id="1117" name="Tests" fullname="Potop.Client.Gameplay.VFX.Tests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.034293" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-suite type="TestFixture" id="1002" name="VFXPolishTests" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.127131" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <test-suite type="TestFixture" id="1002" name="VFXPolishTests" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.033444" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
                   <properties />
-                  <test-case id="1004" name="ExplosionEffect_QualityFallback_AppliesCorrectly" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests.ExplosionEffect_QualityFallback_AppliesCorrectly" methodname="ExplosionEffect_QualityFallback_AppliesCorrectly" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" seed="848381376" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.081691" asserts="0">
+                  <test-case id="1004" name="ExplosionEffect_QualityFallback_AppliesCorrectly" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests.ExplosionEffect_QualityFallback_AppliesCorrectly" methodname="ExplosionEffect_QualityFallback_AppliesCorrectly" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" seed="1906733982" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.022477" asserts="0">
                     <properties>
                       <property name="retryIteration" value="0" />
                       <property name="repeatIteration" value="0" />
                     </properties>
                   </test-case>
-                  <test-case id="1005" name="ExplosionEffect_ResetEffect_ClearsState" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests.ExplosionEffect_ResetEffect_ClearsState" methodname="ExplosionEffect_ResetEffect_ClearsState" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" seed="1689341775" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.004588" asserts="0">
+                  <test-case id="1005" name="ExplosionEffect_ResetEffect_ClearsState" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests.ExplosionEffect_ResetEffect_ClearsState" methodname="ExplosionEffect_ResetEffect_ClearsState" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" seed="103045711" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.004772" asserts="0">
                     <properties>
                       <property name="retryIteration" value="0" />
                       <property name="repeatIteration" value="0" />
                     </properties>
                   </test-case>
-                  <test-case id="1006" name="VFXBudgetManager_BudgetCalculations_AreCorrect" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests.VFXBudgetManager_BudgetCalculations_AreCorrect" methodname="VFXBudgetManager_BudgetCalculations_AreCorrect" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" seed="1627653575" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.002249" asserts="0">
+                  <test-case id="1006" name="VFXBudgetManager_BudgetCalculations_AreCorrect" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests.VFXBudgetManager_BudgetCalculations_AreCorrect" methodname="VFXBudgetManager_BudgetCalculations_AreCorrect" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" seed="1587076867" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.002081" asserts="0">
                     <properties>
                       <property name="retryIteration" value="0" />
                       <property name="repeatIteration" value="0" />
                     </properties>
                   </test-case>
-                  <test-case id="1003" name="VFXQualitySettings_SetsQualityCorrectly" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests.VFXQualitySettings_SetsQualityCorrectly" methodname="VFXQualitySettings_SetsQualityCorrectly" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" seed="540807695" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.032194" asserts="0">
+                  <test-case id="1003" name="VFXQualitySettings_SetsQualityCorrectly" fullname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests.VFXQualitySettings_SetsQualityCorrectly" methodname="VFXQualitySettings_SetsQualityCorrectly" classname="Potop.Client.Gameplay.VFX.Tests.VFXPolishTests" runstate="Runnable" seed="1106064270" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.001016" asserts="0">
                     <properties>
                       <property name="retryIteration" value="0" />
                       <property name="repeatIteration" value="0" />
@@ -153,172 +153,172 @@ GemWallet is null during StartGame.
               </test-suite>
             </test-suite>
           </test-suite>
-          <test-suite type="TestSuite" id="1116" name="Tests" fullname="Potop.Client.Tests" runstate="Runnable" testcasecount="66" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:24Z" duration="1.176936" total="66" passed="66" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <test-suite type="TestSuite" id="1123" name="Tests" fullname="Potop.Client.Tests" runstate="Runnable" testcasecount="72" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:48Z" duration="2.172204" total="72" passed="72" failed="0" inconclusive="0" skipped="0" asserts="0">
             <properties />
-            <test-suite type="TestSuite" id="1118" name="EditMode" fullname="Potop.Client.Tests.EditMode" runstate="Runnable" testcasecount="61" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:24Z" duration="1.115987" total="61" passed="61" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="TestSuite" id="1125" name="EditMode" fullname="Potop.Client.Tests.EditMode" runstate="Runnable" testcasecount="61" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:48Z" duration="1.770691" total="61" passed="61" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-suite type="TestFixture" id="1023" name="BossSpawnIntegrationTests" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.175837" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1023" name="BossSpawnIntegrationTests" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.062298" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1028" name="LobFireStrategy_AppliesParabolicVelocityWithGravity" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.LobFireStrategy_AppliesParabolicVelocityWithGravity" methodname="LobFireStrategy_AppliesParabolicVelocityWithGravity" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="324236296" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.092374" asserts="0">
+                <test-case id="1028" name="LobFireStrategy_AppliesParabolicVelocityWithGravity" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.LobFireStrategy_AppliesParabolicVelocityWithGravity" methodname="LobFireStrategy_AppliesParabolicVelocityWithGravity" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="810946579" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.023902" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1026" name="OverclockMode_TriggersContinuousModeOnBossDefeated" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.OverclockMode_TriggersContinuousModeOnBossDefeated" methodname="OverclockMode_TriggersContinuousModeOnBossDefeated" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="1808494143" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.002512" asserts="0">
+                <test-case id="1026" name="OverclockMode_TriggersContinuousModeOnBossDefeated" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.OverclockMode_TriggersContinuousModeOnBossDefeated" methodname="OverclockMode_TriggersContinuousModeOnBossDefeated" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="893579322" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.002181" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1027" name="SpreadFireStrategy_SpawnsMultipleProjectilesSymmetrically" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.SpreadFireStrategy_SpawnsMultipleProjectilesSymmetrically" methodname="SpreadFireStrategy_SpawnsMultipleProjectilesSymmetrically" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="1795372688" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.014284" asserts="0">
+                <test-case id="1027" name="SpreadFireStrategy_SpawnsMultipleProjectilesSymmetrically" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.SpreadFireStrategy_SpawnsMultipleProjectilesSymmetrically" methodname="SpreadFireStrategy_SpawnsMultipleProjectilesSymmetrically" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="344925837" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.005491" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1024" name="WaveManager_BossSpawnsAfter900Seconds" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.WaveManager_BossSpawnsAfter900Seconds" methodname="WaveManager_BossSpawnsAfter900Seconds" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="345146329" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.057240" asserts="0">
+                <test-case id="1024" name="WaveManager_BossSpawnsAfter900Seconds" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.WaveManager_BossSpawnsAfter900Seconds" methodname="WaveManager_BossSpawnsAfter900Seconds" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="881748257" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.007186" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1025" name="WaveManager_EnterContinuousMode_ResetsDelaysAndAllowsInfiniteLoop" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.WaveManager_EnterContinuousMode_ResetsDelaysAndAllowsInfiniteLoop" methodname="WaveManager_EnterContinuousMode_ResetsDelaysAndAllowsInfiniteLoop" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="843631052" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.005959" asserts="0">
+                <test-case id="1025" name="WaveManager_EnterContinuousMode_ResetsDelaysAndAllowsInfiniteLoop" fullname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests.WaveManager_EnterContinuousMode_ResetsDelaysAndAllowsInfiniteLoop" methodname="WaveManager_EnterContinuousMode_ResetsDelaysAndAllowsInfiniteLoop" classname="Potop.Client.Tests.EditMode.BossSpawnIntegrationTests" runstate="Runnable" seed="1176386373" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.016148" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1029" name="EnergyManagerTests" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.045417" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1029" name="EnergyManagerTests" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.024735" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1034" name="AddEnergy_PublishesEnergyChangedEvent" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.AddEnergy_PublishesEnergyChangedEvent" methodname="AddEnergy_PublishesEnergyChangedEvent" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="375935765" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.015421" asserts="0">
+                <test-case id="1034" name="AddEnergy_PublishesEnergyChangedEvent" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.AddEnergy_PublishesEnergyChangedEvent" methodname="AddEnergy_PublishesEnergyChangedEvent" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="1816418593" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.002939" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1031" name="AddEnergyMaxPlus100_ClampsToMax" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.AddEnergyMaxPlus100_ClampsToMax" methodname="AddEnergyMaxPlus100_ClampsToMax" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="1110586173" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.001094" asserts="0">
+                <test-case id="1031" name="AddEnergyMaxPlus100_ClampsToMax" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.AddEnergyMaxPlus100_ClampsToMax" methodname="AddEnergyMaxPlus100_ClampsToMax" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="1079003133" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.000981" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1032" name="ConsumeEnergy_Insufficient_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.ConsumeEnergy_Insufficient_ReturnsFalse" methodname="ConsumeEnergy_Insufficient_ReturnsFalse" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="1856478847" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.001454" asserts="0">
+                <test-case id="1032" name="ConsumeEnergy_Insufficient_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.ConsumeEnergy_Insufficient_ReturnsFalse" methodname="ConsumeEnergy_Insufficient_ReturnsFalse" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="2040815638" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.004243" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1033" name="ConsumeEnergy_Sufficient_ReturnsTrueAndUpdatesResidual" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.ConsumeEnergy_Sufficient_ReturnsTrueAndUpdatesResidual" methodname="ConsumeEnergy_Sufficient_ReturnsTrueAndUpdatesResidual" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="988963809" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.001412" asserts="0">
+                <test-case id="1033" name="ConsumeEnergy_Sufficient_ReturnsTrueAndUpdatesResidual" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.ConsumeEnergy_Sufficient_ReturnsTrueAndUpdatesResidual" methodname="ConsumeEnergy_Sufficient_ReturnsTrueAndUpdatesResidual" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="1266725435" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.001069" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1030" name="StartFromZero_AddEnergy50_Returns50" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.StartFromZero_AddEnergy50_Returns50" methodname="StartFromZero_AddEnergy50_Returns50" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="1108571222" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.020650" asserts="0">
+                <test-case id="1030" name="StartFromZero_AddEnergy50_Returns50" fullname="Potop.Client.Tests.EditMode.EnergyManagerTests.StartFromZero_AddEnergy50_Returns50" methodname="StartFromZero_AddEnergy50_Returns50" classname="Potop.Client.Tests.EditMode.EnergyManagerTests" runstate="Runnable" seed="1105126364" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.001623" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1035" name="GameFlowControllerTests" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.068218" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1035" name="GameFlowControllerTests" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.070008" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1039" name="EnteringResultState_InstantiatesUIAndInjectsDTO" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.EnteringResultState_InstantiatesUIAndInjectsDTO" methodname="EnteringResultState_InstantiatesUIAndInjectsDTO" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="2008650986" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.036475" asserts="0">
+                <test-case id="1039" name="EnteringResultState_InstantiatesUIAndInjectsDTO" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.EnteringResultState_InstantiatesUIAndInjectsDTO" methodname="EnteringResultState_InstantiatesUIAndInjectsDTO" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="345338038" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.039662" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1036" name="InitialState_IsLobby" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.InitialState_IsLobby" methodname="InitialState_IsLobby" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="353668134" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.013929" asserts="0">
+                <test-case id="1036" name="InitialState_IsLobby" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.InitialState_IsLobby" methodname="InitialState_IsLobby" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="173076472" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.001604" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1038" name="Metrics_AccumulatedCorrectlyDuringGameplay" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.Metrics_AccumulatedCorrectlyDuringGameplay" methodname="Metrics_AccumulatedCorrectlyDuringGameplay" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="780050785" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.002913" asserts="0">
+                <test-case id="1038" name="Metrics_AccumulatedCorrectlyDuringGameplay" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.Metrics_AccumulatedCorrectlyDuringGameplay" methodname="Metrics_AccumulatedCorrectlyDuringGameplay" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="1113419784" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.004667" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1040" name="TransitionBackToLobby_DestroysUIAndAddsGemsToWallet" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.TransitionBackToLobby_DestroysUIAndAddsGemsToWallet" methodname="TransitionBackToLobby_DestroysUIAndAddsGemsToWallet" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="1786115481" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.004263" asserts="0">
+                <test-case id="1040" name="TransitionBackToLobby_DestroysUIAndAddsGemsToWallet" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.TransitionBackToLobby_DestroysUIAndAddsGemsToWallet" methodname="TransitionBackToLobby_DestroysUIAndAddsGemsToWallet" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="1450881586" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.008300" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1037" name="TransitionTo_ChangesStateAndPublishesEvent" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.TransitionTo_ChangesStateAndPublishesEvent" methodname="TransitionTo_ChangesStateAndPublishesEvent" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="966874031" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.001820" asserts="0">
+                <test-case id="1037" name="TransitionTo_ChangesStateAndPublishesEvent" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.TransitionTo_ChangesStateAndPublishesEvent" methodname="TransitionTo_ChangesStateAndPublishesEvent" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="391201519" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.001459" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1041" name="TransitionToLobby_UnsubscribesProperlyToAvoidMemoryLeaks" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.TransitionToLobby_UnsubscribesProperlyToAvoidMemoryLeaks" methodname="TransitionToLobby_UnsubscribesProperlyToAvoidMemoryLeaks" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="848331861" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:23Z" duration="0.002578" asserts="0">
+                <test-case id="1041" name="TransitionToLobby_UnsubscribesProperlyToAvoidMemoryLeaks" fullname="Potop.Client.Tests.EditMode.GameFlowControllerTests.TransitionToLobby_UnsubscribesProperlyToAvoidMemoryLeaks" methodname="TransitionToLobby_UnsubscribesProperlyToAvoidMemoryLeaks" classname="Potop.Client.Tests.EditMode.GameFlowControllerTests" runstate="Runnable" seed="1347888619" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.000908" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1042" name="GameHUDWidgetTests" fullname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" classname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:24Z" duration="0.352596" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1042" name="GameHUDWidgetTests" fullname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" classname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.225996" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1045" name="FeverGaugeWidget_OnFeverChangedEvent_UpdatesProgressAndStyle" fullname="Potop.Client.Tests.EditMode.GameHUDWidgetTests.FeverGaugeWidget_OnFeverChangedEvent_UpdatesProgressAndStyle" methodname="FeverGaugeWidget_OnFeverChangedEvent_UpdatesProgressAndStyle" classname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" runstate="Runnable" seed="507705731" result="Passed" start-time="2026-06-04 13:32:23Z" end-time="2026-06-04 13:32:24Z" duration="0.302218" asserts="0">
+                <test-case id="1045" name="FeverGaugeWidget_OnFeverChangedEvent_UpdatesProgressAndStyle" fullname="Potop.Client.Tests.EditMode.GameHUDWidgetTests.FeverGaugeWidget_OnFeverChangedEvent_UpdatesProgressAndStyle" methodname="FeverGaugeWidget_OnFeverChangedEvent_UpdatesProgressAndStyle" classname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" runstate="Runnable" seed="1196277920" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.170770" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1044" name="HealthBarWidget_OnPlayerHealthChangedEvent_UpdatesLabelText" fullname="Potop.Client.Tests.EditMode.GameHUDWidgetTests.HealthBarWidget_OnPlayerHealthChangedEvent_UpdatesLabelText" methodname="HealthBarWidget_OnPlayerHealthChangedEvent_UpdatesLabelText" classname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" runstate="Runnable" seed="358852048" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.042608" asserts="0">
+                <test-case id="1044" name="HealthBarWidget_OnPlayerHealthChangedEvent_UpdatesLabelText" fullname="Potop.Client.Tests.EditMode.GameHUDWidgetTests.HealthBarWidget_OnPlayerHealthChangedEvent_UpdatesLabelText" methodname="HealthBarWidget_OnPlayerHealthChangedEvent_UpdatesLabelText" classname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" runstate="Runnable" seed="956522742" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.046275" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1043" name="ScoreWidget_OnScoreChangedEvent_UpdatesLabelText" fullname="Potop.Client.Tests.EditMode.GameHUDWidgetTests.ScoreWidget_OnScoreChangedEvent_UpdatesLabelText" methodname="ScoreWidget_OnScoreChangedEvent_UpdatesLabelText" classname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" runstate="Runnable" seed="1121429419" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.004870" asserts="0">
+                <test-case id="1043" name="ScoreWidget_OnScoreChangedEvent_UpdatesLabelText" fullname="Potop.Client.Tests.EditMode.GameHUDWidgetTests.ScoreWidget_OnScoreChangedEvent_UpdatesLabelText" methodname="ScoreWidget_OnScoreChangedEvent_UpdatesLabelText" classname="Potop.Client.Tests.EditMode.GameHUDWidgetTests" runstate="Runnable" seed="1522629394" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.004106" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1046" name="ItemSpawnerTests" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.040206" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1046" name="ItemSpawnerTests" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:47Z" duration="0.024364" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1047" name="EmptyDropTable_EnemyKilled_ReturnsSilently" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests.EmptyDropTable_EnemyKilled_ReturnsSilently" methodname="EmptyDropTable_EnemyKilled_ReturnsSilently" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" seed="266820567" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.015500" asserts="0">
+                <test-case id="1047" name="EmptyDropTable_EnemyKilled_ReturnsSilently" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests.EmptyDropTable_EnemyKilled_ReturnsSilently" methodname="EmptyDropTable_EnemyKilled_ReturnsSilently" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" seed="631479924" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:46Z" duration="0.009068" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1049" name="GuaranteedDropExpThreshold_ForcesDrop" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests.GuaranteedDropExpThreshold_ForcesDrop" methodname="GuaranteedDropExpThreshold_ForcesDrop" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" seed="934998940" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.015007" asserts="0">
+                <test-case id="1049" name="GuaranteedDropExpThreshold_ForcesDrop" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests.GuaranteedDropExpThreshold_ForcesDrop" methodname="GuaranteedDropExpThreshold_ForcesDrop" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" seed="1224281964" result="Passed" start-time="2026-06-05 14:20:46Z" end-time="2026-06-05 14:20:47Z" duration="0.003933" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1048" name="PoolManagerNull_NoCrashOnSpawn" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests.PoolManagerNull_NoCrashOnSpawn" methodname="PoolManagerNull_NoCrashOnSpawn" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" seed="1952701898" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.002105" asserts="0">
+                <test-case id="1048" name="PoolManagerNull_NoCrashOnSpawn" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests.PoolManagerNull_NoCrashOnSpawn" methodname="PoolManagerNull_NoCrashOnSpawn" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" seed="222456901" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.002266" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1050" name="ProbabilityDrop_AppliesWaveMultiplier" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests.ProbabilityDrop_AppliesWaveMultiplier" methodname="ProbabilityDrop_AppliesWaveMultiplier" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" seed="703964740" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.001788" asserts="0">
+                <test-case id="1050" name="ProbabilityDrop_AppliesWaveMultiplier" fullname="Potop.Client.Tests.EditMode.ItemSpawnerTests.ProbabilityDrop_AppliesWaveMultiplier" methodname="ProbabilityDrop_AppliesWaveMultiplier" classname="Potop.Client.Tests.EditMode.ItemSpawnerTests" runstate="Runnable" seed="295163672" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.002608" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1051" name="MetaUpgradeTests" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.110725" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1051" name="MetaUpgradeTests" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.036153" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1055" name="GetStatBundle_AggregatesAllBonusesCorrectly" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests.GetStatBundle_AggregatesAllBonusesCorrectly" methodname="GetStatBundle_AggregatesAllBonusesCorrectly" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" seed="1706048333" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.067176" asserts="0">
+                <test-case id="1055" name="GetStatBundle_AggregatesAllBonusesCorrectly" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests.GetStatBundle_AggregatesAllBonusesCorrectly" methodname="GetStatBundle_AggregatesAllBonusesCorrectly" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" seed="1607446258" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.012820" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1053" name="TryPurchase_InsufficientGems_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests.TryPurchase_InsufficientGems_ReturnsFalse" methodname="TryPurchase_InsufficientGems_ReturnsFalse" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" seed="1362041151" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003773" asserts="0">
+                <test-case id="1053" name="TryPurchase_InsufficientGems_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests.TryPurchase_InsufficientGems_ReturnsFalse" methodname="TryPurchase_InsufficientGems_ReturnsFalse" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" seed="472558223" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.005227" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -326,7 +326,7 @@ GemWallet is null during StartGame.
                   <output><![CDATA[[MetaUpgradeManager] Not enough gems. Need 100, have 0.
 ]]></output>
                 </test-case>
-                <test-case id="1052" name="TryPurchase_MaxLevelReached_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests.TryPurchase_MaxLevelReached_ReturnsFalse" methodname="TryPurchase_MaxLevelReached_ReturnsFalse" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" seed="493372093" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003085" asserts="0">
+                <test-case id="1052" name="TryPurchase_MaxLevelReached_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests.TryPurchase_MaxLevelReached_ReturnsFalse" methodname="TryPurchase_MaxLevelReached_ReturnsFalse" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" seed="2130779908" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.004637" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -334,87 +334,87 @@ GemWallet is null during StartGame.
                   <output><![CDATA[[MetaUpgradeManager]  is already at max level.
 ]]></output>
                 </test-case>
-                <test-case id="1054" name="TryPurchase_NormalConditions_LevelIncreasesAndGemsDeducted" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests.TryPurchase_NormalConditions_LevelIncreasesAndGemsDeducted" methodname="TryPurchase_NormalConditions_LevelIncreasesAndGemsDeducted" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" seed="83626921" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.022880" asserts="0">
+                <test-case id="1054" name="TryPurchase_NormalConditions_LevelIncreasesAndGemsDeducted" fullname="Potop.Client.Tests.EditMode.MetaUpgradeTests.TryPurchase_NormalConditions_LevelIncreasesAndGemsDeducted" methodname="TryPurchase_NormalConditions_LevelIncreasesAndGemsDeducted" classname="Potop.Client.Tests.EditMode.MetaUpgradeTests" runstate="Runnable" seed="481895736" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.007778" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1056" name="OverchargeTests" fullname="Potop.Client.Tests.EditMode.OverchargeTests" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.034916" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1056" name="OverchargeTests" fullname="Potop.Client.Tests.EditMode.OverchargeTests" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.050936" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1061" name="FeverLv2_DecayRateReducedBy20Percent" fullname="Potop.Client.Tests.EditMode.OverchargeTests.FeverLv2_DecayRateReducedBy20Percent" methodname="FeverLv2_DecayRateReducedBy20Percent" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="464879093" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.006304" asserts="0">
+                <test-case id="1061" name="FeverLv2_DecayRateReducedBy20Percent" fullname="Potop.Client.Tests.EditMode.OverchargeTests.FeverLv2_DecayRateReducedBy20Percent" methodname="FeverLv2_DecayRateReducedBy20Percent" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="43425013" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.006923" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1059" name="GaugeReaches100_EntersOverheatState" fullname="Potop.Client.Tests.EditMode.OverchargeTests.GaugeReaches100_EntersOverheatState" methodname="GaugeReaches100_EntersOverheatState" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="75649153" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.008827" asserts="0">
+                <test-case id="1059" name="GaugeReaches100_EntersOverheatState" fullname="Potop.Client.Tests.EditMode.OverchargeTests.GaugeReaches100_EntersOverheatState" methodname="GaugeReaches100_EntersOverheatState" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="562207654" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.010559" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1060" name="Overheat_DurationElapsed_Gauge0AndReturnsToIdle" fullname="Potop.Client.Tests.EditMode.OverchargeTests.Overheat_DurationElapsed_Gauge0AndReturnsToIdle" methodname="Overheat_DurationElapsed_Gauge0AndReturnsToIdle" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="1411292584" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.004314" asserts="0">
+                <test-case id="1060" name="Overheat_DurationElapsed_Gauge0AndReturnsToIdle" fullname="Potop.Client.Tests.EditMode.OverchargeTests.Overheat_DurationElapsed_Gauge0AndReturnsToIdle" methodname="Overheat_DurationElapsed_Gauge0AndReturnsToIdle" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="62311396" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.005697" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1058" name="ReleaseButton_GaugeDecreasesByDecayRate" fullname="Potop.Client.Tests.EditMode.OverchargeTests.ReleaseButton_GaugeDecreasesByDecayRate" methodname="ReleaseButton_GaugeDecreasesByDecayRate" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="418336276" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.007605" asserts="0">
+                <test-case id="1058" name="ReleaseButton_GaugeDecreasesByDecayRate" fullname="Potop.Client.Tests.EditMode.OverchargeTests.ReleaseButton_GaugeDecreasesByDecayRate" methodname="ReleaseButton_GaugeDecreasesByDecayRate" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="1750137323" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.006028" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1057" name="StartFromZero_HoldButton_GaugeIncreasesByChargeRate" fullname="Potop.Client.Tests.EditMode.OverchargeTests.StartFromZero_HoldButton_GaugeIncreasesByChargeRate" methodname="StartFromZero_HoldButton_GaugeIncreasesByChargeRate" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="1005566130" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003244" asserts="0">
+                <test-case id="1057" name="StartFromZero_HoldButton_GaugeIncreasesByChargeRate" fullname="Potop.Client.Tests.EditMode.OverchargeTests.StartFromZero_HoldButton_GaugeIncreasesByChargeRate" methodname="StartFromZero_HoldButton_GaugeIncreasesByChargeRate" classname="Potop.Client.Tests.EditMode.OverchargeTests" runstate="Runnable" seed="1055225203" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.005706" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1062" name="OverclockModeTests" fullname="Potop.Client.Tests.EditMode.OverclockModeTests" classname="Potop.Client.Tests.EditMode.OverclockModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.015761" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1062" name="OverclockModeTests" fullname="Potop.Client.Tests.EditMode.OverclockModeTests" classname="Potop.Client.Tests.EditMode.OverclockModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.022332" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1065" name="ScaleStats_PreventsPrecisionDriftAndFloatOverflow" fullname="Potop.Client.Tests.EditMode.OverclockModeTests.ScaleStats_PreventsPrecisionDriftAndFloatOverflow" methodname="ScaleStats_PreventsPrecisionDriftAndFloatOverflow" classname="Potop.Client.Tests.EditMode.OverclockModeTests" runstate="Runnable" seed="682612434" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.005968" asserts="0">
+                <test-case id="1065" name="ScaleStats_PreventsPrecisionDriftAndFloatOverflow" fullname="Potop.Client.Tests.EditMode.OverclockModeTests.ScaleStats_PreventsPrecisionDriftAndFloatOverflow" methodname="ScaleStats_PreventsPrecisionDriftAndFloatOverflow" classname="Potop.Client.Tests.EditMode.OverclockModeTests" runstate="Runnable" seed="136172191" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.010367" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1063" name="StartOverclock_InitializesMultipliersCorrectly" fullname="Potop.Client.Tests.EditMode.OverclockModeTests.StartOverclock_InitializesMultipliersCorrectly" methodname="StartOverclock_InitializesMultipliersCorrectly" classname="Potop.Client.Tests.EditMode.OverclockModeTests" runstate="Runnable" seed="1130141268" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003901" asserts="0">
+                <test-case id="1063" name="StartOverclock_InitializesMultipliersCorrectly" fullname="Potop.Client.Tests.EditMode.OverclockModeTests.StartOverclock_InitializesMultipliersCorrectly" methodname="StartOverclock_InitializesMultipliersCorrectly" classname="Potop.Client.Tests.EditMode.OverclockModeTests" runstate="Runnable" seed="1495326378" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.001713" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1064" name="Update_ScalesStatsExactlyEvery30Seconds" fullname="Potop.Client.Tests.EditMode.OverclockModeTests.Update_ScalesStatsExactlyEvery30Seconds" methodname="Update_ScalesStatsExactlyEvery30Seconds" classname="Potop.Client.Tests.EditMode.OverclockModeTests" runstate="Runnable" seed="234422625" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.002936" asserts="0">
+                <test-case id="1064" name="Update_ScalesStatsExactlyEvery30Seconds" fullname="Potop.Client.Tests.EditMode.OverclockModeTests.Update_ScalesStatsExactlyEvery30Seconds" methodname="Update_ScalesStatsExactlyEvery30Seconds" classname="Potop.Client.Tests.EditMode.OverclockModeTests" runstate="Runnable" seed="95584390" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.004555" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1066" name="ProgressionTests" fullname="Potop.Client.Tests.EditMode.ProgressionTests" classname="Potop.Client.Tests.EditMode.ProgressionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.010503" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1066" name="ProgressionTests" fullname="Potop.Client.Tests.EditMode.ProgressionTests" classname="Potop.Client.Tests.EditMode.ProgressionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.012545" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1067" name="TestPitySystem_GuaranteedEpicAfterThreshold" fullname="Potop.Client.Tests.EditMode.ProgressionTests.TestPitySystem_GuaranteedEpicAfterThreshold" methodname="TestPitySystem_GuaranteedEpicAfterThreshold" classname="Potop.Client.Tests.EditMode.ProgressionTests" runstate="Runnable" seed="210502" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003361" asserts="0">
+                <test-case id="1067" name="TestPitySystem_GuaranteedEpicAfterThreshold" fullname="Potop.Client.Tests.EditMode.ProgressionTests.TestPitySystem_GuaranteedEpicAfterThreshold" methodname="TestPitySystem_GuaranteedEpicAfterThreshold" classname="Potop.Client.Tests.EditMode.ProgressionTests" runstate="Runnable" seed="932673967" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.003758" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1068" name="TestUpgradeProbability_StatisticalVerification" fullname="Potop.Client.Tests.EditMode.ProgressionTests.TestUpgradeProbability_StatisticalVerification" methodname="TestUpgradeProbability_StatisticalVerification" classname="Potop.Client.Tests.EditMode.ProgressionTests" runstate="Runnable" seed="1666379133" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.004684" asserts="0">
+                <test-case id="1068" name="TestUpgradeProbability_StatisticalVerification" fullname="Potop.Client.Tests.EditMode.ProgressionTests.TestUpgradeProbability_StatisticalVerification" methodname="TestUpgradeProbability_StatisticalVerification" classname="Potop.Client.Tests.EditMode.ProgressionTests" runstate="Runnable" seed="1316277317" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.004953" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
-                  <output><![CDATA[[ProgressionTests] Actual Epic Ratio: 0.113 (113/1000)
+                  <output><![CDATA[[ProgressionTests] Actual Epic Ratio: 0.109 (109/1000)
 ]]></output>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1069" name="SynergyTests" fullname="Potop.Client.Tests.EditMode.SynergyTests" classname="Potop.Client.Tests.EditMode.SynergyTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.022854" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1069" name="SynergyTests" fullname="Potop.Client.Tests.EditMode.SynergyTests" classname="Potop.Client.Tests.EditMode.SynergyTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.056949" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1070" name="TestSynergyActivation_WhenBothModifiersAdded" fullname="Potop.Client.Tests.EditMode.SynergyTests.TestSynergyActivation_WhenBothModifiersAdded" methodname="TestSynergyActivation_WhenBothModifiersAdded" classname="Potop.Client.Tests.EditMode.SynergyTests" runstate="Runnable" seed="2115207539" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.009771" asserts="0">
+                <test-case id="1070" name="TestSynergyActivation_WhenBothModifiersAdded" fullname="Potop.Client.Tests.EditMode.SynergyTests.TestSynergyActivation_WhenBothModifiersAdded" methodname="TestSynergyActivation_WhenBothModifiersAdded" classname="Potop.Client.Tests.EditMode.SynergyTests" runstate="Runnable" seed="23037226" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.036928" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -422,7 +422,7 @@ GemWallet is null during StartGame.
                   <output><![CDATA[[MutationSynergyManager] 시너지 활성화: PierceExplosion
 ]]></output>
                 </test-case>
-                <test-case id="1071" name="TestSynergyDeactivation_WhenModifierRemoved" fullname="Potop.Client.Tests.EditMode.SynergyTests.TestSynergyDeactivation_WhenModifierRemoved" methodname="TestSynergyDeactivation_WhenModifierRemoved" classname="Potop.Client.Tests.EditMode.SynergyTests" runstate="Runnable" seed="728752733" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.008520" asserts="0">
+                <test-case id="1071" name="TestSynergyDeactivation_WhenModifierRemoved" fullname="Potop.Client.Tests.EditMode.SynergyTests.TestSynergyDeactivation_WhenModifierRemoved" methodname="TestSynergyDeactivation_WhenModifierRemoved" classname="Potop.Client.Tests.EditMode.SynergyTests" runstate="Runnable" seed="1202279766" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.016782" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -432,144 +432,144 @@ GemWallet is null during StartGame.
 ]]></output>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1072" name="TacticalSkillTests" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.064358" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1072" name="TacticalSkillTests" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.172445" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1076" name="EMPSkill_Execute_AppliesStunToEnemies" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.EMPSkill_Execute_AppliesStunToEnemies" methodname="EMPSkill_Execute_AppliesStunToEnemies" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="1374621049" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.005544" asserts="0">
+                <test-case id="1076" name="EMPSkill_Execute_AppliesStunToEnemies" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.EMPSkill_Execute_AppliesStunToEnemies" methodname="EMPSkill_Execute_AppliesStunToEnemies" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="723190455" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.019442" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1077" name="OrbitalStrikeSkill_Execute_MultipleStrikesVerification" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.OrbitalStrikeSkill_Execute_MultipleStrikesVerification" methodname="OrbitalStrikeSkill_Execute_MultipleStrikesVerification" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="160430423" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.025557" asserts="0">
+                <test-case id="1077" name="OrbitalStrikeSkill_Execute_MultipleStrikesVerification" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.OrbitalStrikeSkill_Execute_MultipleStrikesVerification" methodname="OrbitalStrikeSkill_Execute_MultipleStrikesVerification" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="1798661716" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.089596" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1074" name="TryExecute_DuringCooldown_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.TryExecute_DuringCooldown_ReturnsFalse" methodname="TryExecute_DuringCooldown_ReturnsFalse" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="1550547942" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.002877" asserts="0">
+                <test-case id="1074" name="TryExecute_DuringCooldown_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.TryExecute_DuringCooldown_ReturnsFalse" methodname="TryExecute_DuringCooldown_ReturnsFalse" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="1044837030" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.006247" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1073" name="TryExecute_InsufficientEnergy_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.TryExecute_InsufficientEnergy_ReturnsFalse" methodname="TryExecute_InsufficientEnergy_ReturnsFalse" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="1597399890" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.013034" asserts="0">
+                <test-case id="1073" name="TryExecute_InsufficientEnergy_ReturnsFalse" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.TryExecute_InsufficientEnergy_ReturnsFalse" methodname="TryExecute_InsufficientEnergy_ReturnsFalse" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="641103499" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.005619" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1075" name="TryExecute_NormalConditions_ReturnsTrueAndConsumesEnergy" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.TryExecute_NormalConditions_ReturnsTrueAndConsumesEnergy" methodname="TryExecute_NormalConditions_ReturnsTrueAndConsumesEnergy" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="1255873349" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.014793" asserts="0">
+                <test-case id="1075" name="TryExecute_NormalConditions_ReturnsTrueAndConsumesEnergy" fullname="Potop.Client.Tests.EditMode.TacticalSkillTests.TryExecute_NormalConditions_ReturnsTrueAndConsumesEnergy" methodname="TryExecute_NormalConditions_ReturnsTrueAndConsumesEnergy" classname="Potop.Client.Tests.EditMode.TacticalSkillTests" runstate="Runnable" seed="2040911695" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.015971" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1078" name="ThreatIndicatorTests" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.080988" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1078" name="ThreatIndicatorTests" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.253558" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1083" name="Test_ThreatAngleCalculation" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatAngleCalculation" methodname="Test_ThreatAngleCalculation" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="1175659653" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.062251" asserts="0">
+                <test-case id="1083" name="Test_ThreatAngleCalculation" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatAngleCalculation" methodname="Test_ThreatAngleCalculation" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="1191247354" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.094304" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1079" name="Test_ThreatLevel_None_WhenNoEnemies" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatLevel_None_WhenNoEnemies" methodname="Test_ThreatLevel_None_WhenNoEnemies" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="938143832" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.001749" asserts="0">
+                <test-case id="1079" name="Test_ThreatLevel_None_WhenNoEnemies" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatLevel_None_WhenNoEnemies" methodname="Test_ThreatLevel_None_WhenNoEnemies" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="1502252195" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.088128" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1081" name="Test_ThreatLevel_Orange_Threshold" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatLevel_Orange_Threshold" methodname="Test_ThreatLevel_Orange_Threshold" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="432884652" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003194" asserts="0">
+                <test-case id="1081" name="Test_ThreatLevel_Orange_Threshold" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatLevel_Orange_Threshold" methodname="Test_ThreatLevel_Orange_Threshold" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="44750472" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.002534" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1082" name="Test_ThreatLevel_Red_Threshold" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatLevel_Red_Threshold" methodname="Test_ThreatLevel_Red_Threshold" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="894070238" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003913" asserts="0">
+                <test-case id="1082" name="Test_ThreatLevel_Red_Threshold" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatLevel_Red_Threshold" methodname="Test_ThreatLevel_Red_Threshold" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="1348912713" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.003571" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1080" name="Test_ThreatLevel_Yellow_Threshold" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatLevel_Yellow_Threshold" methodname="Test_ThreatLevel_Yellow_Threshold" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="428668581" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.006377" asserts="0">
+                <test-case id="1080" name="Test_ThreatLevel_Yellow_Threshold" fullname="Potop.Client.Tests.EditMode.ThreatIndicatorTests.Test_ThreatLevel_Yellow_Threshold" methodname="Test_ThreatLevel_Yellow_Threshold" classname="Potop.Client.Tests.EditMode.ThreatIndicatorTests" runstate="Runnable" seed="116569047" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.046690" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1084" name="TimeControllerTests" fullname="Potop.Client.Tests.EditMode.TimeControllerTests" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.032541" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1084" name="TimeControllerTests" fullname="Potop.Client.Tests.EditMode.TimeControllerTests" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.056084" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1085" name="Test_DefaultTimeScale" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_DefaultTimeScale" methodname="Test_DefaultTimeScale" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="526560301" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.007857" asserts="0">
+                <test-case id="1085" name="Test_DefaultTimeScale" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_DefaultTimeScale" methodname="Test_DefaultTimeScale" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="425537179" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.003225" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1088" name="Test_HitStop_Overlap_StrongerTakesPriority" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_HitStop_Overlap_StrongerTakesPriority" methodname="Test_HitStop_Overlap_StrongerTakesPriority" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="221635779" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.001234" asserts="0">
+                <test-case id="1088" name="Test_HitStop_Overlap_StrongerTakesPriority" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_HitStop_Overlap_StrongerTakesPriority" methodname="Test_HitStop_Overlap_StrongerTakesPriority" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="2095258415" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.001367" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1087" name="Test_HitStop_TakesPriority_Over_SlowMotion" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_HitStop_TakesPriority_Over_SlowMotion" methodname="Test_HitStop_TakesPriority_Over_SlowMotion" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="575353102" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.001221" asserts="0">
+                <test-case id="1087" name="Test_HitStop_TakesPriority_Over_SlowMotion" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_HitStop_TakesPriority_Over_SlowMotion" methodname="Test_HitStop_TakesPriority_Over_SlowMotion" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="1742368645" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.032829" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1086" name="Test_PauseStacking" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_PauseStacking" methodname="Test_PauseStacking" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="1889713749" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.001475" asserts="0">
+                <test-case id="1086" name="Test_PauseStacking" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_PauseStacking" methodname="Test_PauseStacking" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="24938653" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.002541" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1090" name="Test_ShakeDecay_Determinism_30FPS_vs_120FPS" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_ShakeDecay_Determinism_30FPS_vs_120FPS" methodname="Test_ShakeDecay_Determinism_30FPS_vs_120FPS" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="731962751" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003336" asserts="0">
+                <test-case id="1090" name="Test_ShakeDecay_Determinism_30FPS_vs_120FPS" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_ShakeDecay_Determinism_30FPS_vs_120FPS" methodname="Test_ShakeDecay_Determinism_30FPS_vs_120FPS" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="533899497" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.003064" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1089" name="Test_UnscaledTimer_ContinuesDuringHitStop" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_UnscaledTimer_ContinuesDuringHitStop" methodname="Test_UnscaledTimer_ContinuesDuringHitStop" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="473494986" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.009085" asserts="0">
+                <test-case id="1089" name="Test_UnscaledTimer_ContinuesDuringHitStop" fullname="Potop.Client.Tests.EditMode.TimeControllerTests.Test_UnscaledTimer_ContinuesDuringHitStop" methodname="Test_UnscaledTimer_ContinuesDuringHitStop" classname="Potop.Client.Tests.EditMode.TimeControllerTests" runstate="Runnable" seed="1329762391" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.001521" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1091" name="TitanCoreAITests" fullname="Potop.Client.Tests.EditMode.TitanCoreAITests" classname="Potop.Client.Tests.EditMode.TitanCoreAITests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.020889" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1091" name="TitanCoreAITests" fullname="Potop.Client.Tests.EditMode.TitanCoreAITests" classname="Potop.Client.Tests.EditMode.TitanCoreAITests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.080139" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1093" name="FrontShield_AbsorbsAndReflectsFrontalDamage_SideTakesNormalDamage" fullname="Potop.Client.Tests.EditMode.TitanCoreAITests.FrontShield_AbsorbsAndReflectsFrontalDamage_SideTakesNormalDamage" methodname="FrontShield_AbsorbsAndReflectsFrontalDamage_SideTakesNormalDamage" classname="Potop.Client.Tests.EditMode.TitanCoreAITests" runstate="Runnable" seed="2046080059" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.015881" asserts="0">
+                <test-case id="1093" name="FrontShield_AbsorbsAndReflectsFrontalDamage_SideTakesNormalDamage" fullname="Potop.Client.Tests.EditMode.TitanCoreAITests.FrontShield_AbsorbsAndReflectsFrontalDamage_SideTakesNormalDamage" methodname="FrontShield_AbsorbsAndReflectsFrontalDamage_SideTakesNormalDamage" classname="Potop.Client.Tests.EditMode.TitanCoreAITests" runstate="Runnable" seed="189476124" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.069309" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1092" name="HPThresholds_TransitionsExactlyAt60And30Percent" fullname="Potop.Client.Tests.EditMode.TitanCoreAITests.HPThresholds_TransitionsExactlyAt60And30Percent" methodname="HPThresholds_TransitionsExactlyAt60And30Percent" classname="Potop.Client.Tests.EditMode.TitanCoreAITests" runstate="Runnable" seed="2005020826" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.002484" asserts="0">
+                <test-case id="1092" name="HPThresholds_TransitionsExactlyAt60And30Percent" fullname="Potop.Client.Tests.EditMode.TitanCoreAITests.HPThresholds_TransitionsExactlyAt60And30Percent" methodname="HPThresholds_TransitionsExactlyAt60And30Percent" classname="Potop.Client.Tests.EditMode.TitanCoreAITests" runstate="Runnable" seed="94326423" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:47Z" duration="0.002415" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1094" name="TitanCorePrefabTests" fullname="Potop.Client.Tests.EditMode.TitanCorePrefabTests" classname="Potop.Client.Tests.EditMode.TitanCorePrefabTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.010892" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1094" name="TitanCorePrefabTests" fullname="Potop.Client.Tests.EditMode.TitanCorePrefabTests" classname="Potop.Client.Tests.EditMode.TitanCorePrefabTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:48Z" duration="0.583280" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1095" name="TitanCorePrefab_HierarchyAndComponents_AreValid" fullname="Potop.Client.Tests.EditMode.TitanCorePrefabTests.TitanCorePrefab_HierarchyAndComponents_AreValid" methodname="TitanCorePrefab_HierarchyAndComponents_AreValid" classname="Potop.Client.Tests.EditMode.TitanCorePrefabTests" runstate="Runnable" seed="1989033637" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.009711" asserts="0">
+                <test-case id="1095" name="TitanCorePrefab_HierarchyAndComponents_AreValid" fullname="Potop.Client.Tests.EditMode.TitanCorePrefabTests.TitanCorePrefab_HierarchyAndComponents_AreValid" methodname="TitanCorePrefab_HierarchyAndComponents_AreValid" classname="Potop.Client.Tests.EditMode.TitanCorePrefabTests" runstate="Runnable" seed="1737319835" result="Passed" start-time="2026-06-05 14:20:47Z" end-time="2026-06-05 14:20:48Z" duration="0.578002" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
               </test-suite>
-              <test-suite type="TestFixture" id="1096" name="TutorialSystemTests" fullname="Potop.Client.Tests.EditMode.TutorialSystemTests" classname="Potop.Client.Tests.EditMode.TutorialSystemTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.019281" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1096" name="TutorialSystemTests" fullname="Potop.Client.Tests.EditMode.TutorialSystemTests" classname="Potop.Client.Tests.EditMode.TutorialSystemTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.025423" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1097" name="InitialState_IsLook" fullname="Potop.Client.Tests.EditMode.TutorialSystemTests.InitialState_IsLook" methodname="InitialState_IsLook" classname="Potop.Client.Tests.EditMode.TutorialSystemTests" runstate="Runnable" seed="1897601773" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003202" asserts="0">
+                <test-case id="1097" name="InitialState_IsLook" fullname="Potop.Client.Tests.EditMode.TutorialSystemTests.InitialState_IsLook" methodname="InitialState_IsLook" classname="Potop.Client.Tests.EditMode.TutorialSystemTests" runstate="Runnable" seed="1037837617" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.005820" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1098" name="LookState_TransitionToShoot_OnThresholdReached" fullname="Potop.Client.Tests.EditMode.TutorialSystemTests.LookState_TransitionToShoot_OnThresholdReached" methodname="LookState_TransitionToShoot_OnThresholdReached" classname="Potop.Client.Tests.EditMode.TutorialSystemTests" runstate="Runnable" seed="906810044" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.006131" asserts="0">
+                <test-case id="1098" name="LookState_TransitionToShoot_OnThresholdReached" fullname="Potop.Client.Tests.EditMode.TutorialSystemTests.LookState_TransitionToShoot_OnThresholdReached" methodname="LookState_TransitionToShoot_OnThresholdReached" classname="Potop.Client.Tests.EditMode.TutorialSystemTests" runstate="Runnable" seed="1078641133" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.006366" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -577,7 +577,7 @@ GemWallet is null during StartGame.
                   <output><![CDATA[TutorialSystem: Training Enemy Prefab is null!
 ]]></output>
                 </test-case>
-                <test-case id="1099" name="ShootState_TransitionToComplete_OnEnemyDiedEvent" fullname="Potop.Client.Tests.EditMode.TutorialSystemTests.ShootState_TransitionToComplete_OnEnemyDiedEvent" methodname="ShootState_TransitionToComplete_OnEnemyDiedEvent" classname="Potop.Client.Tests.EditMode.TutorialSystemTests" runstate="Runnable" seed="637745463" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.008043" asserts="0">
+                <test-case id="1099" name="ShootState_TransitionToComplete_OnEnemyDiedEvent" fullname="Potop.Client.Tests.EditMode.TutorialSystemTests.ShootState_TransitionToComplete_OnEnemyDiedEvent" methodname="ShootState_TransitionToComplete_OnEnemyDiedEvent" classname="Potop.Client.Tests.EditMode.TutorialSystemTests" runstate="Runnable" seed="1910304137" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.005513" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -587,29 +587,68 @@ GemWallet is null during StartGame.
                 </test-case>
               </test-suite>
             </test-suite>
-            <test-suite type="TestSuite" id="1119" name="Editor" fullname="Potop.Client.Tests.Editor" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.026199" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="TestSuite" id="1126" name="Editor" fullname="Potop.Client.Tests.Editor" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.197018" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-suite type="TestFixture" id="1100" name="SoundManagerTests" fullname="Potop.Client.Tests.Editor.SoundManagerTests" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.023873" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1105" name="BalanceImporterTests" fullname="Potop.Client.Tests.Editor.BalanceImporterTests" classname="Potop.Client.Tests.Editor.BalanceImporterTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.159936" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1101" name="AudioPool_Prewarm_CreatesExpectedCapacity" fullname="Potop.Client.Tests.Editor.SoundManagerTests.AudioPool_Prewarm_CreatesExpectedCapacity" methodname="AudioPool_Prewarm_CreatesExpectedCapacity" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" seed="1794567745" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.009854" asserts="0">
+                <test-case id="1111" name="ParseEnemies_GoldenData_ParsesCorrectly" fullname="Potop.Client.Tests.Editor.BalanceImporterTests.ParseEnemies_GoldenData_ParsesCorrectly" methodname="ParseEnemies_GoldenData_ParsesCorrectly" classname="Potop.Client.Tests.Editor.BalanceImporterTests" runstate="Runnable" seed="1103233783" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.003083" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1104" name="AudioPool_Return_ClearsSourceState" fullname="Potop.Client.Tests.Editor.SoundManagerTests.AudioPool_Return_ClearsSourceState" methodname="AudioPool_Return_ClearsSourceState" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" seed="616019632" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.005754" asserts="0">
+                <test-case id="1109" name="ParseEnemies_InvalidHeader_ThrowsException" fullname="Potop.Client.Tests.Editor.BalanceImporterTests.ParseEnemies_InvalidHeader_ThrowsException" methodname="ParseEnemies_InvalidHeader_ThrowsException" classname="Potop.Client.Tests.Editor.BalanceImporterTests" runstate="Runnable" seed="100886714" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.003735" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1102" name="SoundManager_EnableDisableTwice_NoDuplicateSubscriptions" fullname="Potop.Client.Tests.Editor.SoundManagerTests.SoundManager_EnableDisableTwice_NoDuplicateSubscriptions" methodname="SoundManager_EnableDisableTwice_NoDuplicateSubscriptions" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" seed="1912713771" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.003114" asserts="0">
+                <test-case id="1110" name="ParseEnemies_InvalidValue_ThrowsException" fullname="Potop.Client.Tests.Editor.BalanceImporterTests.ParseEnemies_InvalidValue_ThrowsException" methodname="ParseEnemies_InvalidValue_ThrowsException" classname="Potop.Client.Tests.Editor.BalanceImporterTests" runstate="Runnable" seed="1546051624" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.001234" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
                   </properties>
                 </test-case>
-                <test-case id="1103" name="SoundManager_VoiceCap_IsRespected" fullname="Potop.Client.Tests.Editor.SoundManagerTests.SoundManager_VoiceCap_IsRespected" methodname="SoundManager_VoiceCap_IsRespected" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" seed="197977983" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.002391" asserts="0">
+                <test-case id="1108" name="ParseWeapons_GoldenData_ParsesCorrectly" fullname="Potop.Client.Tests.Editor.BalanceImporterTests.ParseWeapons_GoldenData_ParsesCorrectly" methodname="ParseWeapons_GoldenData_ParsesCorrectly" classname="Potop.Client.Tests.Editor.BalanceImporterTests" runstate="Runnable" seed="165703721" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.013739" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1106" name="ParseWeapons_InvalidHeader_ThrowsException" fullname="Potop.Client.Tests.Editor.BalanceImporterTests.ParseWeapons_InvalidHeader_ThrowsException" methodname="ParseWeapons_InvalidHeader_ThrowsException" classname="Potop.Client.Tests.Editor.BalanceImporterTests" runstate="Runnable" seed="1270904410" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.000779" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1107" name="ParseWeapons_InvalidValue_ThrowsException" fullname="Potop.Client.Tests.Editor.BalanceImporterTests.ParseWeapons_InvalidValue_ThrowsException" methodname="ParseWeapons_InvalidValue_ThrowsException" classname="Potop.Client.Tests.Editor.BalanceImporterTests" runstate="Runnable" seed="1639345203" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.001006" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1100" name="SoundManagerTests" fullname="Potop.Client.Tests.Editor.SoundManagerTests" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.030581" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1101" name="AudioPool_Prewarm_CreatesExpectedCapacity" fullname="Potop.Client.Tests.Editor.SoundManagerTests.AudioPool_Prewarm_CreatesExpectedCapacity" methodname="AudioPool_Prewarm_CreatesExpectedCapacity" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" seed="457189332" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.008661" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1104" name="AudioPool_Return_ClearsSourceState" fullname="Potop.Client.Tests.Editor.SoundManagerTests.AudioPool_Return_ClearsSourceState" methodname="AudioPool_Return_ClearsSourceState" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" seed="503791943" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.010977" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1102" name="SoundManager_EnableDisableTwice_NoDuplicateSubscriptions" fullname="Potop.Client.Tests.Editor.SoundManagerTests.SoundManager_EnableDisableTwice_NoDuplicateSubscriptions" methodname="SoundManager_EnableDisableTwice_NoDuplicateSubscriptions" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" seed="452947185" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.002699" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1103" name="SoundManager_VoiceCap_IsRespected" fullname="Potop.Client.Tests.Editor.SoundManagerTests.SoundManager_VoiceCap_IsRespected" methodname="SoundManager_VoiceCap_IsRespected" classname="Potop.Client.Tests.Editor.SoundManagerTests" runstate="Runnable" seed="331164854" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.003023" asserts="0">
                   <properties>
                     <property name="retryIteration" value="0" />
                     <property name="repeatIteration" value="0" />
@@ -617,11 +656,11 @@ GemWallet is null during StartGame.
                 </test-case>
               </test-suite>
             </test-suite>
-            <test-suite type="TestSuite" id="1117" name="Integration" fullname="Potop.Client.Tests.Integration" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.030458" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="TestSuite" id="1124" name="Integration" fullname="Potop.Client.Tests.Integration" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.200571" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-suite type="TestFixture" id="1021" name="VerticalSliceTests" fullname="Potop.Client.Tests.Integration.VerticalSliceTests" classname="Potop.Client.Tests.Integration.VerticalSliceTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.028444" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1021" name="VerticalSliceTests" fullname="Potop.Client.Tests.Integration.VerticalSliceTests" classname="Potop.Client.Tests.Integration.VerticalSliceTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.157393" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
                 <properties />
-                <test-case id="1022" name="VerticalSlice_FullAutomationLoop_Verification" fullname="Potop.Client.Tests.Integration.VerticalSliceTests.VerticalSlice_FullAutomationLoop_Verification" methodname="VerticalSlice_FullAutomationLoop_Verification" classname="Potop.Client.Tests.Integration.VerticalSliceTests" runstate="Runnable" seed="619445875" result="Passed" start-time="2026-06-04 13:32:24Z" end-time="2026-06-04 13:32:24Z" duration="0.026682" asserts="0">
+                <test-case id="1022" name="VerticalSlice_FullAutomationLoop_Verification" fullname="Potop.Client.Tests.Integration.VerticalSliceTests.VerticalSlice_FullAutomationLoop_Verification" methodname="VerticalSlice_FullAutomationLoop_Verification" classname="Potop.Client.Tests.Integration.VerticalSliceTests" runstate="Runnable" seed="371325850" result="Passed" start-time="2026-06-05 14:20:48Z" end-time="2026-06-05 14:20:48Z" duration="0.154032" asserts="0">
                   <properties>
                     <property name="_JOINTYPE" value="UnityCombinatorial" />
                     <property name="retryIteration" value="0" />

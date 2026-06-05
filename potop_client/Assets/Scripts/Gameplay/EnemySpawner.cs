@@ -47,17 +47,59 @@ namespace Potop.Client.Gameplay {
         }
 
         private void SpawnEnemy(Wave.WaveData waveData) {
-            // 랜덤한 적 프리팹 선택 (단순 랜덤)
-            int index = Random.Range(0, waveData.EnemySpawns.Count);
-            GameObject prefab = waveData.EnemySpawns[index].Prefab;
+            if (waveData == null || waveData.EnemySpawns == null || waveData.EnemySpawns.Count == 0) return;
 
-            if (prefab != null) {
-                Vector3 pos = Random.insideUnitCircle.normalized * _spawnRadius;
-                pos.z = pos.y;
-                pos.y = Random.Range(MIN_HEIGHT, MAX_HEIGHT);
-
-                Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(prefab, pos, Quaternion.identity);
+            float totalWeight = 0f;
+            foreach (var spawn in waveData.EnemySpawns) {
+                if (spawn.Prefab != null) {
+                    var enemy = spawn.Prefab.GetComponent<EnemyBase>();
+                    float weight = (enemy != null && enemy.EnemyData != null) ? enemy.EnemyData.SpawnWeight : 1f;
+                    totalWeight += Mathf.Max(0f, weight);
+                }
             }
+
+            if (totalWeight <= 0f) {
+                // Fallback to simple random selection if total weight is 0
+                int index = Random.Range(0, waveData.EnemySpawns.Count);
+                GameObject fallbackPrefab = waveData.EnemySpawns[index].Prefab;
+                if (fallbackPrefab != null) {
+                    SpawnPrefab(fallbackPrefab);
+                }
+                return;
+            }
+
+            float randomValue = Random.Range(0f, totalWeight);
+            float currentSum = 0f;
+            GameObject selectedPrefab = null;
+
+            foreach (var spawn in waveData.EnemySpawns) {
+                if (spawn.Prefab != null) {
+                    var enemy = spawn.Prefab.GetComponent<EnemyBase>();
+                    float weight = (enemy != null && enemy.EnemyData != null) ? enemy.EnemyData.SpawnWeight : 1f;
+                    currentSum += Mathf.Max(0f, weight);
+                    if (randomValue <= currentSum) {
+                        selectedPrefab = spawn.Prefab;
+                        break;
+                    }
+                }
+            }
+
+            // Fallback just in case
+            if (selectedPrefab == null && waveData.EnemySpawns.Count > 0) {
+                selectedPrefab = waveData.EnemySpawns[waveData.EnemySpawns.Count - 1].Prefab;
+            }
+
+            if (selectedPrefab != null) {
+                SpawnPrefab(selectedPrefab);
+            }
+        }
+
+        private void SpawnPrefab(GameObject prefab) {
+            Vector3 pos = Random.insideUnitCircle.normalized * _spawnRadius;
+            pos.z = pos.y;
+            pos.y = Random.Range(MIN_HEIGHT, MAX_HEIGHT);
+
+            Potop.Client.Core.Pooling.PoolManager.Instance.Spawn(prefab, pos, Quaternion.identity);
         }
     }
 }

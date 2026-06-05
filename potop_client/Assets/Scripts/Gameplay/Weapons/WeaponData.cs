@@ -35,5 +35,32 @@ namespace Potop.Client.Gameplay.Weapons {
 
         [Tooltip("범위 공격 반경 (AoE)")]
         public float AoERadius = 3f;
+
+        [Tooltip("관통 횟수 (0이면 관통 불가)")]
+        public int BasePierce = 0;
+
+        [Tooltip("넉백 수치")]
+        public float KnockbackForce = 0f;
+
+        public void InitializeFromBalance(
+            float baseDamage,
+            float baseFireRate,
+            float baseProjectileSpeed,
+            float spreadAngle,
+            int spreadProjectileCount,
+            float launchAngle,
+            float aoERadius,
+            int basePierce,
+            float knockbackForce) {
+            BaseDamage = baseDamage;
+            BaseFireRate = baseFireRate;
+            BaseProjectileSpeed = baseProjectileSpeed;
+            SpreadAngle = spreadAngle;
+            SpreadProjectileCount = spreadProjectileCount;
+            LaunchAngle = launchAngle;
+            AoERadius = aoERadius;
+            BasePierce = basePierce;
+            KnockbackForce = knockbackForce;
+        }
     }
 }

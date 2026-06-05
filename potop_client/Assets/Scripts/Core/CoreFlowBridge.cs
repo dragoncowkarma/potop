@@ -23,5 +23,6 @@ namespace Potop.Client.Core {
     public static class CoreFlowBridge {
         public static Func<GameFlowState> GetCurrentState { get; set; }
         public static Action<GameFlowState> TransitionTo { get; set; }
+        public static Func<float> GetOverclockSurvivalTime { get; set; }
     }
 }

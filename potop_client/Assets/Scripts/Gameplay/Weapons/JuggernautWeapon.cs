@@ -7,14 +7,16 @@ namespace Potop.Client.Gameplay {
     /// 강력한 피해, 관통, 그리고 넉백을 제공합니다.
     /// </summary>
     public class JuggernautWeapon : Weapons.WeaponBase {
-        // 저거너트 고유 스탯: 관통 횟수와 넉백 수치
+        // 저거너트 고유 스탯: 관통 횟수와 넉백 수치 (기본값 설정, 데이터 유실 대비)
         private const int PIERCE_COUNT = 1;
         private const float KNOCKBACK_FORCE = 5.0f;
 
         protected override void Start() {
             base.Start();
             // 저거너트 전용 발사 전략 설정
-            SetFireStrategy(new JuggernautFireStrategy(PIERCE_COUNT, KNOCKBACK_FORCE));
+            int pierce = _weaponData != null ? _weaponData.BasePierce : PIERCE_COUNT;
+            float knockback = _weaponData != null ? _weaponData.KnockbackForce : KNOCKBACK_FORCE;
+            SetFireStrategy(new JuggernautFireStrategy(pierce, knockback));
         }
 
         /// <summary>

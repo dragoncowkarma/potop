@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7690bf4cdb984193827a059c8680ebf, type: 3}
-  m_Name: NormalEnemy
+  m_Name: MicrobotEnemy
   m_EditorClassIdentifier: 
-  _enemyName: Scouter
-  _maxHealth: 10
-  _moveSpeed: 3
-  _scoreValue: 10
-  _energyReward: 10
-  _baseDamage: 10
-  _spawnWeight: 0.7
+  _enemyName: Microbot
+  _maxHealth: 5
+  _moveSpeed: 6
+  _scoreValue: 5
+  _energyReward: 5
+  _baseDamage: 5
+  _spawnWeight: 0
