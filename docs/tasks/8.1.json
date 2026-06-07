@@ -8,6 +8,16 @@
   "depends_on": [
     "7.5.6"
   ],
+  "reconciliation": {
+    "accepted_status": "Ready",
+    "evidence_state": "Missing Evidence",
+    "observed_evidence": "potop_client/test_results.xml records 86/86 EditMode tests passed on 2026-06-05, including TimeControllerTests and ThreatIndicatorTests.",
+    "missing_evidence": [
+      "A current console result with zero red errors and zero critical warnings",
+      "Harness verification metadata and telemetry hash"
+    ],
+    "owner_task": "8.5.2"
+  },
   "files_modified": [
     "potop_client/Assets/Scripts/Camera/CameraShakeController.cs",
     "potop_client/Assets/Scripts/Gameplay/Flow/TimeController.cs"

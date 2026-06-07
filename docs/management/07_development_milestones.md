@@ -234,6 +234,20 @@
 *   **[08004] 밸런스 미세 조정** — 4종 터렛 × 변이 조합 × 웨이브/보스/오버클럭 시뮬레이션, 데이터 임포트 검증
 *   **[08099] 폴리싱 검증** — GC 0B 핫패스, TimeScale 복구, 풀링 증거, 콘솔 Red Error 0건
 
+#### **Phase 8 Evidence Status (8.5.1 Reconciliation)**
+
+`planned` in `docs/SUMMARY.xml` maps to `Ready` in task JSON. Implementation and unit-test artifacts may exist, but Phase 8 remains unaccepted until the missing release-gate evidence is attached.
+
+| Task | Prompt Metadata | Task JSON | Observed Evidence | Accepted State | Missing Evidence / Owner |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `8.1` | No status field | `Ready` | `potop_client/test_results.xml`: 86/86 passed; TimeController and threat-indicator fixtures included | `Ready` / `planned` | Current clean console result and harness metadata / `8.5.2` |
+| `8.2` | No status field | `Ready` | SoundManager fixture: 4/4 passed | `Ready` / `planned` | 0B GC profiler proof, mixer/cooldown evidence, harness metadata / `8.5.2` |
+| `8.3` | No status field | `Ready` | VFX fixture: 4/4 passed | `Ready` / `planned` | Stress allocation, measured particle budget, readability captures / `8.5.2` |
+| `8.4` | No status field | `Ready` | Balance importer fixture: 6/6 passed; compact four-turret report exists | `Ready` / `planned` | Version/seed, mutation-wave matrix, boss/overclock rows, failure notes / `8.5.2` |
+| `8.6` | No status field | `Ready` | Walkthrough claims completion; audit test source exists | `Ready` / `planned` | Audit tests are absent from the retained result; profiler and clean-console proof missing / `8.5.2` |
+
+The `8.6_walkthrough.md` completion statement is therefore an unresolved evidence claim, not an accepted Phase 8 completion record. Task `8.5.2` owns the objective evidence package, task `8.5.3` owns visual readability captures, and task `8.5.99` owns final release-gate acceptance.
+
 ---
 
 ### **Phase 8.5: 전문가 점검 기반 품질 봉합 (Expert Gap Closure)** `[예상: 1주]`

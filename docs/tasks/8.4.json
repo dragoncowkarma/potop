@@ -8,6 +8,18 @@
   "depends_on": [
     "8.3"
   ],
+  "reconciliation": {
+    "accepted_status": "Ready",
+    "evidence_state": "Missing Evidence",
+    "observed_evidence": "potop_client/test_results.xml records BalanceImporterTests 6/6 passed on 2026-06-05, and docs/walkthroughs/balance_simulation_report.md covers four turret DPS rows and energy totals.",
+    "missing_evidence": [
+      "Versioned deterministic setup or seed",
+      "Turret by mutation by wave matrix",
+      "Boss and overclock entry rows",
+      "Failure-case notes and harness verification metadata"
+    ],
+    "owner_task": "8.5.2"
+  },
   "files_modified": [
     "potop_client/Assets/Data/Balance/WeaponBalanceData.csv",
     "potop_client/Assets/Data/Balance/EnemyBalanceData.csv"

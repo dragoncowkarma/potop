@@ -8,6 +8,17 @@
   "depends_on": [
     "8.1"
   ],
+  "reconciliation": {
+    "accepted_status": "Ready",
+    "evidence_state": "Missing Evidence",
+    "observed_evidence": "potop_client/test_results.xml records SoundManagerTests 4/4 passed on 2026-06-05.",
+    "missing_evidence": [
+      "Profiler or allocation-recorder proof of 0B GC on the warmed playback path",
+      "Mixer routing and cooldown evidence",
+      "Harness verification metadata and telemetry hash"
+    ],
+    "owner_task": "8.5.2"
+  },
   "files_modified": [
     "potop_client/Assets/Scripts/Core/Audio/SoundManager.cs",
     "potop_client/Assets/Scripts/Core/Audio/AudioPool.cs"

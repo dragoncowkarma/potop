@@ -11,6 +11,18 @@
     "8.3",
     "8.4"
   ],
+  "reconciliation": {
+    "accepted_status": "Ready",
+    "evidence_state": "Missing Evidence",
+    "observed_evidence": "docs/walkthroughs/8.6_walkthrough.md claims completion, but its Phase 8.6 audit tests are absent from the retained 2026-06-05 test result.",
+    "missing_evidence": [
+      "Executed Phase 8.6 audit-test result with exact pass counts",
+      "Audio and VFX profiler excerpts",
+      "A console or log source supporting zero red errors and zero critical warnings",
+      "Harness verification metadata and telemetry hash"
+    ],
+    "owner_task": "8.5.2"
+  },
   "files_modified": [
     "potop_client/Assets/Tests/Integration/PolishValidationTests.cs"
   ],
