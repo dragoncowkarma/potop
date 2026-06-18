@@ -19,6 +19,10 @@
             <File Path="docs/walkthroughs/8.5_docs_prompt_expansion_walkthrough.md" Description="Evidence for Phase 8.5 documentation and prompt expansion"/>
             <File Path="docs/walkthroughs/8.5_model_reassignment_walkthrough.md" Description="Evidence for Phase 8.5 agent model reassignment"/>
             <File Path="docs/walkthroughs/8.5.1_walkthrough.md" Description="Evidence for Phase 8 SSOT reconciliation"/>
+            <File Path="docs/walkthroughs/8.5.2_walkthrough.md" Description="Evidence for Phase 8.5 Evidence Pack Audit"/>
+            <File Path="docs/walkthroughs/8.5_evidence_ledger.md" Description="Phase 8.5 Evidence Ledger"/>
+            <File Path="docs/walkthroughs/8.6_walkthrough.md" Description="Evidence for Phase 8 Polish Validation"/>
+            <File Path="docs/walkthroughs/balance_simulation_report.md" Description="Balance Simulation Report"/>
             <File Path="docs/walkthroughs/phase8_plus_docs_prompt_improvement_walkthrough.md" Description="Evidence for Phase 8+ documentation and prompt improvement"/>
             <File Path="docs/prompts/065/06501_code_system_integration.md" Description="Phase 6.5: 시스템 통합 연결"/>
             <File Path="docs/prompts/065/06502_code_phase6_tests.md" Description="Phase 6.5: Phase 6 시스템 테스트"/>
